@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#001019">
+    <title><%= title %> | what2watch</title>
+    <meta name="description"
+        content="What2watch is the ultimate watch guide for movies. Get to know what movies to watch or stream in a hassle-free way.">
+    <meta name="keywords"
+        content="what to watch, Trending movies, upcoming movies, action, thriller, movie guide, actors, actresses, synopsis, trailers, reviews">
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+    <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
+    <link rel="stylesheet" href="/Css/embla.css">
+    <link rel="stylesheet" href="/Css/login.css">
+    <link rel="stylesheet" href="/Css/blog.css">
+    <link rel="stylesheet" href="/Css/styles.css">
+    <noscript>
+        <style>
+            /**
+          * Reinstate scrolling for non-JS clients
+          */
+            .simplebar-content-wrapper {
+                overflow: auto;
+            }
+        </style>
+    </noscript>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NN3S8E3V6Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-NN3S8E3V6Q');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9179075773135399"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0"
+        nonce="VfUlIJaT"></script>
+    <nav class="navigation">
+        <div class="blog-nav-enclosure">
+            <div class="logo-and-links">
+                <div class="logo">
+                    <div class="burger" style="display:none;">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                    <a href="/">
+                        <div class="logo-wrapper">
+                            <img src="/logo.png" alt="what2watch">
+                        </div>
+
+                    </a>
+                </div>
+                <i class="fas fa-search small-screen-search-icon"></i>
+                <div class="search-bar big-screen-search">
+                    <form action="/search" method="GET" class="search-form">
+                        <div class="search-field">
+                            <i class="fas fa-search"></i>
+                            <input type="text" class="search" placeholder="search for a movie..." name="query">
+                            <input type="submit" value="search" hidden>
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav_links">
+                    <li class="nav_link"> <a href="/blog/posts">Blog</a> </li>
+                    <% if(user){%>
+                    <% if(user.privilege === "admin"){%>
+                    <li class="nav_link"> <a href="/blog/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                    <li class="nav_link"> <a href="/blog/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <section id="header-container" class="blog-header">
+        <div class="small-screen-search search-bar">
+            <i class="fas fa-times close-sm-search"></i>
+            <form action="/search" method="GET" class="small-search-form search-form">
+                <div class="small-search-field">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="small-search" placeholder="search for a movie..." name="query">
+                    <input type="submit" value="search" hidden>
+                </div>
+            </form>
+        </div>
+
+        <div class="wrapper-enclosure-blog">
+            <% if(messages){%>
+            <% if(messages.error){%>
+            <div class="flash-wrapper home-flash">
+                <div class="flash-message warning">
+                    <h2 class="flash-error"><%= messages.error[0] %> </h2>
+                </div>
+            </div>
+
+            <%}%>
+                <%if(messages.success){ %>
+            <div class="flash-wrapper home-flash">
+                <div class="flash-message success-info">
+                    <h2 class="flash-success"><%=messages.success[0]%></h2>
+                </div>
+            </div>
+
+            <% } %>
+            <% } %>
+            <div class="new-header-wrapper blog-header-wrapper">
+                <div class="blog-header-left">
+                    <div class="embla autoplay__embla blog-header-embla">
+                        <div class="autoplay">
+                            <div class="embla__container">
+                                <% if(picks){%>
+                                <% picks.forEach(story=>{%>
+                                <div class="embla__slide autoplay__slide"
+                                    style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url(<%=story.photo%>); background-size: cover; background-repeat: no-repeat;">
+                                    <a href="/blog/posts/<%= story.slug%>">
+                                        <div class="embla__slide__inner">
+                                            <div class="post-title blog-header-post-title">
+                                                <h5><span>Editors's picks</span>
+                                                    <span><strong><%=story.category%></strong></span></h5>
+                                                <h3><%= story.title %> </h3>
+                                                <h5 class="date"> <span>by
+                                                        <strong><%=story.author%></strong></span><span><%=story.createdAt%></span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+
+
+                                <%}) %>
+                                <% } %>
+                                <div class="embla__slide autoplay__slide"
+                                    style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url(/dune.jpg); background-size: cover; background-repeat: no-repeat;">
+                                    <div class="embla__slide__inner">
+                                        <div class="post-title blog-header-post-title">
+                                            <h5><span>Editors's picks</span> <span>category</span> </h5>
+                                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                            <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="embla__slide autoplay__slide"
+                                    style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url(/dune.jpg); background-size: cover; background-repeat: no-repeat;">
+                                    <div class="embla__slide__inner">
+                                        <div class="post-title blog-header-post-title">
+                                            <h5><span>Editors's picks</span> <span>category</span> </h5>
+                                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                            <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="embla__slide autoplay__slide"
+                                    style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url(/dune.jpg); background-size: cover; background-repeat: no-repeat;">
+                                    <div class="embla__slide__inner">
+                                        <div class="post-title blog-header-post-title">
+                                            <h5><span>Editors's picks</span> <span>category</span> </h5>
+                                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                            <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="embla__slide autoplay__slide"
+                                    style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url(/dune.jpg); background-size: cover; background-repeat: no-repeat;">
+                                    <div class="embla__slide__inner">
+                                        <div class="post-title blog-header-post-title">
+                                            <h5><span>Editors's picks</span> <span>category</span> </h5>
+                                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                            <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11,
+                                                    2021</span> </h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Dots -->
+                        <div class="embla__dots"></div>
+
+                        <!-- Buttons -->
+                        <button class="embla__button embla__button--prev circular-btn" type="button">
+                            <svg class="embla__button__svg" viewBox="137.718 -1.001 366.563 643.999">
+                                <path
+                                    d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z">
+                                </path>
+                            </svg>
+                        </button>
+                        <button class="embla__button embla__button--next circular-btn" type="button">
+                            <svg class="embla__button__svg" viewBox="0 0 238.003 238.003">
+                                <path
+                                    d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="blog-header-right">
+                    <div class="right-top header-post"
+                        style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url(/dune.jpg); background-size: cover; background-repeat: no-repeat;">
+                        <div class="post-title">
+                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                            <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11, 2021</span> </h5>
+                        </div>
+
+                    </div>
+                    <div class="right-bottom">
+                        <div style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url(/dune.jpg); background-size: cover; background-repeat: no-repeat;"
+                            class="header-post">
+                            <div class="post-title">
+                                <h4>How tom Cruise performed his brilliant stunts in top gun 2</h4>
+                                <h5 class="date hide-date"> <span>by <strong> John Doe</strong></span><span>July 11,
+                                        2021</span> </h5>
+                            </div>
+                        </div>
+                        <div style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url(/dune.jpg); background-size: cover; background-repeat: no-repeat;"
+                            class="header-post">
+                            <div class="post-title">
+                                <h4>How tom Cruise performed his brilliant stunts in top gun 2</h4>
+                                <h5 class="date hide-date"> <span>by <strong>John Doe</strong></span><span>July 11,
+                                        2021</span> </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-body-wrapper">
+                <div id="long" class="blog-body-content">
+                    <div class="blog-body-popular">
+                        <h1 class="cat-title">Latest posts</h1>
+                        <div class="latest-posts latest-stories">
+                            <div class="post">
+                                <img src="/dune.jpg" alt="post image">
+                                <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
+                            </div>
+                            <div class="post">
+                                <img src="/dune.jpg" alt="post image">
+                                <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
+                            </div>
+                            <div class="post">
+                                <img src="/dune.jpg" alt="post image">
+                                <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
+                            </div>
+                            <% if(latest){%>
+                            <%latest.forEach(story=>{  %>
+                            <div class="post">
+                                <img src="<%= story.photo %>" alt="post image">
+                                <h5 class="cat-name"><%= story.category %> </h5>
+                                <h3><%= story.title %> </h3>
+                                <h5 class="date"> <span>by <strong><%= story.author %> </strong></span>
+                                    <span><%= story.createdAt %>
+                                    </span> </h5>
+                                <a class="read-more" href="/blog/posts/<%= story.slug %> ">Read more <i
+                                        class="fas fa-angle-double-right"></i></a>
+                            </div>
+
+                            <% }) %>
+
+                            <%} %>
+                        </div>
+
+                        <div class="trending-now">
+                            <a href="/#trending" class="cat-title">Trending Movies<i
+                                    class="fas fa-chevron-right"></i></a>
+                            <div class="embla autoplay__embla blog-trending-movies">
+                                <div class="autoplay">
+                                    <div class="embla__container">
+                                        <% if(trending){%>
+                                        <% trending.forEach((movie, index)=>{%>
+                                        <div class="embla__slide autoplay__slide"
+                                            style="background: linear-gradient(rgba(14, 14, 14, 0) 0%, rgb(14, 14, 14) 100%), linear-gradient(270deg, rgba(14, 14, 14, 0) 0%, rgb(14, 14, 14) 100%), url(https://image.tmdb.org/t/p/w1280/<%=movie.backdrop_path%>); background-size: cover; background-position: center">
+                                            <div class="embla__slide__inner">
+                                                <div class="new-movie-wrapper blog-trending-movie-wrapper">
+                                                    <div class="new-header-movie blog-trending-movie">
+                                                        <h1 class="movie-title"><%= movie.title %></h1>
+                                                        <% if(movie.overview.length > 60){%>
+                                                        <p class="clamp-synopsis">
+                                                            <%= movie.overview%>
+                                                        </p>
+                                                        <% }else{%>
+                                                        <p class="no-clamp"><%= movie.overview%></p>
+                                                        <% } %>
+                                                        <div class="swiper-btns new-header-btn blog-movie-btn">
+                                                            <a href="/movie/<%= movie.id %>" class="swiper-btn"
+                                                                role="button">Learn more</a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <% }) %>
+
+                                        <% } %>
+
+                                    </div>
+                                </div>
+                                <!-- Dots -->
+                                <div class="embla__dots"></div>
+
+                                <!-- Buttons -->
+                                <button class="embla__button embla__button--prev circular-btn" type="button">
+                                    <svg class="embla__button__svg" viewBox="137.718 -1.001 366.563 643.999">
+                                        <path
+                                            d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <button class="embla__button embla__button--next circular-btn" type="button">
+                                    <svg class="embla__button__svg" viewBox="0 0 238.003 238.003">
+                                        <path
+                                            d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="tv-shows">
+                            <h1 class="cat-title">All Stories</h1>
+                            <div class="latest-posts tv-news">
+                                <div class="post">
+                                    <img src="/dune.jpg" alt="post image">
+                                    <h5 class="cat-name">Dc news</h5>
+                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                    <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11,
+                                            2021</span> </h5>
+                                    <a class="read-more" href="#">Read more <i
+                                            class="fas fa-angle-double-right"></i></a>
+                                </div>
+                                <div class="post">
+                                    <img src="/dune.jpg" alt="post image">
+                                    <h5 class="cat-name">Dc news</h5>
+                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                    <a class="read-more" href="#">Read more <i
+                                            class="fas fa-angle-double-right"></i></a>
+                                </div>
+                                <div class="post">
+                                    <img src="/dune.jpg" alt="post image">
+                                    <h5 class="cat-name">Dc news</h5>
+                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                    <a class="read-more" href="#">Read more <i
+                                            class="fas fa-angle-double-right"></i></a>
+                                </div>
+                                <div class="post">
+                                    <img src="/dune.jpg" alt="post image">
+                                    <h5 class="cat-name">Dc news</h5>
+                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                    <a class="read-more" href="#">Read more <i
+                                            class="fas fa-angle-double-right"></i></a>
+                                </div>
+                                <div class="post">
+                                    <img src="/dune.jpg" alt="post image">
+                                    <h5 class="cat-name">Dc news</h5>
+                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                    <a class="read-more" href="#">Read more <i
+                                            class="fas fa-angle-double-right"></i></a>
+                                </div>
+                                <div class="post">
+                                    <img src="/dune.jpg" alt="post image">
+                                    <h5 class="cat-name">Dc news</h5>
+                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                    <a class="read-more" href="#">Read more <i
+                                            class="fas fa-angle-double-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-controls blog-page-controls">
+                            <a href="#" class="prev-page swiper-btn blog-control-btn" role="button"><i
+                                    class="fas fa-arrow-left prev-indicator"></i> </a>
+                            <a href="#" class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i
+                                    class="fas fa-arrow-right next-indicator"></i></a>
+                        </div>
+                        <div class="older-posts">
+                            <a href="#" class="cat-title">Pop Culture<i class="fas fa-chevron-right"></i></a>
+                            <div class="older-posts-inner">
+                                <div class="embla old-posts-embla">
+                                    <div class="embla__viewport">
+                                        <div class="embla__container">
+                                            <div class="embla__slide">
+                                                <div class="embla__slide__inner slider-inner-card featured-card">
+                                                    <div class="post">
+                                                        <img src="/dune.jpg" alt="post image">
+                                                        <h5 class="cat-name">Dc news</h5>
+                                                        <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                        </h3>
+                                                        <h5 class="date"> <span>by <strong> John Doe</strong></span>
+                                                            <span>July 11,
+                                                                2021</span> </h5>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="embla__slide">
+                                                <div class="embla__slide__inner slider-inner-card featured-card">
+                                                    <div class="post">
+                                                        <img src="/dune.jpg" alt="post image">
+                                                        <h5 class="cat-name">Dc news</h5>
+                                                        <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                        </h3>
+                                                        <h5 class="date"> <span>by John Doe</span> <span>July 11,
+                                                                2021</span> </h5>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="embla__slide">
+                                                <div class="embla__slide__inner slider-inner-card featured-card">
+                                                    <div class="post">
+                                                        <img src="/dune.jpg" alt="post image">
+                                                        <h5 class="cat-name">Dc news</h5>
+                                                        <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                        </h3>
+                                                        <h5 class="date"> <span>by John Doe</span> <span>July 11,
+                                                                2021</span> </h5>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="embla__slide">
+                                                <div class="embla__slide__inner slider-inner-card featured-card">
+                                                    <div class="post">
+                                                        <img src="/dune.jpg" alt="post image">
+                                                        <h5 class="cat-name">Dc news</h5>
+                                                        <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                        </h3>
+                                                        <h5 class="date"> <span>by John Doe</span> <span>July 11,
+                                                                2021</span> </h5>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="embla__slide">
+                                                <div class="embla__slide__inner slider-inner-card featured-card">
+                                                    <div class="post">
+                                                        <img src="/dune.jpg" alt="post image">
+                                                        <h5 class="cat-name">Dc news</h5>
+                                                        <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                        </h3>
+                                                        <h5 class="date"> <span>by John Doe</span> <span>July 11,
+                                                                2021</span> </h5>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="embla__slide">
+                                                <div class="embla__slide__inner slider-inner-card featured-card">
+                                                    <div class="post">
+                                                        <img src="/dune.jpg" alt="post image">
+                                                        <h5 class="cat-name">Dc news</h5>
+                                                        <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                        </h3>
+                                                        <h5 class="date"> <span>by John Doe</span> <span>July 11,
+                                                                2021</span> </h5>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="embla__slide">
+                                                <div class="embla__slide__inner slider-inner-card featured-card">
+                                                    <div class="post">
+                                                        <img src="/dune.jpg" alt="post image">
+                                                        <h5 class="cat-name">Dc news</h5>
+                                                        <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                        </h3>
+                                                        <h5 class="date"> <span>by John Doe</span> <span>July 11,
+                                                                2021</span> </h5>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <button class="embla__button embla__button--prev square__btn old-embla-btn"
+                                        type="button">
+                                        <svg class="embla__button__svg" viewBox="137.718 -1.001 366.563 643.999">
+                                            <path
+                                                d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <button class="embla__button embla__button--next square__btn old-embla-btn"
+                                        type="button">
+                                        <svg class="embla__button__svg" viewBox="0 0 238.003 238.003">
+                                            <path
+                                                d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z">
+                                            </path>
+                                        </svg>
+                                    </button>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="short" class="blog-body-bio">
+                    <h1 class="cat-title">About Us</h1>
+                    <div class="writer-bio-wrapper">
+                        <img src="/banner.jpg" alt="author-image">
+                        <div class="writer-bio-content">
+                            <h4>Get to Know us</h4>
+                            <p>Welcome to what2watch.net, your number one source for all things movies. We're dedicated
+                                to providing you the very best of movies, with an emphasis on excellent user interface
+                                and experience...</p>
+                            <a class="read-more" href="/about-us">Read more <i
+                                    class="fas fa-angle-double-right"></i></a>
+                        </div>
+
+                    </div>
+                    <div class="blog-social">
+                        <h1 class="cat-title">Keep in touch</h1>
+                        <div class="blog-social-inner">
+                            <a href="https://www.facebook.com/what2watch.net" target="_blank"
+                                class="blog-social-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+                            <a href="https://www.instagram.com/what2watch4real/" target="_blank"
+                                class="blog-social-link"><i class="fab fa-instagram"></i>Instagram</a>
+                            <a href="mailto:what2watch4real@gmail.com" target="_blank" class="blog-social-link"><i
+                                    class="fas fa-envelope"></i>G-mail</a>
+                            <a href="https://youtube.com/channel/UCR5dmDeBAwWdh-IC6dol1gA" target="_blank"
+                                class="blog-social-link"><i class="fab fa-youtube"></i>Youtube</a>
+                        </div>
+                    </div>
+                    <div class="cats">
+                        <h1 class="cat-title">Categories</h1>
+                        <div class="post-cat-container">
+                            <ul>
+                                <% if(sortedCats){%>
+                                <% for(let cat in sortedCats){%>
+                                <li><a href="/blog/category/<%=cat%>"><%= cat %>
+                                    </a><span>(<%= sortedCats[cat] %>)</span></li>
+                                <% } %>
+                                <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="facebook-page">
+                            <h1 class="cat-title">Facebook Feed</h1>
+                            <div class="facebook-feed" style="width:100% ;">
+                                <div class="fb-page" data-href="https://www.facebook.com/what2watch.net"
+                                    data-tabs="timeline" data-width="700px" data-height="550px" data-small-header="true"
+                                    data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                    <blockquote cite="https://www.facebook.com/what2watch.net"
+                                        class="fb-xfbml-parse-ignore"><a
+                                            href="https://www.facebook.com/what2watch.net">What2Watch.Net</a>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="instagram-page">
+                            <h1 class="cat-title">On Instagram</h1>
+                            <div class="ig-cards">
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="news-letter">
+                <div class="new-letter-wrapper">
+                    <% if(userEmail != ''){%>
+                    <h1 class="thanks">
+                        Thank you for subscribing!
+                    </h1>
+
+                    <% }else{%>
+                    <i class="fas fa-paper-plane"></i>
+                    <h1>News Letter Sign-up</h1>
+                    <p>Subscribe to our news letter for latest on movies/tv shows. Let's stay updated!</p>
+                    <form action="/blog/posts" method="post" id="newsletter-form">
+                        <div class="news-letter-inner">
+                            <input type="text" placeholder="Enter Your Email Address" name="subscriber" id="email"
+                                autocomplete="off">
+                            <button type="submit" class="send-btn" id="submit">Subscribe Now</button>
+                        </div>
+                        <small class="nl">Error Message</small>
+                    </form>
+
+                    <% } %>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <%- include('partials/blogfooter') %>

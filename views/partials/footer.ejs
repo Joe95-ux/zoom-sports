@@ -1,0 +1,159 @@
+<footer id="footer" class="blog-footer">
+    <div class="blog-nav-enclosure">
+        <div class="recents-container">
+            <div class="view-info-header">
+                <h2>Recently viewed</h2>
+                <a href="">Clear all</a>
+            </div>
+            <p class="viewed-info">You have no recently viewed pages</p>
+
+            <div class=" recents-wrapper scroll-black">
+                <!-- recently viewed go here -->
+            </div>
+        </div>
+        <div class="seperation-rule"></div>
+        <div class="footer-content">
+            <div class="copyright-container">
+                <a href="/">
+                    <img class="footer-logo" src="/logo.png" alt="what2watch">
+                </a>
+                <div>
+                    <span class="copyright"><i class="far fa-copyright"></i></span>
+                    <span>All rights reserved.</span>
+
+                </div>
+            </div>
+            <div class="important-links">
+                <a href="/">Home</a>
+                <a href="/about-us">About Us</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/movie/upcoming">Upcoming</a>
+            </div>
+            <div class="socials">
+                <a href="https://www.facebook.com/what2watch.net" target="_blank" class="social-icon facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/what2watch4real/" target="_blank" class="social-icon ig"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="mailto:what2watch@what2watch.net" target="_blank" class="social-icon mail"><i
+                        class="fas fa-envelope"></i></a>
+                <a href="https://youtube.com/channel/UCR5dmDeBAwWdh-IC6dol1gA" target="_blank" class="social-icon yt"><i
+                        class="fab fa-youtube"></i></a>
+
+            </div>
+
+        </div>
+        <div class="attribution">
+            <h6>Powered by</h6>
+            <img src="/moviedb-logo2.svg" alt="attribution">
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+<script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
+<script src="https://cdn.ckbox.io/CKBox/1.1.0/ckbox.js"></script>
+
+<script>
+    if (document.querySelector("#editor") != null){
+        ClassicEditor
+        .create(document.querySelector('#editor'), {
+            ckbox: {
+                tokenUrl: 'https://91186.cke-cs.com/token/dev/uWsAGlDqIzt8L323xZli7O9u4s78u4a2tVmm?limit=10 ',
+            },
+            toolbar: [
+                'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+                'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList', '|', 'mediaEmbed',
+            ],
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    }
+
+    document.querySelectorAll('oembed[url]').forEach(element => {
+        // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
+        // to discover the media.
+        const anchor = document.createElement('a');
+
+        anchor.setAttribute('href', element.getAttribute('url'));
+        anchor.className = 'embedly-card';
+
+        element.appendChild(anchor);
+    });
+    document.querySelectorAll( 'div[data-oembed-url]' ).forEach( element => {
+        // Discard the static media preview from the database (empty the <div data-oembed-url="...">).
+        while ( element.firstChild ) {
+            element.removeChild( element.firstChild );
+        }
+
+        // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
+        // to discover the media.
+        const anchor = document.createElement( 'a' );
+
+        anchor.setAttribute( 'href', element.dataset.oembedUrl );
+        anchor.className = 'embedly-card';
+
+        element.appendChild( anchor );
+    } );
+</script>
+
+<!-- <script src="/ckeditor5-34.2.0-pohffpmnzlya/src/ckeditor.js"></script> -->
+<!-- <script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+
+            licenseKey: '',
+
+
+
+        })
+        .then(editor => {
+            window.editor = editor;
+
+
+
+
+        })
+        .catch(error => {
+            console.error('Oops, something went wrong!');
+            console.error(
+                'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+                );
+            console.warn('Build id: pohffpmnzlya-rmkswdjkgrt1');
+            console.error(error);
+        });
+</script> -->
+<!-- <script >
+
+    if (document.querySelector("#editor") != null) {
+        ClassicEditor.create(document.querySelector("#editor"), {
+                plugins: [CKBox],
+                toolbar: [ 'ckbox'],
+                ckbox: {
+                    defaultUploadCategories: {
+                        Bitmaps: ['bmp'],
+                        Pictures: ['jpg', 'jpeg']
+                    }
+                }
+
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+</script> -->
+<!-- embla -->
+<script src="/embla.js"></script>
+<script src="/autoplay.js"></script>
+<script src="/login.js"></script>
+<script src="/validate.js"></script>
+<script src="/index.js"></script>
+</body>
+
+</html>

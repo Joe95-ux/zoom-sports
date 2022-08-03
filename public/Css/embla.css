@@ -1,0 +1,229 @@
+:root {
+    --primaryColor: #d70900;
+    --secondaryColor: #049a6d;
+    --yellow: #fbc500;
+    --mainWhite: #fff;
+    --mainBlack: #222;
+    --mainGrey: #ececec;
+    --mainSpacing: 0.1rem;
+    --sectionPadding: 3% 10%;
+    --mainTransition: all 0.3s linear;
+    --dropTransition: all 0.5s ease-in;
+}
+
+.embla {
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.embla__container {
+    display: flex;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.embla__container a{
+    text-decoration: none;
+}
+
+.embla-title,
+.embla-small-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin: 1rem 0 -10px;
+    color: #fff;
+}
+
+.embla-small-title {
+    margin: 0 0 10px;
+}
+
+.embla__viewport,
+.autoplay {
+    overflow: hidden;
+    width: 100%;
+}
+
+.autoplay div.embla__container{
+    will-change: transform;
+}
+.autoplay div.embla__slide{
+    counter-increment: embla; 
+}
+
+.embla__viewport.is-draggable,
+.autoplay.is-draggable {
+    cursor: move;
+    cursor: grab;
+}
+
+.embla__viewport.is-dragging,
+.autoplay.is-draggable {
+    cursor: grabbing;
+}
+
+
+.embla__slide {
+    position: relative;
+
+}
+
+.embla__slide:not(:last-child) {
+    margin-right: 10px;
+}
+
+.embla__tag:not(:last-child) {
+    margin-right: 15px;
+}
+
+.embla__slide__inner {
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.embla__button {
+    outline: 0;
+    cursor: pointer;
+    background-color: rgba(7, 7, 7, 0.7);
+    touch-action: manipulation;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    transform: translateY(0);
+    border: 0;
+    width: 50px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    fill: #1bcacd;
+    padding: 0;
+}
+
+.square__btn, .circular-btn {
+    height: 3rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+
+}
+.circular-btn{
+    top: 40%;
+}
+.circular-btn.embla__button:disabled {
+    cursor: default;
+    opacity: 0.3;
+  }
+
+.circular-btn .embla__button__svg {
+    width: 18px;
+    height: 18px;
+}
+
+.cast__btn {
+    top: 35%;
+    transform: translateY(-35%);
+}
+
+.embla__button:disabled {
+    cursor: default;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+
+.embla__button__svg {
+    width: 27px;
+    height: 27px;
+}
+
+.embla__button--prev {
+    left: 0;
+}
+
+.embla__button--next {
+    right: 0;
+
+}
+
+.square__btn.embla__button--prev {
+    left: -13.5px;
+}
+
+.square__btn.embla__button--next {
+    right: -13.5px;
+
+}
+
+/* for genre embla carousel */
+.embla__genre__prev .embla__button__svg,
+.embla__genre__next .embla__button__svg {
+    width: 20px;
+    height: 20px;
+}
+
+.embla__dots {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.embla__dot {
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    width: 30px;
+    height: 30px;
+    margin-right: 7.5px;
+    margin-left: 7.5px;
+    display: flex;
+    align-items: center;
+}
+
+.embla__dot:after {
+    background-color: #efefef;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    content: "";
+}
+
+.embla__dot.is-selected:after {
+    background-color: #1bcacd;
+    opacity: 1;
+}
+
+
+
+@media screen and (max-width:412px) {
+    .embla__button {
+        width: 2.4rem;
+    }
+
+    .embla__button__svg {
+        width: 23px;
+        height: 23px;
+    }
+
+    .embla__button--prev {
+        left: -1px;
+    }
+
+    .embla__button--next {
+        right: -1px;
+
+    }
+
+
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#001019">
+    <title><%= title %> | what2watch</title>
+    <meta name="description"
+        content="What2watch is the ultimate watch guide for movies. Get to know what movies to watch or stream in a hassle-free way.">
+    <meta name="keywords"
+        content="what to watch, Trending movies, upcoming movies, action, thriller, movie guide, actors, actresses, synopsis, trailers, reviews">
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+    <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
+    <link rel="stylesheet" href="/Css/embla.css">
+    <link rel="stylesheet" href="/Css/blog.css">
+    <link rel="stylesheet" href="/Css/login.css">
+    <link rel="stylesheet" href="/Css/styles.css">
+    <noscript>
+        <style>
+            /**
+          * Reinstate scrolling for non-JS clients
+          */
+            .simplebar-content-wrapper {
+                overflow: auto;
+            }
+        </style>
+    </noscript>
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0"
+        nonce="VfUlIJaT"></script>
+
+    <nav class="navigation">
+        <div class="blog-nav-enclosure">
+            <div class="logo-and-links">
+                <div class="burger" style="display:none;">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+                <div class="logo">
+                    <div class="burger" style="display:none;">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                    <a href="/">
+                        <div class="logo-wrapper">
+                            <img src="/logo.png" alt="what2watch">
+                        </div>
+
+                    </a>
+                </div>
+                <ul class="nav_links">
+                    <li class="nav_link"> <a href="/blog/posts">Blog</a> </li>
+                </ul>
+
+
+            </div>
+
+        </div>
+    </nav>
+
+    <section id="header-container" class="blog-header">
+        <div class="wrapper-enclosure-blog">
+            <% if(messages){%>
+                <% if(messages.error){%>
+                <div class="flash-wrapper">
+                    <div class="flash-message warning">
+                        <h2 class="flash-error"><%= messages.error[0]%></h2>
+                    </div>
+                </div>
+    
+                <%}%>
+                <%if(messages.info){ %>
+                <div class="flash-wrapper">
+                    <div class="flash-message success-info">
+                        <h2 class="flash-success"><%= messages.info[0]%></h2>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            <div class="form-container-wrapper">
+                <div class="forms-container">
+                    <div class="form-title">
+                        <div class="form-title-header">
+                            <i class="history fas fa-long-arrow-alt-left"></i>
+                        </div>
+
+                        <h2>Reset Password</h2>
+                        <p>Provide a new Password</p>
+                    </div>
+                    <div class="actions-wrapper">
+                        <form action="/blog/reset/<%=user.resetPasswordToken%>" id="auth-form" method="POST">
+                            <div class="actions-input-wrapper">
+                                <div class="actions-input">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" name="password" id="password" placeholder="New password" class="pass-input">
+                                    <div class="pass-reveal">
+                                        <i class="fas fa-eye open-eye"></i>
+                                        <i class="fas fa-eye-slash black-eye"></i>    
+                                    </div>
+                                </div>
+                                <small class="auth">Error Message</small>
+                            </div>
+                            <div class="actions-input-wrapper">
+                                <div class="actions-input">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" name="confirmclientpassword" id="cpassword"
+                                        placeholder="confirm password" class="pass-input">
+                                    <div class="pass-reveal">
+                                        <i class="fas fa-eye open-eye"></i>
+                                        <i class="fas fa-eye-slash black-eye"></i>
+                                    </div>
+                                </div>
+                                <small class="auth">Error Message</small>
+                            </div>
+                            <button type="submit" class="send-btn">Reset Password</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+    </section>
+    <footer id="footer" class="blog-footer" style="padding-top:2rem ;">
+        <div class="blog-nav-enclosure">
+            <div class="footer-content">
+                <div class="copyright-container">
+                    <a href="/">
+                        <img class="footer-logo" src="/logo.png" alt="what2watch">
+                    </a>
+                    <div>
+                        <span class="copyright"><i class="far fa-copyright"></i></span>
+                        <span>All rights reserved.</span>
+
+                    </div>
+                </div>
+                <div class="important-links">
+                    <a href="/">Home</a>
+                    <a href="/about-us">About Us</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/movie/upcoming">Upcoming</a>
+                </div>
+                <div class="socials">
+                    <a href="https://www.facebook.com/what2watch.net" target="_blank" class="social-icon facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/what2watch4real/" target="_blank" class="social-icon ig"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="mailto:what2watch@what2watch.net" target="_blank" class="social-icon mail"><i
+                            class="fas fa-envelope"></i></a>
+                    <a href="https://youtube.com/channel/UCR5dmDeBAwWdh-IC6dol1gA" target="_blank"
+                        class="social-icon yt"><i class="fab fa-youtube"></i></a>
+
+                </div>
+
+            </div>
+            <div class="attribution">
+                <h6>Powered by</h6>
+                <img src="/moviedb-logo2.svg" alt="attribution">
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- embla -->
+    <script src="/embla.js"></script>
+    <script src="/autoplay.js"></script>
+    <script src="/login.js"></script>
+    <script src="/validate.js"></script>
+    <script src="/index.js"></script>
+</body>
+
+</html>

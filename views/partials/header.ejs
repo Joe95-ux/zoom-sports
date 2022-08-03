@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#001019">
+    <title><%= title %> | what2watch</title>
+    <meta name="description"
+        content="What2watch is the ultimate watch guide for movies. Get to know what movies to watch or stream in a hassle-free way.">
+    <meta name="keywords"
+        content="what to watch, Trending movies, upcoming movies, action, thriller, movie guide, actors, actresses, synopsis, trailers, reviews">
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+    <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.min.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
+    <link rel="stylesheet" href="/Css/ckstyles.css">
+    <link rel="stylesheet" href="/Css/editor.css">
+    <link rel="stylesheet" href="/Css/embla.css">
+    <link rel="stylesheet" href="/Css/login.css">
+    <link rel="stylesheet" href="/Css/blog.css">
+    <link rel="stylesheet" href="/Css/styles.css">
+    <noscript>
+        <style>
+            /**
+          * Reinstate scrolling for non-JS clients
+          */
+            .simplebar-content-wrapper {
+                overflow: auto;
+            }
+        </style>
+    </noscript>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NN3S8E3V6Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-NN3S8E3V6Q');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9179075773135399"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0"
+        nonce="VfUlIJaT"></script>
+
+    <nav class="navigation">
+        <div class="blog-nav-enclosure">
+            <div class="logo-and-links">
+                <div class="logo">
+                    <div class="burger" style="display:none;">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                    <a href="/">
+                        <div class="logo-wrapper">
+                            <img src="/logo.png" alt="what2watch">
+                        </div>
+
+                    </a>
+                </div>
+                <i class="fas fa-search small-screen-search-icon"></i>
+                <div class="search-bar big-screen-search">
+                    <form action="/search" method="GET" class="search-form">
+                        <div class="search-field">
+                            <i class="fas fa-search"></i>
+                            <input type="text" class="search" placeholder="search for a movie..." name="query">
+                            <input type="submit" value="search" hidden>
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav_links">
+                    <li class="nav_link"> <a href="/blog/posts">Blog</a> </li>
+                    <% if(user){%>
+                    <% if(user.privilege === "admin"){%>
+                    <li class="nav_link"> <a href="/blog/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                        <li class="nav_link"> <a href="/blog/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %> 
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>

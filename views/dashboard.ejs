@@ -1,0 +1,449 @@
+<%- include("partials/blogheader") %>
+<section id="header-container" class="blog-header">
+    <div class="small-screen-search search-bar">
+        <i class="fas fa-times close-sm-search"></i>
+        <form action="/search" method="GET" class="small-search-form search-form">
+            <div class="small-search-field">
+                <i class="fas fa-search"></i>
+                <input type="text" class="small-search" placeholder="search for a movie..." name="query">
+                <input type="submit" value="search" hidden>
+            </div>
+        </form>
+    </div>
+
+    <div class="wrapper-enclosure-blog">
+        <div class="dashboard-title">
+            <div>
+                <% if(user.privilege === "admin"){%> 
+                    <h1>Admin Dashboard</h1>
+                    <% }else{%>
+                        <h1>Dashboard</h1>
+
+                    <% } %>  
+                
+            </div>
+        </div>
+        <div class="dashboard-wrapper">
+            <div class="dashboard-content scroll-black">
+                <div class="dashboard-title min-dash-title dash-title-inner">
+                    <div class="dashboard-title-header">
+                        <%if(user.name !== ""){%>
+                        <h2>Welcome <span><%=user.name%>!</span></h2>
+                        <% }else{%>
+                        <h2>Welcome <%=user.username%>!</h2>
+                        <% } %>
+                        <p>Here are your stories</p>
+                    </div>
+                    <div class="dashboard-search-create">
+                        <div class="dashboard-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="dashboard-input" placeholder="search story..." autocomplete="off">
+                        </div>
+                        <a href="/blog/compose" role="button" class="create-btn table-btn"><i class="fas fa-plus"></i>New Post</a>
+                    </div>
+                    
+                </div>
+                
+                <% if(stories.length){%>
+                <table id="dashboard-table" data-filter-control="true" data-show-search-clear-button="true">
+                    <thead>
+                        <tr>
+                            <th>Writer</th>
+                            <th>Title</th>
+                            <th>Created on</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <% stories.forEach(story=>{%>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <% if(story.user.photo){%>
+                                        <img src="<%= story.user.photo%>" alt="">
+                                        <% }else{%>
+                                        <img src="/profile-pic.png" alt="">
+                                        <% }%>
+                                    <div>
+                                        <h3><%= story.user.name%></h3>
+                                        <h4><%= story.user.role %></h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            
+                            <td data-label="Title">
+                                <div class="clamp-dashboard">
+                                    <a href="/blog/posts/<%= story.slug%>"
+                                        title="<%= story.title %> "><%= story.title %></a>
+                                </div>
+                            </td>
+                            <td data-label="Date"><%= story.createdAt %> </td>
+                            <td data-label="Status"><%= story.status %> </td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="/blog/edit/<%= story._id%>" class="edit-action"> <i
+                                            class="fas fa-pencil-alt"></i> Edit</a>
+                                    <form method="POST" action="/blog/posts/<%=story._id%>?_method=DELETE"
+                                        class="delete-form">
+                                        <button type="submit"><i class="fas fa-trash"></i>Remove</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <%}) %>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-label="name">
+                                <div class="table-story-writer">
+                                    <img src="/profile-pic.png" alt="">
+                                    <div>
+                                        <h3>Jane Doe</h3>
+                                        <h4>Editor</h4>
+                                    </div>
+
+                                </div>
+
+                            </td>
+                            <td data-label="Title">The Dune remake that everyone was waiting for</td>
+                            <td data-label="Date">December 4th 2021, 12:12:18 am</td>
+                            <td data-label="Status">public</td>
+                            <td data-label="Action">
+                                <div class="dashboard-actions">
+                                    <a href="#" class="edit-action"> <i class="fas fa-pencil-alt"></i> Edit</a>
+                                    <a href="#"><i class="fas fa-trash"></i>Remove</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <%}else{%>
+                <div class="dashboard-title">
+                    <div>
+                        <p>You Have no stories yet.</p>
+                    </div>
+                </div>
+                <% } %>
+
+            </div>
+            <% if(user){%>
+            <div class="dashboard-userbio-wrapper">
+                <div class="dashboard-userbio">
+                    <div class="profile-photo">
+                        <div>
+                            <% if(user.photo){%>
+                            <img src="<%= user.photo%>" alt="">
+                            <% }else{%>
+                            <img src="/profile-pic.png" alt="">
+                            <% }%>
+
+                        </div>
+                        <h2><%= user.name ? user.name:user.username%> </h2>
+                        <h3>Editor in-chief </h3>
+                        <a href="/blog/profile/<%= user._id%> " role="button" class="create-btn edit-profile-btn">Edit
+                            Profile</a>
+                    </div>
+                    <div class="profile-bio">
+                        <div class="profile-bio-wrapper">
+                            <div>
+                                <i class="fas fa-envelope"></i>
+                                <h3><%= user.username %> </h3>
+                            </div>
+
+                        </div>
+                        <div class="profile-bio-wrapper">
+                            <i class="fas fa-lock profile-fas-lock"></i>
+                            <input type="password" id="writer-pass" value="its confidential"
+                                title="your password is hidden" class="pass-input">
+                            <div class="pass-reveal">
+                                <i class="fas fa-eye open-eye"></i>
+                                <i class="fas fa-eye-slash black-eye"></i>
+                            </div>
+
+                        </div>
+                        <div class="profile-bio-wrapper">
+                            <div>
+                                <div>
+                                    <i class="fas fa-user"></i>
+                                    <h3>About you</h3>
+                                </div>
+                                <% if(user.bio){%>
+                                <p class="profile-biography"><%= user.bio%></p>
+                                <% }else{%>
+                                <p class="profile-biography">Tell us about yourself in not more than 26 words. </p>
+                                <% } %>
+                            </div>
+                            <i class="see-bio fas fa-chevron-up"></i>
+                        </div>
+                        <div class="profile-bio-wrapper">
+                            <div>
+                                <i class="fas fa-book"></i>
+                                <h3>Total Posts</h3>
+                            </div>
+                            <% if(stories){%>
+                            <h3> (<%= stories.length %>) </h3>
+                            <% } %>
+
+                        </div>
+                        <div class="profile-bio-wrapper">
+                            <div>
+                                <i class="fas fa-address-card"></i>
+                                <h3>Joined</h3>
+                            </div>
+                            <h3><%= created %> </h3>
+
+                        </div>
+                        <div class="profile-bio-wrapper">
+                            <div>
+                                <i class="fas fa-sign-out-alt"></i>
+                                <a href="/blog/logout">sign-out</a>
+                            </div>
+                            <a href="/blog/logout"><i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="delete-account">
+                    <div class="delete-heading">
+                        <h2>Delete Account</h2>
+                    </div>
+                    <p>You will loose access to your what2watch.net blog account once your deletion request has been
+                        submitted</p>
+                    <form method="POST" action="/blog/profile/delete/<%=user._id%>?_method=DELETE">
+                        <button type="submit" class="create-btn edit-profile-btn">Delete Account</button>
+                    </form>
+                </div>
+
+            </div>
+            <% } %>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+<%- include('partials/blogfooter') %>
