@@ -18,6 +18,8 @@ const path = require("path");
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const connectDB = require("./config/db");
+const { S3Client, AbortMultipartUploadCommand } = require("@aws-sdk/client-s3");
+const multerS3 = require("multer-s3");
 const { subcribeHandler } = require("./utils/mailchimp");
 const { ensureAuth, ensureGuest, ensureToken, ensureAdminToken, ensureAdmin } = require("./middleware/auth");
 const {
@@ -25,13 +27,14 @@ const {
   dateWithTime,
   sortCats,
   getCats,
-  trendingMovies,
   editorsPicks,
   latestPosts
 } = require("./helpers/helpers");
 const User = require("./models/User");
 const Story = require("./models/Story");
 const format = "MMMM Do YYYY, h:mm:ss a";
+const storyRouter = require("./routes/stories");
+const userRouter = require("./routes/user");
 
 const app = express();
 
@@ -83,6 +86,33 @@ mailchimp.setConfig({
   server: process.env.MAILCHIMP_SERVER_PREFIX
 });
 
+//s3 config
+
+const s3 = new S3Client({
+  region: process.env.S3_BUCKET_REGION,
+  credentials: {
+    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY
+  }
+});
+
+
+
+//upload parameters for multer
+const upload = multer({
+  storage: multerS3({
+    s3,
+    bucket: "zoomsports-uploads",
+    metadata: function(req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: function(req, file, callback) {
+      callback(null, Date.now() + file.originalname);
+    }
+  })
+});
+
+
 app.post("/", async (req, res) => {
   const subscribingUser = {
     firstName: "",
@@ -98,10 +128,112 @@ app.post("/", async (req, res) => {
   }
 });
 
+app.get("/category/:catName", async (req, res) => {
+  const title = req.params.catName;
+  const userEmail = req.flash("user");
+  const cat = req.params.catName;
+  let sortedCats;
+  try {
+    let allStories = await Story.find({ status: "Public" });
+    let stories = await Story.find({ category: cat, status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      stories = stories.map(story => {
+        story.createdAt = formatDate(story.createdAt);
+        return story;
+      });
+      let categories = getCats(allStories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+    res.render("category", {
+      title,
+      userEmail,
+      stories,
+      sortedCats,
+      cat
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.get("/compose", ensureAuth, async (req, res) => {
+  const title = "compose";
+  res.render("compose", { title });
+});
+
+app.post(
+  "/compose",
+  upload.single("photo"),
+  ensureAuth,
+  async (req, res) => {
+    let post;
+    try {
+      req.body.user = req.user.id;
+      post = req.body;
+      if(req.file){
+        post.photo = req.file.location;
+      }
+      await Story.create(post);
+      res.redirect("/");
+    } catch (err) {
+      console.error(err);
+    }
+  }
+);
+
+app.get("/", async (req, res) => {
+  const title = "blog posts";
+  const userEmail = req.flash("user");
+  let sortedCats;
+  let picks;
+  let latest;
+  try {
+    let stories = await Story.find({ status: "Public"})
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      stories = stories.map(story => {
+        story.createdAt = formatDate(story.createdAt);
+        return story;
+      });
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+      picks = editorsPicks(stories);
+      if(picks.length){
+         picks = picks.slice(0, 6);
+      }
+     
+      latest = latestPosts(stories);
+
+    }
+    res.render("home", {
+      title,
+      userEmail,
+      stories,
+      sortedCats,
+      picks,
+      latest
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 
 
 
+app.use("/stories", storyRouter);
+app.use("/users", userRouter);
 
 let port = process.env.PORT;
 if (port == null || port == "") {

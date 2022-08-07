@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#001019">
+    <meta name="theme-color" content="#f7f9fa">
     <title><%= title %> | what2watch</title>
     <meta name="description"
         content="What2watch is the ultimate watch guide for movies. Get to know what movies to watch or stream in a hassle-free way.">
@@ -86,23 +86,13 @@
 
                     </a>
                 </div>
-                <i class="fas fa-search small-screen-search-icon"></i>
-                <div class="search-bar big-screen-search">
-                    <form action="/search" method="GET" class="search-form">
-                        <div class="search-field">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search" placeholder="search for a movie..." name="query">
-                            <input type="submit" value="search" hidden>
-                        </div>
-                    </form>
-                </div>
                 <ul class="nav_links">
-                    <li class="nav_link"> <a href="/blog/posts">Blog</a> </li>
+                    <li class="nav_link"> <a href="/">Blog</a> </li>
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
-                    <li class="nav_link"> <a href="/blog/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <li class="nav_link"> <a href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
                     <% }else{%>
-                        <li class="nav_link"> <a href="/blog/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <li class="nav_link"> <a href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
                     <% } %>
                     <% } %> 
                 </ul>

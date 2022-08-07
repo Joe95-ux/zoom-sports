@@ -6,20 +6,20 @@
   
   
   :root {
-    --primaryColor: #d70900;
-    --secondaryColor: #049a6d;
+    --primaryColor: rgba(255, 90, 90, 1);
+    --secondaryColor: #1bcacd;
     --yellow: #fbc500;
     --mainWhite: #fff;
-    --mainBlack: #222;
-    --mainGrey: #ececec;
-    --darkBg: #001019;
-    --darkBlueBg: #001927;
+    --mainBlack: #313131;
+    --mainGrey: #f7f9fa;
+    --linkText:#2f80ed;
+    --boxShadow: 0 012px rgba(61, 99, 140, .08);
     --lightGrey: rgb(212, 212, 212, 1);
-    --darkGrey:rgb(163, 163, 163, 1);
+    --midGray: rgb(212, 212, 212, 0.85);
     --mainSpacing: 0.1rem;
-    --sectionPadding: 3% 10%;
     --mainTransition: all 0.3s linear;
     --dropTransition: all 0.5s ease-in;
+    --mainBorderRaduis: 3px;
   }
   
   
@@ -39,7 +39,7 @@
   .forms-container {
     font-family: "Poppins", sans-serif;
     padding: 2rem;
-    background-color: var(--darkBlueBg);
+    background-color: var(--mainWhite);
     width: 400px;
     max-width: calc(100vw - 3rem);
     border-radius: 10px;
@@ -68,7 +68,7 @@
   
   .form-title h2,
   .form-title i {
-    color: var(--yellow);
+    color: var(--primaryColor);
   }
   
   .form-title i {
@@ -85,11 +85,11 @@
     font-weight: 300;
   }
   .form-title p{
-    color: var(--darkGrey);
+    color: var(--mainBlack);
   }
   
   .form-title h3{
-    color: var(--mainWhite);
+    color: var(--mainBlack);
     font-weight: 600;
     transform: translateX(-10px);
   }
@@ -110,7 +110,7 @@
     width: 90px;
     border-radius: 50%;
     object-fit: cover;
-    background-color: #001927;
+    background-color: var(--mainBlack);
   }
   .upload-input, .upload-input input{
     position: absolute;
@@ -126,7 +126,7 @@
     align-items: center;
     border-radius: 50%;
     background-color: var(--lightGrey);
-    border: 1px solid var(--mainWhite);
+    border: 1px solid var(--mainBlack);
     cursor: pointer;
   }
   .upload-input input{
@@ -135,14 +135,14 @@
     opacity: 0;
   }
   .upload-input i{
-    color: #001927;
+    color: var(--mainBlack);
     font-size: 14px;
   }
   
   
   
   .actions-wrapper {
-    background-color: var(--darkBg);
+    background-color: #f7f9fa;
     border-radius: 10px;
     padding: 1rem 1rem 2rem;
   }
@@ -152,9 +152,9 @@
     display: flex;
     flex: 1 1;
     align-items: center;
-    color: var(--darkGrey);
+    color: var(--mainBlack);
     font-size: 1.1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   
   .actions-input-wrapper{
@@ -179,7 +179,7 @@
     background-color: transparent;
     width: 100%;
     font-size: 1rem;
-    color: var(--darkGrey);
+    color: var(--mainBlack);
   }
   
   .actions-input textarea{
@@ -191,9 +191,9 @@
   .actions-wrapper .send-btn {
     font-size: 1.2rem;
     text-transform: uppercase;
-    color: #001019;
+    color: #f7f9fa;
     font-weight: 600;
-    background-color: var(--yellow);
+    background-color: var(--primaryColor);
     border-radius: 10px;
     padding: 0.7rem 1rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -208,19 +208,19 @@
   
   .actions-wrapper .send-btn:hover{
     background-color: inherit;
-    color: var(--mainWhite);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--primaryColor);
+    border: 1px solid var(--primaryColor);
   }
   
   .actions-wrapper p{
-    color: var(--darkGrey);
+    color: var(--mainBlack);
     text-align: center;
     font-size: 14px;
     line-height: 1.4;
   }
   .actions-wrapper a{
     text-decoration: none;
-    color: var(--mainWhite);
+    color: var(--primaryColor);
     margin-left: 5px;
     transition: var(--mainTransition);
   }
@@ -266,7 +266,7 @@
   .flash-message{
     margin: 1.5rem 0;
     padding: 1rem;
-    background-color: #001927;
+    background-color: #fff;
     border-radius: 5px;
     font-size: 16px;
     max-width: fit-content;

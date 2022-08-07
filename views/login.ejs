@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#001019">
+    <meta name="theme-color" content="#f7f9fa">
     <title><%= title %> | what2watch</title>
     <meta name="description"
         content="What2watch is the ultimate watch guide for movies. Get to know what movies to watch or stream in a hassle-free way.">
@@ -126,7 +126,7 @@
                         <p>Sign in to continue</p>
                     </div>
                     <div class="actions-wrapper">
-                        <form action="/blog/login" id="auth-form" method="POST">
+                        <form action="/users/login" id="auth-form" method="POST">
                             <div class="actions-input-wrapper">
                                 <div class="actions-input">
                                     <i class="fas fa-user-alt"></i>
@@ -159,11 +159,11 @@
                                 <small class="auth">Error Message</small>
                             </div>
                             <div class="forgot-pass">
-                                <a href="/blog/reset-password">Forgot Password?</a>
+                                <a href="/users/reset-password">Forgot Password?</a>
                             </div>
                             <button type="submit" class="send-btn">Sign in</button>
                         </form>
-                        <p>Don't have an account? <a href="/blog/register">Sign up now.</a> </p>
+                        <p>Don't have an account? <a href="/users/register">Sign up now.</a> </p>
 
 
                     </div>
@@ -178,13 +178,10 @@
 
 
     </section>
-    <footer id="footer" class="blog-footer" style="padding-top:2rem ;">
+    <footer id="footer" class="blog-footer">
         <div class="blog-nav-enclosure">
             <div class="footer-content">
                 <div class="copyright-container">
-                    <a href="/">
-                        <img class="footer-logo" src="/logo.png" alt="what2watch">
-                    </a>
                     <div>
                         <span class="copyright"><i class="far fa-copyright"></i></span>
                         <span>All rights reserved.</span>
@@ -210,11 +207,6 @@
                 </div>
 
             </div>
-            <div class="attribution">
-                <h6>Powered by</h6>
-                <img src="/moviedb-logo2.svg" alt="attribution">
-            </div>
-
         </div>
 
     </footer>

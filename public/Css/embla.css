@@ -1,14 +1,18 @@
 :root {
-    --primaryColor: #d70900;
-    --secondaryColor: #049a6d;
+    --primaryColor: rgba(255, 90, 90, 1);
+    --secondaryColor: #1bcacd;
     --yellow: #fbc500;
     --mainWhite: #fff;
-    --mainBlack: #222;
-    --mainGrey: #ececec;
+    --mainBlack: #242424;
+    --mainGrey: #f7f9fa;
+    --linkText:#2f80ed;
+    --boxShadow: 0 012px rgba(61, 99, 140, .08);
+    --lightGrey: rgb(212, 212, 212, 1);
+    --midGray: rgb(212, 212, 212, 0.85);
     --mainSpacing: 0.1rem;
-    --sectionPadding: 3% 10%;
     --mainTransition: all 0.3s linear;
     --dropTransition: all 0.5s ease-in;
+    --mainBorderRaduis: 3px;
 }
 
 .embla {

@@ -1,19 +1,9 @@
-<%- include("partials/blogheader") %>
+<%- include("partials/header") %>
 
 <section id="header-container" class="blog-header">
-    <div class="small-screen-search search-bar">
-        <i class="fas fa-times close-sm-search"></i>
-        <form action="/search" method="GET" class="small-search-form search-form">
-            <div class="small-search-field">
-                <i class="fas fa-search"></i>
-                <input type="text" class="small-search" placeholder="search for a movie..." name="query">
-                <input type="submit" value="search" hidden>
-            </div>
-        </form>
-    </div>
     <div class="wrapper-enclosure-blog">
         <div class="blog-nav">
-            <span><a href="/blog/posts">Home</a></span>
+            <span><a href="/">Home</a></span>
             <i class="fas fa-chevron-right"></i>
             <span class="focus-nav"><%= cat %></span>
         </div>
@@ -30,57 +20,57 @@
                             <h3 title="<%= story.title %> "><%= story.title %> </h3>
                             <h5 class="date"> <span>by <strong><%= story.author %></strong></span> <span><%= story.createdAt %>
                                 </span> </h5>
-                            <a class="read-more" href="/blog/posts/<%= story.slug %> ">Read more <i
+                            <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
                                     class="fas fa-angle-double-right"></i></a>
                         </div>
                         <%}) %>
 
                         <div class="post">
-                            <img src="/dune.jpg" alt="post image">
+                            <img src="/dune.jpeg" alt="post image">
                             <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>How tom Cruise performed his brilliant stunts in top gun 2. How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener. Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                             <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                             <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                         </div>
                         <div class="post">
-                            <img src="/dune.jpg" alt="post image">
+                            <img src="/dune.jpeg" alt="post image">
                             <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                             <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                             <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                         </div>
                         <div class="post">
-                            <img src="/dune.jpg" alt="post image">
+                            <img src="/dune.jpeg" alt="post image">
                             <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                             <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                             <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                         </div>
                         <div class="post">
-                            <img src="/dune.jpg" alt="post image">
+                            <img src="/dune.jpeg" alt="post image">
                             <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                             <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                             <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                         </div>
                         <div class="post">
-                            <img src="/dune.jpg" alt="post image">
+                            <img src="/dune.jpeg" alt="post image">
                             <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                             <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                             <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                         </div>
                         <div class="post">
-                            <img src="/dune.jpg" alt="post image">
+                            <img src="/dune.jpeg" alt="post image">
                             <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                             <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                             <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                         </div>
                         <div class="post">
-                            <img src="/dune.jpg" alt="post image">
+                            <img src="/dune.jpeg" alt="post image">
                             <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                             <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                             <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                         </div>
@@ -90,103 +80,48 @@
                         <a href="#" class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i class="fas fa-arrow-right next-indicator"></i></a>
                     </div>
 
-                    <div class="trending-now">
-                        <a href="/#trending" class="cat-title">Trending Movies<i class="fas fa-chevron-right"></i></a>
-                        <div class="embla autoplay__embla blog-trending-movies">
-                            <div class="autoplay">
-                                <div class="embla__container">
-                                    <% if(trending){%>
-                                        <% trending.forEach((movie, index)=>{%>
-                                            <div class="embla__slide autoplay__slide" style="background: linear-gradient( rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url(https://image.tmdb.org/t/p/w1280/<%=movie.backdrop_path%>); background-size: cover; background-position: center">
-                                                <div class="embla__slide__inner">
-                                                    <div class="new-movie-wrapper blog-trending-movie-wrapper">
-                                                        <div class="new-header-movie blog-trending-movie">
-                                                            <h1 class="movie-title"><%= movie.title %></h1>
-                                                            <% if(movie.overview.length > 60){%> 
-                                                                <p class="clamp-synopsis">
-                                                                    <%= movie.overview%> 
-                                                                </p>
-                                                            <% }else{%>
-                                                                <p class="no-clamp"><%= movie.overview%></p>
-                                                            <% } %>  
-                                                            <div class="swiper-btns new-header-btn blog-movie-btn">
-                                                                <a  href="/movie/<%= movie.id %>" class="swiper-btn" role="button">Learn more</a>
-                                                            </div>
-                                                        </div>
-        
-                                                    </div> 
-                                                </div>
-                                            </div>
-        
-                                       <% }) %> 
-                                        
-                                    <% } %> 
-
-                                </div>
-                            </div>
-                            <!-- Dots -->
-                            <div class="embla__dots"></div>
-
-                            <!-- Buttons -->
-                            <button class="embla__button embla__button--prev circular-btn" type="button">
-                                <svg class="embla__button__svg" viewBox="137.718 -1.001 366.563 643.999">
-                                    <path
-                                        d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z">
-                                    </path>
-                                </svg>
-                            </button>
-                            <button class="embla__button embla__button--next circular-btn" type="button">
-                                <svg class="embla__button__svg" viewBox="0 0 238.003 238.003">
-                                    <path
-                                        d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z">
-                                    </path>
-                                </svg>
-                            </button>
-                        </div>
-
-                    </div>
                     <div class="tv-shows">
-                        <a href="/blog/posts" class="cat-title">Recent Posts<i class="fas fa-chevron-right"></i></a>
+                        <a href="/" class="cat-title">Recent Posts<i class="fas fa-chevron-right"></i></a>
                         <div class="latest-posts tv-news">
                             <div class="post">
-                                <img src="/dune.jpg" alt="post image">
+                                <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                                 <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
                             <div class="post">
-                                <img src="/dune.jpg" alt="post image">
+                                <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                                 <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
                             <div class="post">
-                                <img src="/dune.jpg" alt="post image">
+                                <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                                 <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
                             <div class="post">
-                                <img src="/dune.jpg" alt="post image">
+                                <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                                 <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
                             <div class="post">
-                                <img src="/dune.jpg" alt="post image">
+                                <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                                 <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
                             <div class="post">
-                                <img src="/dune.jpg" alt="post image">
+                                <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>How tom Cruise performed his brilliant stunts in top gun 2</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                                 <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
@@ -201,7 +136,7 @@
             <div id="short" class="blog-body-bio">
                 <h1 class="cat-title">About Us</h1>
                 <div class="writer-bio-wrapper">
-                    <img src="/banner.jpg" alt="author-image">
+                    <img src="/banner.jpeg" alt="author-image">
                     <div class="writer-bio-content">
                         <h4>Get to Know us</h4>
                         <p>Welcome to what2watch.net, your number one source for all things movies. We're dedicated
@@ -230,7 +165,7 @@
                         <ul>
                             <% if(sortedCats){%>
                             <% for(let cat in sortedCats){%>
-                            <li><a href="/blog/category/<%=cat%>"><%= cat %> </a><span>(<%= sortedCats[cat] %>)</span></li>
+                            <li><a href="/category/<%=cat%>"><%= cat %> </a><span>(<%= sortedCats[cat] %>)</span></li>
                             <% } %>
                             <% } %>
                         </ul>
@@ -291,8 +226,8 @@
                 <% }else{%>
                 <i class="fas fa-paper-plane"></i>
                 <h1>News Letter Sign-up</h1>
-                <p>Subscribe to our news letter for latest on movies/tv shows. Let's stay updated!</p>
-                <form action="/blog/posts" method="post" id="newsletter-form">
+                <p>Subscribe to our news letter for latest sports news. Let's stay updated! l</p>
+                <form action="/" method="post" id="newsletter-form">
                     <div class="news-letter-inner">
                         <input type="text" placeholder="Enter Your Email Address" name="subscriber" id="email"
                             autocomplete="off">
@@ -317,4 +252,4 @@
 
 
 
-<%- include('partials/blogfooter') %>
+<%- include('partials/footer') %>

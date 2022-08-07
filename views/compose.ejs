@@ -1,15 +1,5 @@
-<%- include("partials/blogheader") %>
+<%- include("partials/header") %>
 <section id="header-container" class="blog-header">
-    <div class="small-screen-search search-bar">
-        <i class="fas fa-times close-sm-search"></i>
-        <form action="/search" method="GET" class="small-search-form search-form">
-            <div class="small-search-field">
-                <i class="fas fa-search"></i>
-                <input type="text" class="small-search" placeholder="search for a movie..." name="query">
-                <input type="submit" value="search" hidden>
-            </div>
-        </form>
-    </div>
 
     <div class="wrapper-enclosure-blog">
         <div class="compose-form-wrapper compose-form-container">
@@ -23,7 +13,7 @@
                         to <strong>public</strong> </p>
                 </div>
                 <div class="compose-form-wrapper">
-                    <form class="compose-form" action="/blog/compose" method="POST" enctype="multipart/form-data">
+                    <form class="compose-form" action="/compose" method="POST" enctype="multipart/form-data">
                         <div class="names">
                             <div class="firstname">
                                 <label for="fist-name">Author's Name</label>
@@ -45,31 +35,31 @@
                                     <div class="options-container">
                                       <div class="option">
                                         <input type="radio" class="radio" id="action" name="movies"/>
-                                        <label for="movies">Movie News</label>
+                                        <label for="movies">Elite one championship Cameroon</label>
                                       </div>
                                       <div class="option">
                                         <input type="radio" class="radio" id="shows" name="shows" />
-                                        <label for="shows">Tv News</label>
+                                        <label for="shows">English Premier League</label>
                                       </div>
                                       <div class="option">
                                         <input type="radio" class="radio" id="pop-culture" name="popculture" />
-                                        <label for="pop culture">Pop Culture</label>
+                                        <label for="pop culture">Spanish Laliga</label>
                                       </div>
                                       <div class="option">
                                         <input type="radio" class="radio" id="marvel-universe" name="marvel" />
-                                        <label for="marvel">Marvel Universe</label>
+                                        <label for="marvel">Italy Serie A</label>
                                       </div>
                                       <div class="option">
                                         <input type="radio" class="radio" id="dc" name="dc" />
-                                        <label for="dc">DC News</label>
+                                        <label for="dc">French League I</label>
                                       </div>
                                       <div class="option">
                                         <input type="radio" class="radio" id="streaming" name="streaming" />
-                                        <label for="streaming">Streaming News</label>
+                                        <label for="streaming">Bundesliga</label>
                                       </div>
                                       <div class="option">
                                         <input type="radio" class="radio" id="box-office" name="boxOffice"/>
-                                        <label for="box-office">Box Office</label>
+                                        <label for="box-office">UEFA Champions League</label>
                                       </div>
                                       <div class="option">
                                         <input type="radio" class="radio" id="celebs" name="celebs" />
@@ -77,11 +67,15 @@
                                       </div>
                                       <div class="option">
                                         <input type="radio" class="radio" id="comedy" name="comedy" />
-                                        <label for="comedy">Comedy News</label>
+                                        <label for="comedy">Europer League</label>
                                       </div>
                                       <div class="option">
                                         <input type="radio" class="radio" id="casting" name="casting" />
-                                        <label for="casting">Casting News</label>
+                                        <label for="casting">Europa Conference League</label>
+                                      </div>
+                                      <div class="option">
+                                        <input type="radio" class="radio" id="fifa" name="fifa" />
+                                        <label for="fifa">FIFA Word Cup</label>
                                       </div>
                                     </div>
                             
@@ -128,7 +122,7 @@
                         </div>
                         <div class="action-btns">
                             <button type="submit" class="publish-btn">Publish</button>
-                            <a href="/blog/posts" role="button" class="publish-btn">Cancel</a>
+                            <a href="/" role="button" class="publish-btn">Cancel</a>
                         </div>
                         
                     </form>
@@ -145,4 +139,4 @@
 
 
 
-<%- include('partials/blogfooter') %>
+<%- include('partials/footer') %>

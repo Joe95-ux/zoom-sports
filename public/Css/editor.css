@@ -31,7 +31,7 @@ main .ck-editor[role='application'] .ck.ck-content,
     min-height: var(--ck-sample-editor-min-height);
     height: auto;
     padding: 1.3em;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
     border-radius: 0 0 5px 5px !important;
 }
 
@@ -45,11 +45,11 @@ main .ck-editor[role='application'] {
 
 div.ck.ck-editor__main > .ck-editor__editable {
     border-radius: 0;
-    background-color: #001927;
+    background-color: #fff;
 }
 .ck.ck-editor__editable {
     background: transparent;
-    color: white;
+    color: black;
     width: 100%;
 }
 
@@ -57,7 +57,7 @@ div.ck.ck-editor__main > .ck-editor__editable {
 .ck.ck-toolbar {
     padding: 0 5px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    background: #001019;
+    background: #f7f9fa;
     border-radius: 5px 5px 0 0 !important;
 }
 
@@ -70,7 +70,7 @@ div.ck.ck-editor__main > .ck-editor__editable {
 .ck.ck-dropdown .ck-dropdown__panel.ck-dropdown__panel_ne,
 .ck.ck-dropdown .ck-dropdown__panel.ck-dropdown__panel_se,
 .ck-dropdown__panel-vissible {
-    background: #001927;
+    background: #fff;
     color: #fff;
 }
 .ck.ck-list__item .ck-button .ck-button__label {

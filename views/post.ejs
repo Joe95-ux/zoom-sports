@@ -1,22 +1,12 @@
-<%- include("partials/blogheader") %>
+<%- include("partials/header") %>
 
 <section id="header-container" class="blog-header">
-    <div class="small-screen-search search-bar">
-        <i class="fas fa-times close-sm-search"></i>
-        <form action="/search" method="GET" class="small-search-form search-form">
-            <div class="small-search-field">
-                <i class="fas fa-search"></i>
-                <input type="text" class="small-search" placeholder="search for a movie..." name="query">
-                <input type="submit" value="search" hidden>
-            </div>
-        </form>
-    </div>
     <div class="wrapper-enclosure-blog">
         <% if(story){%>
         <div class="blog-nav">
-            <span><a href="/blog/posts">Home</a></span>
+            <span><a href="/">Home</a></span>
             <i class="fas fa-chevron-right"></i>
-            <span><a href="/blog/category/<%=story.category %>"><%= story.category %> </a></span>
+            <span><a href="/category/<%=story.category %>"><%= story.category %> </a></span>
             <i class="fas fa-chevron-right"></i>
             <span title="<%= story.title %> " class="focus-nav"><%= story.title %></span>
         </div>
@@ -78,9 +68,9 @@
                                     <div class="embla__slide">
                                         <div class="embla__slide__inner slider-inner-card featured-card">
                                             <div class="post">
-                                                <img src="/dune.jpg" alt="post image">
+                                                <img src="/dune.jpeg" alt="post image">
                                                 <h5 class="cat-name">Movie news</h5>
-                                                <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                                 </h3>
                                                 <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July
                                                         11,
@@ -92,9 +82,9 @@
                                     <div class="embla__slide">
                                         <div class="embla__slide__inner slider-inner-card featured-card">
                                             <div class="post">
-                                                <img src="/dune.jpg" alt="post image">
+                                                <img src="/dune.jpeg" alt="post image">
                                                 <h5 class="cat-name">Movie news</h5>
-                                                <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                                 </h3>
                                                 <h5 class="date"> <span>by John Doe</span> <span>July 11,
                                                         2021</span> </h5>
@@ -105,9 +95,9 @@
                                     <div class="embla__slide">
                                         <div class="embla__slide__inner slider-inner-card featured-card">
                                             <div class="post">
-                                                <img src="/dune.jpg" alt="post image">
+                                                <img src="/dune.jpeg" alt="post image">
                                                 <h5 class="cat-name">Movie news</h5>
-                                                <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                                 </h3>
                                                 <h5 class="date"> <span>by John Doe</span> <span>July 11,
                                                         2021</span> </h5>
@@ -118,9 +108,9 @@
                                     <div class="embla__slide">
                                         <div class="embla__slide__inner slider-inner-card featured-card">
                                             <div class="post">
-                                                <img src="/dune.jpg" alt="post image">
+                                                <img src="/dune.jpeg" alt="post image">
                                                 <h5 class="cat-name">Movie news</h5>
-                                                <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                                 </h3>
                                                 <h5 class="date"> <span>by John Doe</span> <span>July 11,
                                                         2021</span> </h5>
@@ -131,9 +121,9 @@
                                     <div class="embla__slide">
                                         <div class="embla__slide__inner slider-inner-card featured-card">
                                             <div class="post">
-                                                <img src="/dune.jpg" alt="post image">
+                                                <img src="/dune.jpeg" alt="post image">
                                                 <h5 class="cat-name">Movie news</h5>
-                                                <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                                 </h3>
                                                 <h5 class="date"> <span>by John Doe</span> <span>July 11,
                                                         2021</span> </h5>
@@ -144,9 +134,9 @@
                                     <div class="embla__slide">
                                         <div class="embla__slide__inner slider-inner-card featured-card">
                                             <div class="post">
-                                                <img src="/dune.jpg" alt="post image">
+                                                <img src="/dune.jpeg" alt="post image">
                                                 <h5 class="cat-name">Movie news</h5>
-                                                <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                                 </h3>
                                                 <h5 class="date"> <span>by John Doe</span> <span>July 11,
                                                         2021</span> </h5>
@@ -157,9 +147,9 @@
                                     <div class="embla__slide">
                                         <div class="embla__slide__inner slider-inner-card featured-card">
                                             <div class="post">
-                                                <img src="/dune.jpg" alt="post image">
+                                                <img src="/dune.jpeg" alt="post image">
                                                 <h5 class="cat-name">Movie news</h5>
-                                                <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                                 </h3>
                                                 <h5 class="date"> <span>by John Doe</span> <span>July 11,
                                                         2021</span> </h5>
@@ -197,7 +187,7 @@
             <div id="short" class="blog-body-bio">
                 <h1 class="cat-title">About Us</h1>
                 <div class="writer-bio-wrapper">
-                    <img src="/banner.jpg" alt="author-image">
+                    <img src="/banner.jpeg" alt="author-image">
                     <div class="writer-bio-content">
                         <h4>Get to Know us</h4>
                         <p>Welcome to what2watch.net, your number one source for all things movies. We're dedicated
@@ -226,7 +216,7 @@
                         <ul>
                             <% if(sortedCats){%>
                             <% for(let cat in sortedCats){%>
-                            <li><a href="/blog/category/<%=cat%>"><%= cat %> </a><span>(<%= sortedCats[cat] %>)</span>
+                            <li><a href="/category/<%=cat%>"><%= cat %> </a><span>(<%= sortedCats[cat] %>)</span>
                             </li>
                             <% } %>
                             <% } %>
@@ -240,8 +230,8 @@
                         <div class="ig-cards recent-posts-cards">
                             <a href="#">
                                 <div class="post">
-                                    <img src="/dune.jpg" alt="">
-                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                    <img src="/dune.jpeg" alt="">
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                     </h3>
                                     <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11,
                                             2021</span> </h5>
@@ -249,40 +239,40 @@
                             </a>
                             <a href="#">
                                 <div class="post">
-                                    <img src="/dune.jpg" alt="">
-                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                    <img src="/dune.jpeg" alt="">
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                     </h3>
                                     <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 </div>
                             </a>
                             <a href="#">
                                 <div class="post">
-                                    <img src="/dune.jpg" alt="">
-                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                    <img src="/dune.jpeg" alt="">
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                     </h3>
                                     <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 </div>
                             </a>
                             <a href="#">
                                 <div class="post">
-                                    <img src="/dune.jpg" alt="">
-                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                    <img src="/dune.jpeg" alt="">
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                     </h3>
                                     <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 </div>
                             </a>
                             <a href="#">
                                 <div class="post">
-                                    <img src="/dune.jpg" alt="">
-                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                    <img src="/dune.jpeg" alt="">
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                     </h3>
                                     <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 </div>
                             </a>
                             <a href="#">
                                 <div class="post">
-                                    <img src="/dune.jpg" alt="">
-                                    <h3>How tom Cruise performed his brilliant stunts in top gun 2
+                                    <img src="/dune.jpeg" alt="">
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
                                     </h3>
                                     <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 </div>
@@ -342,8 +332,8 @@
                 <% }else{%>
                 <i class="fas fa-paper-plane"></i>
                 <h1>News Letter Sign-up</h1>
-                <p>Subscribe to our news letter for latest on movies/tv shows. Let's stay updated!</p>
-                <form action="/blog/posts" method="post" id="newsletter-form">
+                <p>Subscribe to our news letter for latest sports news. Let's stay updated! l</p>
+                <form action="/" method="post" id="newsletter-form">
                     <div class="news-letter-inner">
                         <input type="text" placeholder="Enter Your Email Address" name="subscriber" id="email"
                             autocomplete="off">
@@ -368,4 +358,4 @@
 
 
 
-<%- include('partials/blogfooter') %>
+<%- include('partials/footer') %>

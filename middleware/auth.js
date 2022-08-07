@@ -1,17 +1,16 @@
 // protecting routes
-const User = require("../models/User");
 
 module.exports = {
     ensureAuth: function(req, res, next){
         if(req.isAuthenticated()){
             return next();
         }else{
-            res.redirect('/blog/login');
+            res.redirect('/users/login');
         }
     },
     ensureGuest: function(req, res, next){
         if(req.isAuthenticated()){
-            res.redirect('/blog/dashboard/' + req.user.id);
+            res.redirect('/users/dashboard/' + req.user.id);
         }else{
             return next();
         }

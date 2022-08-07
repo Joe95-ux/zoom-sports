@@ -1,15 +1,5 @@
-<%- include("partials/blogheader") %>
+<%- include("partials/header") %>
 <section id="header-container" class="blog-header">
-    <div class="small-screen-search search-bar">
-        <i class="fas fa-times close-sm-search"></i>
-        <form action="/search" method="GET" class="small-search-form search-form">
-            <div class="small-search-field">
-                <i class="fas fa-search"></i>
-                <input type="text" class="small-search" placeholder="search for a movie..." name="query">
-                <input type="submit" value="search" hidden>
-            </div>
-        </form>
-    </div>
 
     <div class="wrapper-enclosure-blog">
         <div class="dashboard-title">
@@ -39,7 +29,7 @@
                             <i class="fas fa-search"></i>
                             <input type="text" id="dashboard-input" placeholder="search story..." autocomplete="off">
                         </div>
-                        <a href="/blog/compose" role="button" class="create-btn table-btn"><i class="fas fa-plus"></i>New Post</a>
+                        <a href="/compose" role="button" class="create-btn table-btn"><i class="fas fa-plus"></i>New Post</a>
                     </div>
                     
                 </div>
@@ -98,7 +88,7 @@
                             
                             <td data-label="Title">
                                 <div class="clamp-dashboard">
-                                    <a href="/blog/posts/<%= story.slug%>"
+                                    <a href="/stories/post/<%= story.slug%>"
                                         title="<%= story.title %> "><%= story.title %></a>
                                 </div>
                             </td>
@@ -106,9 +96,9 @@
                             <td data-label="Status"><%= story.status %> </td>
                             <td data-label="Action">
                                 <div class="dashboard-actions">
-                                    <a href="/blog/edit/<%= story._id%>" class="edit-action"> <i
+                                    <a href="/stories/edit/<%= story._id%>" class="edit-action"> <i
                                             class="fas fa-pencil-alt"></i> Edit</a>
-                                    <form method="POST" action="/blog/posts/<%=story._id%>?_method=DELETE"
+                                    <form method="POST" action="/stories/post/<%=story._id%>?_method=DELETE"
                                         class="delete-form">
                                         <button type="submit"><i class="fas fa-trash"></i>Remove</button>
                                     </form>
@@ -362,7 +352,7 @@
                         </div>
                         <h2><%= user.name ? user.name:user.username%> </h2>
                         <h3>Editor in-chief </h3>
-                        <a href="/blog/profile/<%= user._id%> " role="button" class="create-btn edit-profile-btn">Edit
+                        <a href="/users/profile/<%= user._id%> " role="button" class="create-btn edit-profile-btn">Edit
                             Profile</a>
                     </div>
                     <div class="profile-bio">
@@ -420,7 +410,7 @@
                                 <i class="fas fa-sign-out-alt"></i>
                                 <a href="/blog/logout">sign-out</a>
                             </div>
-                            <a href="/blog/logout"><i class="fas fa-chevron-right"></i></a>
+                            <a href="/users/logout"><i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
 
@@ -431,7 +421,7 @@
                     </div>
                     <p>You will loose access to your what2watch.net blog account once your deletion request has been
                         submitted</p>
-                    <form method="POST" action="/blog/profile/delete/<%=user._id%>?_method=DELETE">
+                    <form method="POST" action="/users/delete/<%=user._id%>?_method=DELETE">
                         <button type="submit" class="create-btn edit-profile-btn">Delete Account</button>
                     </form>
                 </div>
@@ -446,4 +436,4 @@
 
 
 
-<%- include('partials/blogfooter') %>
+<%- include('partials/footer') %>
