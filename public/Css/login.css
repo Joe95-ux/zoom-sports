@@ -177,7 +177,7 @@
   .actions-input input, .actions-input textarea {
     outline: none;
     border: none;
-    background-color: transparent;
+    background-color: inherit;
     width: 100%;
     font-size: 1rem;
     color: var(--mainBlack);
