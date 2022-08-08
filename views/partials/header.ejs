@@ -53,8 +53,9 @@
 
 <body>
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0"
-        nonce="VfUlIJaT"></script>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=593644877942199&autoLogAppEvents=1"
+        nonce="55i7sfzH"></script>
 
     <nav class="navigation">
         <div class="blog-nav-enclosure">
@@ -79,9 +80,9 @@
                     <% if(user.privilege === "admin"){%>
                     <li class="nav_link"> <a href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
                     <% }else{%>
-                        <li class="nav_link"> <a href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <li class="nav_link"> <a href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
                     <% } %>
-                    <% } %> 
+                    <% } %>
                 </ul>
 
             </div>
