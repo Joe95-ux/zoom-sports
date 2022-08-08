@@ -245,7 +245,7 @@
   
   
   .actions-wrapper a:hover{
-    color: var(--yellow);
+    color: var(--primaryColor);
   }
   
   .forgot-pass{
@@ -267,11 +267,12 @@
   .flash-message{
     margin: 1.5rem 0;
     padding: 1rem;
-    background-color: #fff;
+    background-color: var(--mainWhite);
     border-radius: 5px;
     font-size: 16px;
     max-width: fit-content;
-    color: var(--mainWhite);
+    color: var(--mainBlack);
+    box-shadow: var(--boxShadow);
   }
   
   .flash-wrapper.home-flash{
