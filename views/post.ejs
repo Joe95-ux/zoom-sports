@@ -1,4 +1,45 @@
 <%- include("partials/header") %>
+<div class="side-drawer" data-simplebar>
+    <i class="fas fa-times"></i>
+    <div class="side-drawer-inner">
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Menu</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <li><a class="active-cat" href="/">Blog</a></li>
+                    <% if(user){%>
+                        <% if(user.privilege === "admin"){%>
+                        <li ><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% }else{%>
+                            <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% } %>
+                        <% } %> 
+                </ul>
+            </div>
+
+        </div>
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Categories</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <% if(sortedCats){%>
+                    <% for(let cat in sortedCats){%>
+                    <li><i class="fas fa-dot-circle"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a></li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    
+</div>
+<section class="side-drawer-backdrop"></section>
 
 <section id="header-container" class="blog-header">
     <div class="wrapper-enclosure-blog">
@@ -16,19 +57,32 @@
         <div class="blog-body-wrapper">
             <div id="long" class="blog-body-content">
                 <% if(story){%>
+                <div class="full-post-title">
+                    <h3 class="single-post-title"><%= story.title %> </h3>
+                    <h5 class="date"> <span>By <strong><%= story.author %></strong></span> <span><%= story.createdAt %>
+                    </span> </h5>
+                </div>
                 <div class="post post-header">
                     <img src="<%= story.photo%>" alt="post-image">
                     <h5 class="image-caption"><%= story.photoTitle %> </h5>
                     </h5>
-                    <h3 class="single-post-title"><%= story.title %> </h3>
-                    <h5 class="date"> <span>by <strong><%= story.author %></strong></span> <span><%= story.createdAt %>
-                        </span> </h5>
                 </div>
                 <div class="post-content">
                     <%- story.body %>
                 </div>
 
                 <% } %>
+                <h4 class="top-share"><i class="fas fa-share-alt"></i>Share</h4>
+                <div class="share-story">
+                    <div class="share-title"><i class="fas fa-share-alt"></i>Share</div>
+                    <div class="share-links">
+                        <a href="https://www.facebook.com/sharer.php?u=https://what2watch.net/blog/posts/<%= story.slug%>" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/share?url=https://what2watch.net/blog/posts/<%= story.slug%>&text=Visit what2watch.net to read more" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://what2watch.net/blog/posts/<%= story.slug%>" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="whatsapp://send?text=https://what2watch.net/blog/posts/<%= story.slug%>" data-action="share/whatsapp/share" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on whatsapp" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://telegram.me/share/url?url=https://what2watch.net/blog/posts/<%= story.slug%>&text=Visit what2watch.net to read more" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
 
                 <div class="post-author-bio">
                     <% if(story){%>
@@ -200,13 +254,13 @@
                 <div class="blog-social">
                     <h1 class="cat-title">Keep in touch</h1>
                     <div class="blog-social-inner">
-                        <a href="https://www.facebook.com/what2watch.net" target="_blank" class="blog-social-link"><i
+                        <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank" class="blog-social-link"><i
                                 class="fab fa-facebook-f"></i> Facebook</a>
-                        <a href="https://www.instagram.com/what2watch4real/" target="_blank" class="blog-social-link"><i
+                        <a href="#" target="_blank" class="blog-social-link"><i
                                 class="fab fa-instagram"></i>Instagram</a>
-                        <a href="mailto:what2watch4real@gmail.com" target="_blank" class="blog-social-link"><i
+                        <a href="#" target="_blank" class="blog-social-link"><i
                                 class="fas fa-envelope"></i>G-mail</a>
-                        <a href="https://youtube.com/channel/UCR5dmDeBAwWdh-IC6dol1gA" target="_blank"
+                        <a href="#" target="_blank"
                             class="blog-social-link"><i class="fab fa-youtube"></i>Youtube</a>
                     </div>
                 </div>
@@ -330,9 +384,9 @@
                 </h1>
 
                 <% }else{%>
-                <i class="fas fa-paper-plane"></i>
-                <h1>News Letter Sign-up</h1>
-                <p>Subscribe to our news letter for latest sports news. Let's stay updated! l</p>
+                <i class="fas fa-envelope"></i>
+                <h1>NewsLetter Sign-up</h1>
+                <p>Subscribe to our news letter for latest sports news. Let's stay updated!</p>
                 <form action="/" method="post" id="newsletter-form">
                     <div class="news-letter-inner">
                         <input type="text" placeholder="Enter Your Email Address" name="subscriber" id="email"

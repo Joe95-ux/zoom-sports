@@ -1,4 +1,46 @@
 <%- include("partials/header") %>
+<div class="side-drawer" data-simplebar>
+    <i class="fas fa-times"></i>
+    <div class="side-drawer-inner">
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Menu</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <li><a class="active-cat" href="/">Blog</a></li>
+                    <% if(user){%>
+                    <% if(user.privilege === "admin"){%>
+                    <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                    <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Categories</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <% if(sortedCats){%>
+                    <% for(let cat in sortedCats){%>
+                    <li><i class="fas fa-dot-circle"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                    </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<section class="side-drawer-backdrop"></section>
 
 <section id="header-container" class="blog-header">
     <div class="wrapper-enclosure-blog">
@@ -15,11 +57,14 @@
                     <div class="latest-posts">
                         <% stories.forEach(story =>{%>
                         <div class="post">
-                            <img src="<%= story.photo %> " alt="post image">
-                            <h5 class="cat-name"><span class="left-span">Featured</span> <span><%= story.category %> </span></h5>
-                            <h3 title="<%= story.title %> "><%= story.title %> </h3>
-                            <h5 class="date"> <span>by <strong><%= story.author %></strong></span> <span><%= story.createdAt %>
-                                </span> </h5>
+                            <a href="/stories/post/<%= story.slug %>">
+                                <img src="<%= story.photo %>" alt="post image">
+                                <h5 class="cat-name"><%= story.category %> </h5>
+                                <h3><%= story.title %> </h3>
+                                <h5 class="date"> <span>by <strong><%= story.author %> </strong></span>
+                                    <span><%= story.createdAt %>
+                                    </span> </h5>
+                            </a>
                             <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
                                     class="fas fa-angle-double-right"></i></a>
                         </div>
@@ -28,7 +73,8 @@
                         <div class="post">
                             <img src="/dune.jpeg" alt="post image">
                             <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener. Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
+                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener.
+                                Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
                             <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                             <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                         </div>
@@ -76,8 +122,10 @@
                         </div>
                     </div>
                     <div class="page-controls blog-page-controls">
-                        <a href="#" class="prev-page swiper-btn blog-control-btn" role="button"><i class="fas fa-arrow-left prev-indicator"></i> </a>
-                        <a href="#" class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i class="fas fa-arrow-right next-indicator"></i></a>
+                        <a href="#" class="prev-page swiper-btn blog-control-btn" role="button"><i
+                                class="fas fa-arrow-left prev-indicator"></i> </a>
+                        <a href="#" class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i
+                                class="fas fa-arrow-right next-indicator"></i></a>
                     </div>
 
                     <div class="tv-shows">
@@ -86,42 +134,49 @@
                             <div class="post">
                                 <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
-                                <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11, 2021</span> </h5>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                </h3>
+                                <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11, 2021</span>
+                                </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
                             <div class="post">
                                 <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                </h3>
                                 <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
                             <div class="post">
                                 <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                </h3>
                                 <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
                             <div class="post">
                                 <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                </h3>
                                 <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
                             <div class="post">
                                 <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                </h3>
                                 <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
                             <div class="post">
                                 <img src="/dune.jpeg" alt="post image">
                                 <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
+                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                </h3>
                                 <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
                             </div>
@@ -149,13 +204,13 @@
                 <div class="blog-social">
                     <h1 class="cat-title">Keep in touch</h1>
                     <div class="blog-social-inner">
-                        <a href="https://www.facebook.com/what2watch.net" target="_blank" class="blog-social-link"><i
+                        <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank" class="blog-social-link"><i
                                 class="fab fa-facebook-f"></i> Facebook</a>
-                        <a href="https://www.instagram.com/what2watch4real/" target="_blank" class="blog-social-link"><i
+                        <a href="#" target="_blank" class="blog-social-link"><i
                                 class="fab fa-instagram"></i>Instagram</a>
-                        <a href="mailto:what2watch4real@gmail.com" target="_blank" class="blog-social-link"><i
+                        <a href="#" target="_blank" class="blog-social-link"><i
                                 class="fas fa-envelope"></i>G-mail</a>
-                        <a href="https://youtube.com/channel/UCR5dmDeBAwWdh-IC6dol1gA" target="_blank"
+                        <a href="#" target="_blank"
                             class="blog-social-link"><i class="fab fa-youtube"></i>Youtube</a>
                     </div>
                 </div>
@@ -224,9 +279,9 @@
                 </h1>
 
                 <% }else{%>
-                <i class="fas fa-paper-plane"></i>
-                <h1>News Letter Sign-up</h1>
-                <p>Subscribe to our news letter for latest sports news. Let's stay updated! l</p>
+                <i class="fas fa-envelope"></i>
+                <h1>NewsLetter Sign-up</h1>
+                <p>Subscribe to our news letter for latest sports news. Let's stay updated!</p>
                 <form action="/" method="post" id="newsletter-form">
                     <div class="news-letter-inner">
                         <input type="text" placeholder="Enter Your Email Address" name="subscriber" id="email"

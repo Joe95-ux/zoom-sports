@@ -13,7 +13,7 @@
     --mainBlack: #313131;
     --mainGrey: #f7f9fa;
     --linkText:#2f80ed;
-    --boxShadow: 0 012px rgba(61, 99, 140, .08);
+    --boxShadow: 0 0 12px rgba(61, 99, 140, .08);
     --lightGrey: rgb(212, 212, 212, 1);
     --midGray: rgb(212, 212, 212, 0.85);
     --mainSpacing: 0.1rem;
@@ -45,6 +45,7 @@
     border-radius: 10px;
     line-height: 1.5;
     position: relative;
+    box-shadow: var(--boxShadow);
   }
   .forms-container.edit-profile-form{
     width: 500px;

@@ -1,4 +1,45 @@
 <%- include("partials/header") %>
+<div class="side-drawer" data-simplebar>
+    <i class="fas fa-times"></i>
+    <div class="side-drawer-inner">
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Menu</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <li><a class="active-cat" href="/">Blog</a></li>
+                    <% if(user){%>
+                        <% if(user.privilege === "admin"){%>
+                        <li ><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% }else{%>
+                            <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% } %>
+                        <% } %> 
+                </ul>
+            </div>
+
+        </div>
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Categories</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <% if(sortedCats){%>
+                    <% for(let cat in sortedCats){%>
+                    <li><i class="fas fa-dot-circle"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a></li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    
+</div>
+<section class="side-drawer-backdrop"></section>
 <section id="header-container" class="blog-header">
 
     <div class="wrapper-enclosure-blog">
@@ -408,7 +449,7 @@
                         <div class="profile-bio-wrapper">
                             <div>
                                 <i class="fas fa-sign-out-alt"></i>
-                                <a href="/blog/logout">sign-out</a>
+                                <a href="/users/logout">sign-out</a>
                             </div>
                             <a href="/users/logout"><i class="fas fa-chevron-right"></i></a>
                         </div>
