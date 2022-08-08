@@ -440,10 +440,9 @@ button {
     top: 0;
     left: 0;
     display: flex;
-    opacity: 0;
     flex-direction: column;
-    width: 300px;
     height: 100vh;
+    width: 300px;
     padding: 2% 20px;
     /* background-color: darkgrey; */
     background-color: black;
@@ -475,7 +474,6 @@ button {
 
 
 .side-drawer-active {
-    opacity: 1;
     transform: translateX(0%);
     -webkit-transform: translateX(0%);
 }
