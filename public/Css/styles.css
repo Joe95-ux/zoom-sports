@@ -478,13 +478,6 @@ button {
     -webkit-transform: translateX(0%);
 }
 
-.side-drawer-inactive {
-    transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
-    transition: transform 0.7s ease-in;
-    -webkit-transition: transform 0.7s ease-in;
-}
-
 .side-drawer .fa-times {
     position: absolute;
     top: 10px;

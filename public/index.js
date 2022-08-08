@@ -1,4 +1,3 @@
-
 const short = document.getElementById("short");
 const long = document.getElementById("long");
 const eyes = [...document.querySelectorAll(".pass-reveal")];
@@ -16,41 +15,20 @@ const navSlide = () => {
   const navLinks = document.querySelectorAll(".nav_links li");
 
   burger.addEventListener("click", () => {
-    sideDrawerBackdrop.classList.add("active-backrop");
-    // toggle side-drawer
-    if (sideDrawer.classList.contains("side-drawer-inactive")) {
-      sideDrawer.classList.remove("side-drawer-inactive");
-      sideDrawer.classList.add("side-drawer-active");
-      closeSideDrawer.style.opacity = "1";
-    } else {
-      sideDrawer.classList.add("side-drawer-active");
-    }
-
-    // animate links
-    // navLinks.forEach((link, index) => {
-    //   // + 0.3 for initial delay
-    //   if (link.style.animation) {
-    //     link.style.animation = "";
-    //   } else {
-    //     link.style.animation = `navLinkFade 0.5s ease forwards ${
-    //       index / 7 + 0.5
-    //     }s `;
-    //   }
-    // });
-
     // animate burger
     burger.classList.toggle("toggle");
+    sideDrawerBackdrop.classList.add("active-backrop");
+    // toggle side-drawer
+    sideDrawer.classList.add("side-drawer-active");
+    closeSideDrawer.style.opacity = "1";
+
   });
 
   //close drawer
   if (closeSideDrawer !== null) {
     closeSideDrawer.addEventListener("click", () => {
+      sideDrawer.classList.remove("side-drawer-active");
       sideDrawerBackdrop.classList.remove("active-backrop");
-      if (sideDrawer.classList.contains("side-drawer-active")) {
-        sideDrawer.classList.remove("side-drawer-active");
-        sideDrawer.classList.add("side-drawer-inactive");
-      }
-
       closeSideDrawer.style.opacity = "0";
     });
   }
@@ -60,7 +38,6 @@ const navSlide = () => {
       sideDrawerBackdrop.classList.remove("active-backrop");
     });
   }
-
 
   // scroll EVENT
   window.addEventListener("scroll", function() {
@@ -146,9 +123,6 @@ function revealPass() {
 
 revealPass();
 
-
-
-
 // custom select dropdown
 function dropDown() {
   const selected = [...document.querySelectorAll(".selected")];
@@ -176,8 +150,5 @@ function dropDown() {
 }
 
 dropDown();
-
-
-
 
 new SimpleBar(simpleBarContainer, { autoHide: true });
