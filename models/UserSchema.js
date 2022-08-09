@@ -5,16 +5,18 @@ const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      required: true
+      required: true,
+      trim: true
     },
     password: { type: String},
     name: {
       type: String,
-      default: ""
+      default: "",
+      trim: true
     },
     role: {
       type: String,
-      default: ""
+      default: "",
     },
     photo: {
       type: String,
@@ -22,16 +24,20 @@ const UserSchema = new mongoose.Schema(
     },
     bio:{
       type: String,
-      default: ""
+      default: "",
+      trim: true
     },
     privilege:{
-      type: String
+      type: String,
+      trim: true
     },
     facebook:{
-      type: String
+      type: String,
+      trim: true
     },
     instagram:{
-      type: String
+      type: String,
+      trim: true
     },
     twitter:{
       type: String
