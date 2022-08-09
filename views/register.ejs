@@ -84,6 +84,25 @@
 
     <section id="header-container" class="blog-header">
         <div class="wrapper-enclosure-blog">
+            <% if(messages){%>
+                <% if(messages.error){%>
+                <div class="flash-wrapper">
+                    <div class="flash-message warning">
+                        <h2 class="flash-error"><%= messages.error[0]%> </h2>
+                    </div>
+                </div>
+    
+                <%}%>
+                <%if(messages.info){ %>
+                <div class="flash-wrapper">
+                    <div class="flash-message success-info">
+                        <h2 class="flash-success"><%= messages.info[0]%></h2>
+                    </div>
+                </div>
+                <% } %>
+    
+    
+                <% } %>
             <div class="form-container-wrapper">
                 <div class="forms-container">
                     <div class="form-title">
