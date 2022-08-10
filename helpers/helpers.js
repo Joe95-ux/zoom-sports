@@ -24,8 +24,10 @@ module.exports = {
     }
     return allCats;
   },
-  relatedPosts: function (stories, cat){
-    const related = stories.filter((story)=>{
+  relatedPosts: function (stories, cat, storyId){
+    storyId = storyId.toString()
+    let newStories = stories.filter(story=>story._id.toString() !== storyId);
+    const related = newStories.filter((story)=>{
       return story.category === cat;
     })
     return related;

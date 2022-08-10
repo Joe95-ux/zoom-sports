@@ -204,6 +204,7 @@ app.get("/", async (req, res) => {
         story.createdAt = formatDate(story.createdAt);
         return story;
       });
+      
       let categories = getCats(stories);
       if (categories.length) {
         sortedCats = sortCats(categories);

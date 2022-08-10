@@ -10,12 +10,12 @@
                 <ul class="categories">
                     <li><a class="active-cat" href="/">Blog</a></li>
                     <% if(user){%>
-                        <% if(user.privilege === "admin"){%>
-                        <li ><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
-                        <% }else{%>
-                            <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
-                        <% } %>
-                        <% } %> 
+                    <% if(user.privilege === "admin"){%>
+                    <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                    <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %>
                 </ul>
             </div>
 
@@ -28,7 +28,8 @@
                 <ul class="categories">
                     <% if(sortedCats){%>
                     <% for(let cat in sortedCats){%>
-                    <li><i class="fas fa-dot-circle"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a></li>
+                    <li><i class="fas fa-dot-circle"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                    </li>
                     <% } %>
                     <% } %>
                 </ul>
@@ -37,7 +38,7 @@
         </div>
 
     </div>
-    
+
 </div>
 <section class="side-drawer-backdrop"></section>
 
@@ -59,8 +60,9 @@
                 <% if(story){%>
                 <div class="full-post-title">
                     <h3 class="single-post-title"><%= story.title %> </h3>
-                    <h5 class="date post-timestamp"> <span>By <strong><%= story.author %></strong></span> <span><%= story.createdAt %>
-                    </span> </h5>
+                    <h5 class="date post-timestamp"> <span>By <strong><%= story.author %></strong></span>
+                        <span><%= story.createdAt %>
+                        </span> </h5>
                 </div>
                 <div class="post post-header">
                     <img src="<%= story.photo%>" alt="post-image">
@@ -76,11 +78,19 @@
                 <div class="share-story">
                     <div class="share-title"><i class="fas fa-share-alt"></i>Share</div>
                     <div class="share-links">
-                        <a href="https://www.facebook.com/sharer.php?u=https://zoom-sportz.com/stories/post/<%= story.slug%>" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com/share?url=https://zoom-sportz.com/stories/post/<%= story.slug%>&text=Visit zoom-sportz.com to read more" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://zoom-sportz.com/stories/post/<%= story.slug%>" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="whatsapp://send?text=https://zoom-sportz.com/stories/post/<%= story.slug%>" data-action="share/whatsapp/share" onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on whatsapp" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://telegram.me/share/url?url=https://zoom-sportz.com/stories/post/<%= story.slug%>&text=Visit zoom-sportz.com to read more" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://www.facebook.com/sharer.php?u=https://zoom-sportz.com/stories/post/<%= story.slug%>"
+                            target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/share?url=https://zoom-sportz.com/stories/post/<%= story.slug%>&text=Visit zoom-sportz.com to read more"
+                            target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://zoom-sportz.com/stories/post/<%= story.slug%>"
+                            target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="whatsapp://send?text=https://zoom-sportz.com/stories/post/<%= story.slug%>"
+                            data-action="share/whatsapp/share"
+                            onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                            target="_blank" title="Share on whatsapp" class="social-icon"><i
+                                class="fab fa-whatsapp"></i></a>
+                        <a href="https://telegram.me/share/url?url=https://zoom-sportz.com/stories/post/<%= story.slug%>&text=Visit zoom-sportz.com to read more"
+                            class="social-icon"><i class="fab fa-telegram-plane"></i></a>
                     </div>
                 </div>
 
@@ -100,117 +110,46 @@
                         <% } %>
                         <div class="post-author-socials">
                             <% if(story.user?.facebook){%>
-                            <a href="<%= story.user.facebook%>" target="_blank"><img src="/Facebook_Logo.png" alt="Fb logo"></a>
+                            <a href="<%= story.user.facebook%>" target="_blank"><img src="/Facebook_Logo.png"
+                                    alt="Fb logo"></a>
                             <% } %>
                             <% if(story.user?.instagram){%>
-                            <a href="<%= story.user.instagram %>" target="_blank"><img src="/ig-logo.png" alt="Ig logo"></a>
+                            <a href="<%= story.user.instagram %>" target="_blank"><img src="/ig-logo.png"
+                                    alt="Ig logo"></a>
                             <% } %>
                             <% if(story.user?.twitter){%>
-                            <a href="<%= story.user.twitter%>" target="_blank"><img src="/twitter-logo.png" alt="tw logo"></a>
+                            <a href="<%= story.user.twitter%>" target="_blank"><img src="/twitter-logo.png"
+                                    alt="tw logo"></a>
                             <% } %>
                         </div>
                     </div>
                     <% } %>
 
                 </div>
+                <% if(related){%>
                 <div class="older-posts">
                     <h1 class="cat-title">Related Posts</h1>
                     <div class="older-posts-inner">
                         <div class="embla old-posts-embla">
                             <div class="embla__viewport">
                                 <div class="embla__container">
-                                    <div class="embla__slide">
-                                        <div class="embla__slide__inner slider-inner-card featured-card">
-                                            <div class="post">
-                                                <img src="/dune.jpeg" alt="post image">
-                                                <h5 class="cat-name">Movie news</h5>
-                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
-                                                </h3>
-                                                <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July
-                                                        11,
-                                                        2021</span> </h5>
-                                            </div>
+                                    <% related.forEach((story) =>{%>
+                                    <a href="/stories/post/<%= story.slug%>">
+                                        <div class="embla__slide">
+                                            <div class="embla__slide__inner slider-inner-card featured-card">
+                                                <div class="post">
+                                                    <img src="<%= story.photo%>" alt="post image">
+                                                    <h5 class="cat-name"><%= story.category%></h5>
+                                                    <h3><%= story.title%></h3>
+                                                    <h5 class="date"> <span>by
+                                                            <strong><%= story.author%></strong></span>
+                                                        <span><%=story.createdAt%></span></h5>
+                                                </div>
 
-                                        </div>
-                                    </div>
-                                    <div class="embla__slide">
-                                        <div class="embla__slide__inner slider-inner-card featured-card">
-                                            <div class="post">
-                                                <img src="/dune.jpeg" alt="post image">
-                                                <h5 class="cat-name">Movie news</h5>
-                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
-                                                </h3>
-                                                <h5 class="date"> <span>by John Doe</span> <span>July 11,
-                                                        2021</span> </h5>
                                             </div>
-
                                         </div>
-                                    </div>
-                                    <div class="embla__slide">
-                                        <div class="embla__slide__inner slider-inner-card featured-card">
-                                            <div class="post">
-                                                <img src="/dune.jpeg" alt="post image">
-                                                <h5 class="cat-name">Movie news</h5>
-                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
-                                                </h3>
-                                                <h5 class="date"> <span>by John Doe</span> <span>July 11,
-                                                        2021</span> </h5>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="embla__slide">
-                                        <div class="embla__slide__inner slider-inner-card featured-card">
-                                            <div class="post">
-                                                <img src="/dune.jpeg" alt="post image">
-                                                <h5 class="cat-name">Movie news</h5>
-                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
-                                                </h3>
-                                                <h5 class="date"> <span>by John Doe</span> <span>July 11,
-                                                        2021</span> </h5>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="embla__slide">
-                                        <div class="embla__slide__inner slider-inner-card featured-card">
-                                            <div class="post">
-                                                <img src="/dune.jpeg" alt="post image">
-                                                <h5 class="cat-name">Movie news</h5>
-                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
-                                                </h3>
-                                                <h5 class="date"> <span>by John Doe</span> <span>July 11,
-                                                        2021</span> </h5>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="embla__slide">
-                                        <div class="embla__slide__inner slider-inner-card featured-card">
-                                            <div class="post">
-                                                <img src="/dune.jpeg" alt="post image">
-                                                <h5 class="cat-name">Movie news</h5>
-                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
-                                                </h3>
-                                                <h5 class="date"> <span>by John Doe</span> <span>July 11,
-                                                        2021</span> </h5>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="embla__slide">
-                                        <div class="embla__slide__inner slider-inner-card featured-card">
-                                            <div class="post">
-                                                <img src="/dune.jpeg" alt="post image">
-                                                <h5 class="cat-name">Movie news</h5>
-                                                <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
-                                                </h3>
-                                                <h5 class="date"> <span>by John Doe</span> <span>July 11,
-                                                        2021</span> </h5>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                                    </a>
+                                    <% }) %>
 
                                 </div>
 
@@ -235,6 +174,8 @@
 
                     </div>
                 </div>
+                <% } %>
+
 
 
             </div>
@@ -254,14 +195,12 @@
                 <div class="blog-social">
                     <h1 class="cat-title">Keep in touch</h1>
                     <div class="blog-social-inner">
-                        <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank" class="blog-social-link"><i
-                                class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank"
+                            class="blog-social-link"><i class="fab fa-facebook-f"></i> Facebook</a>
                         <a href="#" target="_blank" class="blog-social-link"><i
                                 class="fab fa-instagram"></i>Instagram</a>
-                        <a href="#" target="_blank" class="blog-social-link"><i
-                                class="fas fa-envelope"></i>G-mail</a>
-                        <a href="#" target="_blank"
-                            class="blog-social-link"><i class="fab fa-youtube"></i>Youtube</a>
+                        <a href="#" target="_blank" class="blog-social-link"><i class="fas fa-envelope"></i>G-mail</a>
+                        <a href="#" target="_blank" class="blog-social-link"><i class="fab fa-youtube"></i>Youtube</a>
                     </div>
                 </div>
                 <div class="cats">
@@ -285,7 +224,8 @@
                             <a href="#">
                                 <div class="post">
                                     <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                        opener
                                     </h3>
                                     <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11,
                                             2021</span> </h5>
@@ -294,7 +234,8 @@
                             <a href="#">
                                 <div class="post">
                                     <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                        opener
                                     </h3>
                                     <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 </div>
@@ -302,7 +243,8 @@
                             <a href="#">
                                 <div class="post">
                                     <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                        opener
                                     </h3>
                                     <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 </div>
@@ -310,7 +252,8 @@
                             <a href="#">
                                 <div class="post">
                                     <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                        opener
                                     </h3>
                                     <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 </div>
@@ -318,7 +261,8 @@
                             <a href="#">
                                 <div class="post">
                                     <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                        opener
                                     </h3>
                                     <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 </div>
@@ -326,7 +270,8 @@
                             <a href="#">
                                 <div class="post">
                                     <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener
+                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                        opener
                                     </h3>
                                     <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
                                 </div>
@@ -337,15 +282,14 @@
                         <h1 class="cat-title">Facebook Feed</h1>
                         <div class="facebook-feed" style="width:100% ;">
                             <div class="fb-page"
-                                    data-href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
-                                    data-tabs="timeline" data-width="700px" data-height="550px"
-                                    data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
-                                    data-show-facepile="true">
-                                    <blockquote cite="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
-                                        class="fb-xfbml-parse-ignore"><a
-                                            href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/">ZOOM
-                                            sports updates</a></blockquote>
-                                </div>
+                                data-href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
+                                data-tabs="timeline" data-width="700px" data-height="550px" data-small-header="false"
+                                data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                <blockquote cite="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
+                                    class="fb-xfbml-parse-ignore"><a
+                                        href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/">ZOOM
+                                        sports updates</a></blockquote>
+                            </div>
                         </div>
                     </div>
                     <div class="instagram-page">

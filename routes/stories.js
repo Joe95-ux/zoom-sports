@@ -18,7 +18,8 @@ const {
   sortCats,
   getCats,
   editorsPicks,
-  latestPosts
+  latestPosts,
+  relatedPosts
 } = require("../helpers/helpers");
 const User = require("../models/User");
 const Story = require("../models/Story");
@@ -155,10 +156,15 @@ router.delete("/post/:id", ensureAuth, async (req, res) => {
 // Get single post
 router.get("/post/:slug", async (req, res) => {
   let title;
+  let related;
   const userEmail = req.flash("user");
   let sortedCats;
   try {
-    let stories = await Story.find({ status: "Public" });
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
     let story = await Story.findOne({ slug: req.params.slug })
       .populate("user")
       .lean()
@@ -169,23 +175,23 @@ router.get("/post/:slug", async (req, res) => {
     } else {
       story.createdAt = formatDate(story.createdAt);
       title = story.title;
-      if (stories) {
+      if (stories.length) {
+        stories = stories.map(story => {
+          story.createdAt = formatDate(story.createdAt);
+          return story;
+        });
+        related = relatedPosts(stories, story.category, story._id);
         let categories = getCats(stories);
         if (categories.length) {
           sortedCats = sortCats(categories);
         }
       }
-      res.render("post", { title, userEmail, story, sortedCats });
+      res.render("post", { title, userEmail, story, sortedCats, related });
     }
   } catch (err) {
     console.error(err);
     res.render("error/500");
   }
 });
-
-
-
-
-
 
 module.exports = router;
