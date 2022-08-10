@@ -635,10 +635,10 @@ div.tv-news {
 }
 
 @media screen and (max-width:799px) {
-    .latest-posts .post img{
+    .latest-posts .post img {
         height: auto;
         min-height: 170px;
-        max-height: 220px;
+        max-height: 170px;
     }
 }
 
@@ -661,7 +661,23 @@ div.tv-news {
     .latest-posts .post img {
         height: auto;
         min-height: 135px;
+        max-height: 135px;
+
+    }
+}
+
+@media screen and (max-width:400px) {
+    .latest-posts .post img {
+        min-height: 200px;
         max-height: 200px;
+
+    }
+}
+@media screen and (max-width:320px) {
+    .latest-posts .post img {
+        height: auto;
+        min-height: 165px;
+        max-height: 165px;
 
     }
 }
@@ -947,6 +963,7 @@ div.tv-news {
     }
 }
 
+
 @media screen and (max-width:400px) {
 
     .latest-posts,
@@ -958,7 +975,14 @@ div.tv-news {
     .embla.blog-trending-movies {
         height: 300px;
     }
+    .post h3 {
+        font-size: 20px;
+    }
+    .featured-card .post h3{
+        font-size: 17px;
+    }
 }
+
 
 
 
