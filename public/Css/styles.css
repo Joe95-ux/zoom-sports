@@ -439,8 +439,8 @@ button {
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    flex-direction: column;
+    /* display: none;
+    flex-direction: column; */
     height: 100vh;
     width: 300px;
     padding: 2% 20px;
