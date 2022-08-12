@@ -24,38 +24,47 @@ module.exports = {
     }
     return allCats;
   },
-  relatedPosts: function (stories, cat, storyId){
-    storyId = storyId.toString()
-    let newStories = stories.filter(story=>story._id.toString() !== storyId);
-    const related = newStories.filter((story)=>{
+  relatedPosts: function(stories, cat, storyId) {
+    storyId = storyId.toString();
+    let newStories = stories.filter(story => story._id.toString() !== storyId);
+    const related = newStories.filter(story => {
       return story.category === cat;
-    })
+    });
     return related;
-
   },
-  latestPosts: function (stories){
-    const posts =  stories.slice(0, 8);
+  latestPosts: function(stories) {
+    const posts = stories.slice(0, 8);
     return posts;
   },
-  editorsPicks: function(stories){
-    const picks = stories.reduce((pureStore, currentStory)=>{
-      let story = pureStore.find(story => story.category === currentStory.category);
-      if(story){
+  editorsPicks: function(stories) {
+    const picks = stories.reduce((pureStore, currentStory) => {
+      let story = pureStore.find(
+        story => story.category === currentStory.category
+      );
+      if (story) {
         return pureStore;
       }
       return pureStore.concat([currentStory]);
-
-    }, [])
+    }, []);
     return picks;
   },
-  paginate: function(stories, len){
+  paginate: function(stories, len) {
     let newStore = [];
     let index = 0;
-    while(index < stories.length){
+    while (index < stories.length) {
       newStore.push(stories.slice(index, index + len));
       index += len;
     }
     return newStore;
+  },
+  storyMap: function(stories, users) {
+    for (let user of users) {
+      for (let story of stories) {
+        if (story.user._id.equals(user._id)) {
+          user.stories.push(story);
+        }
+      }
+    }
+    return users;
   }
-
 };

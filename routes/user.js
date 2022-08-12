@@ -18,7 +18,8 @@ const {
   sortCats,
   getCats,
   editorsPicks,
-  latestPosts
+  latestPosts,
+  storyMap
 } = require("../helpers/helpers");
 const User = require("../models/User");
 const Story = require("../models/Story");
@@ -54,8 +55,6 @@ const upload = multer({
   })
 });
 
-
-
 // @desc    delete user
 // @route   delete /blog/profile/delete/:id
 router.delete("/delete/:id", ensureAuth, async (req, res) => {
@@ -79,7 +78,6 @@ router.delete("/delete/:id", ensureAuth, async (req, res) => {
     return res.render("error/500");
   }
 });
-
 
 //Register user
 router.get("/register", ensureGuest, async (req, res) => {
@@ -108,18 +106,15 @@ router.get("/profile/:id", ensureAuth, async (req, res) => {
     if (!profile) {
       return res.render("/error/400");
     }
-    if(req.user.id === req.params.id){
-        res.render("editprofile", { title, profile });
-
-    }else {
-        res.status(401).json("You can only update your account!");
-      
+    if (req.user.id === req.params.id) {
+      res.render("editprofile", { title, profile });
+    } else {
+      res.status(401).json("You can only update your account!");
     }
   } catch (err) {
     console.log(err);
   }
 });
-
 
 // Edit user profile
 router.put(
@@ -168,6 +163,32 @@ router.put(
     }
   }
 );
+
+// change user's privilege
+router.put("/edit-role/:id", ensureAuth, ensureAdmin, async (req, res) => {
+  const user = await User.findOne({_id:req.params.id});
+  let newRole;
+  if (user.privilege === "admin"){
+    newRole = "";
+    req.flash("info", user.name + "'s admin privilege was removed.")
+    
+  }else if (user.privilege === ""){
+    newRole = "admin";
+    req.flash("info", user.name + " has been made admin")
+  }
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set:{privilege:newRole}
+      },
+      { new: true }
+    );
+    res.status(200).redirect("/users/admin/dashboard/" + req.user.id);
+  }catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // user dashboard
 router.get("/dashboard/:id", ensureAuth, async (req, res) => {
@@ -243,6 +264,7 @@ router.get(
         if (categories.length) {
           sortedCats = sortCats(categories);
         }
+        users = storyMap(stories, users)
       }
       if (users) {
         users.map(user => {

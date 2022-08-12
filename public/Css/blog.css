@@ -1954,6 +1954,77 @@ div.embedly-card-hug iframe{
     box-shadow: 0 0 12px rgba(61, 99, 140, .08);
 }
 
+.user-list{
+    margin-bottom: 1.5rem;
+}
+.user-list h1{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.user-list .embla__button{
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--mainBlack);
+}
+.user-list .embla__button__svg{
+    fill: var(--mainWhite);
+}
+.user-list-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.3rem;
+    border-radius: var(--mainBorderRaduis);
+    background-color:var(--mainWhite);
+    box-shadow: var(--boxShadow);
+    font-size: 18px;
+    width: calc(200px + 50px );
+    height: 300px;
+}
+
+.user-list-card .profile-photo{
+    padding: 0;
+}
+
+.dash-user-pic-wrapper{
+    position: relative;
+}
+.dash-user-pic-wrapper i{
+    position: absolute;
+    top: 0;
+    right: -3px;
+    font-size: 14px;
+    color: var(--yellow);
+}
+.admin-actions{
+    display: flex;
+    font-size: 16px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+}
+
+.admin-actions .create-btn{
+    font-size: 15px;
+    background-color: #f7f9fa;
+    color: var(--mainBlack);
+}
+.admin-actions .create-btn i{
+    margin-right: 0;
+    font-size: 14px;
+}
+
+.admin-actions .create-btn:hover{
+    background-color: inherit;
+    color: var(--mainBlack);
+}
+.admin-actions:nth-child(1){
+    margin-right: 5px;
+}
+
 
 table {
     width: 120%;
@@ -2046,11 +2117,6 @@ th {
     color: var(--mainBlack);
     font-weight: normal;
 }
-
-
-
-
-
 
 .dashboard-actions {
     display: flex;
@@ -2234,8 +2300,9 @@ tbody td a {
 }
 
 .profile-photo img {
-    height: 90px;
-    width: 90px;
+    height: 75px;
+    width: 75px;
+    border: 3px solid #f7f9fa;
     border-radius: 50%;
     object-fit: cover;
 }
