@@ -65,13 +65,19 @@ router.delete("/delete/:id", ensureAuth, async (req, res) => {
       return res.render("error/400");
     }
 
-    if (user._id != req.user.id) {
+    if (user._id.equals(req.user.id )|| req.user.privilege === "admin") {
+      await User.findByIdAndDelete(req.params.id);
+      req.flash("info", user.username + "'s account was successfully deleted")
+      if(req.user.privilege === "admin"){
+        res.redirect("/users/admin/dashboard/" + req.user.id)
+      }else{
+        res.redirect("/blog/register");
+      } 
+      
+    } else {
       res
         .status(401)
         .json("action not authorised. You can only delete your acount");
-    } else {
-      await User.findByIdAndDelete(req.params.id);
-      res.redirect("/users/register");
     }
   } catch (err) {
     console.error(err);
@@ -168,13 +174,19 @@ router.put(
 router.put("/edit-role/:id", ensureAuth, ensureAdmin, async (req, res) => {
   const user = await User.findOne({_id:req.params.id});
   let newRole;
+  let name;
+  if(user.name){
+    name = user.name;
+  }else{
+    name = user.username;
+  }
   if (user.privilege === "admin"){
     newRole = "";
-    req.flash("info", user.name + "'s admin privilege was removed.")
+    req.flash("info", name + "'s admin privilege was removed.")
     
-  }else if (user.privilege === ""){
+  }else{
     newRole = "admin";
-    req.flash("info", user.name + " has been made admin")
+    req.flash("info", name + " has been made admin")
   }
   try {
     const updatedUser = await User.findByIdAndUpdate(

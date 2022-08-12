@@ -1954,6 +1954,7 @@ div.embedly-card-hug iframe{
     box-shadow: 0 0 12px rgba(61, 99, 140, .08);
 }
 
+/* user-cards start*/
 .user-list{
     margin-bottom: 1.5rem;
 }
@@ -2024,6 +2025,8 @@ div.embedly-card-hug iframe{
 .admin-actions:nth-child(1){
     margin-right: 5px;
 }
+
+/* user-cards ends */
 
 
 table {
