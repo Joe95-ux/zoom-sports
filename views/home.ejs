@@ -247,7 +247,8 @@
                             <%} %>
                         </div>
                         <div class="older-posts">
-                            <a href="#" class="cat-title">English Premiere League<i class="fas fa-chevron-right"></i></a>
+                            <a href="#" class="cat-title">English Premiere League<i
+                                    class="fas fa-chevron-right"></i></a>
                             <div class="older-posts-inner">
                                 <div class="embla old-posts-embla">
                                     <div class="embla__viewport">
@@ -381,69 +382,39 @@
                         <div class="tv-shows">
                             <h1 class="cat-title">All Stories</h1>
                             <div class="latest-posts tv-news">
+                                <% if(currentPage){%>
+                                <% currentPage.forEach(story=>{%>
                                 <div class="post">
-                                    <img src="/dune.jpeg" alt="post image">
-                                    <h5 class="cat-name">Dc news</h5>
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener</h3>
-                                    <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11,
-                                            2021</span> </h5>
-                                    <a class="read-more" href="#">Read more <i
+                                    <a href="/stories/post/<%= story.slug %>">
+                                        <img src="<%= story.photo %>" alt="post image">
+                                        <h5 class="cat-name"><%= story.category %> </h5>
+                                        <h3><%= story.title %> </h3>
+                                        <h5 class="date"> <span>by <strong><%= story.author %> </strong></span>
+                                            <span><%= story.createdAt %>
+                                            </span> </h5>
+                                    </a>
+                                    <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
                                             class="fas fa-angle-double-right"></i></a>
                                 </div>
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="post image">
-                                    <h5 class="cat-name">Dc news</h5>
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener</h3>
-                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                    <a class="read-more" href="#">Read more <i
-                                            class="fas fa-angle-double-right"></i></a>
-                                </div>
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="post image">
-                                    <h5 class="cat-name">Dc news</h5>
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener</h3>
-                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                    <a class="read-more" href="#">Read more <i
-                                            class="fas fa-angle-double-right"></i></a>
-                                </div>
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="post image">
-                                    <h5 class="cat-name">Dc news</h5>
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener</h3>
-                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                    <a class="read-more" href="#">Read more <i
-                                            class="fas fa-angle-double-right"></i></a>
-                                </div>
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="post image">
-                                    <h5 class="cat-name">Dc news</h5>
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener</h3>
-                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                    <a class="read-more" href="#">Read more <i
-                                            class="fas fa-angle-double-right"></i></a>
-                                </div>
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="post image">
-                                    <h5 class="cat-name">Dc news</h5>
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener</h3>
-                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                    <a class="read-more" href="#">Read more <i
-                                            class="fas fa-angle-double-right"></i></a>
-                                </div>
+
+                                <%}) %>
+                                <% } %>
                             </div>
                         </div>
+                        <% if(pages>1){%>
                         <div class="page-controls blog-page-controls">
-                            <a href="#" class="prev-page swiper-btn blog-control-btn" role="button"><i
+                            <% if(pageNum > 1){%>
+                            <a href="/page=<%= pageNum-1 %>" class="prev-page swiper-btn blog-control-btn" role="button"><i
                                     class="fas fa-arrow-left prev-indicator"></i> </a>
-                            <a href="#" class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i
+
+                            <% } %>
+                            <% if(pageNum < pages){%>
+                                <a href="/page=<%= pageNum + 1 %> " class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i
                                     class="fas fa-arrow-right next-indicator"></i></a>
+                                <% } %>  
                         </div>
+
+                        <% } %>
                         <div class="older-posts">
                             <a href="#" class="cat-title">UEFA Champions League<i class="fas fa-chevron-right"></i></a>
                             <div class="older-posts-inner">

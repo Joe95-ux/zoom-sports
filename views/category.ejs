@@ -69,64 +69,23 @@
                                     class="fas fa-angle-double-right"></i></a>
                         </div>
                         <%}) %>
-
-                        <div class="post">
-                            <img src="/dune.jpeg" alt="post image">
-                            <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener.
-                                Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
-                            <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                            <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
-                        </div>
-                        <div class="post">
-                            <img src="/dune.jpeg" alt="post image">
-                            <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
-                            <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                            <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
-                        </div>
-                        <div class="post">
-                            <img src="/dune.jpeg" alt="post image">
-                            <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
-                            <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                            <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
-                        </div>
-                        <div class="post">
-                            <img src="/dune.jpeg" alt="post image">
-                            <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
-                            <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                            <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
-                        </div>
-                        <div class="post">
-                            <img src="/dune.jpeg" alt="post image">
-                            <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
-                            <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                            <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
-                        </div>
-                        <div class="post">
-                            <img src="/dune.jpeg" alt="post image">
-                            <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
-                            <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                            <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
-                        </div>
-                        <div class="post">
-                            <img src="/dune.jpeg" alt="post image">
-                            <h5 class="cat-name"><span class="left-span">Featured</span> <span>Movie</span></h5>
-                            <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1 opener</h3>
-                            <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                            <a class="read-more" href="#">Read more <i class="fas fa-angle-double-right"></i></a>
-                        </div>
+                        <div></div>
+                        <div></div>
                     </div>
+                    <% if(pages>1){%>
                     <div class="page-controls blog-page-controls">
-                        <a href="#" class="prev-page swiper-btn blog-control-btn" role="button"><i
+                        <% if(pageNum > 1){%>
+                        <a href="/category/<%=category%>/<%= pageNum - 1 %>" class="prev-page swiper-btn blog-control-btn" role="button"><i
                                 class="fas fa-arrow-left prev-indicator"></i> </a>
-                        <a href="#" class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i
-                                class="fas fa-arrow-right next-indicator"></i></a>
+
+                        <% } %>
+                        <% if(pageNum < pages){%>
+                        <a href="/category/<%=category%>/<%= pageNum + 1 %> " class="next-page swiper-btn blog-control-btn" role="button"
+                            value="next-page"><i class="fas fa-arrow-right next-indicator"></i></a>
+                        <% } %>
                     </div>
+
+                    <% } %>
 
                     <div class="tv-shows">
                         <a href="/" class="cat-title">Recent Posts<i class="fas fa-chevron-right"></i></a>

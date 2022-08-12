@@ -19,7 +19,8 @@ const {
   getCats,
   editorsPicks,
   latestPosts,
-  relatedPosts
+  relatedPosts,
+  paginate
 } = require("../helpers/helpers");
 const User = require("../models/User");
 const Story = require("../models/Story");

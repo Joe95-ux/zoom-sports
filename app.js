@@ -28,7 +28,8 @@ const {
   sortCats,
   getCats,
   editorsPicks,
-  latestPosts
+  latestPosts,
+  paginate
 } = require("./helpers/helpers");
 const User = require("./models/User");
 const Story = require("./models/Story");
@@ -132,7 +133,10 @@ app.get("/category/:catName", async (req, res) => {
   const title = req.params.catName;
   const userEmail = req.flash("user");
   const cat = req.params.catName;
+  const category = encodeURI(cat);
   let sortedCats;
+  let pages;
+  let pageNum = 1;
   try {
     let allStories = await Story.find({ status: "Public" });
     let stories = await Story.find({ category: cat, status: "Public" })
@@ -145,6 +149,9 @@ app.get("/category/:catName", async (req, res) => {
         story.createdAt = formatDate(story.createdAt);
         return story;
       });
+      const pagenated = paginate(stories, 8);
+      currentPage = pagenated[pageNum - 1];
+      pages = pagenated.length;
       let categories = getCats(allStories);
       if (categories.length) {
         sortedCats = sortCats(categories);
@@ -153,14 +160,63 @@ app.get("/category/:catName", async (req, res) => {
     res.render("category", {
       title,
       userEmail,
-      stories,
+      stories:currentPage,
+      pages,
+      pageNum,
       sortedCats,
-      cat
+      cat,
+      category
     });
   } catch (err) {
     console.log(err);
   }
 });
+
+
+// next category page
+app.get("/category/:catName/:num", async (req, res) => {
+  const title = req.params.catName;
+  const userEmail = req.flash("user");
+  const cat = req.params.catName;
+  const category = encodeURI(cat);
+  let sortedCats;
+  let pages;
+  let pageNum = parseInt(req.params.num);
+  try {
+    let allStories = await Story.find({ status: "Public" });
+    let stories = await Story.find({ category: cat, status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      stories = stories.map(story => {
+        story.createdAt = formatDate(story.createdAt);
+        return story;
+      });
+      const paginated = paginate(stories, 8);
+      currentPage = paginated[pageNum - 1];
+      pages = pagenated.length;
+      let categories = getCats(allStories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+    res.render("category", {
+      title,
+      userEmail,
+      stories:currentPage,
+      pages,
+      pageNum,
+      sortedCats,
+      cat,
+      category
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 
 app.get("/compose", ensureAuth, async (req, res) => {
   const title = "compose";
@@ -193,6 +249,10 @@ app.get("/", async (req, res) => {
   let sortedCats;
   let picks;
   let latest;
+  let allStories;
+  let pages;
+  let pageNum = 1;
+  let currentPage;
   try {
     let stories = await Story.find({ status: "Public"})
       .populate("user")
@@ -204,7 +264,10 @@ app.get("/", async (req, res) => {
         story.createdAt = formatDate(story.createdAt);
         return story;
       });
-      
+      allStories = paginate(stories, 6);
+      currentPage = allStories[pageNum - 1];
+      pages = allStories.length;
+
       let categories = getCats(stories);
       if (categories.length) {
         sortedCats = sortCats(categories);
@@ -223,12 +286,78 @@ app.get("/", async (req, res) => {
       stories,
       sortedCats,
       picks,
-      latest
+      latest,
+      allStories,
+      currentPage,
+      pages,
+      pageNum
     });
   } catch (err) {
     console.log(err);
   }
 });
+
+// redirect to home
+
+app.get("/page=1", (req, res)=>{
+  res.redirect("/");
+})
+
+// get next home page
+app.get("/page=:num", async (req, res) => {
+  const title = "blog posts";
+  const userEmail = req.flash("user");
+  let sortedCats;
+  let picks;
+  let latest;
+  let allStories;
+  let pages;
+  let pageNum = parseInt(req.params.num);
+  let currentPage;
+  try {
+    let stories = await Story.find({ status: "Public"})
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      stories = stories.map(story => {
+        story.createdAt = formatDate(story.createdAt);
+        return story;
+      });
+      allStories = paginate(stories, 6);
+      currentPage = allStories[pageNum - 1];
+      pages = allStories.length;
+
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+      picks = editorsPicks(stories);
+      if(picks.length){
+         picks = picks.slice(0, 6);
+      }
+     
+      latest = latestPosts(stories);
+
+    }
+    res.render("home", {
+      title,
+      userEmail,
+      stories,
+      sortedCats,
+      picks,
+      latest,
+      allStories,
+      currentPage,
+      pages,
+      pageNum
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 
 
 
