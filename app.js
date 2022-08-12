@@ -122,7 +122,7 @@ app.post("/", async (req, res) => {
   };
   try {
     await subcribeHandler(subscribingUser);
-    req.flash("user", subscribingUser.email);
+    req.flash("user", "Thank You For Subcribing!");
     res.redirect(req.originalUrl);
   } catch (e) {
     console.log(e);
@@ -131,7 +131,6 @@ app.post("/", async (req, res) => {
 
 app.get("/category/:catName", async (req, res) => {
   const title = req.params.catName;
-  const userEmail = req.flash("user");
   const cat = req.params.catName;
   const category = encodeURI(cat);
   let sortedCats;
@@ -149,9 +148,9 @@ app.get("/category/:catName", async (req, res) => {
         story.createdAt = formatDate(story.createdAt);
         return story;
       });
-      const pagenated = paginate(stories, 8);
-      currentPage = pagenated[pageNum - 1];
-      pages = pagenated.length;
+      const paginated = paginate(stories, 8);
+      currentPage = paginated[pageNum - 1];
+      pages = paginated.length;
       let categories = getCats(allStories);
       if (categories.length) {
         sortedCats = sortCats(categories);
@@ -159,7 +158,6 @@ app.get("/category/:catName", async (req, res) => {
     }
     res.render("category", {
       title,
-      userEmail,
       stories:currentPage,
       pages,
       pageNum,
@@ -176,7 +174,6 @@ app.get("/category/:catName", async (req, res) => {
 // next category page
 app.get("/category/:catName/:num", async (req, res) => {
   const title = req.params.catName;
-  const userEmail = req.flash("user");
   const cat = req.params.catName;
   const category = encodeURI(cat);
   let sortedCats;
@@ -196,7 +193,7 @@ app.get("/category/:catName/:num", async (req, res) => {
       });
       const paginated = paginate(stories, 8);
       currentPage = paginated[pageNum - 1];
-      pages = pagenated.length;
+      pages = paginated.length;
       let categories = getCats(allStories);
       if (categories.length) {
         sortedCats = sortCats(categories);
@@ -204,7 +201,6 @@ app.get("/category/:catName/:num", async (req, res) => {
     }
     res.render("category", {
       title,
-      userEmail,
       stories:currentPage,
       pages,
       pageNum,
@@ -245,7 +241,6 @@ app.post(
 
 app.get("/", async (req, res) => {
   const title = "blog posts";
-  const userEmail = req.flash("user");
   let sortedCats;
   let picks;
   let latest;
@@ -282,7 +277,6 @@ app.get("/", async (req, res) => {
     }
     res.render("home", {
       title,
-      userEmail,
       stories,
       sortedCats,
       picks,
@@ -306,7 +300,6 @@ app.get("/page=1", (req, res)=>{
 // get next home page
 app.get("/page=:num", async (req, res) => {
   const title = "blog posts";
-  const userEmail = req.flash("user");
   let sortedCats;
   let picks;
   let latest;
@@ -343,7 +336,6 @@ app.get("/page=:num", async (req, res) => {
     }
     res.render("home", {
       title,
-      userEmail,
       stories,
       sortedCats,
       picks,
