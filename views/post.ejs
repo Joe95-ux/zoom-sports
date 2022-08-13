@@ -1,139 +1,236 @@
-<%- include("partials/header") %>
-<div class="side-drawer" data-simplebar>
-    <i class="fas fa-times"></i>
-    <div class="side-drawer-inner">
-        <div class="main-category discover-movies">
-            <div class="category-title">
-                <h2 class="discover">Menu</h2>
-            </div>
-            <div class="category-types">
-                <ul class="categories">
-                    <li><a class="active-cat" href="/">Blog</a></li>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f9fa">
+    <title><%= title %> | Zoom Sportz</title>
+    <meta name="description"
+        content="Zoom sportz is your nummber one destination for current sports news. We are here to update you with the most recent and up-to-date sport news.">
+    <meta name="keywords"
+        content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, english soccer, spanish league">
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <!-- blog post preview -->
+    <meta property="og:url" content="/stories/post/<%= story.slug%>" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="<%= story.title %> " />
+    <meta property="og:description" content="<%= story.title %> " />
+    <meta property="og:image" content="<%=story.photo %>" />
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&family=Baloo+Thambi+2:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+    <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.min.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
+    <link rel="stylesheet" href="/Css/ckstyles.css">
+    <link rel="stylesheet" href="/Css/editor.css">
+    <link rel="stylesheet" href="/Css/embla.css">
+    <link rel="stylesheet" href="/Css/login.css">
+    <link rel="stylesheet" href="/Css/blog.css">
+    <link rel="stylesheet" href="/Css/styles.css">
+    <noscript>
+        <style>
+            /**
+          * Reinstate scrolling for non-JS clients
+          */
+            .simplebar-content-wrapper {
+                overflow: auto;
+            }
+        </style>
+    </noscript>
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=593644877942199&autoLogAppEvents=1"
+        nonce="55i7sfzH"></script>
+
+    <nav class="navigation">
+        <div class="blog-nav-enclosure">
+            <div class="logo-and-links">
+                <div class="logo">
+                    <div class="burger blog-burger">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                    <a href="/">
+                        <div class="logo-wrapper">
+                            <h1>Zoom Sportz</h1>
+                            <!-- <img src="/logo.png" alt="what2watch"> -->
+                        </div>
+
+                    </a>
+                </div>
+                <ul class="nav_links">
+                    <li class="nav_link"> <a href="/">Blog</a> </li>
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
-                    <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <li class="nav_link"> <a href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
                     <% }else{%>
-                    <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <li class="nav_link"> <a href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
                     <% } %>
                     <% } %>
                 </ul>
+
             </div>
 
         </div>
-        <div class="main-category discover-movies">
-            <div class="category-title">
-                <h2 class="discover">Categories</h2>
+    </nav>
+    <div class="side-drawer" data-simplebar>
+        <i class="fas fa-times"></i>
+        <div class="side-drawer-inner">
+            <div class="main-category discover-movies">
+                <div class="category-title">
+                    <h2 class="discover">Menu</h2>
+                </div>
+                <div class="category-types">
+                    <ul class="categories">
+                        <li><a class="active-cat" href="/">Blog</a></li>
+                        <% if(user){%>
+                        <% if(user.privilege === "admin"){%>
+                        <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% }else{%>
+                        <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+
             </div>
-            <div class="category-types">
-                <ul class="categories">
-                    <% if(sortedCats){%>
-                    <% for(let cat in sortedCats){%>
-                    <li><i class="fas fa-dot-circle"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
-                    </li>
-                    <% } %>
-                    <% } %>
-                </ul>
+            <div class="main-category discover-movies">
+                <div class="category-title">
+                    <h2 class="discover">Categories</h2>
+                </div>
+                <div class="category-types">
+                    <ul class="categories">
+                        <% if(sortedCats){%>
+                        <% for(let cat in sortedCats){%>
+                        <li><i class="fas fa-dot-circle"></i><a class="active-cat"
+                                href="/category/<%=cat%>"><%= cat %></a>
+                        </li>
+                        <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+
             </div>
 
         </div>
 
     </div>
+    <section class="side-drawer-backdrop"></section>
 
-</div>
-<section class="side-drawer-backdrop"></section>
+    <section id="header-container" class="blog-header">
+        <div class="wrapper-enclosure-blog">
+            <% if(story){%>
+            <div class="blog-nav">
+                <span><a href="/">Home</a></span>
+                <i class="fas fa-chevron-right"></i>
+                <span><a href="/category/<%=story.category %>"><%= story.category %> </a></span>
+                <i class="fas fa-chevron-right"></i>
+                <span title="<%= story.title %> " class="focus-nav"><%= story.title %></span>
+            </div>
 
-<section id="header-container" class="blog-header">
-    <div class="wrapper-enclosure-blog">
-        <% if(story){%>
-        <div class="blog-nav">
-            <span><a href="/">Home</a></span>
-            <i class="fas fa-chevron-right"></i>
-            <span><a href="/category/<%=story.category %>"><%= story.category %> </a></span>
-            <i class="fas fa-chevron-right"></i>
-            <span title="<%= story.title %> " class="focus-nav"><%= story.title %></span>
-        </div>
+            <% } %>
 
-        <% } %>
-
-        <div class="blog-body-wrapper">
-            <div id="long" class="blog-body-content">
-                <% if(story){%>
-                <div class="full-post-title">
-                    <h3 class="single-post-title"><%= story.title %> </h3>
-                    <h5 class="date post-timestamp"> <span>By <strong><%= story.author %></strong></span>
-                        <span><%= story.createdAt %>
-                        </span> </h5>
-                </div>
-                <div class="post post-header">
-                    <img src="<%= story.photo%>" alt="post-image">
-                    <h5 class="image-caption"><%= story.photoTitle %> </h5>
-                    </h5>
-                </div>
-                <div class="post-content">
-                    <%- story.body %>
-                </div>
-
-                <% } %>
-                <h4 class="top-share"><i class="fas fa-share-alt"></i>Share</h4>
-                <div class="share-story">
-                    <div class="share-title"><i class="fas fa-share-alt"></i>Share</div>
-                    <div class="share-links">
-                        <a href="https://www.facebook.com/sharer.php?u=https://zoom-sportz.com/stories/post/<%= story.slug%>"
-                            target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://twitter.com/share?url=https://zoom-sportz.com/stories/post/<%= story.slug%>&text=Visit zoom-sportz.com to read more"
-                            target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://zoom-sportz.com/stories/post/<%= story.slug%>"
-                            target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="whatsapp://send?text=https://zoom-sportz.com/stories/post/<%= story.slug%>"
-                            data-action="share/whatsapp/share"
-                            onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                            target="_blank" title="Share on whatsapp" class="social-icon"><i
-                                class="fab fa-whatsapp"></i></a>
-                        <a href="https://telegram.me/share/url?url=https://zoom-sportz.com/stories/post/<%= story.slug%>&text=Visit zoom-sportz.com to read more"
-                            class="social-icon"><i class="fab fa-telegram-plane"></i></a>
-                    </div>
-                </div>
-
-                <div class="post-author-bio">
+            <div class="blog-body-wrapper">
+                <div id="long" class="blog-body-content">
                     <% if(story){%>
-                    <% if(story.user?.photo){%>
-                    <img src="<%=story.user.photo%>" alt="post-author">
-                    <% }else{%>
-                    <img src="/profile-pic.png" alt="" class="profile-avatar">
+                    <div class="full-post-title">
+                        <h3 class="single-post-title"><%= story.title %> </h3>
+                        <h5 class="date post-timestamp"> <span>By <strong><%= story.author %></strong></span>
+                            <span><%= story.createdAt %>
+                            </span> </h5>
+                    </div>
+                    <div class="post post-header">
+                        <img src="<%= story.photo%>" alt="post-image">
+                        <h5 class="image-caption"><%= story.photoTitle %> </h5>
+                        </h5>
+                    </div>
+                    <div class="post-content">
+                        <%- story.body %>
+                    </div>
+
                     <% } %>
-                    <div class="post-author-details">
-                        <h4><%= story.author %> </h4>
-                        <% if(story.user?.bio){%>
-                        <p><%= story.user?.bio %></p>
-                        <% }else{%>
-                        <p>No Info about writer to display.</p>
-                        <% } %>
-                        <div class="post-author-socials">
-                            <% if(story.user?.facebook){%>
-                            <a href="<%= story.user.facebook%>" target="_blank"><img src="/Facebook_Logo.png"
-                                    alt="Fb logo"></a>
-                            <% } %>
-                            <% if(story.user?.instagram){%>
-                            <a href="<%= story.user.instagram %>" target="_blank"><img src="/ig-logo.png"
-                                    alt="Ig logo"></a>
-                            <% } %>
-                            <% if(story.user?.twitter){%>
-                            <a href="<%= story.user.twitter%>" target="_blank"><img src="/twitter-logo.png"
-                                    alt="tw logo"></a>
-                            <% } %>
+                    <h4 class="top-share"><i class="fas fa-share-alt"></i>Share</h4>
+                    <div class="share-story">
+                        <div class="share-title"><i class="fas fa-share-alt"></i>Share</div>
+                        <div class="share-links">
+                            <a href="https://www.facebook.com/sharer.php?u=https://zoom-sportz.com/stories/post/<%= story.slug%>"
+                                target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/share?url=https://zoom-sportz.com/stories/post/<%= story.slug%>&text=Visit zoom-sportz.com to read more"
+                                target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://zoom-sportz.com/stories/post/<%= story.slug%>"
+                                target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="whatsapp://send?text=https://zoom-sportz.com/stories/post/<%= story.slug%>"
+                                data-action="share/whatsapp/share"
+                                onClick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                target="_blank" title="Share on whatsapp" class="social-icon"><i
+                                    class="fab fa-whatsapp"></i></a>
+                            <a href="https://telegram.me/share/url?url=https://zoom-sportz.com/stories/post/<%= story.slug%>&text=Visit zoom-sportz.com to read more"
+                                class="social-icon"><i class="fab fa-telegram-plane"></i></a>
                         </div>
                     </div>
-                    <% } %>
 
-                </div>
-                <% if(related.length){%>
-                <div class="older-posts">
-                    <h1 class="cat-title">Related Posts</h1>
-                    <div class="older-posts-inner">
-                        <div class="embla old-posts-embla">
-                            <div class="embla__viewport">
-                                <div class="embla__container">
-                                    <% related.forEach((story) =>{%>
+                    <div class="post-author-bio">
+                        <% if(story){%>
+                        <% if(story.user?.photo){%>
+                        <img src="<%=story.user.photo%>" alt="post-author">
+                        <% }else{%>
+                        <img src="/profile-pic.png" alt="" class="profile-avatar">
+                        <% } %>
+                        <div class="post-author-details">
+                            <h4><%= story.author %> </h4>
+                            <% if(story.user?.bio){%>
+                            <p><%= story.user?.bio %></p>
+                            <% }else{%>
+                            <p>No Info about writer to display.</p>
+                            <% } %>
+                            <div class="post-author-socials">
+                                <% if(story.user?.facebook){%>
+                                <a href="<%= story.user.facebook%>" target="_blank"><img src="/Facebook_Logo.png"
+                                        alt="Fb logo"></a>
+                                <% } %>
+                                <% if(story.user?.instagram){%>
+                                <a href="<%= story.user.instagram %>" target="_blank"><img src="/ig-logo.png"
+                                        alt="Ig logo"></a>
+                                <% } %>
+                                <% if(story.user?.twitter){%>
+                                <a href="<%= story.user.twitter%>" target="_blank"><img src="/twitter-logo.png"
+                                        alt="tw logo"></a>
+                                <% } %>
+                            </div>
+                        </div>
+                        <% } %>
+
+                    </div>
+                    <% if(related.length){%>
+                    <div class="older-posts">
+                        <h1 class="cat-title">Related Posts</h1>
+                        <div class="older-posts-inner">
+                            <div class="embla old-posts-embla">
+                                <div class="embla__viewport">
+                                    <div class="embla__container">
+                                        <% related.forEach((story) =>{%>
                                         <div class="embla__slide">
                                             <div class="embla__slide__inner slider-inner-card featured-card">
                                                 <a href="/stories/post/<%= story.slug%>">
@@ -148,210 +245,216 @@
                                                 </a>
                                             </div>
                                         </div>
-    
+
                                         <% }) %>
 
+                                    </div>
+
                                 </div>
+                                <button class="embla__button embla__button--prev square__btn old-embla-btn"
+                                    type="button">
+                                    <svg class="embla__button__svg" viewBox="137.718 -1.001 366.563 643.999">
+                                        <path
+                                            d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <button class="embla__button embla__button--next square__btn old-embla-btn"
+                                    type="button">
+                                    <svg class="embla__button__svg" viewBox="0 0 238.003 238.003">
+                                        <path
+                                            d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z">
+                                        </path>
+                                    </svg>
+                                </button>
+
 
                             </div>
-                            <button class="embla__button embla__button--prev square__btn old-embla-btn" type="button">
-                                <svg class="embla__button__svg" viewBox="137.718 -1.001 366.563 643.999">
-                                    <path
-                                        d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z">
-                                    </path>
-                                </svg>
-                            </button>
-                            <button class="embla__button embla__button--next square__btn old-embla-btn" type="button">
-                                <svg class="embla__button__svg" viewBox="0 0 238.003 238.003">
-                                    <path
-                                        d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z">
-                                    </path>
-                                </svg>
-                            </button>
+
+                        </div>
+                    </div>
+                    <% } %>
 
 
+
+                </div>
+                <div id="short" class="blog-body-bio">
+                    <h1 class="cat-title">About Us</h1>
+                    <div class="writer-bio-wrapper">
+                        <img src="/banner.jpeg" alt="author-image">
+                        <div class="writer-bio-content">
+                            <h4>Get to Know us</h4>
+                            <p>Welcome to what2watch.net, your number one source for all things movies. We're dedicated
+                                to providing you the very best of movies, with an emphasis on excellent user interface
+                                and experience...</p>
+                            <a class="read-more" href="/about-us">Read more <i
+                                    class="fas fa-angle-double-right"></i></a>
                         </div>
 
                     </div>
-                </div>
-                <% } %>
-
-
-
-            </div>
-            <div id="short" class="blog-body-bio">
-                <h1 class="cat-title">About Us</h1>
-                <div class="writer-bio-wrapper">
-                    <img src="/banner.jpeg" alt="author-image">
-                    <div class="writer-bio-content">
-                        <h4>Get to Know us</h4>
-                        <p>Welcome to what2watch.net, your number one source for all things movies. We're dedicated
-                            to providing you the very best of movies, with an emphasis on excellent user interface
-                            and experience...</p>
-                        <a class="read-more" href="/about-us">Read more <i class="fas fa-angle-double-right"></i></a>
-                    </div>
-
-                </div>
-                <div class="blog-social">
-                    <h1 class="cat-title">Keep in touch</h1>
-                    <div class="blog-social-inner">
-                        <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank"
-                            class="blog-social-link"><i class="fab fa-facebook-f"></i> Facebook</a>
-                        <a href="#" target="_blank" class="blog-social-link"><i
-                                class="fab fa-instagram"></i>Instagram</a>
-                        <a href="#" target="_blank" class="blog-social-link"><i class="fas fa-envelope"></i>G-mail</a>
-                        <a href="#" target="_blank" class="blog-social-link"><i class="fab fa-youtube"></i>Youtube</a>
-                    </div>
-                </div>
-                <div class="cats">
-                    <h1 class="cat-title">Categories</h1>
-                    <div class="post-cat-container">
-                        <ul>
-                            <% if(sortedCats){%>
-                            <% for(let cat in sortedCats){%>
-                            <li><a href="/category/<%=cat%>"><%= cat %> </a><span>(<%= sortedCats[cat] %>)</span>
-                            </li>
-                            <% } %>
-                            <% } %>
-                        </ul>
-
-                    </div>
-                </div>
-                <div>
-                    <div class="instagram-page">
-                        <h1 class="cat-title">Recent Posts</h1>
-                        <div class="ig-cards recent-posts-cards">
-                            <a href="#">
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener
-                                    </h3>
-                                    <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11,
-                                            2021</span> </h5>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener
-                                    </h3>
-                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener
-                                    </h3>
-                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener
-                                    </h3>
-                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener
-                                    </h3>
-                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="post">
-                                    <img src="/dune.jpeg" alt="">
-                                    <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                        opener
-                                    </h3>
-                                    <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                </div>
-                            </a>
+                    <div class="blog-social">
+                        <h1 class="cat-title">Keep in touch</h1>
+                        <div class="blog-social-inner">
+                            <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank"
+                                class="blog-social-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+                            <a href="#" target="_blank" class="blog-social-link"><i
+                                    class="fab fa-instagram"></i>Instagram</a>
+                            <a href="#" target="_blank" class="blog-social-link"><i
+                                    class="fas fa-envelope"></i>G-mail</a>
+                            <a href="#" target="_blank" class="blog-social-link"><i
+                                    class="fab fa-youtube"></i>Youtube</a>
                         </div>
                     </div>
-                    <div class="facebook-page">
-                        <h1 class="cat-title">Facebook Feed</h1>
-                        <div class="facebook-feed" style="width:100% ;">
-                            <div class="fb-page"
-                                data-href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
-                                data-tabs="timeline" data-width="700px" data-height="550px" data-small-header="false"
-                                data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                                <blockquote cite="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
-                                    class="fb-xfbml-parse-ignore"><a
-                                        href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/">ZOOM
-                                        sports updates</a></blockquote>
+                    <div class="cats">
+                        <h1 class="cat-title">Categories</h1>
+                        <div class="post-cat-container">
+                            <ul>
+                                <% if(sortedCats){%>
+                                <% for(let cat in sortedCats){%>
+                                <li><a href="/category/<%=cat%>"><%= cat %> </a><span>(<%= sortedCats[cat] %>)</span>
+                                </li>
+                                <% } %>
+                                <% } %>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div>
+                        <div class="instagram-page">
+                            <h1 class="cat-title">Recent Posts</h1>
+                            <div class="ig-cards recent-posts-cards">
+                                <a href="#">
+                                    <div class="post">
+                                        <img src="/dune.jpeg" alt="">
+                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                            opener
+                                        </h3>
+                                        <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11,
+                                                2021</span> </h5>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="post">
+                                        <img src="/dune.jpeg" alt="">
+                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                            opener
+                                        </h3>
+                                        <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="post">
+                                        <img src="/dune.jpeg" alt="">
+                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                            opener
+                                        </h3>
+                                        <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="post">
+                                        <img src="/dune.jpeg" alt="">
+                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                            opener
+                                        </h3>
+                                        <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="post">
+                                        <img src="/dune.jpeg" alt="">
+                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                            opener
+                                        </h3>
+                                        <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                    </div>
+                                </a>
+                                <a href="#">
+                                    <div class="post">
+                                        <img src="/dune.jpeg" alt="">
+                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
+                                            opener
+                                        </h3>
+                                        <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="instagram-page">
-                        <h1 class="cat-title">On Instagram</h1>
-                        <div class="ig-cards">
-                            <a href="#">
-                                <img src="/author-img.jpg" alt="">
-                            </a>
-                            <a href="#">
-                                <img src="/author-img.jpg" alt="">
-                            </a>
-                            <a href="#">
-                                <img src="/author-img.jpg" alt="">
-                            </a>
-                            <a href="#">
-                                <img src="/author-img.jpg" alt="">
-                            </a>
-                            <a href="#">
-                                <img src="/author-img.jpg" alt="">
-                            </a>
-                            <a href="#">
-                                <img src="/author-img.jpg" alt="">
-                            </a>
+                        <div class="facebook-page">
+                            <h1 class="cat-title">Facebook Feed</h1>
+                            <div class="facebook-feed" style="width:100% ;">
+                                <div class="fb-page"
+                                    data-href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
+                                    data-tabs="timeline" data-width="700px" data-height="550px"
+                                    data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
+                                    data-show-facepile="true">
+                                    <blockquote cite="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
+                                        class="fb-xfbml-parse-ignore"><a
+                                            href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/">ZOOM
+                                            sports updates</a></blockquote>
+                                </div>
+                            </div>
                         </div>
+                        <div class="instagram-page">
+                            <h1 class="cat-title">On Instagram</h1>
+                            <div class="ig-cards">
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="/author-img.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+
                     </div>
+
 
 
                 </div>
-
-
-
             </div>
-        </div>
-        <div class="news-letter">
-            <div class="new-letter-wrapper">
-                <% if(userEmail != ''){%>
-                <h1 class="thanks">
-                    Thank you for subscribing!
-                </h1>
+            <div class="news-letter">
+                <div class="new-letter-wrapper">
+                    <% if(userEmail != ''){%>
+                    <h1 class="thanks">
+                        Thank you for subscribing!
+                    </h1>
 
-                <% }else{%>
-                <i class="fas fa-envelope"></i>
-                <h1>NewsLetter Sign-up</h1>
-                <p>Subscribe to our news letter for latest sports news. Let's stay updated!</p>
-                <form action="/" method="post" id="newsletter-form">
-                    <div class="news-letter-inner">
-                        <input type="text" placeholder="Enter Your Email Address" name="subscriber" id="email"
-                            autocomplete="off">
-                        <button type="submit" class="send-btn" id="submit">Subscribe Now</button>
-                    </div>
-                    <small class="nl">Error Message</small>
+                    <% }else{%>
+                    <i class="fas fa-envelope"></i>
+                    <h1>NewsLetter Sign-up</h1>
+                    <p>Subscribe to our news letter for latest sports news. Let's stay updated!</p>
+                    <form action="/" method="post" id="newsletter-form">
+                        <div class="news-letter-inner">
+                            <input type="text" placeholder="Enter Your Email Address" name="subscriber" id="email"
+                                autocomplete="off">
+                            <button type="submit" class="send-btn" id="submit">Subscribe Now</button>
+                        </div>
+                        <small class="nl">Error Message</small>
 
-                </form>
+                    </form>
 
-                <% } %>
+                    <% } %>
+                </div>
             </div>
+
+
         </div>
 
-
-    </div>
-
-</section>
+    </section>
 
 
 
@@ -359,4 +462,4 @@
 
 
 
-<%- include('partials/footer') %>
+    <%- include('partials/footer') %>
