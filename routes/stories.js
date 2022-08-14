@@ -136,12 +136,12 @@ router.delete("/post/:id", ensureAuth, async (req, res) => {
       return res.render("error/400");
     }
 
-    if (story.user._id.equals(req.user._id) || req.user.privilege === "admin") {
+    if (story?.user?._id.equals(req.user.id) || req.user.privilege === "admin") {
       await Story.deleteOne({ _id: req.params.id });
       if (req.user.privilege === "admin") {
-        res.redirect("/users/admin/dashboard/" + story.user._id);
+        res.redirect("/users/admin/dashboard/" + req.user._id);
       } else {
-        res.redirect("/users/dashboard/" + story.user._id);
+        res.redirect("/users/dashboard/" + req.user._id);
       }
     } else {
       res
