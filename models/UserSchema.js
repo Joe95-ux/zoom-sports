@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
-const StorySchema = require("./storySchema");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -32,7 +31,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       trim: true
     },
-    stories:[StorySchema],
     facebook:{
       type: String,
       trim: true

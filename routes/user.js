@@ -18,8 +18,7 @@ const {
   sortCats,
   getCats,
   editorsPicks,
-  latestPosts,
-  storyMap
+  latestPosts
 } = require("../helpers/helpers");
 const User = require("../models/User");
 const Story = require("../models/Story");
@@ -65,15 +64,14 @@ router.delete("/delete/:id", ensureAuth, async (req, res) => {
       return res.render("error/400");
     }
 
-    if (user._id.equals(req.user.id )|| req.user.privilege === "admin") {
+    if (user._id.equals(req.user.id) || req.user.privilege === "admin") {
       await User.findByIdAndDelete(req.params.id);
-      req.flash("info", user.username + "'s account was successfully deleted")
-      if(req.user.privilege === "admin"){
-        res.redirect("/users/admin/dashboard/" + req.user.id)
-      }else{
+      req.flash("info", user.username + "'s account was successfully deleted");
+      if (req.user.privilege === "admin") {
+        res.redirect("/users/admin/dashboard/" + req.user.id);
+      } else {
         res.redirect("/blog/register");
-      } 
-      
+      }
     } else {
       res
         .status(401)
@@ -172,32 +170,31 @@ router.put(
 
 // change user's privilege
 router.put("/edit-role/:id", ensureAuth, ensureAdmin, async (req, res) => {
-  const user = await User.findOne({_id:req.params.id});
+  const user = await User.findOne({ _id: req.params.id });
   let newRole;
   let name;
-  if(user.name){
+  if (user.name) {
     name = user.name;
-  }else{
+  } else {
     name = user.username;
   }
-  if (user.privilege === "admin"){
+  if (user.privilege === "admin") {
     newRole = "";
-    req.flash("info", name + "'s admin privilege was removed.")
-    
-  }else{
+    req.flash("info", name + "'s admin privilege was removed.");
+  } else {
     newRole = "admin";
-    req.flash("info", name + " has been made admin")
+    req.flash("info", name + " has been made admin");
   }
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       {
-        $set:{privilege:newRole}
+        $set: { privilege: newRole }
       },
       { new: true }
     );
     res.status(200).redirect("/users/admin/dashboard/" + req.user.id);
-  }catch (err) {
+  } catch (err) {
     res.status(500).json(err);
   }
 });
@@ -215,7 +212,8 @@ router.get("/dashboard/:id", ensureAuth, async (req, res) => {
     let stories = await Story.find({ user: req.params.id })
       .populate("user")
       .sort({ createdAt: "desc" })
-      .lean();
+      .lean()
+      .exec();
     let user = await User.findById(req.params.id);
     if (stories) {
       stories = stories.map(story => {
@@ -262,7 +260,8 @@ router.get(
         .sort({ createdAt: "desc" })
         .lean()
         .exec();
-      let users = await User.find({});
+
+      let users = await User.find({}).lean();
       let user = await User.findOne({ _id: req.params.id });
       if (user) {
         created = formatDate(user.createdAt);
@@ -276,8 +275,20 @@ router.get(
         if (categories.length) {
           sortedCats = sortCats(categories);
         }
-        users = storyMap(stories, users)
+        // get users and their post count
+        
       }
+      const writers = await User.aggregate([
+        {
+          $lookup: {
+            from: "stories",
+            let: { userId: "$_id" },
+            pipeline: [{ $match: { $expr: { $eq: ["$$userId", "$user"] } } }],
+            as: "posts_count"
+          }
+        },
+        { $addFields: { posts_count: { $size: "$posts_count" } } }
+      ]);
       if (users) {
         users.map(user => {
           user.createdAt = formatDate(user.createdAt);
@@ -289,9 +300,10 @@ router.get(
         stories,
         name: req.user.name,
         created,
-        users,
+        writers,
         user,
         sortedCats
+        
       });
     } catch (err) {
       console.log(err);

@@ -56,15 +56,6 @@ module.exports = {
       index += len;
     }
     return newStore;
-  },
-  storyMap: function(stories, users) {
-    for (let user of users) {
-      for (let story of stories) {
-        if (story.user._id.equals(user._id)) {
-          user.stories.push(story);
-        }
-      }
-    }
-    return users;
   }
+
 };
