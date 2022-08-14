@@ -69,7 +69,7 @@ router.get("/edit/:id", ensureAuth, async (req, res) => {
       return res.render("error/400");
     }
 
-    if (story.user._id.equals(req.user._id) || req.user.privilege === "admin") {
+    if (story?.user?._id.equals(req.user._id) || req.user.privilege === "admin") {
       res.render("editpost", { title, story });
     } else {
       res
