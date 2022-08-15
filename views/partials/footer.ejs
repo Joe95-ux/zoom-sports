@@ -14,14 +14,11 @@
                 <a href="#">Privacy Policy</a>
             </div>
             <div class="socials">
-                <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank" class="social-icon facebook"><i
-                        class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank" class="social-icon ig"><i
-                        class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" class="social-icon mail"><i
-                        class="fas fa-envelope"></i></a>
-                <a href="#" target="_blank"
-                    class="social-icon yt"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank"
+                    class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" class="social-icon ig"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" class="social-icon mail"><i class="fas fa-envelope"></i></a>
+                <a href="#" target="_blank" class="social-icon yt"><i class="fab fa-youtube"></i></a>
 
             </div>
 
@@ -32,26 +29,26 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
 <script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
 <script src="https://cdn.ckbox.io/CKBox/1.1.0/ckbox.js"></script>
 
 <script>
-    if (document.querySelector("#editor") != null){
+    if (document.querySelector("#editor") != null) {
         ClassicEditor
-        .create(document.querySelector('#editor'), {
-            ckbox: {
-                tokenUrl: 'https://91186.cke-cs.com/token/dev/uWsAGlDqIzt8L323xZli7O9u4s78u4a2tVmm?limit=10 ',
-            },
-            toolbar: [
-                'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-                'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList', '|', 'mediaEmbed',
-            ],
-        })
-        .catch(error => {
-            console.error(error);
-        });
+            .create(document.querySelector('#editor'), {
+                ckbox: {
+                    tokenUrl: 'https://91186.cke-cs.com/token/dev/uWsAGlDqIzt8L323xZli7O9u4s78u4a2tVmm?limit=10 ',
+                },
+                toolbar: [
+                    'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
+                    'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList', '|', 'mediaEmbed',
+                ],
+            })
+            .catch(error => {
+                console.error(error);
+            });
 
     }
 
@@ -65,69 +62,22 @@
 
         element.appendChild(anchor);
     });
-    document.querySelectorAll( 'div[data-oembed-url]' ).forEach( element => {
+    document.querySelectorAll('div[data-oembed-url]').forEach(element => {
         // Discard the static media preview from the database (empty the <div data-oembed-url="...">).
-        while ( element.firstChild ) {
-            element.removeChild( element.firstChild );
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
         }
 
         // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
         // to discover the media.
-        const anchor = document.createElement( 'a' );
+        const anchor = document.createElement('a');
 
-        anchor.setAttribute( 'href', element.dataset.oembedUrl );
+        anchor.setAttribute('href', element.dataset.oembedUrl);
         anchor.className = 'embedly-card';
 
-        element.appendChild( anchor );
-    } );
+        element.appendChild(anchor);
+    });
 </script>
-
-<!-- <script src="/ckeditor5-34.2.0-pohffpmnzlya/src/ckeditor.js"></script> -->
-<!-- <script>
-    ClassicEditor
-        .create(document.querySelector('#editor'), {
-
-            licenseKey: '',
-
-
-
-        })
-        .then(editor => {
-            window.editor = editor;
-
-
-
-
-        })
-        .catch(error => {
-            console.error('Oops, something went wrong!');
-            console.error(
-                'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
-                );
-            console.warn('Build id: pohffpmnzlya-rmkswdjkgrt1');
-            console.error(error);
-        });
-</script> -->
-<!-- <script >
-
-    if (document.querySelector("#editor") != null) {
-        ClassicEditor.create(document.querySelector("#editor"), {
-                plugins: [CKBox],
-                toolbar: [ 'ckbox'],
-                ckbox: {
-                    defaultUploadCategories: {
-                        Bitmaps: ['bmp'],
-                        Pictures: ['jpg', 'jpeg']
-                    }
-                }
-
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-</script> -->
-<!-- embla -->
 <script src="/embla.js"></script>
 <script src="/autoplay.js"></script>
 <script src="/login.js"></script>

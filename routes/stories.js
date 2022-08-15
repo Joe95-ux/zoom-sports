@@ -56,6 +56,8 @@ const upload = multer({
   })
 });
 
+//get edit page for story
+
 router.get("/edit/:id", ensureAuth, async (req, res) => {
   const title = "edit post";
   try {
