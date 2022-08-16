@@ -100,7 +100,7 @@ router.put(
       }
 
       if (
-        story?.user?._id.equals(req.user._id) ||
+        story.user?._id.equals(req.user._id) ||
         req.user.privilege === "admin"
       ) {
         if (req.file) {
