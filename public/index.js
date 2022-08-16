@@ -151,4 +151,13 @@ function dropDown() {
 
 dropDown();
 
+function readingTime() {
+  const text = document.querySelector(".post-content").innerText;
+  const wpm = 180;
+  const words = text.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm);
+  document.querySelector(".read-time h5").innerText = time + " min read";
+}
+readingTime();
+
 new SimpleBar(simpleBarContainer, { autoHide: true });
