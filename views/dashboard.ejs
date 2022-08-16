@@ -93,7 +93,11 @@
                                         <% } %>  
                                     </div>
                                     <h2><strong><%= user.name ? user.name:user.username%></strong></h2>
-                                    <h3><%= user.role ? user.role : "no role yet" %> </h3>
+                                    <% if(user?.privilege === "admin"){%>
+                                        <h3 style="color:rgba(255, 90, 90, 1);"><strong>Admin</strong></h3>
+                                        <% }else{%>
+                                        <h3><%= user.role ? user.role : "no role yet" %> </h3>  
+                                    <% } %>
                                     <h2>Total stories : <strong><%= user.posts_count %> </strong></h2>
                                     <div class="admin-actions">
                                         <form method="POST" action="/users/edit-role/<%=user._id%>?_method=PUT">

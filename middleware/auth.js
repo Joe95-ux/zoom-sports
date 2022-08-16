@@ -10,7 +10,11 @@ module.exports = {
     },
     ensureGuest: function(req, res, next){
         if(req.isAuthenticated()){
-            res.redirect('/users/dashboard/' + req.user.id);
+            if(req.user?.privilege === "admin"){
+                res.redirect('/users/admin/dashboard/' + req.user.id);
+            }else{
+                res.redirect('/users/dashboard/' + req.user.id);
+            } 
         }else{
             return next();
         }
