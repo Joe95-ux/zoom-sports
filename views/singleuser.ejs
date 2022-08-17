@@ -1,0 +1,207 @@
+<%- include("partials/header") %>
+
+<div class="side-drawer" data-simplebar>
+    <i class="fas fa-times"></i>
+    <div class="side-drawer-inner">
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Menu</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <li><a class="active-cat" href="/">Blog</a></li>
+                    <% if(user){%>
+                    <% if(user.privilege === "admin"){%>
+                    <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                    <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Categories</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <% if(sortedCats){%>
+                    <% for(let cat in sortedCats){%>
+                    <li><i class="fas fa-dot-circle"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                    </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<section class="side-drawer-backdrop"></section>
+
+<section id="header-container" class="blog-header">
+    <div class="wrapper-enclosure-blog">
+        <h1 class="cat-title">Articles By <%= writer.name %> </h1>
+        <div class="single-user-wrapper">
+            <div class="left-side">
+                <div class="left-side-writer">
+                    <div class="left-side-header">
+                        <% if(writer.photo){%>
+                        <img src="<%= writer.photo%>" alt="">
+                        <% }else{%>
+                        <img src="/profile-pic.png" alt="">
+                        <% }%>
+                    </div>
+                    <div class="profile-photo left-side-bio">
+                        <h2><strong><%= writer.name%></strong></h2>
+                        <h3><%= writer.role ? writer.role : "Writer"%></h3>
+                        <div class="all-articles">
+                            <h2>Total Articles : <strong><%= stories.length %> </strong></h2>
+                        </div>
+                        <div class="left-about-author">
+                            <h2>About</h2>
+                            <p><%= writer.bio %> </p>
+                        </div>
+
+                    </div>
+                    <div class="post-author-socials left-socials">
+                        <% if(writer?.facebook){%>
+                        <a href="<%= writer.facebook%>" target="_blank"><img src="/Facebook_Logo.png" alt="Fb logo"></a>
+                        <% } %>
+                        <% if(writer?.instagram){%>
+                        <a href="<%= writer.instagram %>" target="_blank"><img src="/ig-logo.png" alt="Ig logo"></a>
+                        <% } %>
+                        <% if(writer?.twitter){%>
+                        <a href="<%= writer.twitter%>" target="_blank"><img src="/twitter-logo.png" alt="tw logo"></a>
+                        <% } %>
+                    </div>
+
+                </div>
+                <div class="left-side-writers to-stick-profile">
+                    <h2>Writers to check out</h2>
+                    <% if(users){%>
+                    <div class="users-wrapper">
+                        <% users.forEach(user=>{%>
+                        <a href="/users/profiles/<%= user._id%>">
+
+                            <div class="user-inner">
+                                <% if(user.photo){%>
+                                <img src="<%= user.photo%>" alt="">
+                                <% }else{%>
+                                <img src="/profile-pic.png" alt="">
+                                <% }%>
+                                <div>
+                                    <h5>Zoom Sportz</h5>
+                                    <h4><%= user.name || "writer"%></h4>
+                                </div>
+
+                            </div>
+                        </a>
+
+                        <%}) %>
+                        <% } %>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="center-right">
+                <div class="center-articles">
+                    <div class="center-articles-first">
+                        <% if(first.length){%>
+                        <%first.forEach(story=>{  %>
+    
+                        <div class="post">
+                            <a href="/stories/post/<%= story.slug %>">
+                                <img src="<%= story.photo %>" alt="post image">
+                                <h5 class="cat-name"><%= story.category %> </h5>
+                                <h3><%= story.title %> </h3>
+                                <div class="post-desc clamp-dashboard"> <%- story.body %> </div>
+                                <h5 class="date"> <span>by <strong><%= story.author %> </strong></span>
+                                    <span><%= story.createdAt %>
+                                    </span> </h5>
+                            </a>
+                            <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
+                                    class="fas fa-angle-double-right"></i></a>
+                        </div>
+    
+                        <% }) %>
+    
+                        <%}else{%>
+                        <h1>This writer has no stories yet</h1>
+                        <% } %>
+    
+                    </div>
+                    <div class="center-articles-rest">
+                        <% if(rest){%>
+                        <%rest.forEach(story=>{  %>
+    
+                        <div class="rest-post hover-post">
+                            <a href="/stories/post/<%= story.slug %>">
+                                <div class="rest-post-inner">
+                                    <img src="<%= story.photo %>" alt="post image">
+                                    <div class="rest-content">
+                                        <h5 class="cat-name"><%= story.category %> </h5>
+                                        <h3><%= story.title %> </h3>
+                                        <div class="post-desc clamp-dashboard"> <%- story.body %> </div>
+                                        <h5 class="date"> <span>by <strong><%= story.author %> </strong></span>
+                                            <span><%= story.createdAt %>
+                                            </span> </h5>
+    
+                                    </div>
+    
+                                </div>
+                            </a>
+                        </div>
+    
+                        <% }) %>
+    
+                        <%} %>
+    
+    
+                    </div>
+                </div>
+                <div class="right-trending to-stick-profile">
+                    <h2>Trending Stories</h2>
+                    <% if(trending){%>
+                    <%trending.forEach(story=>{  %>
+    
+                    <div class="rest-post hover-post">
+                        <a href="/stories/post/<%= story.slug %>">
+                            <div class="rest-post-inner">
+                                <div class="rest-content">
+                                    <h5 class="cat-name"><%= story.category %> </h5>
+                                    <h3><%= story.title %> </h3>
+                                    <div class="post-desc clamp-dashboard"> <%- story.body %> </div>
+    
+                                </div>
+    
+                            </div>
+                        </a>
+                    </div>
+    
+                    <% }) %>
+    
+                    <%} %>
+                </div>
+
+            </div>
+            
+        </div>
+
+
+
+
+
+    </div>
+</section>
+
+
+<%- include('partials/footer') %>

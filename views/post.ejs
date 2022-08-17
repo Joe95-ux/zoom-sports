@@ -207,6 +207,7 @@
                             <% }else{%>
                             <p>No Info about writer to display.</p>
                             <% } %>
+                            <a href="/users/profiles/<%= story.user?._id%>">Read more from <%= story.user?.name || story.user?.username %></a>
                             <div class="post-author-socials">
                                 <% if(story.user?.facebook){%>
                                 <a href="<%= story.user.facebook%>" target="_blank"><img src="/Facebook_Logo.png"

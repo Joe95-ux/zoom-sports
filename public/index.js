@@ -21,7 +21,6 @@ const navSlide = () => {
     // toggle side-drawer
     sideDrawer.classList.add("side-drawer-active");
     closeSideDrawer.style.opacity = "1";
-
   });
 
   //close drawer
@@ -152,12 +151,28 @@ function dropDown() {
 dropDown();
 
 function readingTime() {
-  const text = document.querySelector(".post-content").innerText;
-  const wpm = 180;
-  const words = text.trim().split(/\s+/).length;
-  const time = Math.ceil(words / wpm);
-  document.querySelector(".read-time h5").innerText = time + " min read";
+  let text = document.querySelector(".post-content");
+  if (text !== null) {
+    text = text.innerText;
+    const wpm = 180;
+    const words = text.trim().split(/\s+/).length;
+    const time = Math.ceil(words / wpm);
+    document.querySelector(".read-time h5").innerText = time + " min read";
+  }
 }
 readingTime();
+
+function getDescription() {
+  const descs = [...document.querySelectorAll(".post-desc")];
+  for (let desc of descs) {
+    let paragraphs = [...desc.getElementsByTagName("p")].slice(0, 2);
+    let content = [];
+    paragraphs.forEach(p => content.push(p.innerText));
+    content = content.join(",");
+    desc.innerText = content;
+  }
+}
+getDescription()
+
 
 new SimpleBar(simpleBarContainer, { autoHide: true });

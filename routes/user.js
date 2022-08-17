@@ -373,6 +373,71 @@ router.post("/admin/register", ensureAdminToken, function(req, res) {
   );
 });
 
+// view user profile
+router.get("/profiles/:id", async (req, res)=>{
+  let title;
+  let sortedCats;
+  let first;
+  let rest;
+  let trending;
+  let writers;
+  let users;
+  try{
+    let user = await User.findById(req.params.id);
+
+    if(!user){
+      res.status(401).json("Sorry, we couldn't find the requested user.");
+    }
+    title = user.name || user.username;
+    let allStories = await Story.find({})
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    let stories = await Story.find({ user: req.params.id, status:"Public"})
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      stories = stories.map(story => {
+        story.createdAt = formatDate(story.createdAt, format);
+        return story;
+      });
+      first = stories.slice(0,1);
+      rest = stories.slice(1);
+    }
+    if (allStories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+      trending = allStories.slice(0, 4);
+    }
+    
+    if (user) {
+      created = formatDate(user.createdAt);
+    }
+    writers = await User.aggregate([
+      {
+        $lookup: {
+          from: "stories",
+          let: { userId: "$_id" },
+          pipeline: [{ $match: { $expr: { $eq: ["$$userId", "$user"] } } }],
+          as: "posts_count"
+        }
+      },
+      { $addFields: { posts_count: { $size: "$posts_count" } } }
+    ]);
+    writers = writers.filter(writer=> !writer._id.equals(user._id))
+    users = writers.filter(writer=> writer.posts_count > 0);
+    res.render("singleuser", {title, first, writer:user, rest, stories, trending, users, sortedCats})
+  
+  }catch(err){
+    console.log(err)
+  }
+  
+})
+
 //login user
 router.get("/logout", function(req, res, next) {
   req.logout(function(err) {
