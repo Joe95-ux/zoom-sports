@@ -36,6 +36,10 @@ module.exports = {
     const posts = stories.slice(0, 8);
     return posts;
   },
+  getByCat: function(stories, cat){
+    let sorted = stories.filter(story=>story.category === cat);
+    return sorted;
+  },
   editorsPicks: function(stories) {
     const picks = stories.reduce((pureStore, currentStory) => {
       let story = pureStore.find(

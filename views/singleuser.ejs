@@ -117,10 +117,9 @@
                     <div class="center-articles-first">
                         <% if(first.length){%>
                         <%first.forEach(story=>{  %>
-    
+                        <a href="/stories/post/<%= story.slug %>"><img src="<%= story.photo %>" alt="post image"></a>
                         <div class="post">
                             <a href="/stories/post/<%= story.slug %>">
-                                <img src="<%= story.photo %>" alt="post image">
                                 <h5 class="cat-name"><%= story.category %> </h5>
                                 <h3><%= story.title %> </h3>
                                 <div class="post-desc clamp-dashboard"> <%- story.body %> </div>
@@ -131,18 +130,18 @@
                             <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
                                     class="fas fa-angle-double-right"></i></a>
                         </div>
-    
+
                         <% }) %>
-    
+
                         <%}else{%>
                         <h1>This writer has no stories yet</h1>
                         <% } %>
-    
+
                     </div>
                     <div class="center-articles-rest">
                         <% if(rest){%>
                         <%rest.forEach(story=>{  %>
-    
+
                         <div class="rest-post hover-post">
                             <a href="/stories/post/<%= story.slug %>">
                                 <div class="rest-post-inner">
@@ -154,25 +153,25 @@
                                         <h5 class="date"> <span>by <strong><%= story.author %> </strong></span>
                                             <span><%= story.createdAt %>
                                             </span> </h5>
-    
+
                                     </div>
-    
+
                                 </div>
                             </a>
                         </div>
-    
+
                         <% }) %>
-    
+
                         <%} %>
-    
-    
+
+
                     </div>
                 </div>
                 <div class="right-trending to-stick-profile">
                     <h2>Trending Stories</h2>
                     <% if(trending){%>
                     <%trending.forEach(story=>{  %>
-    
+
                     <div class="rest-post hover-post">
                         <a href="/stories/post/<%= story.slug %>">
                             <div class="rest-post-inner">
@@ -180,20 +179,20 @@
                                     <h5 class="cat-name"><%= story.category %> </h5>
                                     <h3><%= story.title %> </h3>
                                     <div class="post-desc clamp-dashboard"> <%- story.body %> </div>
-    
+
                                 </div>
-    
+
                             </div>
                         </a>
                     </div>
-    
+
                     <% }) %>
-    
+
                     <%} %>
                 </div>
 
             </div>
-            
+
         </div>
 
 

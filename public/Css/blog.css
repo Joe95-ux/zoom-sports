@@ -2696,7 +2696,7 @@ a.create-btn.edit-profile-btn {
 }
 
 .center-articles-first {
-    padding: 24px;
+    /* padding: 24px; */
     border-radius: 10px;
     background-color: var(--mainWhite);
     box-shadow: var(--boxShadow);
@@ -2705,8 +2705,12 @@ a.create-btn.edit-profile-btn {
 
 .center-articles-first img {
     max-width: 100%;
-    border-radius: 10px;
+    background-color: #0d141f;
+    border-radius: 10px 10px 0 0;
     width: 100%;
+}
+.center-articles-first .post{
+    padding: 16px 24px 24px;
 }
 
 .center-articles-rest {

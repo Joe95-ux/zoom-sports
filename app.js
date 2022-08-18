@@ -27,6 +27,7 @@ const {
   dateWithTime,
   sortCats,
   getCats,
+  getByCat,
   editorsPicks,
   latestPosts,
   paginate
@@ -248,6 +249,8 @@ app.get("/", async (req, res) => {
   let pages;
   let pageNum = 1;
   let currentPage;
+  let englishpl;
+  let spanishll;
   try {
     let stories = await Story.find({ status: "Public"})
       .populate("user")
@@ -271,8 +274,9 @@ app.get("/", async (req, res) => {
       if(picks.length){
          picks = picks.slice(0, 6);
       }
-     
       latest = latestPosts(stories);
+      englishpl = getByCat(stories, "English Premier League");
+      spanishll = getByCat(stories, "Spanish Laliga");
 
     }
     res.render("home", {
@@ -284,7 +288,9 @@ app.get("/", async (req, res) => {
       allStories,
       currentPage,
       pages,
-      pageNum
+      pageNum,
+      englishpl,
+      spanishll
     });
   } catch (err) {
     console.log(err);
@@ -307,6 +313,8 @@ app.get("/page=:num", async (req, res) => {
   let pages;
   let pageNum = parseInt(req.params.num);
   let currentPage;
+  let englishpl;
+  let spanishll;
   try {
     let stories = await Story.find({ status: "Public"})
       .populate("user")
@@ -332,6 +340,8 @@ app.get("/page=:num", async (req, res) => {
       }
      
       latest = latestPosts(stories);
+      englishpl = getByCat(stories, "English Premier League");
+      spanishll = getByCat(stories, "Spanish Laliga");
 
     }
     res.render("home", {
@@ -343,7 +353,9 @@ app.get("/page=:num", async (req, res) => {
       allStories,
       currentPage,
       pages,
-      pageNum
+      pageNum,
+      englishpl,
+      spanishll
     });
   } catch (err) {
     console.log(err);
