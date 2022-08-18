@@ -389,7 +389,7 @@ router.get("/profiles/:id", async (req, res)=>{
       res.status(401).json("Sorry, we couldn't find the requested user.");
     }
     title = user.name || user.username;
-    let allStories = await Story.find({})
+    let allStories = await Story.find({status:"Public"})
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
