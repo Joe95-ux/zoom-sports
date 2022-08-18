@@ -1812,6 +1812,11 @@ h3.single-post-title {
     margin-right: auto;
     margin-bottom: 5px;
 }
+.post-content figcaption{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400px;
+}
 
 .post-content p {
     font-size: 18px;
@@ -2396,7 +2401,6 @@ tbody td a {
     line-height: 1.5;
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: center;
 }
 
