@@ -1820,13 +1820,18 @@ h3.single-post-title {
     margin: 1.4rem 0;
     font-family: 'Roboto', sans-serif;
 }
+.post-content h1{
+    font-size: 20px;
+}
+.post-content h3, .post-content h2{
+    font-size: 18px;
+}
 
-.post-content h2 {
+.post-content h2, .post-content h1, .post-content h3 {
     font-family: "Poppins", sans-serif;
     text-transform: uppercase;
-    font-size: 1.4rem;
     color: var(--mainBlack);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 blockquote {
