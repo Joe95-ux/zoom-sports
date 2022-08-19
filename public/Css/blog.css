@@ -16,6 +16,7 @@
     --boxShadow: 0 0 12px rgba(61, 99, 140, .08);
     --lightGrey: rgb(212, 212, 212, 1);
     --midGray: rgb(212, 212, 212, 0.85);
+    --borderLine: 1px solid rgba(0, 0, 0, 0.1);
     --mainSpacing: 0.1rem;
     --mainTransition: all 0.3s linear;
     --dropTransition: all 0.5s ease-in;
@@ -2646,6 +2647,7 @@ a.create-btn.edit-profile-btn {
     position: relative;
     background-image: url("/stad-bg.jpg");
     background-position: center;
+    background-size: cover;
     border-radius: 10px 10px 0 0;
 }
 
@@ -2660,7 +2662,7 @@ a.create-btn.edit-profile-btn {
     min-width: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid var(--midGray);
+    border: 4px solid var(--mainWhite);
 }
 
 .left-side-bio {
@@ -2735,10 +2737,13 @@ a.create-btn.edit-profile-btn {
     transition: box-shadow 0.5s, transform 0.5s;
 }
 
-.rest-post:hover {
+@media screen and (min-width:1000px){
+    .rest-post:hover {
     box-shadow: 0 0 8px rgba(61, 99, 140, .16);
     transform: scale(1.015);
+  }
 }
+
 
 .rest-post:not(:last-child) {
     margin-bottom: 1.2rem;
@@ -2914,33 +2919,6 @@ a.create-btn.edit-profile-btn {
     }
 }
 
-@media screen and (max-width:370px){
-    .rest-post-inner img{
-        height: 160px;
-    }
-    .rest-post {
-        padding: 0;
-        border-radius: 0;
-        box-shadow: none;
-        background-color: inherit;
-        transition: none;
-    }
-
-    .center-articles-first {
-        padding: 0;
-        border-radius: 0;
-        background-color: inherit;
-        box-shadow: none;
-    }
-    .right-trending{
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        padding-top: 16px;
-    }
-    .right-trending .rest-post{
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-}
 .right-trending h2,
 .left-side-writers h2 {
     font-size: 16px;
@@ -2952,12 +2930,48 @@ a.create-btn.edit-profile-btn {
 }
 
 @media screen and (max-width:414px){
+    .rest-post-inner img{
+        height: 210px;
+    }
+    .rest-post {
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: inherit;
+        transition: none;
+    }
+    .center-articles-rest .rest-post{
+        padding-bottom: 10px;
+        border-bottom: var(--borderLine);
+    }
+
+    .center-articles-first {
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .right-trending{
+        border-top: var(--borderLine);
+        padding-top: 16px;
+    }
+    .right-trending .rest-post{
+        padding-bottom: 10px;
+        border-bottom: var(--borderLine);
+    }
     .right-trending h2{
         font-size: 1.5rem;
         font-weight: 700;
         margin-bottom: 13px;
     }
 }
+
+
+@media screen and (max-width:370px){
+    .rest-post-inner img{
+        height: 170px;
+    }
+}
+
 
 .left-side-writers h2 {
     margin-bottom: 14px;
