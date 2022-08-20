@@ -1782,7 +1782,6 @@ textarea {
     display: inline-block;
 }
 
-
 .post-header img {
     width: 100%;
     height: auto;
@@ -2708,10 +2707,14 @@ a.create-btn.edit-profile-btn {
 
 .center-articles-first {
     /* padding: 24px; */
-    border-radius: 10px;
-    background-color: var(--mainWhite);
     box-shadow: var(--boxShadow);
     color: #242424;
+}
+
+.center-articles-first .post{
+    background-color: var(--mainWhite);
+    margin-top: -5px;
+    border-radius: 0 0 10px 10px;
 }
 
 .center-articles-first img {
@@ -2947,7 +2950,6 @@ a.create-btn.edit-profile-btn {
 
     .center-articles-first {
         padding: 0;
-        border-radius: 0;
         box-shadow: none;
     }
     .right-trending{
