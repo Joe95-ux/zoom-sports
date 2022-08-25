@@ -1959,12 +1959,29 @@ div.embedly-card-hug iframe {
 }
 
 .post-author-details a {
-    color: #1363DF;
+    color: #9d9d9d;
     font-weight: 500;
     text-decoration: none;
     font-size: 16px;
+    position: relative;
+    top: 10px;
+    font-weight: 600;
+    font-family: 'Baloo Thambi 2', cursive;
 }
+.post-author-details a:hover{
+    color: var(--primaryColor);
+    text-decoration: underline;
+}
+.post-author-details a::after{
+    content:"\f30b";
+    margin-left: .5rem;
+    position: relative;
+    bottom: -1px;
+    font-size: 12px;
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
 
+}
 .post-author-socials {
     margin-top: 1rem;
     display: flex;
