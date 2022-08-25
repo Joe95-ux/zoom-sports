@@ -30,7 +30,8 @@ const {
   getByCat,
   editorsPicks,
   latestPosts,
-  paginate
+  paginate,
+  otherCats
 } = require("./helpers/helpers");
 const User = require("./models/User");
 const Story = require("./models/Story");
@@ -137,8 +138,9 @@ app.get("/category/:catName", async (req, res) => {
   let sortedCats;
   let pages;
   let pageNum = 1;
+  let latest;
   try {
-    let allStories = await Story.find({ status: "Public" });
+    let allStories = await Story.find({ status: "Public" }).lean().exec();
     let stories = await Story.find({ category: cat, status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
@@ -157,6 +159,11 @@ app.get("/category/:catName", async (req, res) => {
         sortedCats = sortCats(categories);
       }
     }
+    allStories = allStories.map(story => {
+      story.createdAt = formatDate(story.createdAt);
+      return story;
+    });
+    latest = otherCats(allStories, cat);
     res.render("category", {
       title,
       stories:currentPage,
@@ -164,7 +171,8 @@ app.get("/category/:catName", async (req, res) => {
       pageNum,
       sortedCats,
       cat,
-      category
+      category,
+      latest
     });
   } catch (err) {
     console.log(err);
@@ -178,10 +186,11 @@ app.get("/category/:catName/:num", async (req, res) => {
   const cat = req.params.catName;
   const category = encodeURI(cat);
   let sortedCats;
+  let latest;
   let pages;
   let pageNum = parseInt(req.params.num);
   try {
-    let allStories = await Story.find({ status: "Public" });
+    let allStories = await Story.find({ status: "Public" }).lean().exec();
     let stories = await Story.find({ category: cat, status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
@@ -200,6 +209,11 @@ app.get("/category/:catName/:num", async (req, res) => {
         sortedCats = sortCats(categories);
       }
     }
+    allStories = allStories.map(story => {
+      story.createdAt = formatDate(story.createdAt);
+      return story;
+    });
+    latest = otherCats(allStories, cat);
     res.render("category", {
       title,
       stories:currentPage,
@@ -207,7 +221,8 @@ app.get("/category/:catName/:num", async (req, res) => {
       pageNum,
       sortedCats,
       cat,
-      category
+      category,
+      latest
     });
   } catch (err) {
     console.log(err);

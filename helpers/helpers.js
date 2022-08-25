@@ -24,6 +24,21 @@ module.exports = {
     }
     return allCats;
   },
+  otherCats: function(stories, cat){
+    let recents = stories.filter(story => story.category !== cat);
+    if(recents.length){
+      recents = recents.slice(0, 6);
+    }
+    return recents;
+  },
+  recentPosts: function(stories, storyId){
+    storyId = storyId.toString()
+    let newStories = stories.filter(story=>story._id.toString() !== storyId);
+    if(newStories.length){
+      newStories = newStories.slice(0,6);
+    }
+    return newStories;
+  },
   relatedPosts: function(stories, cat, storyId) {
     storyId = storyId.toString();
     let newStories = stories.filter(story => story._id.toString() !== storyId);

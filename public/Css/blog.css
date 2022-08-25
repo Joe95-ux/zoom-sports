@@ -1088,8 +1088,8 @@ a.blog-social-link i {
 }
 
 .ig-cards img {
-    height: auto;
     max-height: 150px;
+    height: 110px;
     width: 100%;
     object-fit: cover;
 }
@@ -1101,7 +1101,8 @@ a.blog-social-link i {
     }
 
     .ig-cards img {
-        height: auto;
+        height: 195px;
+        min-height: 150px;
         max-height: 200px;
         object-fit: cover;
     }
@@ -1112,13 +1113,41 @@ a.blog-social-link i {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+    .ig-cards img {
+        height: 170px;
+        
+    }
+
+}
+@media screen and (max-width:570px) {
+    
+    .ig-cards img {
+        height: 140px;
+        min-height: 140px
+        
+    }
 
 }
 
 @media screen and (max-width:478px) {
     .ig-cards {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+    .ig-cards img {
+        height: 120px;
+        min-height: 120px
+        
+    }
+
+}
+
+@media screen and (max-width:366px) {
+    
+    .ig-cards img {
+        height: 190px;
+        min-height: 190px
+        
     }
 
 }

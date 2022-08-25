@@ -20,7 +20,8 @@ const {
   editorsPicks,
   latestPosts,
   relatedPosts,
-  paginate
+  paginate,
+  recentPosts
 } = require("../helpers/helpers");
 const User = require("../models/User");
 const Story = require("../models/Story");
@@ -162,6 +163,7 @@ router.get("/post/:slug", async (req, res) => {
   let related;
   const userEmail = req.flash("user");
   let sortedCats;
+  let recent;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
@@ -183,13 +185,14 @@ router.get("/post/:slug", async (req, res) => {
           story.createdAt = formatDate(story.createdAt);
           return story;
         });
+        recent = recentPosts(stories, story._id);
         related = relatedPosts(stories, story.category, story._id);
         let categories = getCats(stories);
         if (categories.length) {
           sortedCats = sortCats(categories);
         }
       }
-      res.render("post", { title, userEmail, story, sortedCats, related });
+      res.render("post", { title, userEmail, story, sortedCats, recent, related });
     }
   } catch (err) {
     console.error(err);

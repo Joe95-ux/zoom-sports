@@ -20,7 +20,7 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <!-- blog post preview -->
     <meta property="og:url" content="/stories/post/<%= story.slug%>" />
-    <meta property="og:type" content="article"/>
+    <meta property="og:type" content="article" />
     <meta property="og:title" content="<%= story.title %> " />
     <meta property="og:description" content="<%= story.title %> " />
     <meta property="og:image" content="<%=story.photo%>" />
@@ -161,7 +161,8 @@
                             </span> </h5>
                     </div>
                     <div class="read-time">
-                        <i class="fas fa-clock"></i><h5>4 min read</h5>
+                        <i class="fas fa-clock"></i>
+                        <h5>4 min read</h5>
                     </div>
                     <div class="post post-header">
                         <img src="<%= story.photo%>" alt="post-image">
@@ -207,7 +208,8 @@
                             <% }else{%>
                             <p>No Info about writer to display.</p>
                             <% } %>
-                            <a href="/users/profiles/<%= story.user?._id%>">More From <%= story.user?.name || story.user?.username %></a>
+                            <a href="/users/profiles/<%= story.user?._id%>">More From
+                                <%= story.user?.name || story.user?.username %></a>
                             <div class="post-author-socials">
                                 <% if(story.user?.facebook){%>
                                 <a href="<%= story.user.facebook%>" target="_blank"><img src="/Facebook_Logo.png"
@@ -323,66 +325,27 @@
                         </div>
                     </div>
                     <div>
+                        <% if(recent.length){%>
                         <div class="instagram-page">
                             <h1 class="cat-title">Recent Posts</h1>
                             <div class="ig-cards recent-posts-cards">
-                                <a href="#">
-                                    <div class="post">
-                                        <img src="/dune.jpeg" alt="">
-                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                            opener
-                                        </h3>
-                                        <h5 class="date"> <span>by <strong>John Doe</strong></span> <span>July 11,
-                                                2021</span> </h5>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="post">
-                                        <img src="/dune.jpeg" alt="">
-                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                            opener
-                                        </h3>
-                                        <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="post">
-                                        <img src="/dune.jpeg" alt="">
-                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                            opener
-                                        </h3>
-                                        <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="post">
-                                        <img src="/dune.jpeg" alt="">
-                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                            opener
-                                        </h3>
-                                        <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="post">
-                                        <img src="/dune.jpeg" alt="">
-                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                            opener
-                                        </h3>
-                                        <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="post">
-                                        <img src="/dune.jpeg" alt="">
-                                        <h3>Lionel Messi scores spectacular bicycle kick as PSG rout Clermont in Ligue 1
-                                            opener
-                                        </h3>
-                                        <h5 class="date"> <span>by John Doe</span> <span>July 11, 2021</span> </h5>
-                                    </div>
-                                </a>
+                                <% recent.forEach(story=>{%>
+                                    <a href="#">
+                                        <div class="post">
+                                            <img src="<%= story.photo %> " alt="">
+                                            <h3> <%= story.title %></h3>
+                                            <h5><%= story.createdAt%></h5>
+                                        </div>
+                                    </a>
+    
+                               <% }) %> 
+
                             </div>
                         </div>
+
+
+                        <% } %>
+
                         <div class="facebook-page">
                             <h1 class="cat-title">Facebook Feed</h1>
                             <div class="facebook-feed" style="width:100% ;">
