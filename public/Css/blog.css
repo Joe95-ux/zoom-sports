@@ -903,6 +903,50 @@ div.tv-news {
     margin-top: 1.8rem;
 }
 
+.sponsored-wrapper{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--mainWhite);
+    box-shadow: var(--boxShadow);
+    font-size: 15px;
+    max-width: 412px;
+}
+.sponsored-wrapper p{
+    color: #656565;
+    line-height: 1.4;
+}
+.sponsored-wrapper h2{
+    color: var(--mainBlack);
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 9px;
+}
+.sponsored-banner{
+    width: 100%;
+    max-height: 200px;
+    height: 200px;
+    box-shadow: 5px;
+    background-image: url(/digital-ocean2.jpg);
+    background-position: center center;
+    background-size: contain;
+    border-radius: var(--mainBorderRaduis);
+}
+.sponsored-content{
+    margin-top: 12px;
+    padding: 0 18px 18px;
+}
+.create-btn.sponsor-btn{
+    border-radius: 55px;
+    margin-top: 10px;
+}
+.footer-sponsor{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+}
+
 .blog-social-inner {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1306,7 +1350,7 @@ small.auth {
 
 
 
-.new-letter-wrapper .send-btn {
+.new-letter-wrapper .send-btn, .sponsored-wrapper .send-btn {
     margin-right: 10px;
     border-radius: 55px;
     background-color: #1363DF;
