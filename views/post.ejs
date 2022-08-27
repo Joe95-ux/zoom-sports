@@ -238,14 +238,14 @@
                                         <% related.forEach((story) =>{%>
                                         <div class="embla__slide">
                                             <div class="embla__slide__inner slider-inner-card featured-card">
-                                                <a href="/stories/post/<%= story.slug%>">
+                                                <a class="thumbnail" href="/stories/post/<%= story.slug%>">
                                                     <div class="post">
-                                                        <img src="<%= story.photo%>" alt="post image">
+                                                        <span class="image">
+                                                            <img src="<%= story.photo%>" alt="post image">
+                                                        </span>
                                                         <h5 class="cat-name"><%= story.category%></h5>
                                                         <h3><%= story.title%></h3>
-                                                        <h5 class="date"> <span>by
-                                                                <strong><%= story.author%></strong></span>
-                                                            <span><%=story.createdAt%></span></h5>
+                                                        <h5><%=story.createdAt%></h5>
                                                     </div>
                                                 </a>
                                             </div>
@@ -330,7 +330,7 @@
                             <h1 class="cat-title">Recent Posts</h1>
                             <div class="ig-cards recent-posts-cards">
                                 <% recent.forEach(story=>{%>
-                                <a href="#">
+                                <a href="/stories/post/<%= story.slug %>">
                                     <div class="post">
                                         <img src="<%= story.photo %> " alt="">
                                         <h3> <%= story.title %></h3>
