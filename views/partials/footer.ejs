@@ -23,7 +23,10 @@
             </div>
         </div>
         <div class="footer-sponsor">
-            <a href="https://www.digitalocean.com/?refcode=9487c6cecfd5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg" alt="DigitalOcean Referral Badge" /></a>
+            <a
+                href="https://www.digitalocean.com/?refcode=9487c6cecfd5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img
+                    src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg"
+                    alt="DigitalOcean Referral Badge" /></a>
         </div>
 
     </div>
@@ -38,11 +41,12 @@
 <script src="https://cdn.ckbox.io/CKBox/1.1.0/ckbox.js"></script>
 
 <script>
+    const headers = window.location
     if (document.querySelector("#editor") != null) {
         ClassicEditor
             .create(document.querySelector('#editor'), {
                 ckbox: {
-                    tokenUrl: 'https://91186.cke-cs.com/token/dev/uWsAGlDqIzt8L323xZli7O9u4s78u4a2tVmm?limit=10 ',
+                    tokenUrl: headers.protocol + "//" + headers.host + '/editor/ckeditor',
                 },
                 toolbar: [
                     'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',

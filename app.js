@@ -38,6 +38,7 @@ const Story = require("./models/Story");
 const format = "MMMM Do YYYY, h:mm:ss a";
 const storyRouter = require("./routes/stories");
 const userRouter = require("./routes/user");
+const ckeditorRouter = require("./routes/ckeditorurl");
 
 const app = express();
 
@@ -383,6 +384,7 @@ app.get("/page=:num", async (req, res) => {
 
 app.use("/stories", storyRouter);
 app.use("/users", userRouter);
+app.use("/editor", ckeditorRouter);
 
 let port = process.env.PORT;
 if (port == null || port == "") {
