@@ -46,6 +46,18 @@
             }
         </style>
     </noscript>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00X58N673T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-00X58N673T');
+    </script>
 </head>
 
 <body>
@@ -84,24 +96,24 @@
     <section id="header-container" class="blog-header">
         <div class="wrapper-enclosure-blog">
             <% if(messages){%>
-                <% if(messages.error){%>
-                <div class="flash-wrapper">
-                    <div class="flash-message warning">
-                        <h2 class="flash-error"><%= messages.error[0]%> </h2>
-                    </div>
+            <% if(messages.error){%>
+            <div class="flash-wrapper">
+                <div class="flash-message warning">
+                    <h2 class="flash-error"><%= messages.error[0]%> </h2>
                 </div>
-    
-                <%}%>
+            </div>
+
+            <%}%>
                 <%if(messages.info){ %>
-                <div class="flash-wrapper">
-                    <div class="flash-message success-info">
-                        <h2 class="flash-success"><%= messages.info[0]%></h2>
-                    </div>
+            <div class="flash-wrapper">
+                <div class="flash-message success-info">
+                    <h2 class="flash-success"><%= messages.info[0]%></h2>
                 </div>
-                <% } %>
-    
-    
-                <% } %>
+            </div>
+            <% } %>
+
+
+            <% } %>
             <div class="form-container-wrapper">
                 <div class="forms-container">
                     <div class="form-title">
@@ -189,7 +201,10 @@
 
             </div>
             <div class="footer-sponsor">
-                <a href="https://www.digitalocean.com/?refcode=9487c6cecfd5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg" alt="DigitalOcean Referral Badge" /></a>
+                <a
+                    href="https://www.digitalocean.com/?refcode=9487c6cecfd5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img
+                        src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg"
+                        alt="DigitalOcean Referral Badge" /></a>
             </div>
         </div>
 
