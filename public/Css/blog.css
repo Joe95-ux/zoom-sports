@@ -2114,7 +2114,7 @@ div.embedly-card-hug iframe {
     text-decoration: underline;
 }
 
-.post-author-details a::after {
+.post-author-details a.more-link::after {
     content: "\f30b";
     margin-left: .5rem;
     position: relative;
