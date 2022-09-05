@@ -53,6 +53,9 @@ module.exports = {
   },
   getByCat: function(stories, cat){
     let sorted = stories.filter(story=>story.category === cat);
+    if(sorted.length){
+      sorted = sorted.slice(0, 8);
+    }
     return sorted;
   },
   editorsPicks: function(stories) {

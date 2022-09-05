@@ -9,8 +9,9 @@ if(width <= 830){
 }
 
 
+
 if (wrap !== null) {
-  const viewPort = Array.from(document.querySelectorAll(".embla__viewport"));
+  const viewPort = Array.from(document.querySelectorAll(".embla--view"));
   viewPort.forEach((view) => {
     let embla = EmblaCarousel(view, {
       dragFree: true,
@@ -43,4 +44,7 @@ if (wrap !== null) {
     embla.on("init", disablePrevAndNextBtns);
   });
 }
+
+
+
 
