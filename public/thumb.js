@@ -5,9 +5,40 @@ if(dim < 962){
 }else{
   val = "y"
 }
+const thumbAutoPlay = (embla, interval) => {
+  const lastIndex = embla.scrollSnapList().length - 1;
+  const state = { timer: 0 };
+
+  const play = () => {
+    stop();
+    requestAnimationFrame(
+      () => (state.timer = window.setTimeout(next, interval))
+    );
+  };
+
+  const stop = () => {
+    window.clearTimeout(state.timer);
+    state.timer = 0;
+  };
+
+  const next = () => {
+    if (embla.selectedScrollSnap() === lastIndex) {
+      embla.scrollTo(0);
+    } else {
+      embla.scrollNext();
+    }
+    play();
+  };
+
+  return { play, stop };
+};
 
 const mainCarouselWrap = document.getElementById("main-carousel");
-const mainCarouselView = mainCarouselWrap.querySelector(".thumb__viewport");
+let mainCarouselView;
+if(mainCarouselWrap !==null){
+  mainCarouselView = mainCarouselWrap.querySelector(".thumb__viewport");
+}
+
 
 if(mainCarouselWrap !== null){
   const mainCarousel = EmblaCarousel(mainCarouselView, {
@@ -15,6 +46,8 @@ if(mainCarouselWrap !== null){
     loop: false,
     skipSnaps: false
   });
+
+  const autoThumb = thumbAutoPlay(mainCarousel, 2000);
 
   const thumbCarouselWrap = document.getElementById("thumb-carousel");
   const thumbCarouselView = thumbCarouselWrap.querySelector(".embla__viewport");
@@ -52,5 +85,9 @@ if(mainCarouselWrap !== null){
   const syncThumbCarousel = followMainCarousel(mainCarousel, thumbCarousel);
   mainCarousel.on("select", syncThumbCarousel);
   thumbCarousel.on("init", syncThumbCarousel); 
+
+  mainCarouselView.addEventListener("mouseenter",  autoThumb.stop, false);
+  mainCarouselView.addEventListener("touchstart",  autoThumb.stop, false);
+  autoThumb.play();
 
 }
