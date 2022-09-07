@@ -4004,7 +4004,7 @@ h1.genre-intro {
 }
 
 .simplebar-track {
-    background-color: #f7f9fa;
+    background-color: #001927;
 }
 
 .simplebar-scrollbar::before {
@@ -4016,6 +4016,12 @@ h1.genre-intro {
     border-radius: 10px;
     width: 7px;
     margin-left: 2px;
+}
+
+.simplebar-track.simplebar-vertical {
+    top: 0;
+    width: 7px;
+    border-radius: 10px;
 }
 
 .reviews-inner {
