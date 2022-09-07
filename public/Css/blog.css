@@ -204,6 +204,11 @@ h2.thum-heading{
     /* border-radius: var(--mainBorderRaduis); */
 }
 
+.disqus{
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
 
 .post-title {
     position: absolute;
@@ -2153,17 +2158,18 @@ blockquote h4::before {
 
 .post-author-bio {
     display: flex;
-    align-items: center;
     color: var(--mainBlack);
     padding: 1.3rem 0 0;
 }
 
 .post-author-bio img {
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     object-fit: cover;
     margin-right: 18px;
     border-radius: 50%;
+    border: 2px solid var(--mainWhite);
+    box-shadow: var(--boxShadow);
 }
 
 .post-author-details h4 {
@@ -2242,6 +2248,7 @@ div.embedly-card-hug iframe {
 @media screen and (max-width:560px) {
     .post-author-bio {
         flex-direction: column;
+        align-items: center;
     }
 
     .post-author-bio img {
