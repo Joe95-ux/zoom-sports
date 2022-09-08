@@ -70,7 +70,7 @@ router.delete("/delete/:id", ensureAuth, async (req, res) => {
       if (req.user.privilege === "admin") {
         res.redirect("/users/admin/dashboard/" + req.user.id);
       } else {
-        res.redirect("/blog/register");
+        res.redirect("/users/register");
       }
     } else {
       res
