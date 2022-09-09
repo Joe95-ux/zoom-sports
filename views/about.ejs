@@ -1,0 +1,161 @@
+<%- include("partials/header") %>
+<div class="side-drawer" data-simplebar>
+    <i class="fas fa-times"></i>
+    <div class="side-drawer-inner">
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Menu</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <li><a class="active-cat" href="/">Blog</a></li>
+                    <li><a class="active-cat" href="/about-us">About Us</a></li>
+                    <% if(user){%>
+                    <% if(user.privilege === "admin"){%>
+                    <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                    <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Categories</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <% if(sortedCats){%>
+                    <% for(let cat in sortedCats){%>
+                    <li><i class="fas fa-dot-circle"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                    </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<section class="side-drawer-backdrop"></section>
+
+
+<section id="header-container" class="blog-header">
+    <div class="wrapper-enclosure-blog">
+        <div class="blog-body-wrapper">
+            <div id="long" class="blog-body-content">
+                <div class="about-zoom-sportz">
+                    <h1 class="cat-title">About Zoom Sportz</h1>
+                    <p>
+                        Zoom Sportz had it's humble beginnings back in 2020, and in the year since has grown into a
+                        football news provider. We mostly write about European and African soccer with an emphasis
+                        on the Spanish LaLiga, German Bundesliga, Italy Serie A, French League 1, CAF, World cup, UEFA
+                        Champions League, English Premiere League, Elite I Championship Cameroon.
+                        We make it our mission to provide you with all the latest football happenings while also
+                        providing you with information to better understand this ever-changing game.
+                    </p>
+                    <p>
+                        The idea for Zoom Sportz was born back in 2020 when the founder, Agborashu Bridewell Ayuk
+                        decided
+                        to become a sports journalist, and wanted to
+                        keep his audience informed about every development in the soccer sporting World.
+                        A year later we created Zoom-sportz.com following our drive to reach every corner of the
+                        globe with exciting football news.
+                    </p>
+                    <p>
+                        Zoom Sportz has been online since early 2022 as a news website dedicated entirely to football
+                        where we try our best to keep football fans around the World informed.
+                        Our goal is to provide our audience with unbiased news as soon as it happens.
+                        We've also sort to create a community through our comments section after every article, to
+                        allow members of our audience to share their opinion and interact with one another.
+                    </p>
+                </div>
+            </div>
+
+
+            <div id="short" class="blog-body-bio">
+                <div class="blog-social">
+                    <h1 class="cat-title">Keep in touch</h1>
+                    <div class="blog-social-inner">
+                        <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank"
+                            class="blog-social-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" target="_blank" class="blog-social-link"><i
+                                class="fab fa-instagram"></i>Instagram</a>
+                        <a href="#" target="_blank" class="blog-social-link"><i class="fas fa-envelope"></i>G-mail</a>
+                        <a href="#" target="_blank" class="blog-social-link"><i class="fab fa-youtube"></i>Youtube</a>
+                    </div>
+                </div>
+                <div class="cats">
+                    <h1 class="cat-title">Read by Category</h1>
+                    <div class="post-cat-container">
+                        <ul>
+                            <% if(sortedCats){%>
+                            <% for(let cat in sortedCats){%>
+                            <li><a href="/category/<%=cat%>"><%= cat %> </a><span>(<%= sortedCats[cat] %>)</span></li>
+                            <% } %>
+                            <% } %>
+                        </ul>
+
+                    </div>
+                </div>
+                <div>
+                    <div class="facebook-page">
+                        <h1 class="cat-title">Facebook Feed</h1>
+                        <div class="fb-page" data-href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
+                            data-tabs="timeline" data-width="700px" data-height="550px" data-small-header="false"
+                            data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
+                                class="fb-xfbml-parse-ignore"><a
+                                    href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/">ZOOM
+                                    sports updates</a></blockquote>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="news-letter">
+            <div class="new-letter-wrapper">
+                <% if(messages.user){%>
+                <h1 class="thanks">
+                    Thank you for subscribing!
+                </h1>
+
+                <% }else{%>
+                <i class="fas fa-envelope"></i>
+                <h1>NewsLetter Sign-up</h1>
+                <p>Subscribe to our news letter for latest sports news. Let's stay updated!</p>
+                <form action="/" method="post" id="newsletter-form">
+                    <div class="news-letter-inner">
+                        <input type="text" placeholder="Enter Your Email Address" name="subscriber" id="email"
+                            autocomplete="off">
+                        <button type="submit" class="send-btn" id="submit">Subscribe Now</button>
+                    </div>
+                    <small class="nl">Error Message</small>
+
+                </form>
+
+                <% } %>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+<%- include('partials/footer') %>
