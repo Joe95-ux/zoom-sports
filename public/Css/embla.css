@@ -266,6 +266,7 @@
     /* padding-left: 8px; */
     min-width: 20%;
     height: 100%;
+    transition: background-color 0.2s;
     
 }
 

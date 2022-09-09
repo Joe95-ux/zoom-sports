@@ -109,7 +109,7 @@ div.blog-header-left {
 }
 
 div.blog-header-right {
-    flex-basis: 44.5%;
+    flex-basis: 45%;
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -127,12 +127,13 @@ div.thumb-wrapper::before{
     width: 100%;
     height: 100%;
     content: "";
-    background-color: #001019;
+    background-color: #001927;
 }
 
 h2.thum-heading{
     color: var(--mainWhite);
-    background-color: #001927;
+    background-color:  #001927;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 1.2rem;
     padding:0.8rem;
     font-weight: 600;
@@ -141,6 +142,7 @@ h2.thum-heading{
 .thumbnail-wrap{
     display: flex;
     padding: 0.8rem;
+    position: relative;
 }
 
 
