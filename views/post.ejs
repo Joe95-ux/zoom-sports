@@ -209,19 +209,12 @@
                     <div class="post-author-bio">
                         <% if(story){%>
                         <% if(story.user?.photo){%>
-                        <img src="<%=story.user.photo%>" alt="post-author">
+                        <img src="<%=story.user.photo%>" class="profile-avatar" alt="post-author">
                         <% }else{%>
                         <img src="/profile-pic.png" alt="" class="profile-avatar">
                         <% } %>
                         <div class="post-author-details">
                             <h4><%= story.author %> </h4>
-                            <% if(story.user?.bio){%>
-                            <p><%= story.user?.bio %></p>
-                            <% }else{%>
-                            <p>No Info about writer to display.</p>
-                            <% } %>
-                            <a class="more-link" href="/users/profiles/<%= story.user?._id%>">More From
-                                <%= story.user?.name || story.user?.username %></a>
                             <div class="post-author-socials">
                                 <% if(story.user?.facebook){%>
                                 <a href="<%= story.user.facebook%>" target="_blank"><img src="/Facebook_Logo.png"
@@ -236,6 +229,13 @@
                                         alt="tw logo"></a>
                                 <% } %>
                             </div>
+                            <% if(story.user?.bio){%>
+                            <p><%= story.user?.bio %></p>
+                            <% }else{%>
+                            <p>No Info about the writer to display.</p>
+                            <% } %>
+                            <a class="more-link" href="/users/profiles/<%= story.user?._id%>">More From
+                                <%= story.user?.name || story.user?.username %></a>
                         </div>
                         <% } %>
 
@@ -295,8 +295,10 @@
                     <div id="disqus_thread" class="disqus"></div>
                     <script>
                         var disqus_config = function () {
-                        this.page.url = headers.protocol + "//" + headers.host + "/"+ title;  // Replace PAGE_URL with your page's canonical URL variable
-                        this.page.identifier = title; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            this.page.url = headers.protocol + "//" + headers.host + "/" +
+                            title; // Replace PAGE_URL with your page's canonical URL variable
+                            this.page.identifier =
+                            title; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                         };
                         (function () { // DON'T EDIT BELOW THIS LINE
                             var d = document,
