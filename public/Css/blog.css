@@ -1445,7 +1445,12 @@ a.blog-social-link i {
 
 /* end of about zoom sportz */
 
+/* widgets */
 
+.panel-heading a{
+    font-weight: 600 !important;
+    font-size: 1.5rem !important;
+}
 
 .news-letter {
     display: flex;
