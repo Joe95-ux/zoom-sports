@@ -1393,6 +1393,7 @@ a.blog-social-link i {
     padding: 1rem;
     border-radius: 5px;
     box-shadow: var(--boxShadow);
+    word-wrap: break-word;
 }
 
 .about-zoom-sportz p{
@@ -1400,7 +1401,30 @@ a.blog-social-link i {
     font-weight: 400;
     line-height: 1.6;
     color: #333739;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-zoom-sportz h2{
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--mainBlack);
+}
+.about-zoom-sportz ul{
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.about-zoom-sportz li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    line-height: 1.8;
+    font-size: 1.2rem;
 }
 
 @media screen and (max-width:420px){
@@ -1411,7 +1435,17 @@ a.blog-social-link i {
         color: #333739;
         margin-bottom: 2rem;
     }
+    .about-zoom-sportz h2{
+        font-size: 18px;
+    }
+    .about-zoom-sportz li{
+        font-size: 1rem;
+    }
 }
+
+/* end of about zoom sportz */
+
+
 
 .news-letter {
     display: flex;

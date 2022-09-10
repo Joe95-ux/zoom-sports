@@ -393,6 +393,28 @@ app.get("/about-us", async (req, res) => {
   }
 });
 
+app.get("/privacy", async (req, res) => {
+  const title = "Privacy Policy for Zoom Sportz";
+  let sortedCats;
+  try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+
+    res.render("privacy", { title, sortedCats });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 app.use("/stories", storyRouter);
 app.use("/users", userRouter);
 app.use("/editor", ckeditorRouter);
