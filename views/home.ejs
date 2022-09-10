@@ -166,8 +166,8 @@
                     <div class="embla autoplay__embla blog-header-embla" id="main-carousel">
                         <div class="embla__viewport thumb__viewport">
                             <div class="embla__container">
-                                <% if(latest){%>
-                                <% latest.forEach(story=>{%>
+                                <% if(picks){%>
+                                <% picks.forEach(story=>{%>
                                 <div class="embla__slide autoplay__slide"
                                     style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url(<%=story.photo%>); background-size: cover; background-repeat: no-repeat;">
                                     <a href="/stories/post/<%= story.slug%>">
@@ -192,12 +192,12 @@
                     </div>
                 </div>
                 <div class="blog-header-right thumb-wrapper" style="overflow: hidden;">
-                    <h2 class="sticky-header thum-heading">Latest News</h2>
+                    <h2 class="sticky-header thum-heading">Editor's Picks</h2>
                     <div class="embla embla--thumb" id="thumb-carousel">
                         <div class="embla__viewport thumb__viewport">
                             <div class="embla__container embla__container--thumb">
-                                <% if(latest){%>
-                                <% latest.forEach(story=>{%>
+                                <% if(picks){%>
+                                <% picks.forEach(story=>{%>
                                 <div class="embla__slide embla__slide--thumb thumbnail-wrap" style="margin-right:0 ;">
                                     <button class="embla__slide__inner embla__slide__inner--thumb" type="button">
                                         <img class="embla__slide__thumbnail" src="<%= story.photo %>" />
@@ -248,14 +248,14 @@
 
                             <%} %>
                         </div>
-                        <% if(picks.length){%>
+                        <% if(latest.length){%>
                         <div class="older-posts">
-                            <h1 class="cat-title">Editor's Picks</h1>
+                            <h1 class="cat-title">Latest News</h1>
                             <div class="older-posts-inner">
                                 <div class="embla old-posts-embla">
                                     <div class="embla__viewport embla--view">
                                         <div class="embla__container">
-                                            <% picks.forEach((story) =>{%>
+                                            <% latest.forEach((story) =>{%>
                                             <div class="embla__slide">
                                                 <div class="embla__slide__inner slider-inner-card featured-card">
                                                     <a class="thumbnail" href="/stories/post/<%= story.slug%>">

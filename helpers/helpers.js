@@ -48,7 +48,7 @@ module.exports = {
     return related;
   },
   latestPosts: function(stories) {
-    const posts = stories.slice(0, 8);
+    const posts = stories.slice(0, 10);
     return posts;
   },
   getByCat: function(stories, cat){
