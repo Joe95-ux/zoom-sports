@@ -1,6 +1,6 @@
 :root {
-    --primaryColor: rgba(255, 90, 90, 1);
-    --secondaryColor: #1bcacd;
+    --primaryColor:  #00019e;
+    --secondaryColor: rgba(255, 90, 90, 1);
     --yellow: #fbc500;
     --mainWhite: #fff;
     --mainBlack: #242424;
@@ -115,7 +115,7 @@
     height: 100%;
     justify-content: center;
     align-items: center;
-    fill: var(--primaryColor);
+    fill: var(--secondaryColor);
     padding: 0;
 }
 
@@ -216,7 +216,7 @@
 }
 
 .embla__dot.is-selected:after {
-    background-color: var(--primaryColor);
+    background-color: var(--secondaryColor);
     opacity: 1;
 }
 
