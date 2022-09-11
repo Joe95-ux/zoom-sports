@@ -22,7 +22,6 @@ if (wrap !== null) {
 
     const prevBtn = view.nextElementSibling;
     const nextBtn = view.nextElementSibling.nextElementSibling;
-    console.log(view)
 
     const setupPrevNextBtns = (prevBtn, nextBtn, embla) => {
       prevBtn.addEventListener("click", embla.scrollPrev, false);
