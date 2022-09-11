@@ -6,7 +6,7 @@
 
 
 :root {
-    --primaryColor: rgba(255, 90, 90, 1);
+    --primaryColor: #00019e;
     --secondaryColor: #1bcacd;
     --yellow: #fbc500;
     --mainWhite: #fff;
@@ -726,7 +726,7 @@ div.tv-news {
 .cat-name, .latest-posts .cat-name {
     position: relative;
     padding-top: 8px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .cat-name::before {
@@ -890,7 +890,7 @@ div.tv-news {
     position: relative;
     display: flex;
     align-items: center;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 18px;
     text-transform: capitalize;
     transition: var(--mainTransition);
@@ -1700,7 +1700,7 @@ h5.cat-name {
     margin: 0 0 6px;
     color: var(--primaryColor);
     width: 100%;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 /* compose page */
