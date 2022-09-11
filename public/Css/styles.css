@@ -530,7 +530,7 @@ button {
 
 .category-types {
     padding: 10px;
-    line-height: 2;
+    /* line-height: 2; */
 }
 
 .discover-movies {
@@ -542,6 +542,9 @@ button {
     /* color: grey; */
     color: var(--mainWhite);
     transition: all 0.5s ease-out;
+    vertical-align: baseline;
+    font-size: 100%;
+    display: flex;
     
 
 }
@@ -561,11 +564,18 @@ button {
 
 .categories li:not(:last-child) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 5px 0;
+}
+
+.categories li:not(:first-child) {
+    padding: 13px 0;
+}
+
+.categories li:first-child {
+    padding: 13px 0;
 }
 
 .categories li:last-child {
-    padding-top: 5px;
+    padding-top: 5px 0 13px;
 }
 
 .categories li:hover {
@@ -586,17 +596,23 @@ button {
 
 .categories li a {
     text-decoration: none;
+    box-sizing: border-box;
+    width: 100%;
     /* color: darkgrey; */
     color: var(--mainWhite);
     font-weight: 500;
     font-size: 1rem;
     transition: all 0.5s ease-out;
+    line-height: 1.3;
+    vertical-align: middle;
 }
 
 .categories li i {
     margin-right: 6px;
     font-size: 0.7rem;
-    color: darkgrey;
+    color: #1363DF;
+    position: relative;
+    top: 5px;
 }
 
 .movie-genres {
@@ -746,7 +762,6 @@ button {
 .new-header-right,
 .blog-header-left,
 .blog-header-right {
-    border-radius: 5px;
     background-color: #fff;
 }
 

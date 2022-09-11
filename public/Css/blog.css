@@ -132,7 +132,7 @@ div.thumb-wrapper::before{
 
 h2.thum-heading{
     color: var(--mainWhite);
-    background-color:  #001927;
+    background-color:  inherit;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 1.2rem;
     padding:0.8rem;
@@ -151,7 +151,10 @@ h2.thum-heading{
 }
 
 .post.thumbnail-post-heading h5{
-    color: var(--midGray);
+    color: hsla(0,0%,100%,.5);
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 14px;
 }
 
 
@@ -230,7 +233,7 @@ h2.thum-heading{
     overflow: hidden;
     color: var(--mainWhite);
     margin: 10px 0;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: capitalize;
 }
 
@@ -723,6 +726,7 @@ div.tv-news {
 .cat-name, .latest-posts .cat-name {
     position: relative;
     padding-top: 8px;
+    font-weight: 400;
 }
 
 .cat-name::before {
@@ -873,6 +877,7 @@ div.tv-news {
 
 .post h5 {
     color: var(--mainBlack);
+    font-weight: 400px;
 }
 
 .post a {
@@ -1404,6 +1409,10 @@ a.blog-social-link i {
     margin-bottom: 1.5rem;
 }
 
+.about-zoom-sportz a{
+    color: #1363DF;
+}
+
 .about-zoom-sportz h2{
     font-size: 24px;
     font-weight: 700;
@@ -1691,6 +1700,7 @@ h5.cat-name {
     margin: 0 0 6px;
     color: var(--primaryColor);
     width: 100%;
+    font-weight: 400;
 }
 
 /* compose page */
