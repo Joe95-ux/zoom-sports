@@ -8,9 +8,7 @@
     <meta name="theme-color" content="#f7f9fa">
     <title><%= title %> | Zoom Sportz</title>
     <meta name="description"
-        content="Zoom sportz is your nummber one destination for current sports news. We are here to update you with the most recent and up-to-date sport news.">
-    <meta name="keywords"
-        content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, english soccer, spanish league">
+    content="<%= story.description ? story.description : story.title %> " >
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -19,12 +17,15 @@
     <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <meta name="keywords" content="<%= story.keywords ? story.keywords : story.title%>">
+    <meta name="news_keywords" content="<%= story.category %>, <%= story.title %>, soccer, soccer news ">
     <!-- blog post preview -->
     <meta property="og:url" content="/stories/post/<%= story.slug%>" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="<%= story.title %> " />
-    <meta property="og:description" content="<%= story.title %> " />
+    <meta property="og:description" content="<%= story.description ? story.description : story.title %> " />
     <meta property="og:image" content="<%=story.photo%>" />
+    <meta property="og:site_name" content="Zoom Sportz" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">

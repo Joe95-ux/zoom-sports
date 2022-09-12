@@ -1858,7 +1858,7 @@ textarea {
 
 
 .compose-form input::placeholder {
-    color: var(--mainBlack);
+    
     word-spacing: normal;
 }
 
@@ -2101,7 +2101,7 @@ textarea {
     width: 100%;
     height: auto;
     max-height: 520px;
-    border-radius: 5px;
+    border-radius: 0;
 }
 
 h3.single-post-title {

@@ -342,6 +342,7 @@ button {
     transition: opacity 200ms ease-in-out;
     -webkit-transition: opacity 200ms ease-in-out;
     overflow: hidden;
+    transition: var(--mainTransition);
 }
 
 .nav_links li:not(:last-child) {
@@ -354,6 +355,7 @@ button {
     font-size: 1.1rem;
     margin-bottom: 0;
     color: var(--mainWhite);
+    transition: var(--mainTransition);
 }
 
 .nav_links li::after,
@@ -371,7 +373,6 @@ button {
 
 .nav_link a:hover {
     color: var(--mainWhite);
-    font-weight: 500;
 }
 
 .active {
@@ -425,7 +426,6 @@ button {
 
 
 .scrolling-active .nav_links a {
-    transition: var(--mainTransition);
     color: var(--mainWhite);
 }
 

@@ -23,6 +23,12 @@ const StorySchema = new mongoose.Schema({
   photo: {
     type: String,
   },
+  description: {
+    type: String,
+  },
+  keywords: {
+    type: String,
+  },
   photoTitle: {
     type: String,
     required: false,
