@@ -744,6 +744,10 @@ a.active-link{
     .live-preview-wrapper{
         margin: 3rem -0.5rem 0;
     }
+    div.margin-2{
+        padding: 1rem;
+        padding: 1rem;
+    }
 }
 
 .new-header-wrapper iframe {
