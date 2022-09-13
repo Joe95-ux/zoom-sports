@@ -412,7 +412,7 @@ a.active-link{
 .scrolling-active {
     position: fixed;
     top: 0;
-    background-color: #1b212c;
+    background-color: var(--primaryColor);
     color: var(--mainWhite);
     box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1);
 }
@@ -425,12 +425,6 @@ a.active-link{
 .scrolling-active .logo-wrapper {
     height: 3rem;
     transform: scale(0.8);
-}
-
-
-
-.scrolling-active .nav_links a {
-    color: var(--mainWhite);
 }
 
 /* side-drawer */

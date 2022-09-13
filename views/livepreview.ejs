@@ -1,61 +1,167 @@
-<%- include("partials/header") %>
-<div class="side-drawer" data-simplebar>
-    <i class="fas fa-times"></i>
-    <div class="side-drawer-inner">
-        <div class="main-category discover-movies">
-            <div class="category-title">
-                <h2 class="discover">Menu</h2>
-            </div>
-            <div class="category-types">
-                <ul class="categories">
-                    <li><a class="active-cat" href="/">Blog</a></li>
-                    <li><a class="active-cat" href="/about-us">About Us</a></li>
-                    <li class="nav_link"> <a href="/live-preview">Live Preview</a> </li>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f9fa">
+    <title><%= title %> | Zoom Sportz</title>
+    <meta name="description"
+        content="Zoom sportz is your number one destination for current sports news. We are here to update you with the most recent and up-to-date sport news.">
+    <meta name="keywords"
+        content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, english soccer, spanish league">
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&family=PT+Serif:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+    <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
+    <link rel="stylesheet" href="https://widgets.sportmonks.com/css/app.css">
+    <link rel="stylesheet" href="/Css/ckstyles.css">
+    <link rel="stylesheet" href="/Css/editor.css">
+    <link rel="stylesheet" href="/Css/embla.css">
+    <link rel="stylesheet" href="/Css/login.css">
+    <link rel="stylesheet" href="/Css/blog.css">
+    <link rel="stylesheet" href="/Css/styles.css">
+    <noscript>
+        <style>
+            /**
+          * Reinstate scrolling for non-JS clients
+          */
+            .simplebar-content-wrapper {
+                overflow: auto;
+            }
+        </style>
+    </noscript>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00X58N673T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-00X58N673T');
+    </script>
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=593644877942199&autoLogAppEvents=1"
+        nonce="55i7sfzH"></script>
+
+    <nav class="navigation">
+        <div class="blog-nav-enclosure">
+            <div class="logo-and-links">
+                <div class="logo">
+                    <div class="burger blog-burger">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                    <a href="/">
+                        <div class="logo-wrapper">
+                            <img src="/zs-logo.png" alt="Zoom Sportz">
+                            <!-- <h1>Zoom Sportz</h1> -->
+                        </div>
+
+                    </a>
+                </div>
+                <ul class="nav_links">
+                    <li class="nav_link"> <a href="/live-preview" class="<%= live %> ">Live Preview</a> </li>
+                    <li class="nav_link"> <a href="/about-us" class="<%= about%>">About Us</a> </li>
+                    <li class="nav_link"> <a href="/">Home</a> </li>
+
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
-                    <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <li class="nav_link"> <a href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
                     <% }else{%>
-                    <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <li class="nav_link"> <a href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
                     <% } %>
                     <% } %>
                 </ul>
+
             </div>
 
         </div>
-        <div class="main-category discover-movies">
-            <div class="category-title">
-                <h2 class="discover">Categories</h2>
+    </nav>
+    <div class="side-drawer" data-simplebar>
+        <i class="fas fa-times"></i>
+        <div class="side-drawer-inner">
+            <div class="main-category discover-movies">
+                <div class="category-title">
+                    <h2 class="discover">Menu</h2>
+                </div>
+                <div class="category-types">
+                    <ul class="categories">
+                        <li><a class="active-cat" href="/">Blog</a></li>
+                        <li><a class="active-cat" href="/about-us">About Us</a></li>
+                        <li class="nav_link"> <a href="/live-preview">Live Preview</a> </li>
+                        <% if(user){%>
+                        <% if(user.privilege === "admin"){%>
+                        <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% }else{%>
+                        <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+
             </div>
-            <div class="category-types">
-                <ul class="categories">
-                    <% if(sortedCats){%>
-                    <% for(let cat in sortedCats){%>
-                    <li><i class="fas fa-futbol"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
-                    </li>
-                    <% } %>
-                    <% } %>
-                </ul>
+            <div class="main-category discover-movies">
+                <div class="category-title">
+                    <h2 class="discover">Categories</h2>
+                </div>
+                <div class="category-types">
+                    <ul class="categories">
+                        <% if(sortedCats){%>
+                        <% for(let cat in sortedCats){%>
+                        <li><i class="fas fa-futbol"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                        </li>
+                        <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+
             </div>
 
         </div>
 
     </div>
+    <section class="side-drawer-backdrop"></section>
 
-</div>
-<section class="side-drawer-backdrop"></section>
+    <section id="header-container" class="blog-header">
+        <div class="wrapper-enclosure-blog live-preview-wrapper">
+            <div id="sportmonks-widget" data-widget="livescore"
+                data-info="0snJsrQTejfFX39X9oRNjMQz4G/itkbFdd1xoMOMPVYLXdXPwkMvE9YgerP17suIWnPerKb75F8j6i15ZskBGM/+9qrUotbnx1b4rJcSL29Z1Em7JlQ13Vk593gbihLLGjJ1Cg7v1IhMjblQbI1nlNHeJqwgfplY8oPz1xG9J7gOvLfDbMn7qVuGUnuurpfhjDjYlzB/ED6+lT+uhkCWe7zavULFfdYGaH26jDg/nLG1EFeC1rj447ZE/2EyRP9KUCsc/mbYRQBdmi0O03OwOlMmXT6nKHALU40YAbf01ePSXsPhuy0liINbCx/jp1dCME93l4qffmp98P/ZpEmWTcIJRA441B6EuBwxzS0HIrOhgLWnnI/TSKi7rPIgqD8qU6i53qSU0ITbY5BkApihvzSluOUK7AAbXyuNNW3zAnOgFJBss05JXu8y5JgCT54T99YMTPrXN2ET5Kmnb2quCpvHjbTo+gKHLJKOhvFdr2zMGyAJ+oBzQaacSMtNXsVyHtchrsGv4xjPsFk+AC5gvs0rTZFiO6uQvQ44AUxvSrzLv9aaD2zNelvoZ8WlLTK8/s8Ox1toKvU3eKwR/D+rk2tbJygIOhHc893yCBFE008F/GJTSi3xAP4q7/6ypyvqyk5CSKEiAxSzt0oF1ab21zvPZ+tyeWXPxiSzMDj3BnA=">
+            </div>
 
-<section id="header-container" class="blog-header">
-    <div class="wrapper-enclosure-blog live-preview-wrapper">
-        <div id="sportmonks-widget" data-widget="livescore"
-            data-info="0snJsrQTejfFX39X9oRNjMQz4G/itkbFdd1xoMOMPVYLXdXPwkMvE9YgerP17suIWnPerKb75F8j6i15ZskBGM/+9qrUotbnx1b4rJcSL29Z1Em7JlQ13Vk593gbihLLGjJ1Cg7v1IhMjblQbI1nlNHeJqwgfplY8oPz1xG9J7gOvLfDbMn7qVuGUnuurpfhjDjYlzB/ED6+lT+uhkCWe7zavULFfdYGaH26jDg/nLG1EFeC1rj447ZE/2EyRP9KUCsc/mbYRQBdmi0O03OwOlMmXT6nKHALU40YAbf01ePSXsPhuy0liINbCx/jp1dCME93l4qffmp98P/ZpEmWTcIJRA441B6EuBwxzS0HIrOhgLWnnI/TSKi7rPIgqD8qU6i53qSU0ITbY5BkApihvzSluOUK7AAbXyuNNW3zAnOgFJBss05JXu8y5JgCT54T99YMTPrXN2ET5Kmnb2quCpvHjbTo+gKHLJKOhvFdr2zMGyAJ+oBzQaacSMtNXsVyHtchrsGv4xjPsFk+AC5gvs0rTZFiO6uQvQ44AUxvSrzLv9aaD2zNelvoZ8WlLTK8/s8Ox1toKvU3eKwR/D+rk2tbJygIOhHc893yCBFE008F/GJTSi3xAP4q7/6ypyvqyk5CSKEiAxSzt0oF1ab21zvPZ+tyeWXPxiSzMDj3BnA=">
+
+
+
         </div>
 
-
-
-
-    </div>
-
-</section>
+    </section>
 
 
 
@@ -63,4 +169,4 @@
 
 
 
-<%- include('partials/footer') %>
+    <%- include('partials/footer') %>
