@@ -448,3 +448,7 @@ if (port == null || port == "") {
 app.listen(port, function() {
   console.log("Server has started sucessfully");
 });
+
+app.use(function (req, res, next) {
+  res.status(404).sendFile(__dirname + "/public/404.html");
+})

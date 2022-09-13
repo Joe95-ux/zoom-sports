@@ -9,6 +9,8 @@
             <div class="category-types">
                 <ul class="categories">
                     <li><a class="active-cat" href="/">Blog</a></li>
+                    <li><a class="active-cat" href="/about-us">About Us</a></li>
+                    <li class="nav_link"> <a href="/live-preview">Live Preview</a> </li>
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
                     <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
