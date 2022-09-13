@@ -77,7 +77,6 @@ button {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 0;
     height: 100%;
@@ -166,6 +165,7 @@ button {
     justify-content: space-between;
     align-items: center;
     color: var(--mainWhite);
+    margin: 0 auto;
 }
 
 .burger.blog-burger {
@@ -346,7 +346,7 @@ button {
 }
 
 .nav_links li:not(:last-child) {
-    margin-right: 15px;
+    margin-right: 40px;
 }
 
 .nav_links a {
@@ -354,8 +354,12 @@ button {
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 0;
-    color: var(--mainWhite);
+    color: #b2cde6;
     transition: var(--mainTransition);
+}
+
+a.active-link{
+    color: var(--mainWhite);
 }
 
 .nav_links li::after,
@@ -733,6 +737,20 @@ button {
     margin-bottom: 1.5rem;
     color: var(--mainWhite);
 }
+.live-preview-wrapper{
+    margin-top: 1.5rem;
+}
+@media screen and (max-width:600px){
+    .live-preview-wrapper{
+        margin-top: 3.5rem;
+    }
+}
+
+@media screen and (max-width:418px){
+    .live-preview-wrapper{
+        margin: 3rem -0.5rem 0;
+    }
+}
 
 .new-header-wrapper iframe {
     display: none;
@@ -933,8 +951,11 @@ button {
         min-height: 450px;
         max-height: 500px;
         height: 450px;
-        margin-top: -1.5rem;
+       
 
+    }
+     .new-header-wrapper{
+        margin-top: -1.5rem;
     }
 
     .new-movie-wrapper {
@@ -978,8 +999,11 @@ button {
         min-height: 350px;
         max-height: 370px;
         height: 375px;
-        margin-top: -2.2rem;
 
+    }
+
+    .new-header-wrapper{
+        margin-top: -2.2rem;
     }
 
     .autoplay__slide img {

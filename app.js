@@ -253,6 +253,7 @@ app.post("/compose", upload.single("photo"), ensureAuth, async (req, res) => {
 
 app.get("/", async (req, res) => {
   const title = "blog posts";
+  const active = "active-link";
   let sortedCats;
   let picks;
   let latest;
@@ -300,7 +301,8 @@ app.get("/", async (req, res) => {
       pages,
       pageNum,
       englishpl,
-      spanishll
+      spanishll,
+      active
     });
   } catch (err) {
     console.log(err);
@@ -316,6 +318,7 @@ app.get("/page=1", (req, res) => {
 // get next home page
 app.get("/page=:num", async (req, res) => {
   const title = "blog posts";
+  const active = "active-link";
   let sortedCats;
   let picks;
   let latest;
@@ -364,7 +367,8 @@ app.get("/page=:num", async (req, res) => {
       pages,
       pageNum,
       englishpl,
-      spanishll
+      spanishll,
+      active
     });
   } catch (err) {
     console.log(err);
@@ -373,6 +377,8 @@ app.get("/page=:num", async (req, res) => {
 
 app.get("/about-us", async (req, res) => {
   const title = "About Zoom Sportz";
+  const about = "active-link";
+  const live = "";
   let sortedCats;
   try {
     let stories = await Story.find({ status: "Public" })
@@ -387,7 +393,7 @@ app.get("/about-us", async (req, res) => {
       }
     }
 
-    res.render("about", { title, sortedCats });
+    res.render("about", { title, sortedCats, about, live });
   } catch (e) {
     console.log(e);
   }
@@ -417,6 +423,8 @@ app.get("/privacy", async (req, res) => {
 
 app.get("/live-preview", async (req, res) => {
   const title = "Live Preview";
+  const live = "active-link";
+  const about = "";
   let sortedCats;
   try {
     let stories = await Story.find({ status: "Public" })
@@ -431,7 +439,7 @@ app.get("/live-preview", async (req, res) => {
       }
     }
 
-    res.render("livepreview", { title, sortedCats });
+    res.render("livepreview", { title, sortedCats, live, about });
   } catch (e) {
     console.log(e);
   }
