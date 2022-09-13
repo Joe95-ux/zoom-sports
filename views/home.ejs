@@ -30,6 +30,7 @@
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
+    <link rel="stylesheet" href="https://widgets.sportmonks.com/css/app.css">
     <link rel="stylesheet" href="/Css/embla.css">
     <link rel="stylesheet" href="/Css/login.css">
     <link rel="stylesheet" href="/Css/blog.css">
@@ -82,6 +83,7 @@
                 </div>
                 <ul class="nav_links">
                     <li class="nav_link"> <a href="/">Blog</a> </li>
+                    <li class="nav_link"> <a href="/live-preview">Live Preview</a> </li>
                     <li class="nav_link"> <a href="/about-us">About Us</a> </li>
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
@@ -169,7 +171,7 @@
                                 <% if(picks){%>
                                 <% picks.forEach(story=>{%>
                                 <div class="embla__slide autoplay__slide"
-                                    style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url(<%=story.photo%>); background-size: cover; background-repeat: no-repeat;">
+                                    style="background: linear-gradient(180deg,transparent 60%,#000), url(<%=story.photo%>); background-size: cover; background-repeat: no-repeat;">
                                     <a href="/stories/post/<%= story.slug%>">
                                         <div class="embla__slide__inner">
                                             <div class="post-title blog-header-post-title">

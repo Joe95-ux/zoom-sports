@@ -1,0 +1,65 @@
+<%- include("partials/header") %>
+<div class="side-drawer" data-simplebar>
+    <i class="fas fa-times"></i>
+    <div class="side-drawer-inner">
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Menu</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <li><a class="active-cat" href="/">Blog</a></li>
+                    <li><a class="active-cat" href="/about-us">About Us</a></li>
+                    <% if(user){%>
+                    <% if(user.privilege === "admin"){%>
+                    <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                    <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Categories</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <% if(sortedCats){%>
+                    <% for(let cat in sortedCats){%>
+                    <li><i class="fas fa-futbol"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                    </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<section class="side-drawer-backdrop"></section>
+
+<section id="header-container" class="blog-header">
+    <div class="wrapper-enclosure-blog" style="margin-bottom: 2rem; margin-top:3.5rem">
+        <div id="sportmonks-widget" data-widget="livescore"
+            data-info="0snJsrQTejfFX39X9oRNjMQz4G/itkbFdd1xoMOMPVYLXdXPwkMvE9YgerP17suIWnPerKb75F8j6i15ZskBGM/+9qrUotbnx1b4rJcSL29Z1Em7JlQ13Vk593gbihLLGjJ1Cg7v1IhMjblQbI1nlNHeJqwgfplY8oPz1xG9J7gOvLfDbMn7qVuGUnuurpfhjDjYlzB/ED6+lT+uhkCWe7zavULFfdYGaH26jDg/nLG1EFeC1rj447ZE/2EyRP9KUCsc/mbYRQBdmi0O03OwOlMmXT6nKHALU40YAbf01ePSXsPhuy0liINbCx/jp1dCME93l4qffmp98P/ZpEmWTcIJRA441B6EuBwxzS0HIrOhgLWnnI/TSKi7rPIgqD8qU6i53qSU0ITbY5BkApihvzSluOUK7AAbXyuNNW3zAnOgFJBss05JXu8y5JgCT54T99YMTPrXN2ET5Kmnb2quCpvHjbTo+gKHLJKOhvFdr2zMGyAJ+oBzQaacSMtNXsVyHtchrsGv4xjPsFk+AC5gvs0rTZFiO6uQvQ44AUxvSrzLv9aaD2zNelvoZ8WlLTK8/s8Ox1toKvU3eKwR/D+rk2tbJygIOhHc893yCBFE008F/GJTSi3xAP4q7/6ypyvqyk5CSKEiAxSzt0oF1ab21zvPZ+tyeWXPxiSzMDj3BnA=">
+        </div>
+
+
+
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+<%- include('partials/footer') %>

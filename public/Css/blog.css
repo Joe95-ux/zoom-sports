@@ -233,7 +233,7 @@ h2.thum-heading{
     overflow: hidden;
     color: var(--mainWhite);
     margin: 10px 0;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: capitalize;
 }
 
