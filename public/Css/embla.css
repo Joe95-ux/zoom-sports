@@ -113,6 +113,7 @@
     border: 0;
     width: 50px;
     height: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
     fill: var(--mainWhite);

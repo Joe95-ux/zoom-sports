@@ -2416,6 +2416,7 @@ div.embedly-card-hug iframe {
 
 .dash-user-pic-wrapper {
     position: relative;
+    align-self: center;
 }
 
 .dash-user-pic-wrapper i {
@@ -2756,6 +2757,9 @@ tbody td a {
     border: 3px solid #f7f9fa;
     border-radius: 50%;
     object-fit: cover;
+}
+.profile-photo.center-profile{
+    align-items: center;
 }
 
 .profile-photo h2 {
