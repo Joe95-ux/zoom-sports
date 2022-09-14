@@ -1,229 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include("partials/formheader") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f7f9fa">
-    <title><%= title %> |Zoom Sportz</title>
-    <meta name="description"
-        content="Zoom sportz is your number one destination for current sports news. We are here to update you with the most recent and up-to-date sport news.">
-    <meta name="keywords"
-        content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, english soccer, spanish league">
-    <!--favicon-->
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-    <link rel="manifest" href="/images/site.webmanifest">
-    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&family=Baloo+Thambi+2:wght@500;600;700;800&display=swap"
-        rel="stylesheet">
-    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
-    <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
-    <link rel="stylesheet" href="/Css/embla.css">
-    <link rel="stylesheet" href="/Css/blog.css">
-    <link rel="stylesheet" href="/Css/login.css">
-    <link rel="stylesheet" href="/Css/styles.css">
-    <noscript>
-        <style>
-            /**
-          * Reinstate scrolling for non-JS clients
-          */
-            .simplebar-content-wrapper {
-                overflow: auto;
-            }
-        </style>
-    </noscript>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00X58N673T"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+<section id="header-container" class="blog-header">
+    <div class="wrapper-enclosure-blog">
+        <% if(locals.messages){%>
+        <% if(messages.error){%>
+        <div class="flash-wrapper">
+            <div class="flash-message warning">
+                <h2 class="flash-error"><%= messages.error %> </h2>
+            </div>
+        </div>
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-00X58N673T');
-    </script>
-</head>
-
-<body>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=593644877942199&autoLogAppEvents=1"
-        nonce="55i7sfzH"></script>
-
-    <nav class="navigation">
-        <div class="blog-nav-enclosure">
-            <div class="logo-and-links">
-                <div class="burger" style="display:none;">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
-                <div class="logo">
-                    <div class="burger blog-burger">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
+        <% }else if(messages.success){ %>
+        <div class="flash-wrapper">
+            <div class="flash-message success-info">
+                <h2 class="flash-success"><%=messages.success%></h2>
+            </div>
+        </div>
+        <% } %>
+        <% } %>
+        <div class="form-container-wrapper">
+            <div class="forms-container">
+                <div class="form-title">
+                    <div class="form-title-header">
+                        <i class="history fas fa-long-arrow-alt-left"></i>
                     </div>
-                   <a href="/">
-                        <div class="logo-wrapper">
-                            <img src="/zs-logo.png" alt="Zoom Sportz">
-                            <!-- <h1>Zoom Sportz</h1> -->
+
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to continue</p>
+                </div>
+                <div class="actions-wrapper">
+                    <form action="/users/login" id="auth-form" method="POST">
+                        <div class="actions-input-wrapper">
+                            <div class="actions-input">
+                                <i class="fas fa-user-alt"></i>
+                                <input type="text" name="username" id="email" placeholder="email">
+                            </div>
+                            <small class="auth">Error Message</small>
                         </div>
-
-                    </a>
-                </div>
-                <ul class="nav_links">
-                    <li class="nav_link"> <a href="/">Home</a> </li>
-                    <li class="nav_link"> <a href="/about-us">About Us</a> </li>
-                </ul>
-
-
-            </div>
-
-        </div>
-    </nav>
-
-    <section id="header-container" class="blog-header">
-        <div class="wrapper-enclosure-blog">
-            <% if(locals.messages){%>
-            <% if(messages.error){%>
-            <div class="flash-wrapper">
-                <div class="flash-message warning">
-                    <h2 class="flash-error"><%= messages.error %> </h2>
-                </div>
-            </div>
-
-            <% }else if(messages.success){ %>
-            <div class="flash-wrapper">
-                <div class="flash-message success-info">
-                    <h2 class="flash-success"><%=messages.success%></h2>
-                </div>
-            </div>
-            <% } %>
-            <% } %>
-            <div class="form-container-wrapper">
-                <div class="forms-container">
-                    <div class="form-title">
-                        <div class="form-title-header">
-                            <i class="history fas fa-long-arrow-alt-left"></i>
+                        <div class="actions-input-wrapper">
+                            <div class="actions-input">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" name="password" id="password" placeholder="password"
+                                    class="pass-input">
+                                <div class="pass-reveal">
+                                    <i class="fas fa-eye open-eye"></i>
+                                    <i class="fas fa-eye-slash black-eye"></i>
+                                </div>
+                            </div>
+                            <small class="auth">Error Message</small>
                         </div>
-
-                        <h2>Welcome Back</h2>
-                        <p>Sign in to continue</p>
-                    </div>
-                    <div class="actions-wrapper">
-                        <form action="/users/login" id="auth-form" method="POST">
-                            <div class="actions-input-wrapper">
-                                <div class="actions-input">
-                                    <i class="fas fa-user-alt"></i>
-                                    <input type="text" name="username" id="email" placeholder="email">
+                        <div class="actions-input-wrapper">
+                            <div class="actions-input">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" name="confirmclientpassword" id="cpassword"
+                                    placeholder="confirm password" class="pass-input">
+                                <div class="pass-reveal">
+                                    <i class="fas fa-eye open-eye"></i>
+                                    <i class="fas fa-eye-slash black-eye"></i>
                                 </div>
-                                <small class="auth">Error Message</small>
                             </div>
-                            <div class="actions-input-wrapper">
-                                <div class="actions-input">
-                                    <i class="fas fa-lock"></i>
-                                    <input type="password" name="password" id="password" placeholder="password"
-                                        class="pass-input">
-                                    <div class="pass-reveal">
-                                        <i class="fas fa-eye open-eye"></i>
-                                        <i class="fas fa-eye-slash black-eye"></i>
-                                    </div>
-                                </div>
-                                <small class="auth">Error Message</small>
-                            </div>
-                            <div class="actions-input-wrapper">
-                                <div class="actions-input">
-                                    <i class="fas fa-lock"></i>
-                                    <input type="password" name="confirmclientpassword" id="cpassword"
-                                        placeholder="confirm password" class="pass-input">
-                                    <div class="pass-reveal">
-                                        <i class="fas fa-eye open-eye"></i>
-                                        <i class="fas fa-eye-slash black-eye"></i>
-                                    </div>
-                                </div>
-                                <small class="auth">Error Message</small>
-                            </div>
-                            <div class="forgot-pass">
-                                <a href="/users/reset-password">Forgot Password?</a>
-                            </div>
-                            <button type="submit" class="send-btn">Sign in</button>
-                        </form>
-                        <p>Don't have an account? <a href="/users/register">Sign up now.</a> </p>
+                            <small class="auth">Error Message</small>
+                        </div>
+                        <div class="forgot-pass">
+                            <a href="/users/reset-password">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="send-btn">Sign in</button>
+                    </form>
+                    <p>Don't have an account? <a href="/users/register">Sign up now.</a> </p>
 
-
-                    </div>
-
-                </div>
-            </div>
-
-
-
-        </div>
-
-
-
-    </section>
-    <footer id="footer" class="blog-footer">
-        <div class="blog-nav-enclosure">
-            <div class="footer-content">
-                <div class="copyright-container">
-                    <div>
-                        <span class="copyright"><i class="far fa-copyright"></i></span>
-                        <span>All rights reserved.</span>
-
-                    </div>
-                </div>
-                <div class="important-links">
-                    <a href="/">Home</a>
-                    <a href="/about-us">About Us</a>
-                    <a href="/privacy">Privacy Policy</a>
-                </div>
-                <div class="socials">
-                    <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank"
-                        class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" class="social-icon ig"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:info@zoom-sportz.com" target="_blank" class="social-icon mail"><i class="fas fa-envelope"></i></a>
-                    <a href="#" target="_blank" class="social-icon yt"><i class="fab fa-youtube"></i></a>
 
                 </div>
 
-            </div>
-            <div class="footer-sponsor">
-                <a
-                    href="https://www.digitalocean.com/?refcode=9487c6cecfd5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img
-                        src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg"
-                        alt="DigitalOcean Referral Badge" /></a>
             </div>
         </div>
 
-    </footer>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.min.js"></script>
-    <!-- embla -->
-    <script src="/embla.js"></script>
-    <script src="/autoplay.js"></script>
-    <script src="/login.js"></script>
-    <script src="/validate.js"></script>
-    <script src="/index.js"></script>
+    </div>
+
+
+
+</section>
+<footer id="footer" class="blog-footer">
+    <div class="blog-nav-enclosure">
+        <div class="footer-content">
+            <div class="copyright-container">
+                <div>
+                    <span class="copyright"><i class="far fa-copyright"></i></span>
+                    <span>All rights reserved.</span>
+
+                </div>
+            </div>
+            <div class="important-links">
+                <a href="/">Home</a>
+                <a href="/about-us">About Us</a>
+                <a href="/privacy">Privacy Policy</a>
+            </div>
+            <div class="socials">
+                <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank"
+                    class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" class="social-icon ig"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:info@zoom-sportz.com" target="_blank" class="social-icon mail"><i
+                        class="fas fa-envelope"></i></a>
+                <a href="#" target="_blank" class="social-icon yt"><i class="fab fa-youtube"></i></a>
+
+            </div>
+
+        </div>
+        <div class="footer-sponsor">
+            <a
+                href="https://www.digitalocean.com/?refcode=9487c6cecfd5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img
+                    src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg"
+                    alt="DigitalOcean Referral Badge" /></a>
+        </div>
+    </div>
+
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.min.js"></script>
+<!-- embla -->
+<script src="/embla.js"></script>
+<script src="/autoplay.js"></script>
+<script src="/login.js"></script>
+<script src="/validate.js"></script>
+<script src="/index.js"></script>
 </body>
 
 </html>

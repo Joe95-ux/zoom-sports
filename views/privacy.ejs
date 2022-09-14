@@ -8,9 +8,9 @@
             </div>
             <div class="category-types">
                 <ul class="categories">
-                    <li><a class="active-cat" href="/">Blog</a></li>
+                    <li><a class="active-cat" href="/">Home</a></li>
                     <li><a class="active-cat" href="/about-us">About Us</a></li>
-                    <li class="nav_link"> <a href="/live-preview">Live Preview</a> </li>
+                    <li><a class="active-cat" href="/live-preview">Live Preview</a> </li>
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
                     <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
@@ -30,7 +30,8 @@
                 <ul class="categories">
                     <% if(sortedCats){%>
                     <% for(let cat in sortedCats){%>
-                    <li><span><i class="fas fa-futbol"></i></span><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                    <li><span><i class="fas fa-futbol"></i></span><a class="active-cat"
+                            href="/category/<%=cat%>"><%= cat %></a>
                     </li>
                     <% } %>
                     <% } %>
@@ -51,7 +52,8 @@
             <div id="long" class="blog-body-content">
                 <div class="about-zoom-sportz privacy-policy">
                     <h1 class="cat-title">Zoom Sportz Privacy Policy</h1>
-                    <p>At Zoom Sportz, accessible from <a href="https://zoom-sportz.com">https://zoom-sportz.com</a> , one of our main priorities is the
+                    <p>At Zoom Sportz, accessible from <a href="https://zoom-sportz.com">https://zoom-sportz.com</a> ,
+                        one of our main priorities is the
                         privacy of our visitors. This Privacy Policy document contains types of information that is
                         collected and recorded by Zoom Sportz and how we use it.</p>
 
@@ -123,7 +125,8 @@
                     <h2>Accessing, Amending and Deleting your Data</h2>
                     <p>You have the right to request information regarding the data we have on file for you, and to
                         request correction and/or deletions of your personal information. Please contact us at
-                        <a href="mailto:info@zoom-sportz.com">info@zoom-sportz.com</a>  for any inquiries or requests regarding your information.</p>
+                        <a href="mailto:info@zoom-sportz.com">info@zoom-sportz.com</a> for any inquiries or requests
+                        regarding your information.</p>
 
                     <h2>Our Advertising Partners</h2>
 
@@ -219,7 +222,8 @@
                             class="blog-social-link"><i class="fab fa-facebook-f"></i> Facebook</a>
                         <a href="#" target="_blank" class="blog-social-link"><i
                                 class="fab fa-instagram"></i>Instagram</a>
-                        <a href="mailto:info@zoom-sportz.com" target="_blank" class="blog-social-link"><i class="fas fa-envelope"></i>G-mail</a>
+                        <a href="mailto:info@zoom-sportz.com" target="_blank" class="blog-social-link"><i
+                                class="fas fa-envelope"></i>G-mail</a>
                         <a href="#" target="_blank" class="blog-social-link"><i class="fab fa-youtube"></i>Youtube</a>
                     </div>
                 </div>

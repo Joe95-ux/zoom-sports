@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f7f9fa">
     <title><%= title %> | Zoom Sportz</title>
-    <meta name="description"
-    content="<%= story.description ? story.description : story.title %> " >
+    <meta name="description" content="<%= story.description ? story.description : story.title %> ">
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -94,6 +93,7 @@
                 </div>
                 <ul class="nav_links">
                     <li class="nav_link"> <a href="/">Home</a> </li>
+                    <li class="nav_link"> <a href="/live-preview">Live Preview</a> </li>
                     <li class="nav_link"> <a href="/about-us">About Us</a> </li>
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
@@ -117,8 +117,9 @@
                 </div>
                 <div class="category-types">
                     <ul class="categories">
-                        <li><a class="active-cat" href="/">Blog</a></li>
-                        <li class="nav_link"> <a href="/about-us">About Us</a> </li>
+                        <li><a class="active-cat" href="/">Home</a></li>
+                        <li><a class="active-cat" href="/about-us">About Us</a></li>
+                        <li><a class="active-cat" href="/live-preview">Live Preview</a> </li>
                         <% if(user){%>
                         <% if(user.privilege === "admin"){%>
                         <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
@@ -138,8 +139,7 @@
                     <ul class="categories">
                         <% if(sortedCats){%>
                         <% for(let cat in sortedCats){%>
-                        <li><i class="fas fa-futbol"></i><a class="active-cat"
-                                href="/category/<%=cat%>"><%= cat %></a>
+                        <li><i class="fas fa-futbol"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
                         </li>
                         <% } %>
                         <% } %>
@@ -299,9 +299,9 @@
                     <script>
                         var disqus_config = function () {
                             this.page.url = headers.protocol + "//" + headers.host + "/" +
-                            title; // Replace PAGE_URL with your page's canonical URL variable
+                                title; // Replace PAGE_URL with your page's canonical URL variable
                             this.page.identifier =
-                            title; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                title; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                         };
                         (function () { // DON'T EDIT BELOW THIS LINE
                             var d = document,
@@ -324,7 +324,8 @@
                             <p>Welcome to zoom-sportz.com. Here we will provide you only interesting content, which you
                                 will like very much. We're dedicated to providing you the latest football news and
                                 more...</p>
-                            <a class="read-more" href="/about-us">Read more <i class="fas fa-angle-double-right"></i></a>
+                            <a class="read-more" href="/about-us">Read more <i
+                                    class="fas fa-angle-double-right"></i></a>
                         </div>
 
                     </div>

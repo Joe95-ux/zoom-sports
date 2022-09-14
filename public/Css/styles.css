@@ -168,18 +168,18 @@ button {
     margin: 0 auto;
 }
 
-.burger.blog-burger {
+/* .burger.blog-burger {
     display: none;
-}
+} */
 
 @media screen and (max-width:765px) {
     .nav_links {
         display: none;
     }
 
-    .burger.blog-burger {
+    /* .burger.blog-burger {
         display: inline-block;
-    }
+    } */
 }
 
 /* theme toggler start*/
@@ -537,9 +537,9 @@ a.active-link{
 
 .categories li {
     list-style: none;
-    /* color: grey; */
     color: var(--mainWhite);
     transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
     vertical-align: baseline;
     font-size: 100%;
     display: flex;
@@ -576,8 +576,8 @@ a.active-link{
     padding-top: 5px 0 13px;
 }
 
+
 .categories li:hover {
-    /* color: black; */
     background-color: #74c0fc;
     margin: 0 -10px;
     padding: 5px 10px;
