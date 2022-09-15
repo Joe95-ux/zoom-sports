@@ -18,7 +18,8 @@ const {
   sortCats,
   getCats,
   editorsPicks,
-  latestPosts
+  latestPosts,
+  paginate
 } = require("../helpers/helpers");
 const User = require("../models/User");
 const Story = require("../models/Story");
@@ -204,6 +205,9 @@ router.get("/dashboard/:id", ensureAuth, async (req, res) => {
   const title = "dashboard";
   let sortedCats;
   let created;
+  let pageNum = 1;
+  let currentPage;
+  let pages;
   try {
     let allStories = await Story.find({})
       .sort({ createdAt: "desc" })
@@ -220,6 +224,9 @@ router.get("/dashboard/:id", ensureAuth, async (req, res) => {
         story.createdAt = dateWithTime(story.createdAt, format);
         return story;
       });
+      const paginated = paginate(stories, 20);
+      currentPage = paginated[pageNum - 1];
+      pages = paginated.length;
     }
     if (allStories) {
       let categories = getCats(stories);
@@ -233,10 +240,67 @@ router.get("/dashboard/:id", ensureAuth, async (req, res) => {
     res.render("dashboard", {
       title,
       stories,
+      currentPage,
       name: req.user.name,
       created,
       user,
-      sortedCats
+      sortedCats,
+      pages,
+      pageNum
+    });
+  } catch (err) {
+    console.log(err);
+    res.render("error/500");
+  }
+});
+
+// writer dashboard next page
+router.get("/dashboard/:id/:page", ensureAuth, async (req, res) => {
+  const title = "dashboard";
+  let sortedCats;
+  let created;
+  let pageNum = parseInt(req.params.page);
+  let currentPage;
+  let pages;
+  try {
+    let allStories = await Story.find({})
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    let stories = await Story.find({ user: req.params.id })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    let user = await User.findById(req.params.id);
+    if (stories) {
+      stories = stories.map(story => {
+        story.createdAt = dateWithTime(story.createdAt, format);
+        return story;
+      });
+      const paginated = paginate(stories, 20);
+      currentPage = paginated[pageNum - 1];
+      pages = paginated.length;
+    }
+    if (allStories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+    if (user) {
+      created = formatDate(user.createdAt);
+    }
+    res.render("dashboard", {
+      title,
+      stories,
+      currentPage,
+      name: req.user.name,
+      created,
+      user,
+      sortedCats,
+      pages,
+      pageNum
     });
   } catch (err) {
     console.log(err);
@@ -254,6 +318,9 @@ router.get(
     const title = "dashboard";
     let sortedCats;
     let created;
+    let pageNum = 1;
+    let currentPage;
+    let pages;
     try {
       let stories = await Story.find({})
         .populate("user")
@@ -271,12 +338,14 @@ router.get(
           story.createdAt = dateWithTime(story.createdAt, format);
           return story;
         });
+        const paginated = paginate(stories, 20);
+        currentPage = paginated[pageNum - 1];
+        pages = paginated.length;
         let categories = getCats(stories);
         if (categories.length) {
           sortedCats = sortCats(categories);
         }
         // get users and their post count
-        
       }
       const writers = await User.aggregate([
         {
@@ -298,12 +367,14 @@ router.get(
       res.render("dashboard", {
         title,
         stories,
+        currentPage,
         name: req.user.name,
         created,
         writers,
         user,
-        sortedCats
-        
+        sortedCats,
+        pages,
+        pageNum
       });
     } catch (err) {
       console.log(err);
@@ -312,6 +383,79 @@ router.get(
   }
 );
 
+//admin next page
+router.get(
+  "/admin/dashboard/:id/:page",
+  ensureAuth,
+  ensureAdmin,
+  async (req, res) => {
+    const title = "dashboard";
+    let sortedCats;
+    let created;
+    let pageNum = parseInt(req.params.page);
+    let currentPage;
+    let pages;
+    try {
+      let stories = await Story.find({})
+        .populate("user")
+        .sort({ createdAt: "desc" })
+        .lean()
+        .exec();
+
+      let users = await User.find({}).lean();
+      let user = await User.findOne({ _id: req.params.id });
+      if (user) {
+        created = formatDate(user.createdAt);
+      }
+      if (stories) {
+        stories = stories.map(story => {
+          story.createdAt = dateWithTime(story.createdAt, format);
+          return story;
+        });
+        const paginated = paginate(stories, 20);
+        currentPage = paginated[pageNum - 1];
+        pages = paginated.length;
+        let categories = getCats(stories);
+        if (categories.length) {
+          sortedCats = sortCats(categories);
+        }
+        // get users and their post count
+      }
+      const writers = await User.aggregate([
+        {
+          $lookup: {
+            from: "stories",
+            let: { userId: "$_id" },
+            pipeline: [{ $match: { $expr: { $eq: ["$$userId", "$user"] } } }],
+            as: "posts_count"
+          }
+        },
+        { $addFields: { posts_count: { $size: "$posts_count" } } }
+      ]);
+      if (users) {
+        users.map(user => {
+          user.createdAt = formatDate(user.createdAt);
+          return user;
+        });
+      }
+      res.render("dashboard", {
+        title,
+        stories,
+        currentPage,
+        name: req.user.name,
+        created,
+        writers,
+        user,
+        sortedCats,
+        pages,
+        pageNum
+      });
+    } catch (err) {
+      console.log(err);
+      res.render("error/500");
+    }
+  }
+);
 // Register a user
 router.post("/register", ensureToken, function(req, res) {
   const title = "register";
@@ -374,7 +518,7 @@ router.post("/admin/register", ensureAdminToken, function(req, res) {
 });
 
 // view user profile
-router.get("/profiles/:id", async (req, res)=>{
+router.get("/profiles/:id", async (req, res) => {
   let title;
   let sortedCats;
   let first;
@@ -382,18 +526,18 @@ router.get("/profiles/:id", async (req, res)=>{
   let trending;
   let writers;
   let users;
-  try{
+  try {
     let user = await User.findById(req.params.id);
 
-    if(!user){
+    if (!user) {
       res.status(401).json("Sorry, we couldn't find the requested user.");
     }
     title = user.name || user.username;
-    let allStories = await Story.find({status:"Public"})
+    let allStories = await Story.find({ status: "Public" })
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    let stories = await Story.find({ user: req.params.id, status:"Public"})
+    let stories = await Story.find({ user: req.params.id, status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
@@ -403,7 +547,7 @@ router.get("/profiles/:id", async (req, res)=>{
         story.createdAt = formatDate(story.createdAt, format);
         return story;
       });
-      first = stories.slice(0,1);
+      first = stories.slice(0, 1);
       rest = stories.slice(1);
     }
     if (allStories) {
@@ -413,7 +557,7 @@ router.get("/profiles/:id", async (req, res)=>{
       }
       trending = allStories.slice(0, 4);
     }
-    
+
     if (user) {
       created = formatDate(user.createdAt);
     }
@@ -428,15 +572,22 @@ router.get("/profiles/:id", async (req, res)=>{
       },
       { $addFields: { posts_count: { $size: "$posts_count" } } }
     ]);
-    writers = writers.filter(writer=> !writer._id.equals(user._id))
-    users = writers.filter(writer=> writer.posts_count > 0);
-    res.render("singleuser", {title, first, writer:user, rest, stories, trending, users, sortedCats})
-  
-  }catch(err){
-    console.log(err)
+    writers = writers.filter(writer => !writer._id.equals(user._id));
+    users = writers.filter(writer => writer.posts_count > 0);
+    res.render("singleuser", {
+      title,
+      first,
+      writer: user,
+      rest,
+      stories,
+      trending,
+      users,
+      sortedCats
+    });
+  } catch (err) {
+    console.log(err);
   }
-  
-})
+});
 
 //login user
 router.get("/logout", function(req, res, next) {

@@ -1,4 +1,4 @@
-<%- include("partials/header") %>
+<%- include("partials/adminheader") %>
 <div class="side-drawer" data-simplebar>
     <i class="fas fa-times"></i>
     <div class="side-drawer-inner">
@@ -58,23 +58,23 @@
             </div>
         </div>
         <% if(messages){%>
-            <% if(messages.error){%>
-            <div class="flash-wrapper home-flash">
-                <div class="flash-message warning">
-                    <h2 class="flash-error"><%= messages.error[0] %> </h2>
-                </div>
+        <% if(messages.error){%>
+        <div class="flash-wrapper home-flash">
+            <div class="flash-message warning">
+                <h2 class="flash-error"><%= messages.error[0] %> </h2>
             </div>
+        </div>
 
-            <%}%>
+        <%}%>
                 <%if(messages.info){ %>
-            <div class="flash-wrapper home-flash">
-                <div class="flash-message success-info">
-                    <h2 class="flash-success"><%=messages.info[0]%></h2>
-                </div>
+        <div class="flash-wrapper home-flash">
+            <div class="flash-message success-info">
+                <h2 class="flash-success"><%=messages.info[0]%></h2>
             </div>
+        </div>
 
-            <% } %>
-            <% } %>
+        <% } %>
+        <% } %>
         <% if(user.privilege === "admin"){%>
         <div class="embla user-list">
             <div class="embla__viewport embla--view">
@@ -91,23 +91,25 @@
                                         <img src="/profile-pic.png" alt="">
                                         <% }%>
                                         <% if(user.privilege === "admin"){%>
-                                            <i class="fas fa-crown" title="admin"></i>
-                                        <% } %>  
+                                        <i class="fas fa-crown" title="admin"></i>
+                                        <% } %>
                                     </div>
                                     <h2><strong><%= user.name ? user.name:user.username%></strong></h2>
                                     <% if(user?.privilege === "admin"){%>
-                                        <h3 style="color:rgba(255, 90, 90, 1);"><strong>Admin</strong></h3>
-                                        <% }else{%>
-                                        <h3><%= user.role ? user.role : "no role yet" %> </h3>  
+                                    <h3 style="color:rgba(255, 90, 90, 1);"><strong>Admin</strong></h3>
+                                    <% }else{%>
+                                    <h3><%= user.role ? user.role : "no role yet" %> </h3>
                                     <% } %>
                                     <h2>Total stories : <strong><%= user.posts_count %> </strong></h2>
                                     <div class="admin-actions">
                                         <form method="POST" action="/users/edit-role/<%=user._id%>?_method=PUT">
-                                            <button type="submit" class="create-btn edit-profile-btn"><i class="fas fa-user-edit"></i>
+                                            <button type="submit" class="create-btn edit-profile-btn"><i
+                                                    class="fas fa-user-edit"></i>
                                                 assign</button>
                                         </form>
                                         <form method="POST" action="/users/delete/<%=user._id%>?_method=DELETE">
-                                            <button type="submit" class="create-btn edit-profile-btn delete"><i class="fas fa-trash"></i>
+                                            <button type="submit" class="create-btn edit-profile-btn delete"><i
+                                                    class="fas fa-trash"></i>
                                                 profile</button>
                                         </form>
                                     </div>
@@ -141,80 +143,104 @@
 
         <% } %>
         <div class="dashboard-wrapper">
-            <div class="dashboard-content scroll-black">
-                <div class="dashboard-title min-dash-title dash-title-inner">
-                    <div class="dashboard-title-header">
-                        <%if(user.name !== ""){%>
-                        <h2>Welcome <span><%=user.name%>!</span></h2>
-                        <% }else{%>
-                        <h2>Welcome <%=user.username%>!</h2>
-                        <% } %>
-                        <p>Here are your stories</p>
-                    </div>
-                    <div class="dashboard-search-create">
-                        <div class="dashboard-search">
-                            <i class="fas fa-search"></i>
-                            <input type="text" id="dashboard-input" placeholder="search story..." autocomplete="off">
+            <div class="dashboard-content ">
+                <div class="dashboard-content-inner scroll-black">
+                    <div class="dashboard-title min-dash-title dash-title-inner">
+                        <div class="dashboard-title-header">
+                            <%if(user.name !== ""){%>
+                            <h2>Welcome <span><%=user.name%>!</span></h2>
+                            <% }else{%>
+                            <h2>Welcome <%=user.username%>!</h2>
+                            <% } %>
+                            <p>Here are your stories</p>
                         </div>
-                        <a href="/compose" role="button" class="create-btn table-btn"><i class="fas fa-plus"></i>New
-                            Post</a>
+                        <div class="dashboard-search-create">
+                            <div class="dashboard-search">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="dashboard-input" placeholder="search story..."
+                                    autocomplete="off">
+                            </div>
+                            <a href="/compose" role="button" class="create-btn table-btn"><i class="fas fa-plus"></i>New
+                                Post</a>
+                        </div>
+
                     </div>
-    
-                </div>
-    
-                <% if(stories){%>
-                <table id="dashboard-table" data-filter-control="true" data-show-search-clear-button="true">
-                    <thead>
-                        <tr>
-                            <th>Writer</th>
-                            <th>Title</th>
-                            <th>Created on</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% stories.forEach(story=>{%>
-                        <tr>
-                            <td data-label="name">
-                                <div class="table-story-writer">
-                                    <% if(story.user?.photo){%>
-                                    <img src="<%= story.user.photo%>" alt="">
-                                    <% }else{%>
-                                    <img src="/profile-pic.png" alt="">
-                                    <% }%>
-                                    <div>
-                                        <h3><%= story?.user?.name || "no name"%></h3>
-                                        <h4 class="clamp-text"><%= story?.user?.role%> </h4>
+
+                    <% if(currentPage){%>
+                    <table id="dashboard-table" data-filter-control="true" data-show-search-clear-button="true">
+                        <thead>
+                            <tr>
+                                <th>Writer</th>
+                                <th>Title</th>
+                                <th>Created on</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% currentPage.forEach(story=>{%>
+                            <tr>
+                                <td data-label="name">
+                                    <div class="table-story-writer">
+                                        <% if(story.user?.photo){%>
+                                        <img src="<%= story.user.photo%>" alt="">
+                                        <% }else{%>
+                                        <img src="/profile-pic.png" alt="">
+                                        <% }%>
+                                        <div>
+                                            <h3><%= story?.user?.name || "no name"%></h3>
+                                            <h4 class="clamp-text"><%= story?.user?.role%> </h4>
+                                        </div>
+
                                     </div>
-    
-                                </div>
-    
-                            </td>
-    
-                            <td data-label="Title">
-                                <div class="clamp-dashboard">
-                                    <a href="/stories/post/<%= story.slug%>"
-                                        title="<%= story.title %> "><%= story.title %></a>
-                                </div>
-                            </td>
-                            <td data-label="Date"><%= story.createdAt %> </td>
-                            <td data-label="Status"><%= story.status %> </td>
-                            <td data-label="Action">
-                                <div class="dashboard-actions">
-                                    <a href="/stories/edit/<%= story._id%>" class="edit-action"> <i
-                                            class="fas fa-pencil-alt"></i> Edit</a>
-                                    <form method="POST" action="/stories/post/<%=story._id%>?_method=DELETE"
-                                        class="delete-form">
-                                        <button type="submit"><i class="fas fa-trash"></i>Remove</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-    
-                        <%}) %>
-                    </tbody>
-                </table>
+
+                                </td>
+
+                                <td data-label="Title">
+                                    <div class="clamp-dashboard">
+                                        <a href="/stories/post/<%= story.slug%>"
+                                            title="<%= story.title %> "><%= story.title %></a>
+                                    </div>
+                                </td>
+                                <td data-label="Date"><%= story.createdAt %> </td>
+                                <td data-label="Status"><%= story.status %> </td>
+                                <td data-label="Action">
+                                    <div class="dashboard-actions">
+                                        <a href="/stories/edit/<%= story._id%>" class="edit-action"> <i
+                                                class="fas fa-pencil-alt"></i> Edit</a>
+                                        <form method="POST" action="/stories/post/<%=story._id%>?_method=DELETE"
+                                            class="delete-form">
+                                            <button type="submit"><i class="fas fa-trash"></i>Remove</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <%}) %>
+                        </tbody>
+                    </table>
+                    <% } %>
+                </div>
+                <% if(user.privilege === "admin"){%>
+                <% if(pages>1){%>
+                <div class="page-controls blog-page-controls">
+                    <% if(pageNum === 2){%>
+                    <a href="/users/admin/dashboard/<%=user._id%>" class="prev-page swiper-btn blog-control-btn"
+                        role="button"><i class="fas fa-arrow-left prev-indicator"></i> </a>
+                    <% }%>
+                    <% if(pageNum > 2){%>
+                    <a href="/users/admin/dashboard/<%=user._id%>/<%= pageNum - 1 %>"
+                        class="prev-page swiper-btn blog-control-btn" role="button"><i
+                            class="fas fa-arrow-left prev-indicator"></i> </a>
+
+                    <% } %>
+                    <button class="page-count swiper-btn blog-control-btn"><%= pageNum %> / <%= pages %></button>
+                    <% if(pageNum < pages){%>
+                    <a href="/users/admin/dashboard/<%=user._id%>/<%= pageNum + 1 %> "
+                        class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i
+                            class="fas fa-arrow-right next-indicator"></i></a>
+                    <% } %>
+                </div>
                 <%}else{%>
                 <div class="dashboard-title">
                     <div>
@@ -222,7 +248,38 @@
                     </div>
                 </div>
                 <% } %>
-    
+                <% }else{%>
+                <% if(pages>1){%>
+                <div class="page-controls blog-page-controls">
+                    <% if(pageNum === 2){%>
+                    <a href="/users/dashboard/<%=user._id%>" class="prev-page swiper-btn blog-control-btn"
+                        role="button"><i class="fas fa-arrow-left prev-indicator"></i> </a>
+                    <% }%>
+                    <% if(pageNum > 2){%>
+                    <a href="/users/dashboard/<%=user._id%>/<%= pageNum - 1 %>"
+                        class="prev-page swiper-btn blog-control-btn" role="button"><i
+                            class="fas fa-arrow-left prev-indicator"></i> </a>
+
+                    <% } %>
+                    <button class="page-count swiper-btn blog-control-btn"><%= pageNum %> / <%= pages %></button>
+                    <% if(pageNum < pages){%>
+                    <a href="/users/dashboard/<%=user._id%>/<%= pageNum + 1 %> "
+                        class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i
+                            class="fas fa-arrow-right next-indicator"></i></a>
+                    <% } %>
+                </div>
+                <%}else{%>
+                <div class="dashboard-title">
+                    <div>
+                        <p>You Have no stories yet.</p>
+                    </div>
+                </div>
+                <% } %>
+
+                <% } %>
+
+
+
             </div>
             <% if(user){%>
             <div class="dashboard-userbio-wrapper">
@@ -234,7 +291,7 @@
                             <% }else{%>
                             <img src="/profile-pic.png" alt="">
                             <% }%>
-    
+
                         </div>
                         <h2><%= user.name ? user.name:user.username%> </h2>
                         <h3><%= user.role %> </h3>
@@ -247,17 +304,17 @@
                                 <i class="fas fa-envelope"></i>
                                 <h3><%= user.username %> </h3>
                             </div>
-    
+
                         </div>
                         <div class="profile-bio-wrapper">
                             <i class="fas fa-lock profile-fas-lock"></i>
-                            <input type="password" id="writer-pass" value="its confidential" title="your password is hidden"
-                                class="pass-input">
+                            <input type="password" id="writer-pass" value="its confidential"
+                                title="your password is hidden" class="pass-input">
                             <div class="pass-reveal">
                                 <i class="fas fa-eye open-eye"></i>
                                 <i class="fas fa-eye-slash black-eye"></i>
                             </div>
-    
+
                         </div>
                         <div class="profile-bio-wrapper">
                             <div>
@@ -281,7 +338,7 @@
                             <% if(stories){%>
                             <h3> (<%= stories.length %>) </h3>
                             <% } %>
-    
+
                         </div>
                         <div class="profile-bio-wrapper">
                             <div>
@@ -289,7 +346,7 @@
                                 <h3>Joined</h3>
                             </div>
                             <h3><%= created %> </h3>
-    
+
                         </div>
                         <div class="profile-bio-wrapper">
                             <div>
@@ -299,20 +356,21 @@
                             <a href="/users/logout"><i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
-    
+
                 </div>
                 <div class="delete-account">
                     <div class="delete-heading">
                         <h2>Delete Account</h2>
                     </div>
-                    <p>You will loose access to your <strong>Zoom Sportz</strong> blog account once your deletion request
+                    <p>You will loose access to your <strong>Zoom Sportz</strong> blog account once your deletion
+                        request
                         has been
                         submitted</p>
                     <form method="POST" action="/users/delete/<%=user._id%>?_method=DELETE">
                         <button type="submit" class="create-btn edit-profile-btn">Delete Account</button>
                     </form>
                 </div>
-    
+
             </div>
             <% } %>
         </div>

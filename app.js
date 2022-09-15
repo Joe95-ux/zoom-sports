@@ -142,6 +142,7 @@ app.get("/category/:catName", async (req, res) => {
   let pages;
   let pageNum = 1;
   let latest;
+  let currentPage;
   try {
     let allStories = await Story.find({ status: "Public" }).lean().exec();
     let stories = await Story.find({ category: cat, status: "Public" })
@@ -190,6 +191,7 @@ app.get("/category/:catName/:num", async (req, res) => {
   let sortedCats;
   let latest;
   let pages;
+  let currentPage;
   let pageNum = parseInt(req.params.num);
   try {
     let allStories = await Story.find({ status: "Public" }).lean().exec();
