@@ -577,6 +577,7 @@ a.active-link{
 
 .categories li:last-child {
     padding-top: 5px 0 13px;
+    border-radius: 0 0 10px 10px;
 }
 
 
