@@ -92,7 +92,6 @@ div.blog-header-wrapper {
 
 .ads-container{
     margin: 1.5rem 0 0;
-    width: fit-content;
     animation: skeleton-loading 1s linear infinite alternate;
 }
 
