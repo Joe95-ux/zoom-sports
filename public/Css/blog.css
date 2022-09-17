@@ -90,6 +90,10 @@ div.blog-header-wrapper {
     max-width: 788px
 }
 
+.ads-container{
+    margin: 1.5rem 0;
+}
+
 .blog-nav a {
     color: var(--mainBlack);
     text-decoration: none;
