@@ -92,17 +92,18 @@ div.blog-header-wrapper {
 
 .ads-container{
     margin: 1.5rem 0 0;
+    width: fit-content;
     animation: skeleton-loading 1s linear infinite alternate;
 }
 
 @keyframes skeleton-loading {
     0% {
-      background-color: hsl(200, 30%, 60%);
+      background-color: hsl(200, 20%, 80%);
     }
     100% {
-      background-color: hsl(200, 30%, 80%);
+      background-color: hsl(200, 20%, 90%);
     }
-}
+  }
 
 .blog-nav a {
     color: var(--mainBlack);
