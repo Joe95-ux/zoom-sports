@@ -83,7 +83,7 @@ div.blog-header-wrapper {
     font-size: 1rem;
     font-weight: 400;
     text-transform: capitalize;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem 0 2rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
