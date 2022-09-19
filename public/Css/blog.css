@@ -323,7 +323,7 @@ div.post-header h3 {
 
 .post-title h5,
 .post h5 {
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1rem;
     margin-top: 5px;
     color: var(--mainGrey);
@@ -2136,7 +2136,7 @@ textarea {
 }
 
 h3.single-post-title {
-    font-size: 1.4rem;
+    font-size: 2rem;
     line-height: 1.3;
     font-weight: 600;
     font-family: "Poppins", sans-serif;
@@ -2233,7 +2233,7 @@ blockquote h4 {
 
 @media screen and (max-width:420px) {
     h3.single-post-title {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
     }
 
     .post-content h2 {
