@@ -424,7 +424,7 @@ app.get("/privacy", async (req, res) => {
 });
 
 app.get("/live-preview", async (req, res) => {
-  const title = "Live Preview";
+  const title = "Livescores";
   const live = "active-link";
   const about = "";
   let sortedCats;

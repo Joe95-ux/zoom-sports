@@ -22,7 +22,11 @@
     --dropTransition: all 0.5s ease-in;
     --mainBorderRaduis: 3px;
 }
-
+input[type="text"]:focus{
+    outline: none !important;
+    border: none !important;
+    border-color: transparent !important;
+}
 .wrapper-enclosure-blog {
     max-width: calc(1260px + 6rem);
     margin: 5rem auto 0;
@@ -2266,7 +2270,7 @@ blockquote h4::before {
     left: 0;
     width: 20px;
     height: 1px;
-    background: var(--yellow);
+    background:var(--primaryColor);
     opacity: 0.8;
 }
 
@@ -2324,7 +2328,6 @@ div.embedly-card-hug iframe {
     font-weight: 500;
     text-decoration: none;
     font-size: 16px;
-
     font-weight: 600;
     font-family: 'Baloo Thambi 2', cursive;
 }
