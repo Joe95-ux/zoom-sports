@@ -22,11 +22,7 @@
     --dropTransition: all 0.5s ease-in;
     --mainBorderRaduis: 3px;
 }
-input[type="text"]:focus{
-    outline: none !important;
-    border: none !important;
-    border-color: transparent !important;
-}
+
 .wrapper-enclosure-blog {
     max-width: calc(1260px + 6rem);
     margin: 5rem auto 0;
