@@ -49,10 +49,17 @@
                 ckbox: {
                     tokenUrl: headers.protocol + "//" + headers.host + '/editor/ckeditor',
                 },
-                toolbar: [
-                    'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|',
-                    'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList', '|', 'mediaEmbed',
-                ],
+                
+                toolbar: {
+                    items:[
+                        'ckbox', 'imageUpload', '|', 'heading', '|', 'undo', 'redo', '|', 'bold', 'italic', '|', 'code',
+                        'codeBlock', '|',
+                        'blockQuote', 'indent', 'link', '|', 'bulletedList', 'numberedList', '|', 'mediaEmbed',
+                    ],
+                    shouldNotGroupWhenFull: true
+                },
+
+
             })
             .catch(error => {
                 console.error(error);
