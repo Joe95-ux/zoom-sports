@@ -56,7 +56,7 @@ button {
 
 
 .navigation {
-    background-color: #122847;
+    background: linear-gradient(216deg,#00019e,#000129);
     position: absolute;
     top: 0;
     width: 100%;
@@ -412,7 +412,7 @@ a.active-link{
 .scrolling-active {
     position: fixed;
     top: 0;
-    background-color: var(--primaryColor);
+    background: var(--primaryColor);
     color: var(--mainWhite);
     box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1);
 }

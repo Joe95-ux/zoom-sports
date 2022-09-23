@@ -1,5 +1,5 @@
 :root {
-    --primaryColor:  #00019e;
+    --primaryColor: #00019e;
     --secondaryColor: rgba(255, 90, 90, 1);
     --yellow: #fbc500;
     --mainWhite: #fff;
@@ -256,7 +256,7 @@
     /* margin-left: -8px; */
     display: flex;
     flex-direction: column;
-    height: 430px;
+    height: 490px;
     box-sizing: border-box;
 
 }
@@ -268,7 +268,7 @@
     min-width: 20%;
     height: 100%;
     transition: background-color 0.2s;
-    
+
 }
 
 
@@ -290,7 +290,7 @@
     overflow: hidden;
 }
 
-@media screen and (max-width:961px){
+@media screen and (max-width:961px) {
     .embla__container--thumb {
         cursor: default;
         /* margin-left: -8px; */
@@ -301,13 +301,16 @@
         display: flex;
         flex-direction: row;
     }
+
     .embla__slide--thumb {
         padding-left: 8px;
         min-width: 30%;
     }
-    .embla__slide--thumb:not(:first-of-type){
+
+    .embla__slide--thumb:not(:first-of-type) {
         margin-left: 8px;
     }
+
     .embla__slide__inner--thumb {
         min-width: 100%;
         max-width: 100%;
@@ -316,25 +319,27 @@
     }
 }
 
-@media screen and (max-width:780px){
+@media screen and (max-width:780px) {
     .embla__slide--thumb {
         min-width: 40%;
     }
 }
 
-@media screen and (max-width:540px){
+@media screen and (max-width:540px) {
     .embla__slide__inner--thumb {
         height: 120px;
     }
+
     div.blog-header-right {
         max-height: 200px;
     }
+
     .embla__slide--thumb {
         min-width: 50%;
     }
 }
 
-@media screen and (max-width:414px){
+@media screen and (max-width:414px) {
     .embla__slide--thumb {
         min-width: 60%;
     }
@@ -359,17 +364,20 @@
     opacity: 1;
 }
 
-/* .embla__slide--thumb.is-selected{
-    
-    background: #42E1AE;
-    
-} */
+@media screen and (min-width:961px) {
+    .embla__slide--thumb.is-selected {
 
-.thumbnail-post-heading{
+        background: linear-gradient(216deg,#00019e,#000129);
+    }
+    
+}
+
+
+.thumbnail-post-heading {
     opacity: 0.5;
     transition: opacity 0.2s;
 }
 
-.embla__slide--thumb.is-selected .thumbnail-post-heading{
+.embla__slide--thumb.is-selected .thumbnail-post-heading {
     opacity: 1;
 }
