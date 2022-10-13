@@ -90,6 +90,14 @@ div.blog-header-wrapper {
     max-width: 788px
 }
 
+.bet-container{
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 1.5rem;
+}
+
 .ads-container {
     margin: 1.5rem 0 0;
     animation: skeleton-loading 1s linear infinite alternate;
