@@ -933,7 +933,7 @@ div.tv-news {
 }
 
 .post h5 {
-    color: var(--mainBlack);
+    color: #656565;
     font-weight: 400px;
 }
 
@@ -1438,7 +1438,8 @@ a.blog-social-link i {
 
 .ig-cards .post h3 {
     font-size: 1rem;
-    line-height: 1.3;
+    line-height: 1.2;
+    margin-top: 5px;
     color: var(--mainBlack);
     display: -webkit-box;
     -webkit-line-clamp: 2;
