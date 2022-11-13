@@ -1,0 +1,78 @@
+<%- include("partials/wcheader") %>
+<div class="side-drawer" data-simplebar>
+    <i class="fas fa-times"></i>
+    <div class="side-drawer-inner">
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Menu</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <li><a class="active-cat" href="/">Home</a></li>
+                    <li><a class="active-cat" href="/about-us">About Us</a></li>
+                    <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
+                    <% if(user){%>
+                    <% if(user.privilege === "admin"){%>
+                    <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                    <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Categories</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <% if(sortedCats){%>
+                    <% for(let cat in sortedCats){%>
+                    <li><i class="fas fa-futbol"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                    </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<section class="side-drawer-backdrop"></section>
+
+<section id="header-container" class="blog-header">
+    <div class="wrapper-enclosure-blog live-preview-wrapper">
+        <div id="sportmonks-widget" data-widget="wc-livescore"
+            data-info="19APozfISN5EWyEjutcWWeGOC0GOWiUe8LFEbbdzI7IAgAlyS/Tn//8WCvqbi/RY2RtkQlcK9VW5C2Mn22U8hR0jgDWbkLuPpjl2Ujj2sZJ42Sy9FJ9Pv3cX5Ux56cqbv6XibrAwmaWOo48zNbb1Em2mMXp2JdRJZcQLiZ2G5VAVA0m5Az9PV4yYQrIhcpZJuAkLHTcoPrbi7LePkoEiR79Y4rvL6j2w9bNlu5TQ9BPkhs8BrpQtmI8IZoWkl6bn4A2eOm/uDaLXCjgME1xToF4aDznObLMheIDX6BoDV3/um59LvfDYsku88fBEG299H+wGg4JbBiu8qs1uKi4BqmRlG8m1qt+lHQuvQ+MGw5vhkPFuAu0OzbSGhOANL8EeIkncpwz+Xr1vCiAvRjzFRANX+N6kd++tCBr3fJSrcNkruwsCoY90MnnAEfObD7Tn97NSYG8n0uUo+2YQaCxf2WJ6IU4ifdtI4qQfqM4zU5lfrWRHDEnx1M1KhJod8r9sQBbANZPOI1FJ/Je/9atZuuQpltWuxLKeHFFvLwxgiAY3oTSX+XQKWJzfR1Xg6a7qciM43r4gKzGuUR7/VwRzEO50ANcbxA+CkdrUV3U98Tt7ARGlgYZxqlSqCpk3eVn+RAEgzapj793pge5GErTD6wENiA0I92l4EMNlk0QSdI8=">
+        </div>
+
+        <div class="ads-container">
+            <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
+                crossorigin="anonymous"></script>
+            <!-- banner ads -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7287147359584031"
+                data-ad-slot="9234749507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+
+
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+<%- include('partials/footer') %>

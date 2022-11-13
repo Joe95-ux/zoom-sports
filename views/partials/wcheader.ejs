@@ -91,8 +91,8 @@
                 </div>
                 <ul class="nav_links">
                     <li class="nav_link"> <a href="/">Home</a> </li>
-                    <li class="nav_link"> <a href="/live-preview" class="<%= live %> ">Livescores</a> </li>
-                    <li class="nav_link"> <a href="/about-us" class="<%= about%>">About Us</a> </li>
+                    <li class="nav_link"> <a href="/live-preview" >Livescores</a> </li>
+                    <li class="nav_link"> <a href="/about-us" >About Us</a> </li>
 
 
                     <% if(user){%>
@@ -108,84 +108,3 @@
 
         </div>
     </nav>
-
-    <div class="side-drawer" data-simplebar>
-        <i class="fas fa-times"></i>
-        <div class="side-drawer-inner">
-            <div class="main-category discover-movies">
-                <div class="category-title">
-                    <h2 class="discover">Menu</h2>
-                </div>
-                <div class="category-types">
-                    <ul class="categories">
-                        <li><a class="active-cat" href="/">Home</a></li>
-                        <li><a class="active-cat" href="/about-us">About Us</a></li>
-                        <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
-                        <% if(user){%>
-                        <% if(user.privilege === "admin"){%>
-                        <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
-                        <% }else{%>
-                        <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
-                        <% } %>
-                        <% } %>
-                    </ul>
-                </div>
-
-            </div>
-            <div class="main-category discover-movies">
-                <div class="category-title">
-                    <h2 class="discover">Categories</h2>
-                </div>
-                <div class="category-types">
-                    <ul class="categories">
-                        <% if(sortedCats){%>
-                        <% for(let cat in sortedCats){%>
-                        <li><i class="fas fa-futbol"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
-                        </li>
-                        <% } %>
-                        <% } %>
-                    </ul>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-    <section class="side-drawer-backdrop"></section>
-
-    <section id="header-container" class="blog-header">
-        <div class="wrapper-enclosure-blog live-preview-wrapper">
-            <div class="livescore-wrapper">
-                <div id="sportmonks-widget" data-widget="livescore"
-                    data-info="J3BNiF1E63sgGZtrGFKTtnihNk9sr71yjEcm0ZmfzGduLlr6Qfdi2JJ5CWzcuJnwEIsCy8K3xPLWJk26O1qbkPjdsxy72UZ5wIoOoUJXIUW0MBv2Yz4CVECd4JYIaWRxBTQCDifbLwXPTff35p3hog3dgsbCAj9o9LPZ8xpD3lS3kLwkRd5ZtLpGohydleQOWMhyd+qMv61lvkTqPl45NNMCcCGpCxj4o4WZGp/ry4GsBCjLZUGSo1khSKhNkCCiZPJ6GIhFssVFJrks63QmI6NnvCYSNtp8Fh0GEJdxH2pzsebXzMtqB124cv+ofNBHmNGGf91sHqKU1IMkOjUSGMxwvzpgVs5pIeRj9tYPdvI4H5rE4J9SRMtBGNKqKCtKl/K+57iwHMEEZswpPr+JJMczs/8stl8IH1qRmiACGZYVNg85ni5KLGs+EOcItm4jrLWadWWBPa4qVcuCcEieqRci6RIOFmnGVnY9z4hrWc3OB6be8HXRH6MOl/2wghuOXILof6HYETkrQWzkEkh6Be+VDxb6pINEuN7c/MUSv31u1+S31nGNCi51PsRT5rGzfnPKb/05/w0Yx6XJixfSfsaNNgJcSvxVJilhW8Y10rFKDHian73gS6vMSnxgAAS5Rz5gjhsxGGO1WacTkViMtL7js7aDtUhs5+bKpmtfHiI=">
-                </div>
-
-            </div>
-
-            <div class="ads-container">
-                <script async
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
-                    crossorigin="anonymous"></script>
-                <!-- banner ads -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7287147359584031"
-                    data-ad-slot="9234749507" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-
-
-
-
-        </div>
-
-    </section>
-
-
-
-
-
-
-
-    <%- include('partials/footer') %>
