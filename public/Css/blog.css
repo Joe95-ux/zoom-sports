@@ -812,16 +812,25 @@ div.tv-news {
     background-image: none;
 }
 
+
+
 .thumbnail:focus .image img,
 .thumbnail:hover .image img {
     border-radius: 1px;
     transform: scale(1.1);
 }
 
+
+.embla__slide__thumbnail, .thumbnail .image{
+    background: url(/cover.png);
+    background-position: center;
+}
+
 .thumbnail .image {
     position: relative;
     overflow: hidden;
     display: block;
+    background-size: cover;
 }
 
 .thumbnail:focus .cat-name::before,

@@ -412,7 +412,6 @@ a.active-link{
 .scrolling-active {
     position: fixed;
     top: 0;
-    background: var(--primaryColor);
     color: var(--mainWhite);
     box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1);
 }
@@ -3376,9 +3375,6 @@ h1.genre-intro {
     width: 300px;
 }
 
-.slider-inner-card img {
-    background-color: #fff;
-}
 
 .slider-inner-card img,
 .see-more-upcoming {
