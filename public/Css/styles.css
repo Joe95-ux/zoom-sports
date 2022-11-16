@@ -103,9 +103,20 @@ button {
     transition: max-height 0.7s ease-out; 
     z-index: 4;
 }
-.world-cup-wrapper:hover .wc-menu{
+@media screen and (max-width:1440px) {
+    .world-cup-wrapper{
+        margin-left: -1.5rem;
+    }
+    .wc-menu{
+        top: 150%;
+    }
+}
+
+
+.active-wc-menu{
     max-height: 200px;
 }
+
 
 .world-cup-wrapper h2{
     font-family: 'Baloo Thambi 2', cursive;
@@ -131,10 +142,18 @@ button {
     transition: all 0.7s ease-out;
 }
 
-.world-cup-wrapper:hover .wc-tm::after{
+.active-wc-menu .wc-tm::after{
     content: "\f077";
 }
 
+@media screen and (min-width:1100px){
+    .world-cup-wrapper:hover .wc-menu{
+        max-height: 200px;
+    }
+    .world-cup-wrapper:hover .wc-tm::after{
+        content: "\f077";
+    }
+}
 
 /* .logo-and-links::before{
     content: '';
@@ -230,10 +249,14 @@ button {
         display: none;
     }
     .wc-tm::after{
-        right: -3px;
+        right: -6px;
+    }
+    .world-cup-wrapper{
+        margin-right: 1rem;
+        margin-left: 0;
     }
     .wc-menu{
-        min-width: 100%;
+        min-width: 109%;
     }
 
     /* .burger.blog-burger {
@@ -616,6 +639,13 @@ a.active-link{
     transition: background-position .2s;
     -webkit-transition: all 0.5s ease-out;
     cursor: pointer;
+}
+.wc-menu ul li{
+    background-image: linear-gradient(180deg,#162732 50%,#6ea2d3 0);
+}
+
+.wc-menu ul li a{
+    color: var(--lightGrey);
 }
 
 @media (min-width: 52.5em){

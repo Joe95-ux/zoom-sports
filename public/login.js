@@ -1,6 +1,11 @@
 const historyBtns = document.querySelectorAll(".history");
 const table = document.getElementById("dashboard-table");
 const dashboardInput = document.getElementById("dashboard-input");
+const wcWrapper = document.querySelector(".wc-tm");
+const wcMenu = document.querySelector(".wc-menu");
+const wcMenuItem = [ ...wcMenu.querySelectorAll("li a")];
+let locationPath = window.location.pathname;
+locationPath = locationPath.replace(/^\/+/g, '');
 let filter, tr, td, txtValue;
 
 // go back to previous page
@@ -54,3 +59,17 @@ function tableSearch() {
 }
 
 tableSearch();
+
+if(wcWrapper !== null && width < 1100){
+  wcWrapper.addEventListener("click", function(){
+    wcMenu.classList.toggle("active-wc-menu");
+  })
+}
+if(wcMenuItem !== null){
+  for(let item of wcMenuItem){
+    if(locationPath.includes(item.innerText.toLowerCase())){
+      item.style.color = "#fff"
+      item.style.fontWeight = 600;
+    }
+  }
+}
