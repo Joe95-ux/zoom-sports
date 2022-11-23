@@ -822,8 +822,7 @@ div.tv-news {
 
 
 .embla__slide__thumbnail, .thumbnail .image{
-    background: url(/cover.png);
-    background-position: center;
+    background-color: #022e47;
 }
 
 .thumbnail .image {
