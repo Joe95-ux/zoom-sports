@@ -492,7 +492,28 @@ app.get("/world-cup-squads", async (req, res) => {
     console.log(e);
   }
 });
+// top scorers
+app.get("/world-cup-topscorers", async (req, res) => {
+  const title = "world cup top scorers";
+  let sortedCats;
+  try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
 
+    res.render("topscorers", { title, sortedCats });
+  } catch (e) {
+    console.log(e);
+  }
+});
 // wc standings
 app.get("/world-cup-standings", async (req, res) => {
   const title = "world cup standings";
