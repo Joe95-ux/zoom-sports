@@ -695,6 +695,14 @@ div.blog-header-embla .embla__dots {
     color: var(--mainBlack);
     position: relative;
 }
+@media screen and (min-width:960px) {
+    .blog-post-body{
+      padding: 1.5rem;
+      background-color: var(--mainWhite);
+      box-shadow: var(--boxShadow);
+      border-radius: 10px;
+    }
+}
 
 .blog-body-content,
 .blog-body-bio {
@@ -2177,7 +2185,7 @@ textarea {
     width: 100%;
     height: auto;
     max-height: 520px;
-    border-radius: 0;
+    border-radius: 5px;
 }
 
 h3.single-post-title {
