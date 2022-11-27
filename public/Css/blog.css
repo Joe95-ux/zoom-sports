@@ -721,9 +721,9 @@ a.cat-title,
 a.cat-title {
     padding-bottom: 0.5rem;
     font-size: 1.5rem;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Inter Tight', sans-serif;
     text-rendering: optimizelegibility;
-    word-spacing: 0.15em;
+    word-spacing: 0.10em;
     font-weight: bold;
     margin-bottom: 1.8rem;
     color: var(--mainBlack);
