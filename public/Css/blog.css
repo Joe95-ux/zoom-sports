@@ -2184,7 +2184,7 @@ textarea {
 .post-header img {
     width: 100%;
     height: auto;
-    max-height: 520px;
+    /* max-height: 520px; */
     border-radius: 5px;
 }
 
