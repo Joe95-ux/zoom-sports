@@ -200,7 +200,7 @@
                                 <% if(picks){%>
                                 <% picks.forEach(story=>{%>
                                 <div class="embla__slide autoplay__slide"
-                                    style="background: linear-gradient(180deg,transparent 60%,#000), url(<%=story.photo%>); background-size: cover; background-color: #022e47; background-repeat: no-repeat;">
+                                    style="background: linear-gradient(180deg,transparent 60%,#000), url(<%=story.photo%>); background-size:cover; background-color: #022e47; background-repeat: no-repeat;">
                                     <a href="/stories/post/<%= story.slug%>">
                                         <div class="embla__slide__inner">
                                             <div class="post-title blog-header-post-title">
@@ -220,6 +220,7 @@
                                 <% } %>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
                 <div class="blog-header-right thumb-wrapper" style="overflow: hidden;">
