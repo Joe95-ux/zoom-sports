@@ -95,6 +95,7 @@ div.blog-header-wrapper {
     display: flex;
     max-width: 100%;
     width: 100%;
+    justify-content: center;
     overflow: hidden;
     margin-top: 1.5rem;
 }
