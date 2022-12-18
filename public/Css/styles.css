@@ -1543,15 +1543,14 @@ a.active-link{
 
 
 
-#header-container .swiper-slide {
+/* #header-container .swiper-slide {
     padding: 7% 10%;
     color: var(--mainWhite);
     position: relative;
-    /* margin-bottom: 2rem; */
     background-size: cover;
     display: flex;
     width: 100%;
-}
+} */
 
 
 
