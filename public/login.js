@@ -3,7 +3,6 @@ const table = document.getElementById("dashboard-table");
 const dashboardInput = document.getElementById("dashboard-input");
 const wcWrapper = document.querySelector(".wc-tm");
 const wcMenu = document.querySelector(".wc-menu");
-const wcMenuItem = [ ...wcMenu.querySelectorAll("li a")];
 let locationPath = window.location.pathname;
 locationPath = locationPath.replace(/^\/+/g, '');
 let filter, tr, td, txtValue;
