@@ -60,16 +60,3 @@ function tableSearch() {
 
 tableSearch();
 
-if(wcWrapper !== null && width < 1100){
-  wcWrapper.addEventListener("click", function(){
-    wcMenu.classList.toggle("active-wc-menu");
-  })
-}
-if(wcMenuItem !== null){
-  for(let item of wcMenuItem){
-    if(locationPath.includes(item.innerText.toLowerCase())){
-      item.style.color = "#fff"
-      item.style.fontWeight = 600;
-    }
-  }
-}
