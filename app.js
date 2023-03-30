@@ -289,7 +289,7 @@ app.get("/", async (req, res) => {
         picks = picks.slice(0, 6);
       }
       latest = latestPosts(stories);
-      englishpl = getByCat(stories, "CAF");
+      englishpl = getByCat(stories, "English Premier League");
       spanishll = getByCat(stories, "Spanish Laliga");
     }
     res.render("home", {
