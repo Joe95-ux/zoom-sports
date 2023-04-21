@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f7f9fa">
-    <title>Zoom Sportz</title>
+    <title><%= title %> | Zoom Sportz</title>
     <meta name="description"
-        content="Zoom sportz is your number one destination for current soccer news. We are here to update you with the most recent and up-to-date soccer news.">
+        content="Football news, results, fixtures, blogs, matches and comment on Cameroon soccer news, the Premier League, European and World football from Zoom-sportz, your number one destination for soccer news">
     <meta name="keywords" content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, soccer news, soccer news transfer, soccer transfer news, soccer news Europe, Soccer news Cameroon, soccer news premier league, soccer live score, live score, soccer life goals, soccer news today, soccer news now, soccer news transfer, soccer news europe, soccer news latest, soccer news uk,
         soccer news goal, football news, english soccer news, spanish league">
     <!--favicon-->
@@ -233,8 +233,7 @@
                 <div id="long" class="blog-body-content">
                     <div class="blog-body-popular">
                         <a href="/category/English Premier League" class="cat-title wc-trademark-wrapper">
-                            English Premier League
-                            <i class="fas fa-chevron-right"></i></a>
+                           English Premier League <i class="fas fa-long-arrow-alt-right"></i></a>
                         <div class="latest-posts latest-stories">
                             <% if(englishpl){%>
                             <%englishpl.forEach(story=>{  %>
@@ -242,7 +241,7 @@
                             <div class="post">
                                 <a class="thumbnail" href="/stories/post/<%= story.slug %>">
                                     <span class="image">
-                                        <img src="<%= story.photo %>" alt="post image">
+                                        <img src="<%= story.photo %>" alt="<%= story.title %>">
                                     </span>
                                     <h5 class="cat-name"><%= story.category %> </h5>
                                     <h3><%= story.title %> </h3>
@@ -260,7 +259,7 @@
                         </div>
                         <% if(latest.length){%>
                         <div class="older-posts">
-                            <div class="bet-container ads-container">
+                            <div class="bet-container ads-container" style="margin-bottom: 1.5rem;">
                                 <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='100%' height='90' src="https://refbanners.com/I?tag=d_1826723m_45955c_&site=1826723&ad=45955" ></iframe>
                             </div>
                             <h1 class="cat-title">Latest News</h1>
@@ -274,7 +273,7 @@
                                                     <a class="thumbnail" href="/stories/post/<%= story.slug%>">
                                                         <div class="post">
                                                             <span class="image">
-                                                                <img src="<%= story.photo%>" alt="post image">
+                                                                <img src="<%= story.photo%>" alt="<%= story.title %>">
                                                             </span>
                                                             <h5 class="cat-name"><%= story.category%></h5>
                                                             <h3><%= story.title%></h3>
@@ -320,7 +319,7 @@
                                 <% currentPage.forEach(story=>{%>
                                 <div class="post">
                                     <a class="thumbnail" href="/stories/post/<%= story.slug %>">
-                                        <span class="image"><img src="<%= story.photo %>" alt="post image"></span>
+                                        <span class="image"><img src="<%= story.photo %>" alt="<%= story.title %>"></span>
                                         <h5 class="cat-name"><%= story.category %> </h5>
                                         <h3><%= story.title %> </h3>
                                         <h5><%= story.createdAt %></h5>
@@ -353,8 +352,7 @@
 
                         <% if(spanishll.length){%>
                         <div class="older-posts">
-                            <a href="/category/Spanish Laliga" class="cat-title">Spanish Laliga<i
-                                    class="fas fa-chevron-right"></i></a>
+                            <a href="/category/Spanish Laliga" class="cat-title">Spanish Laliga<i class="fas fa-long-arrow-alt-right"></i></a>
                             <div class="older-posts-inner">
                                 <div class="embla old-posts-embla">
                                     <div class="embla__viewport embla--view">
@@ -365,7 +363,7 @@
                                                     <a class="thumbnail" href="/stories/post/<%= story.slug%>">
                                                         <div class="post">
                                                             <span class="image">
-                                                                <img src="<%= story.photo%>" alt="post image">
+                                                                <img src="<%= story.photo%>" alt="<%= story.title %>">
                                                             </span>
                                                             <h5 class="cat-name"><%= story.category%></h5>
                                                             <h3><%= story.title%></h3>
@@ -409,7 +407,7 @@
                     <h1 class="cat-title">About Us</h1>
                     <div class="writer-bio-wrapper">
                         <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='100%' height='90' src="https://refbanners.com/I?tag=d_1826723m_31493c_&site=1826723&ad=31493" ></iframe>
-                        <img src="/banner.jpeg" alt="author-image">
+                        <img src="/banner.jpeg" alt="Latest English Premier League News">
                         <div class="writer-bio-content">
                             <h4>Get to Know us</h4>
                             <p>Welcome to zoom-sportz.com. Here we will provide you only interesting content, which you

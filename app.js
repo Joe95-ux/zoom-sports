@@ -135,7 +135,7 @@ app.post("/", async (req, res) => {
 });
 
 app.get("/category/:catName", async (req, res) => {
-  const title = req.params.catName;
+  const title = "Latest " + req.params.catName + " News, Fixtures and Results";
   const cat = req.params.catName;
   const category = encodeURI(cat);
   let sortedCats;
@@ -144,7 +144,7 @@ app.get("/category/:catName", async (req, res) => {
   let latest;
   let currentPage;
   try {
-    let allStories = await Story.find({ status: "Public" }).lean().exec();
+    let allStories = await Story.find({ status: "Public" }).sort({ createdAt: "desc" }).lean().exec();
     let stories = await Story.find({ category: cat, status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
@@ -185,7 +185,7 @@ app.get("/category/:catName", async (req, res) => {
 
 // next category page
 app.get("/category/:catName/:num", async (req, res) => {
-  const title = req.params.catName;
+  const title = "Latest " + req.params.catName + " News, Fixtures and Results";
   const cat = req.params.catName;
   const category = encodeURI(cat);
   let sortedCats;
@@ -194,7 +194,7 @@ app.get("/category/:catName/:num", async (req, res) => {
   let currentPage;
   let pageNum = parseInt(req.params.num);
   try {
-    let allStories = await Story.find({ status: "Public" }).lean().exec();
+    let allStories = await Story.find({ status: "Public" }).sort({ createdAt: "desc" }).lean().exec();
     let stories = await Story.find({ category: cat, status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
@@ -254,7 +254,7 @@ app.post("/compose", upload.single("photo"), ensureAuth, async (req, res) => {
 });
 
 app.get("/", async (req, res) => {
-  const title = "blog posts";
+  const title = "Latest Football - Soccer news, match reports and fixtures";
   const active = "active-link";
   let sortedCats;
   let picks;
@@ -319,7 +319,7 @@ app.get("/page=1", (req, res) => {
 
 // get next home page
 app.get("/page=:num", async (req, res) => {
-  const title = "blog posts";
+  const title = "Latest Football - Soccer news, match reports and fixtures";
   const active = "active-link";
   let sortedCats;
   let picks;

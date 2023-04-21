@@ -1,4 +1,4 @@
-<%- include("partials/header") %>
+<%- include("partials/categoryheader") %>
 <div class="side-drawer" data-simplebar>
     <i class="fas fa-times"></i>
     <div class="side-drawer-inner">
@@ -74,7 +74,7 @@
                         <div class="post">
                             <a class="thumbnail" href="/stories/post/<%= story.slug %>">
                                 <span class="image">
-                                    <img src="<%= story.photo %>" alt="post image">
+                                    <img src="<%= story.photo %>" alt="<%= story.title %>">
                                 </span>
                                 <h5 class="cat-name"><%= story.category %> </h5>
                                 <h3><%= story.title %> </h3>
@@ -115,13 +115,13 @@
                     </div>
                     <% if(latest.length){%>
                     <div class="tv-shows">
-                        <a href="/" class="cat-title">Recent Posts<i class="fas fa-chevron-right"></i></a>
+                        <a href="/" class="cat-title">Recent Posts<i class="fas fa-long-arrow-alt-right"></i></a>
                         <div class="latest-posts tv-news">
                             <%latest.forEach(story=>{%>
                             <div class="post">
                                 <a class="thumbnail" href="/stories/post/<%= story.slug %>">
                                     <span class="image">
-                                        <img src="<%= story.photo %>" alt="post image">
+                                        <img src="<%= story.photo %>" alt="<%= story.title %>">
                                     </span>
                                     <h5 class="cat-name"><%= story.category %> </h5>
                                     <h3><%= story.title %> </h3>

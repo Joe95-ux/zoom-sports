@@ -45,7 +45,7 @@ module.exports = {
     const related = newStories.filter(story => {
       return story.category === cat;
     });
-    return related;
+    return related.slice(0,10);
   },
   latestPosts: function(stories) {
     const posts = stories.slice(0, 10);
