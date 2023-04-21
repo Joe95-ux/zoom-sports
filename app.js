@@ -447,6 +447,30 @@ app.get("/live-preview", async (req, res) => {
   }
 });
 
+app.get("/highlights", async (req, res) => {
+  const title = "Match Highlights";
+  const live = "active-link";
+  const about = "";
+  let sortedCats;
+  try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+
+    res.render("highlights", { title, sortedCats, live, about });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 
 app.use("/stories", storyRouter);
 app.use("/users", userRouter);
