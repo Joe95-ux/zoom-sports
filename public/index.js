@@ -139,14 +139,31 @@ function dropDown() {
       const optionsList = container.querySelectorAll(".option");
       optionsList.forEach(option => {
         option.addEventListener("click", () => {
+          optionsList.forEach(opt=>{
+            if(opt.classList.contains("active-label")){
+              opt.classList.remove("active-label");
+            }
+          })
+          option.classList.add("active-label");
           const selectedInput = container.nextElementSibling.firstElementChild;
           selectedInput.value = option.querySelector("label").innerHTML;
           container.classList.remove("active-options");
+          
         });
       });
     });
+    window.addEventListener("DOMContentLoaded", ()=>{
+      const selectedField = document.querySelector(".selected").firstElementChild;
+      const allOptions = [...document.querySelectorAll(".option")];
+      allOptions.forEach(opt=>{
+        if(selectedField.value === opt.querySelector("label").innerHTML){
+          opt.classList.add("active-label");
+        }
+      })
+    })
   }
 }
+
 
 dropDown();
 

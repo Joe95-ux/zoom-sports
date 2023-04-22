@@ -12,6 +12,7 @@
                     <li><a class="active-cat" href="/about-us">About Us</a></li>
                     <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
                     <li><a class="active-cat" href="/highlights">Highlights</a></li>
+                    <li><a class="active-cat" href="/tables">Tables</a></li>
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
                     <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
@@ -67,7 +68,7 @@
         </div>
         <div class="blog-body-wrapper">
             <% if(stories != ""){%>
-            <div id="long" class="blog-body-content">
+                <div id="long" class="blog-body-content">
                 <div class="blog-body-popular">
                     <h1 class="cat-title">Category : <span><%= cat %> </span></h1>
                     <div class="latest-posts">

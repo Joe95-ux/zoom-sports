@@ -448,7 +448,7 @@ app.get("/live-preview", async (req, res) => {
 });
 
 app.get("/highlights", async (req, res) => {
-  const title = "Match Highlights";
+  const title = "Soccer Match Highlights";
   const live = "active-link";
   const about = "";
   let sortedCats;
@@ -470,6 +470,31 @@ app.get("/highlights", async (req, res) => {
     console.log(e);
   }
 });
+
+app.get("/tables", async (req, res) => {
+  const title = "Soccer League Table";
+  const live = "active-link";
+  const about = "";
+  let sortedCats;
+  try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+
+    res.render("tables", { title, sortedCats, live, about });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 
 
 app.use("/stories", storyRouter);

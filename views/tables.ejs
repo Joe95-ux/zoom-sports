@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f9fa">
+    <title><%= title %> | Zoom Sportz</title>
+    <meta name="description"
+        content="Football news, results, league tables, match highlights, fixtures, blogs, matches and comment on Cameroon soccer news, the Premier League, European and World football from Zoom-sportz, your number one destination for soccer news">
+    <meta name="keywords"
+        content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, english soccer, spanish league">
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&family=Baloo+Thambi+2:wght@500;600;700;800&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+    <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
+    <!-- <link rel="stylesheet" href="https://widgets.sportmonks.com/css/app.css"> -->
+    <link rel="stylesheet" href="/Css/ckstyles.css">
+    <link rel="stylesheet" href="/Css/editor.css">
+    <link rel="stylesheet" href="/Css/embla.css">
+    <link rel="stylesheet" href="/Css/login.css">
+    <link rel="stylesheet" href="/Css/blog.css">
+    <link rel="stylesheet" href="/Css/styles.css">
+    <noscript>
+        <style>
+            /**
+          * Reinstate scrolling for non-JS clients
+          */
+            .simplebar-content-wrapper {
+                overflow: auto;
+            }
+        </style>
+    </noscript>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00X58N673T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-00X58N673T');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=593644877942199&autoLogAppEvents=1"
+        nonce="55i7sfzH"></script>
+
+    <nav class="navigation">
+        <div class="blog-nav-enclosure">
+            <div class="logo-and-links">
+                <div class="logo">
+                    <div class="burger blog-burger">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                    <a href="/">
+                        <div class="logo-wrapper">
+                            <img src="/zs-logo.png" alt="Zoom Sportz">
+                            <!-- <h1>Zoom Sportz</h1> -->
+                        </div>
+
+                    </a>
+                </div>
+
+                <ul class="nav_links">
+                    <li class="nav_link"> <a href="/">Home</a> </li>
+                    <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
+                    <li class="nav_link"> <a href="/highlights">Highlights</a> </li>
+                    <li class="nav_link"> <a href="/tables" class="<%= live %> ">Tables</a> </li>
+                    <li class="nav_link"> <a href="/about-us" class="<%= about%>">About Us</a> </li>
+
+
+                    <% if(user){%>
+                    <% if(user.privilege === "admin"){%>
+                    <li class="nav_link"> <a href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                    <li class="nav_link"> <a href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="side-drawer" data-simplebar>
+        <i class="fas fa-times"></i>
+        <div class="side-drawer-inner">
+            <div class="main-category discover-movies">
+                <div class="category-title">
+                    <h2 class="discover">Menu</h2>
+                </div>
+                <div class="category-types">
+                    <ul class="categories">
+                        <li><a class="active-cat" href="/">Home</a></li>
+                        <li><a class="active-cat" href="/about-us">About Us</a></li>
+                        <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
+                        <li><a class="active-cat" href="/highlights">Highlights</a></li>
+                        <li><a class="active-cat" href="/tables">Tables</a></li>
+                        <% if(user){%>
+                        <% if(user.privilege === "admin"){%>
+                        <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% }else{%>
+                        <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <div class="main-category discover-movies">
+                <div class="category-title">
+                    <h2 class="discover">Categories</h2>
+                </div>
+                <div class="category-types">
+                    <ul class="categories">
+                        <% if(sortedCats){%>
+                        <% for(let cat in sortedCats){%>
+                        <li><i class="fas fa-futbol"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                        </li>
+                        <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="side-drawer-logo">
+            <img src="/zs-logo.png" alt="Zoom Sportz">
+        </div>
+
+    </div>
+    <section class="side-drawer-backdrop"></section>
+
+    <section id="header-container" class="blog-header">
+        <div class="wrapper-enclosure-blog live-preview-wrapper">
+            <div class="livescore-wrapper">
+                <div class="select-box" style="margin-bottom: 1rem; max-width: 400px;">
+                    <div class="options-container">
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="action" name="movies" />
+                            <label for="Europa">Europa League</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="shows" name="shows" />
+                            <label for="Premier League">Premier League</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="pop-culture" name="popculture" />
+                            <label for="European Championship">European Championship</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="marvel-universe" name="marvel" />
+                            <label for="Europa Conference League">Europa Conference League</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="dc" name="dc" />
+                            <label for="Champions League">Champions League</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="streaming" name="streaming" />
+                            <label for="UEFA Nations League">UEFA Nations League</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="box-office" name="boxOffice" />
+                            <label for="Pro League">Pro League</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="comedy" name="comedy" />
+                            <label for="La Liga ">La Liga</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="nations-league" name="nations-league" />
+                            <label for="Serie A">Serie A</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="casting" name="casting" />
+                            <label for="Bundesliga">Bundesliga</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="caf" name="caf" />
+                            <label for="League 1">League 1</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="fecafoot" name="fecafoot" />
+                            <label for="Eredivisie">Eredivisie</label>
+                        </div>
+                        <div class="option league-option">
+                            <input type="radio" class="radio" id="fifa" name="fifa" />
+                            <label for="Liga Portugal">Liga Portugal</label>
+                        </div>
+                    </div>
+
+                    <div class="selected margin-600" style="border-radius: 5px;">
+                        <input type="text" name="category" id="change-table" value="Premier League" readonly>
+                    </div>
+                </div>
+                <div>
+                    <div class="tables" data-name="Premier League">
+                        <div id="scoreaxis-widget-c6b9b" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/8?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=c6b9b" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"c6b9b"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-c6b9b iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+
+                    </div>
+                    <div class="tables" data-name="Champions League">
+                        <div id="scoreaxis-widget-f3f73" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/2?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=f3f73" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"f3f73"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-f3f73 iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+                    </div>
+                    <div class="tables" data-name="Europa League">
+                        <div id="scoreaxis-widget-74be3" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/5?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=74be3" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"74be3"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-74be3 iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+                    </div>
+                    <div class="tables" data-name="European Championship">
+                        <div id="scoreaxis-widget-5a950" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/1326?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=5a950" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"5a950"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-5a950 iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+                    </div>
+                    <div class="tables" data-name="Bundesliga">
+                        <div id="scoreaxis-widget-0d619" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/82?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=0d619" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"0d619"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-0d619 iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+
+                    </div>
+                    <div class="tables" data-name="La Liga">
+                        <div id="scoreaxis-widget-acc2c" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/564?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=acc2c" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"acc2c"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-acc2c iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+
+                    </div>
+                    <div class="tables" data-name="Serie A">
+                        <div id="scoreaxis-widget-08fee" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/384?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=08fee" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"08fee"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-08fee iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+                    </div>
+                    <div class="tables" data-name="Eredivisie">
+                        <div id="scoreaxis-widget-297ea" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/72?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=297ea" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"297ea"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-297ea iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+                    </div>
+                    <div class="tables" data-name="League 1" >
+                        <div id="scoreaxis-widget-e9f07" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/301?font=7&amp;fontSize=17&amp;removeBorders=1&amp;inst=e9f07" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"e9f07"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-e9f07 iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+                    </div>
+                    <div class="tables" data-name="Liga Portugal">
+                        <div id="scoreaxis-widget-ace0c" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/462?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=ace0c" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"ace0c"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-ace0c iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+                    </div>
+                    <div class="tables" data-name="Europa Conference League">
+                        <div id="scoreaxis-widget-2c701" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/2286?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=2c701" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"2c701"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-2c701 iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+
+                    </div>
+                    <div class="tables" data-name="Pro League">
+                        <div id="scoreaxis-widget-b0e5e" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/208?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=b0e5e" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"b0e5e"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-b0e5e iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+                    </div>
+                    <div class="tables" data-name="UEFA Nations League">
+                        <div id="scoreaxis-widget-00cb2" style="border-width:1px;border-color:rgba(0, 0, 0, 0.15);border-style:solid;border-radius:8px;padding:10px;background:rgb(255, 255, 255);width:100%" data-reactroot=""><iframe id="Iframe" src="https://www.scoreaxis.com/widget/standings-widget/1538?removeBorders=1&amp;fontSize=17&amp;font=7&amp;inst=00cb2" style="width:100%;border:none;transition:all 300ms ease"></iframe><script>window.addEventListener("DOMContentLoaded",event=>{window.addEventListener("message",event=>{if(event.data.appHeight&&"00cb2"==event.data.inst){let container=document.querySelector("#scoreaxis-widget-00cb2 iframe");container&&(container.style.height=parseInt(event.data.appHeight)+"px")}},!1)});</script></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="ads-container">
+            <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
+                crossorigin="anonymous"></script>
+            <!-- banner ads -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7287147359584031"
+                data-ad-slot="9234749507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+
+
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+    <%- include('partials/footer') %>

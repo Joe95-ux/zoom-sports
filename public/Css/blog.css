@@ -67,10 +67,12 @@
         padding: 0;
     }
 }
-
-input:focus {
-    border: none;
+input{
     outline: none;
+}
+input[type=text]:focus, select:focus {
+    border: none !important;
+    outline: none !important;
 }
 
 div.blog-header-wrapper {
@@ -1976,7 +1978,7 @@ textarea {
 }
 
 .select-box .options-container {
-    background: #2f3640;
+    background-image: linear-gradient(270deg,#093366,#041a33);
     color: var(--midGray);
     margin-top: 8px;
     max-height: 0;
@@ -3487,4 +3489,36 @@ a.create-btn.edit-profile-btn {
 
 .users-wrapper a:not(:last-child) {
     margin-bottom: 15px;
+}
+
+.league-table{
+    border: none !important;
+}
+.tables, .default-tables{
+    display: none;
+} 
+.active-league-table{
+    display: block;
+}
+.active-label{
+    position: relative;
+    color: var(--mainWhite);
+}
+.active-label::before{
+    content: "✓";
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    color: var(--mainWhite);
+}
+
+@media screen and (max-width:600px){
+    .margin-600{
+        margin-top: 1rem;
+    }
+    
 }

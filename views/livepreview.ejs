@@ -94,6 +94,7 @@
                     <li class="nav_link"> <a href="/">Home</a> </li>
                     <li class="nav_link"> <a href="/live-preview" class="<%= live %> ">Livescores</a> </li>
                     <li class="nav_link"> <a href="/highlights" >Highlights</a> </li>
+                    <li class="nav_link"> <a href="/tables" >Tables</a> </li>
                     <li class="nav_link"> <a href="/about-us" class="<%= about%>">About Us</a> </li>
 
 
@@ -124,6 +125,7 @@
                         <li><a class="active-cat" href="/about-us">About Us</a></li>
                         <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
                         <li><a class="active-cat" href="/highlights">Highlights</a></li>
+                        <li><a class="active-cat" href="/tables">Tables</a></li>
                         <% if(user){%>
                         <% if(user.privilege === "admin"){%>
                         <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
@@ -165,7 +167,7 @@
     <section id="header-container" class="blog-header">
         <div class="wrapper-enclosure-blog live-preview-wrapper">
             <div class="livescore-wrapper">
-                <iframe src="https://www.scorebat.com/embed/livescore/" frameborder="0" width="600" height="760" allowfullscreen allow='autoplay; fullscreen' style="width:100%;height:760px;overflow:hidden;display:block;" class="_scorebatEmbeddedPlayer_"></iframe><script>(function(d, s, id) {
+                <iframe src="https://www.scorebat.com/embed/livescore/?token=NzcxNDJfMTY4MjA5NjUzMV9jYTNhMTJlNDA1ZDc4YjZjZTA0ZDYyYjYwYTM4NzBmNDhmN2UyMTQ0" frameborder="0" width="600" height="760" allowfullscreen allow='autoplay; fullscreen' style="width:100%;height:760px;overflow:hidden;display:block;" class="_scorebatEmbeddedPlayer_"></iframe><script>(function(d, s, id) {
                     var js, fjs = d.getElementsByTagName(s)[0];
                     if (d.getElementById(id)) return;
                     js = d.createElement(s); js.id = id;
