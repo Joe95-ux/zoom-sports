@@ -519,6 +519,30 @@ app.get("/odds-comparison", async (req, res) => {
   }
 });
 
+app.get("/league", async (req, res) => {
+  const title = "League matches, standings, outrights and betting odds";
+  const live = "active-link";
+  const about = "";
+  let sortedCats;
+  try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+
+    res.render("league", { title, sortedCats, live, about });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 
 
 
