@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#f7f9fa">
     <title><%= title %> | Zoom Sportz</title>
     <meta name="description"
-        content="Football news, match highlights, results, fixtures, League tables, blogs, matches and comment on Cameroon soccer news, the Premier League, European and World football from Zoom-sportz, your number one destination for soccer news">
+        content="Free Football - Soccer odds comparison for English Premier League, UEFA Champions League, Laliga, Bundesliga and more">
     <meta name="keywords"
         content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, english soccer, spanish league">
     <!--favicon-->
@@ -89,12 +89,12 @@
 
                     </a>
                 </div>
-                
+
                 <ul class="nav_links">
                     <li class="nav_link"> <a href="/">Home</a> </li>
-                    <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
+                    <li class="nav_link"> <a href="/odds-comparison" class="<%= live %> ">Odds-comparison</a> </li>
                     <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
-                    <li class="nav_link"> <a href="/highlights" class="<%= live %> ">Highlights</a> </li>
+                    <li class="nav_link"> <a href="/highlights">Highlights</a> </li>
                     <li class="nav_link"> <a href="/tables">Tables</a> </li>
                     <li class="nav_link"> <a href="/about-us" class="<%= about%>">About Us</a> </li>
 
@@ -123,6 +123,7 @@
                 <div class="category-types">
                     <ul class="categories">
                         <li><a class="active-cat" href="/">Home</a></li>
+                        <li><a class="active-cat" href="/about-us">About Us</a></li>
                         <li><a class="active-cat" href="/odds-comparison">Odds-comparison</a> </li>
                         <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
                         <li><a class="active-cat" href="/highlights">Highlights</a></li>
@@ -138,7 +139,7 @@
                 </div>
 
             </div>
-            
+
 
             <div class="main-category discover-movies">
                 <div class="category-title">
@@ -168,13 +169,32 @@
     <section id="header-container" class="blog-header">
         <div class="wrapper-enclosure-blog live-preview-wrapper">
             <div class="livescore-wrapper">
-                <iframe src="https://www.scorebat.com/embed/" frameborder="0" width="600" height="760" allowfullscreen allow='autoplay; fullscreen' style="width:100%;height:760px;overflow:hidden;display:block;" class="_scorebatEmbeddedPlayer_"></iframe><script>(function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = 'https://www.scorebat.com/embed/embed.js?v=arrv';
-                    fjs.parentNode.insertBefore(js, fjs);
-                  }(document, 'script', 'scorebat-jssdk'));</script>
+
+                <div id="oddspedia-widget-odds-comparison-popular-false-sports-false-leagues-false">
+                    <script>
+                        window.oddspediaWidgetOddsComparisonPopularSportsLeagues = {
+                            api_token: "d696e2a9197d54933594eea65687d51759e143b314864975dc99352bf812",
+                            type: "odds-comparison",
+                            domain: "zoom-sportz.com",
+                            selector: "oddspedia-widget-odds-comparison-popular-false-sports-false-leagues-false",
+                            width: "0",
+                            theme: "0",
+                            odds_type: "1",
+                            language: "en",
+                            primary_color: "#283E5B",
+                            accent_color: "#00B1FF",
+                            font: "Roboto",
+                            logos: "true",
+                            limit: "10",
+                            popular: "false",
+                            sports: "",
+                            leagues: "",
+                        };
+                    </script>
+                    <script
+                        src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetOddsComparisonPopularSportsLeagues"
+                        async></script>
+                </div>
 
             </div>
 

@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#f7f9fa">
     <title><%= title %> | Zoom Sportz</title>
     <meta name="description"
-        content="Football news, league standings, league tables, results, fixtures, blogs, matches and comment on Cameroon soccer news, the Premier League, European and World football from Zoom-sportz, your number one destination for soccer news">
+        content="Football news, league standings, football betting odds, league tables, results, fixtures, blogs, matches and comment on Cameroon soccer news, the Premier League, European and World football from Zoom-sportz, your number one destination for soccer news">
     <meta name="keywords" content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, soccer news, soccer news transfer, soccer transfer news, soccer news Europe, Soccer news Cameroon, soccer news premier league, soccer live score, live score, soccer life goals, soccer news today, soccer news now, soccer news transfer, soccer news europe, soccer news latest, soccer news uk,
         soccer news goal, football news, english soccer news, spanish league">
     <!--favicon-->
@@ -91,10 +91,10 @@
                 
                 <ul class="nav_links">
                     <li class="nav_link"> <a href="/">Home</a> </li>
+                    <li class="nav_link"> <a href="/odds-comparison" class="<%= live %> ">Odds-comparison</a> </li>
                     <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
                     <li class="nav_link"> <a href="/highlights">Highlights</a> </li>
                     <li class="nav_link"> <a href="/tables">Tables</a> </li>
-                    <li class="nav_link"> <a href="/about-us">About Us</a> </li>
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
                     <li class="nav_link"> <a href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
