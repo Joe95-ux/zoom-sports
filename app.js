@@ -378,7 +378,7 @@ app.get("/page=:num", async (req, res) => {
 });
 
 app.get("/about-us", async (req, res) => {
-  const title = "About Zoom Sportz";
+  const title = "About Zoom Sportz - Football/Soccer news blog";
   const about = "active-link";
   const live = "";
   let sortedCats;
@@ -402,7 +402,7 @@ app.get("/about-us", async (req, res) => {
 });
 
 app.get("/privacy", async (req, res) => {
-  const title = "Privacy Policy for Zoom Sportz";
+  const title = "Privacy Policy for Zoom Sportz | Football - Soccer news";
   let sortedCats;
   try {
     let stories = await Story.find({ status: "Public" })
@@ -424,7 +424,7 @@ app.get("/privacy", async (req, res) => {
 });
 
 app.get("/live-preview", async (req, res) => {
-  const title = "Livescores";
+  const title = "Livescores for English Premier League, Champions League, Bundesliga, Laliga and more";
   const live = "active-link";
   const about = "";
   let sortedCats;
@@ -472,7 +472,7 @@ app.get("/highlights", async (req, res) => {
 });
 
 app.get("/tables", async (req, res) => {
-  const title = "Soccer League Table";
+  const title = "Soccer League Tables";
   const live = "active-link";
   const about = "";
   let sortedCats;
