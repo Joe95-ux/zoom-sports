@@ -3522,3 +3522,20 @@ a.create-btn.edit-profile-btn {
     }
     
 }
+
+.sponsor-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--mainWhite);
+}
+
+.sponsor-container span{
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.sponsor-container img{
+   height: auto;
+   max-width: 100%;
+}
