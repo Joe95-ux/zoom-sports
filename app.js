@@ -427,6 +427,7 @@ app.get("/live-preview", async (req, res) => {
   const title = "Livescores for English Premier League, Champions League, Bundesliga, Laliga and more";
   const live = "active-link";
   const about = "";
+  const token = process.env.ODDSPEDIA_API_TOKEN;
   let sortedCats;
   try {
     let stories = await Story.find({ status: "Public" })
@@ -441,7 +442,7 @@ app.get("/live-preview", async (req, res) => {
       }
     }
 
-    res.render("livepreview", { title, sortedCats, live, about });
+    res.render("livepreview", { title, sortedCats, live, about, token });
   } catch (e) {
     console.log(e);
   }
@@ -499,6 +500,7 @@ app.get("/odds-comparison", async (req, res) => {
   const title = "Free Football - Soccer odds comparison for premier league, champions league and more";
   const live = "active-link";
   const about = "";
+  const token = process.env.ODDSPEDIA_API_TOKEN;
   let sortedCats;
   try {
     let stories = await Story.find({ status: "Public" })
@@ -513,7 +515,7 @@ app.get("/odds-comparison", async (req, res) => {
       }
     }
 
-    res.render("odds", { title, sortedCats, live, about });
+    res.render("odds", { title, sortedCats, live, about, token });
   } catch (e) {
     console.log(e);
   }
@@ -523,6 +525,7 @@ app.get("/league", async (req, res) => {
   const title = "League matches, standings, outrights and betting odds";
   const live = "active-link";
   const about = "";
+  const token = process.env.ODDSPEDIA_API_TOKEN;
   let sortedCats;
   try {
     let stories = await Story.find({ status: "Public" })
@@ -537,7 +540,7 @@ app.get("/league", async (req, res) => {
       }
     }
 
-    res.render("league", { title, sortedCats, live, about });
+    res.render("league", { title, sortedCats, live, about, token });
   } catch (e) {
     console.log(e);
   }

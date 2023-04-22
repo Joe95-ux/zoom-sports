@@ -89,13 +89,13 @@
 
                     </a>
                 </div>
-                
+
                 <ul class="nav_links">
                     <li class="nav_link"> <a href="/">Home</a> </li>
                     <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
-                    <li class="nav_link"> <a href="/live-preview" >Livescores</a> </li>
-                    <li class="nav_link"> <a href="/highlights" >Highlights</a> </li>
-                    <li class="nav_link"> <a href="/tables" >Tables</a> </li>
+                    <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
+                    <li class="nav_link"> <a href="/highlights">Highlights</a> </li>
+                    <li class="nav_link"> <a href="/tables">Tables</a> </li>
                     <li class="nav_link"> <a href="/league" class="<%= live %> ">League</a> </li>
 
 
@@ -139,7 +139,7 @@
                 </div>
 
             </div>
-            
+
 
             <div class="main-category discover-movies">
                 <div class="category-title">
@@ -169,30 +169,443 @@
     <section id="header-container" class="blog-header">
         <div class="wrapper-enclosure-blog live-preview-wrapper">
             <div class="livescore-wrapper">
-                
-				<div id="oddspedia-widget-competition-league-1">
-                    <script>
-                    window.oddspediaWidgetCompetitionLeague1 = {
-                        api_token: "d696e2a9197d54933594eea65687d51759e143b314864975dc99352bf812",
-                        type: "competition",
-                        domain: "zoom-sportz.com",
-                        selector: "oddspedia-widget-competition-league-1",
-                        width: "0",
-                        theme: "0",
-                        odds_type: "1",
-                        language: "en",
-                        primary_color: "#051192",
-                        accent_color: "#0E3AFF",
-                        font: "Roboto",
-                        league_id: "1",
-                        limit: "8",
-                        show_odds: "true",
-                    };
-                    </script>
-                    <script src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague1" async></script>
+                <div class="livescore-wrapper">
+                    <div class="select-box" style="margin-bottom: 1rem; max-width: 400px;">
+                        <div class="options-container">
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="action" name="movies" />
+                                <label for="Europa">Europa League</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="shows" name="shows" />
+                                <label for="Premier League">English Premier League</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="pop-culture" name="popculture" />
+                                <label for="CAF Champions League">CAF Champions League</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="marvel-universe" name="marvel" />
+                                <label for="Europa Conference League">Europa Conference League</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="dc" name="dc" />
+                                <label for="Champions League">UEFA Champions League</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="streaming" name="streaming" />
+                                <label for="UEFA Nations League">UEFA Nations League</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="box-office" name="boxOffice" />
+                                <label for="Pro League">Pro League</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="comedy" name="comedy" />
+                                <label for="Primera Division ">Primera Division</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="nations-league" name="nations-league" />
+                                <label for="Serie A">Serie A</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="casting" name="casting" />
+                                <label for="Bundesliga">Bundesliga</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="caf" name="caf" />
+                                <label for="League 1">League 1</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="fecafoot" name="fecafoot" />
+                                <label for="Eredivisie">Eredivisie</label>
+                            </div>
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="fifa" name="fifa" />
+                                <label for="Elite One Cameroon">Elite One Cameroon</label>
+                            </div>
+                        </div>
+
+                        <div class="selected margin-600" style="border-radius: 5px;">
+                            <input type="text" name="category" id="change-table" value="English Premier League"
+                                readonly>
+                        </div>
                     </div>
-                    
-                
+                    <div>
+                        <div class="tables" data-name="Elite One Cameroon">
+
+                            <div id="oddspedia-widget-competition-league-1225">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague1225 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-1225",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#283E5B",
+                                        accent_color: "#00B1FF",
+                                        font: "Roboto",
+                                        league_id: "1225",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague1225"
+                                    async></script>
+                            </div>
+
+
+                        </div>
+                        <div class="tables" data-name="English Premier League">
+
+                            <div id="oddspedia-widget-competition-league-627">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague627 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-627",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#37003C",
+                                        accent_color: "#FE2982",
+                                        font: "Roboto",
+                                        league_id: "627",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague627"
+                                    async></script>
+                            </div>
+
+                        </div>
+                        <div class="tables" data-name="UEFA Champions League">
+
+                            <div id="oddspedia-widget-competition-league-1">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague1 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-1",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#051192",
+                                        accent_color: "#0E3AFF",
+                                        font: "Roboto",
+                                        league_id: "1",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague1"
+                                    async></script>
+                            </div>
+
+
+                        </div>
+                        <div class="tables" data-name="Europa League">
+
+                            <div id="oddspedia-widget-competition-league-827">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague827 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-827",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#283E5B",
+                                        accent_color: "#00B1FF",
+                                        font: "Roboto",
+                                        league_id: "827",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague827"
+                                    async></script>
+                            </div>
+
+
+                        </div>
+                        <div class="tables" data-name="CAF Champions League">
+
+                            <div id="oddspedia-widget-competition-league-1220">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague1220 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-1220",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#283E5B",
+                                        accent_color: "#00B1FF",
+                                        font: "Roboto",
+                                        league_id: "1220",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague1220"
+                                    async></script>
+                            </div>
+
+
+                        </div>
+                        <div class="tables" data-name="Bundesliga">
+
+                            <div id="oddspedia-widget-competition-league-943">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague943 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-943",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#283E5B",
+                                        accent_color: "#00B1FF",
+                                        font: "Roboto",
+                                        league_id: "943",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague943"
+                                    async></script>
+                            </div>
+
+
+                        </div>
+                        <div class="tables" data-name="Primera Division">
+
+                            <div id="oddspedia-widget-competition-league-2">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague2 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-2",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#0C1B23",
+                                        accent_color: "#E32D38",
+                                        font: "Roboto",
+                                        league_id: "2",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague2"
+                                    async></script>
+                            </div>
+
+
+
+                        </div>
+                        <div class="tables" data-name="Serie A">
+
+                            <div id="oddspedia-widget-competition-league-31">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague31 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-31",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#1d125d",
+                                        accent_color: "#005bff",
+                                        font: "Roboto",
+                                        league_id: "31",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague31"
+                                    async></script>
+                            </div>
+
+
+                        </div>
+                        <div class="tables" data-name="Eredivisie">
+
+                            <div id="oddspedia-widget-competition-league-143">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague143 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-143",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#283E5B",
+                                        accent_color: "#00B1FF",
+                                        font: "Roboto",
+                                        league_id: "143",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague143"
+                                    async></script>
+                            </div>
+
+
+                        </div>
+                        <div class="tables" data-name="League 1">
+
+                            <div id="oddspedia-widget-competition-league-24">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague24 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-24",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#0A1C3E",
+                                        accent_color: "#CCFB06",
+                                        font: "Roboto",
+                                        league_id: "24",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague24"
+                                    async></script>
+                            </div>
+
+
+                        </div>
+
+                        <div class="tables" data-name="Europa Conference League">
+
+                            <div id="oddspedia-widget-competition-league-10264">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague10264 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-10264",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#283E5B",
+                                        accent_color: "#00B1FF",
+                                        font: "Roboto",
+                                        league_id: "10264",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague10264"
+                                    async></script>
+                            </div>
+
+
+
+                        </div>
+                        <div class="tables" data-name="Pro League">
+
+                            <div id="oddspedia-widget-competition-league-13">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague13 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-13",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#283E5B",
+                                        accent_color: "#00B1FF",
+                                        font: "Roboto",
+                                        league_id: "13",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague13"
+                                    async></script>
+                            </div>
+
+
+                        </div>
+                        <div class="tables" data-name="UEFA Nations League">
+
+                            <div id="oddspedia-widget-competition-league-6925">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague6925 = {
+                                        api_token: "<%=token%>",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-6925",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#283E5B",
+                                        accent_color: "#00B1FF",
+                                        font: "Roboto",
+                                        league_id: "6925",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague6925"
+                                    async></script>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
 
             </div>
 
