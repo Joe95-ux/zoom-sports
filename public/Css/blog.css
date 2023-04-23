@@ -30,6 +30,10 @@
     padding: 0 3rem;
 }
 
+.wrapper-enclosure-blog.bets-wrapper{
+    max-width: calc(1024px + 6rem);
+}
+
 .blog-nav-enclosure {
     max-width: calc(1260px + 6rem);
     margin: 0 auto;
@@ -55,6 +59,10 @@
     .blog-nav-enclosure {
         max-width: calc(1300px + 4rem);
         padding: 0 2rem;
+    }
+
+    .wrapper-enclosure-blog.bets-wrapper{
+        max-width: calc(1024px + 4rem);
     }
 
 }
@@ -3544,6 +3552,7 @@ a.create-btn.edit-profile-btn {
     text-align: left;
     max-width: 700px;
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .sure-bets-info h1{

@@ -203,6 +203,18 @@ button {
     color: var(--mainWhite);
 }
 
+.logo img,
+.banner-logo img {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    height: auto;
+    min-height: 35px;
+    width: auto;
+}
+
+
+
 @media screen and (max-width:1440px) {
     .logo-wrapper {
         height: 3.3rem;
@@ -215,6 +227,18 @@ button {
 
 }
 
+@media screen and (max-width:1060px){
+    .logo-wrapper {
+        height: 2.5rem;
+        max-width: 180px;
+    }
+    .logo img{
+        min-height: 30px;
+        height: 30px;
+    }
+
+}
+
 @media screen and (max-width:485px) {
     .logo-wrapper {
         width: 45vw;
@@ -222,27 +246,21 @@ button {
     }
 }
 
-.logo img,
-.banner-logo img {
-    max-height: 100%;
-    max-width: 100%;
-    display: block;
-    height: auto;
-    min-height: 35px;
-    width: auto;
-}
+
 
 .nav_links {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     color: var(--mainWhite);
     /* margin: 0 auto; */
 }
 
+
 /* .burger.blog-burger {
     display: none;
 } */
+
 
 @media screen and (max-width:960px) {
     .nav_links {
@@ -437,10 +455,16 @@ button {
     margin-right: 40px;
 }
 
+@media screen and (max-width: 1060px){
+    .nav_links li:not(:last-child) {
+        margin-right: 25px;
+    }
+}
+
 .nav_links a, .world-cup-wrapper h2 {
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 0;
     color: #b2cde6;
     transition: var(--mainTransition);
