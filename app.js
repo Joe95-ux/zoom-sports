@@ -496,6 +496,31 @@ app.get("/tables", async (req, res) => {
   }
 });
 
+app.get("/surebets", async (req, res) => {
+  const title = "Surebets today | Free Arbitrage betting finder and calculator ";
+  const live = "active-link";
+  const about = "";
+  const token = process.env.ODDSPEDIA_API_TOKEN
+  let sortedCats;
+  try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+
+    res.render("surebets", { title, sortedCats, live, about, token });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 app.get("/odds-comparison", async (req, res) => {
   const title = "Free Football - Soccer odds comparison for premier league, champions league and more";
   const live = "active-link";

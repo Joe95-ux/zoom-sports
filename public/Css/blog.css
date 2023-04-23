@@ -3539,3 +3539,23 @@ a.create-btn.edit-profile-btn {
    height: auto;
    max-width: 100%;
 }
+
+.sure-bets-info{
+    text-align: left;
+    max-width: 700px;
+    width: 100%;
+}
+
+.sure-bets-info h1{
+    text-transform: uppercase;
+    color: var(--mainBlack);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5;
+}
+.sure-bets-info p{
+    font-size: 16px;
+    color: #6f8caa;
+    list-style: 1.3;
+    font-weight: normal;
+}
