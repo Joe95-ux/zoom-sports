@@ -65,41 +65,39 @@ tableSearch();
 if (tables !== null && tableInput !== null) {
   let leagueValue = "";
   let currentLeague = tableInput.value;
-  window.addEventListener("DOMContentLoaded", ()=>{
-    for(let table of tables){
-      if(table.dataset.name === currentLeague){
-        if(table.classList.contains("active-league-table")){
+  window.addEventListener("DOMContentLoaded", () => {
+    for (let table of tables) {
+      if (table.dataset.name === currentLeague) {
+        if (table.classList.contains("active-league-table")) {
           return;
-        }else{
-          table.classList.add("active-league-table")
+        } else {
+          table.classList.add("active-league-table");
+          
         }
-      }else{
-        if(table.classList.contains("active-league-table")){
+      } else {
+        if (table.classList.contains("active-league-table")) {
           table.classList.remove("active-league-table");
         }
       }
     }
+  });
 
-  })
-  
   leagueOptions.forEach(option => {
     option.addEventListener("click", () => {
       leagueValue = option.firstElementChild.nextElementSibling.innerText;
-      for(let table of tables){
-        if(table.dataset.name === leagueValue){
-          if(table.classList.contains("active-league-table")){
+      for (let table of tables) {
+        if (table.dataset.name === leagueValue) {
+          if (table.classList.contains("active-league-table")) {
             return;
-          }else{
-            table.classList.add("active-league-table")
+          } else {
+            table.classList.add("active-league-table");
           }
-        }else{
-          if(table.classList.contains("active-league-table")){
-            table.classList.remove("active-league-table")
+        } else {
+          if (table.classList.contains("active-league-table")) {
+            table.classList.remove("active-league-table");
           }
         }
       }
-
-      
     });
   });
 }

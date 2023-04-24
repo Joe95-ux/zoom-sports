@@ -3503,10 +3503,11 @@ a.create-btn.edit-profile-btn {
     border: none !important;
 }
 .tables, .default-tables{
-    display: none;
+    height: 0px;
+    overflow: hidden;
 } 
 .active-league-table{
-    display:block;
+    height: auto;
 }
 .active-label{
     position: relative;
