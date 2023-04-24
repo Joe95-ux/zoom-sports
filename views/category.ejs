@@ -69,7 +69,7 @@
             <span class="focus-nav"><%= cat %></span>
         </div>
         <div class="blog-body-wrapper">
-            <% if(stories != ""){%>
+            <% if(stories?.length){%>
                 <div id="long" class="blog-body-content">
                 <div class="blog-body-popular">
                     <h1 class="cat-title">Category : <span><%= cat %> </span></h1>
@@ -114,9 +114,6 @@
                     </div>
 
                     <% } %>
-                    <div class="bet-container">
-                        <iframe scrolling='no' frameBorder='0' style='padding:0px; margin:0px; border:0px;border-style:none;border-style:none;' width='100%' height='90' src="https://refbanners.com/I?tag=d_1826723m_45955c_&site=1826723&ad=45955" ></iframe>
-                    </div>
                     <% if(latest.length){%>
                     <div class="tv-shows">
                         <a href="/" class="cat-title">Recent Posts<i class="fas fa-long-arrow-alt-right"></i></a>

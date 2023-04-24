@@ -153,7 +153,11 @@ function dropDown() {
       });
     });
     window.addEventListener("DOMContentLoaded", ()=>{
-      const selectedField = document.querySelector(".selected").firstElementChild;
+      let selectedField;
+      if(document.querySelector(".selected") !==null ){
+        selectedField = document.querySelector(".selected").firstElementChild;
+
+      };
       const allOptions = [...document.querySelectorAll(".option")];
       allOptions.forEach(opt=>{
         if(selectedField.value === opt.querySelector("label").innerHTML){

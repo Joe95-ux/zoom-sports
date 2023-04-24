@@ -2,13 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const ejs = require("ejs");
 const fetch = require("node-fetch");
-const compression = require("compression");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
 const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const MongoStore = require("connect-mongo");
 const fs = require("fs");
@@ -21,11 +19,7 @@ const { S3Client, AbortMultipartUploadCommand } = require("@aws-sdk/client-s3");
 const multerS3 = require("multer-s3");
 const { subcribeHandler } = require("./utils/mailchimp");
 const {
-  ensureAuth,
-  ensureGuest,
-  ensureToken,
-  ensureAdminToken,
-  ensureAdmin
+  ensureAuth
 } = require("./middleware/auth");
 const {
   formatDate,
@@ -61,7 +55,6 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(compression());
 app.use(cookieParser(process.env.SECRET));
 app.use(
   session({
