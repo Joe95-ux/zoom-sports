@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require('cors');
 const ejs = require("ejs");
 const fetch = require("node-fetch");
 const compression = require("compression");
@@ -48,8 +47,6 @@ const ckeditorRouter = require("./routes/ckeditorurl");
 
 const app = express();
 
-// cors
-app.use(cors());
 // Method override
 app.use(methodOverride("_method"));
 // Passport config
