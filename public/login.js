@@ -75,12 +75,13 @@ if (tables !== null && tableInput !== null) {
         }
       }else{
         if(table.classList.contains("active-league-table")){
-          table.classList.remove("active-league-table")
+          table.classList.remove("active-league-table");
         }
       }
     }
 
   })
+  
   leagueOptions.forEach(option => {
     option.addEventListener("click", () => {
       leagueValue = option.firstElementChild.nextElementSibling.innerText;

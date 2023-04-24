@@ -3506,7 +3506,7 @@ a.create-btn.edit-profile-btn {
     display: none;
 } 
 .active-league-table{
-    display: block;
+    display:block;
 }
 .active-label{
     position: relative;
