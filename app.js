@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const ejs = require("ejs");
 const fetch = require("node-fetch");
-const helmet = require("helmet");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
@@ -41,10 +40,7 @@ const userRouter = require("./routes/user");
 const ckeditorRouter = require("./routes/ckeditorurl");
 
 const app = express();
-//helmet
-app.use(helmet({
-  contentSecurityPolicy: false
-}));
+
 // Method override
 app.use(methodOverride("_method"));
 // Passport config
