@@ -193,7 +193,11 @@
                                 <input type="radio" class="radio" id="europa" name="europa" />
                                 <label for="Europa League">Europa League</label>
                             </div>
-                            
+                            <div class="option league-option">
+                                <input type="radio" class="radio" id="mls" name="mls" />
+                                <label for="MLS">MLS</label>
+                            </div>
+
                             <div class="option league-option">
                                 <input type="radio" class="radio" id="ecl" name="ecl" />
                                 <label for="Europa Conference League">Europa Conference League</label>
@@ -229,7 +233,8 @@
                         </div>
 
                         <div class="selected margin-600" style="border-radius: 5px;">
-                            <input type="text" name="category" id="change-table" value="English Premier League" readonly>
+                            <input type="text" name="category" id="change-table" value="English Premier League"
+                                readonly>
                         </div>
                     </div>
                     <div id="tables-wrapper" style="overflow: hidden;">
@@ -344,6 +349,36 @@
 
 
                         </div>
+                        <div class="tables" data-name="MLS">
+                            <div id="oddspedia-widget-competition-league-25">
+                                <script>
+                                    window.oddspediaWidgetCompetitionLeague25 = {
+                                        api_token: "d696e2a9197d54933594eea65687d51759e143b314864975dc99352bf812",
+                                        type: "competition",
+                                        domain: "zoom-sportz.com",
+                                        selector: "oddspedia-widget-competition-league-25",
+                                        width: "0",
+                                        theme: "0",
+                                        odds_type: "1",
+                                        language: "en",
+                                        primary_color: "#181B29",
+                                        accent_color: "#AC302F",
+                                        font: "Roboto",
+                                        league_id: "25",
+                                        limit: "8",
+                                        show_odds: "true",
+                                    };
+                                </script>
+                                <script
+                                    src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetCompetitionLeague25"
+                                    async></script>
+                            </div>
+
+
+
+                        </div>
+
+
                         <div class="tables" data-name="CAF Champions League">
 
                             <div id="oddspedia-widget-competition-league-1220">
