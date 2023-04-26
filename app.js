@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const ejs = require("ejs");
 const fetch = require("node-fetch");
+const compression = require('compression');
 const session = require("express-session");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
@@ -40,6 +41,17 @@ const userRouter = require("./routes/user");
 const ckeditorRouter = require("./routes/ckeditorurl");
 
 const app = express();
+
+app.use(compression({
+  level: 6,
+  threshold: 5 * 1000,
+  filter: (req, res)=>{
+    if(req.headers['x-no-compression']){
+      return false
+    }
+    return compression.filter(req, res)
+  }
+}));
 
 // Method override
 app.use(methodOverride("_method"));

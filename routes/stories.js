@@ -7,20 +7,12 @@ const { S3Client, AbortMultipartUploadCommand } = require("@aws-sdk/client-s3");
 const multerS3 = require("multer-s3");
 const {
   ensureAuth,
-  ensureGuest,
-  ensureToken,
-  ensureAdminToken,
-  ensureAdmin
 } = require("../middleware/auth");
 const {
   formatDate,
-  dateWithTime,
   sortCats,
   getCats,
-  editorsPicks,
-  latestPosts,
   relatedPosts,
-  paginate,
   recentPosts
 } = require("../helpers/helpers");
 const User = require("../models/User");

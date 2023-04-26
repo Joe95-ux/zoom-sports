@@ -17,8 +17,6 @@ const {
   dateWithTime,
   sortCats,
   getCats,
-  editorsPicks,
-  latestPosts,
   paginate
 } = require("../helpers/helpers");
 const User = require("../models/User");
