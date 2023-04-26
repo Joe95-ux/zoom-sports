@@ -17,15 +17,16 @@ const navSlide = () => {
   burger.addEventListener("click", () => {
     // animate burger
     burger.classList.toggle("toggle");
-    sideDrawerBackdrop.classList.add("active-backrop");
+    sideDrawer.classList.toggle("side-drawer-active");
     // toggle side-drawer
-    sideDrawer.classList.add("side-drawer-active");
+    sideDrawerBackdrop.classList.toggle("active-backrop");
     closeSideDrawer.style.opacity = "1";
   });
 
   //close drawer
   if (closeSideDrawer !== null) {
     closeSideDrawer.addEventListener("click", () => {
+      burger.classList.toggle("toggle");
       sideDrawer.classList.remove("side-drawer-active");
       sideDrawerBackdrop.classList.remove("active-backrop");
       closeSideDrawer.style.opacity = "0";
@@ -33,6 +34,7 @@ const navSlide = () => {
   }
   if (sideDrawerBackdrop !== null) {
     sideDrawerBackdrop.addEventListener("click", () => {
+      burger.classList.toggle("toggle");
       sideDrawer.classList.remove("side-drawer-active");
       sideDrawerBackdrop.classList.remove("active-backrop");
     });
