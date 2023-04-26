@@ -3535,14 +3535,13 @@ a.create-btn.edit-profile-btn {
 .sponsor-container{
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
     color: var(--mainWhite);
 }
 
 .sponsor-container .powered-text{
     font-size: 16px;
-    margin-bottom: 5px;
+    margin-right: 5px;
 }
 
 .sponsor-container a{
