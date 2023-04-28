@@ -40,52 +40,81 @@ if (mainCarouselWrap !== null) {
 }
 
 if (mainCarouselWrap !== null) {
-  const mainCarousel = EmblaCarousel(mainCarouselView, {
+  let emblaApiMain = EmblaCarousel(mainCarouselView, {
     selectedClass: "",
     loop: false,
     skipSnaps: false
   });
 
-  const autoThumb = thumbAutoPlay(mainCarousel, 2000);
+  const autoThumb = thumbAutoPlay(emblaApiMain, 2000);
 
   const thumbCarouselWrap = document.getElementById("thumb-carousel");
   const thumbCarouselView = thumbCarouselWrap.querySelector(".embla__viewport");
 
-  const thumbCarousel = EmblaCarousel(thumbCarouselView, {
+  let emblaApiThumb = EmblaCarousel(thumbCarouselView, {
     selectedClass: "",
     containScroll: "keepSnaps",
     axis: val,
     dragFree: true
   });
 
-  const onThumbClick = (mainCarousel, thumbCarousel, index) => () => {
-    if (!thumbCarousel.clickAllowed()) return;
-    mainCarousel.scrollTo(index);
-  };
+  const addThumbBtnsClickHandlers = (emblaApiMain, emblaApiThumb) => {
+    const slidesThumbs = emblaApiThumb.slideNodes()
+  
+    const scrollToIndex = slidesThumbs.map(
+      (_, index) => () => emblaApiMain.scrollTo(index),
+    )
+  
+    slidesThumbs.forEach((slideNode, index) => {
+      slideNode.addEventListener('click', scrollToIndex[index], false)
+    })
+  
+    return () => {
+      slidesThumbs.forEach((slideNode, index) => {
+        slideNode.removeEventListener('click', scrollToIndex[index], false)
+      })
+    }
+  }
 
-  const followMainCarousel = (mainCarousel, thumbCarousel) => () => {
-    thumbCarousel.scrollTo(mainCarousel.selectedScrollSnap());
-    selectThumbBtn(mainCarousel, thumbCarousel);
-  };
+  const addToggleThumbBtnsActive = (emblaApiMain, emblaApiThumb) => {
+    const slidesThumbs = emblaApiThumb.slideNodes()
+  
+    const toggleThumbBtnsState = () => {
+      emblaApiThumb.scrollTo(emblaApiMain.selectedScrollSnap())
+      const previous = emblaApiMain.previousScrollSnap()
+      const selected = emblaApiMain.selectedScrollSnap()
+      slidesThumbs[previous].classList.remove('embla-thumbs__slide--selected')
+      slidesThumbs[selected].classList.add('embla-thumbs__slide--selected')
+    }
+  
+    emblaApiMain.on('select', toggleThumbBtnsState)
+    emblaApiThumb.on('init', toggleThumbBtnsState)
+  
+    return () => {
+      const selected = emblaApiMain.selectedScrollSnap()
+      slidesThumbs[selected].classList.remove('embla-thumbs__slide--selected')
+    }
+  }
+  
 
-  const selectThumbBtn = (mainCarousel, thumbCarousel) => {
-    const previous = mainCarousel.previousScrollSnap();
-    const selected = mainCarousel.selectedScrollSnap();
-    thumbCarousel.slideNodes()[previous].classList.remove("is-selected");
-    thumbCarousel.slideNodes()[selected].classList.add("is-selected");
-  };
+  const removeThumbBtnsClickHandlers = addThumbBtnsClickHandlers(
+    emblaApiMain,
+    emblaApiThumb
+  );
+  const removeToggleThumbBtnsActive = addToggleThumbBtnsActive(
+    emblaApiMain,
+    emblaApiThumb
+  );
 
-  thumbCarousel.slideNodes().forEach((thumbNode, index) => {
-    const onClick = onThumbClick(mainCarousel, thumbCarousel, index);
-    thumbNode.addEventListener("click", onClick, false);
-  });
+  emblaApiMain
+    .on("destroy", removeThumbBtnsClickHandlers)
+    .on("destroy", removeToggleThumbBtnsActive);
 
-  const syncThumbCarousel = followMainCarousel(mainCarousel, thumbCarousel);
-  mainCarousel.on("select", syncThumbCarousel);
-  thumbCarousel.on("init", syncThumbCarousel);
+  emblaApiThumb
+    .on("destroy", removeThumbBtnsClickHandlers)
+    .on("destroy", removeToggleThumbBtnsActive);
 
   mainCarouselView.addEventListener("mouseenter", autoThumb.stop, false);
   mainCarouselView.addEventListener("touchstart", autoThumb.stop, false);
   autoThumb.play();
-
 }

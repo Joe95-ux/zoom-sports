@@ -366,7 +366,7 @@
         transition: opacity 0.2s;
 
     }
-    .embla__slide--thumb.is-selected .embla__slide__thumbnail {
+    .embla-thumbs__slide--selected .embla__slide__thumbnail {
         opacity: 1;
     }
     .thumbnail-post-heading {
@@ -374,15 +374,14 @@
         transition: opacity 0.2s;
     }
     
-    .embla__slide--thumb.is-selected .thumbnail-post-heading {
+    .embla-thumbs__slide--selected .thumbnail-post-heading {
         opacity: 1;
     }
 
 }
 
 @media screen and (min-width:961px) {
-    .embla__slide--thumb.is-selected {
-
+    .embla-thumbs__slide--selected {
         background-image: linear-gradient(270deg,#093366,#041a33);
     }
     
