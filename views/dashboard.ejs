@@ -171,7 +171,7 @@
 
                     </div>
 
-                    <% if(currentPage){%>
+                    <% if(currentPage.length > 0){%>
                     <table id="dashboard-table" class="dashboard-table-proper" data-filter-control="true" data-show-search-clear-button="true">
                         <thead>
                             <tr>
@@ -224,6 +224,12 @@
                             <%}) %>
                         </tbody>
                     </table>
+                    <% }else{%>
+                        <div class="dashboard-title">
+                            <div>
+                                <p>You Have no stories yet.</p>
+                            </div>
+                        </div>
                     <% } %>
                 </div>
                 <% if(user.privilege === "admin"){%>
@@ -246,13 +252,7 @@
                             class="fas fa-arrow-right next-indicator"></i></a>
                     <% } %>
                 </div>
-                <%}else{%>
-                <div class="dashboard-title">
-                    <div>
-                        <p>You Have no stories yet.</p>
-                    </div>
-                </div>
-                <% } %>
+                <% }%>
                 <% }else{%>
                 <% if(pages>1){%>
                 <div class="page-controls blog-page-controls">
@@ -273,13 +273,7 @@
                             class="fas fa-arrow-right next-indicator"></i></a>
                     <% } %>
                 </div>
-                <%}else{%>
-                <div class="dashboard-title">
-                    <div>
-                        <p>You Have no stories yet.</p>
-                    </div>
-                </div>
-                <% } %>
+                <%}%>
 
                 <% } %>
 

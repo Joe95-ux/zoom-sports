@@ -82,10 +82,6 @@
 input{
     outline: none;
 }
-input[type=text]:focus, select:focus {
-    border: none !important;
-    outline: none !important;
-}
 
 div.blog-header-wrapper {
     height: 540px;
