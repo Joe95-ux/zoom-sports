@@ -32,7 +32,8 @@
   
   @media screen and (max-width:600px){
     .wrapper-enclosure-blog{
-      margin-top: 5.5rem;
+      /* margin-top: 5.5rem; */
+      margin-top: 0;
     }
   }
   

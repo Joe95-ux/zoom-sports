@@ -26,7 +26,8 @@
 
 .wrapper-enclosure-blog {
     max-width: calc(1260px + 6rem);
-    margin: 5rem auto 0;
+    /* margin: 7.8rem auto 0; */
+    margin: 0 auto 0;
     padding: 0 3rem;
 }
 
@@ -39,17 +40,20 @@
     margin: 0 auto;
     padding: 0 3rem;
     width: 100%;
+    overflow: hidden;
 }
 
 @media screen and (max-width:1440px) {
     .wrapper-enclosure-blog {
-        margin: 4rem auto 0;
+        /* margin: 4rem auto 0; */
+        margin: 0 auto 0;
     }
 }
 
 @media screen and (max-width:800px) {
     .wrapper-enclosure-blog {
-        margin: 5rem auto 0;
+        /* margin: 5rem auto 0; */
+        margin: 0 auto 0;
     }
 }
 
@@ -3560,6 +3564,13 @@ a.create-btn.edit-profile-btn {
     max-width: 700px;
     width: 100%;
     margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 416px){
+    .sure-bets-info{
+      padding:0 0.5rem;
+    }
+    
 }
 
 .sure-bets-info h1{

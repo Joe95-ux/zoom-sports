@@ -5,6 +5,10 @@ const seeBio = document.querySelector(".see-bio");
 const profileBio = document.querySelector(".profile-biography");
 const profileInput = document.getElementById("profile-pic");
 const simpleBarContainer = document.getElementById("simple-bar");
+const timezoneContainer = document.querySelector(".timezone");
+const timeDisplay = document.querySelector(".time-stamp");
+const currentLink = window.location.href;
+const navbar_elts = [...document.querySelectorAll(".nav_link")];
 
 // navigation bar
 const navSlide = () => {
@@ -42,10 +46,26 @@ const navSlide = () => {
 
   // scroll EVENT
   window.addEventListener("scroll", function() {
-    let navigation = document.querySelector(".navigation");
+    let navigation = document.querySelector(".nav-wraps");
     let windowPosition = window.scrollY > 0;
     navigation.classList.toggle("scrolling-active", windowPosition);
   });
+
+
+  document.addEventListener("DOMContentLoaded", ()=>{
+    let arrLength = currentLink.split("/").length;
+    let param = currentLink.split("/")[arrLength-1];
+    for(let nav of navbar_elts){
+      let link = nav.firstElementChild.innerText;
+      link = link.toLowerCase();
+      if(param === link){
+        nav.scrollIntoView();
+      }
+      if(param === "live-preview" && link === "livesores"){
+        nav.scrollIntoView();
+      }
+    }
+  })
 
   // footer
 
@@ -66,6 +86,35 @@ const navSlide = () => {
 
 // invoke function
 navSlide();
+
+//get timezone
+function getTimeZone() {
+  if (timezoneContainer !== null && timeDisplay !== null) {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    let offset = -(new Date().getTimezoneOffset() / 60);
+    if (offset > 0) {
+      offset = "+" + offset;
+    } else {
+      offset = "-" + offset;
+    }
+    timezoneContainer.innerHTML = `${timezone}(UTC${offset})`;
+
+    //time
+    function refreshTime() {
+      let dateString = new Date().toLocaleString("en-US", {
+        timeZone: `${timezone}`
+      });
+
+      let formattedString = dateString.split(",");
+      timeDisplay.innerHTML =
+        '<i class="fas fa-clock"></i>' + formattedString[1];
+    }
+
+    setInterval(refreshTime, 1000);
+  }
+}
+
+getTimeZone();
 
 // sticky layout
 function stickLayout() {
@@ -141,35 +190,32 @@ function dropDown() {
       const optionsList = container.querySelectorAll(".option");
       optionsList.forEach(option => {
         option.addEventListener("click", () => {
-          optionsList.forEach(opt=>{
-            if(opt.classList.contains("active-label")){
+          optionsList.forEach(opt => {
+            if (opt.classList.contains("active-label")) {
               opt.classList.remove("active-label");
             }
-          })
+          });
           option.classList.add("active-label");
           const selectedInput = container.nextElementSibling.firstElementChild;
           selectedInput.value = option.querySelector("label").innerHTML;
           container.classList.remove("active-options");
-          
         });
       });
     });
-    window.addEventListener("DOMContentLoaded", ()=>{
+    window.addEventListener("DOMContentLoaded", () => {
       let selectedField;
-      if(document.querySelector(".selected") !==null ){
+      if (document.querySelector(".selected") !== null) {
         selectedField = document.querySelector(".selected").firstElementChild;
-
-      };
+      }
       const allOptions = [...document.querySelectorAll(".option")];
-      allOptions.forEach(opt=>{
-        if(selectedField.value === opt.querySelector("label").innerHTML){
+      allOptions.forEach(opt => {
+        if (selectedField.value === opt.querySelector("label").innerHTML) {
           opt.classList.add("active-label");
         }
-      })
-    })
+      });
+    });
   }
 }
-
 
 dropDown();
 
@@ -195,7 +241,6 @@ function getDescription() {
     desc.innerText = content;
   }
 }
-getDescription()
-
+getDescription();
 
 new SimpleBar(simpleBarContainer, { autoHide: true });

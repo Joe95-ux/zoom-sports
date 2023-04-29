@@ -68,33 +68,47 @@
 
 <body>
 
-    <nav class="navigation">
-        <div class="blog-nav-enclosure">
-            <div class="logo-and-links">
-                <div class="logo">
-                    <div class="burger blog-burger">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                    </div>
-                    <a href="/">
-                        <div class="logo-wrapper">
-                            <img src="/zs-logo.png" alt="Zoom Sportz">
-                            <!-- <h1>Zoom Sportz</h1> -->
+    <div class="nav-wraps">
+        <nav class="navigation">
+            <div class="blog-nav-enclosure">
+                <div class="logo-and-links">
+                    <div class="logo">
+                        <div class="burger blog-burger">
+                            <div class="line1"></div>
+                            <div class="line2"></div>
+                            <div class="line3"></div>
                         </div>
-
-                    </a>
+                        <a href="/">
+                            <div class="logo-wrapper">
+                                <img src="/zs-logo.png" alt="Zoom Sportz">
+                                <!-- <h1>Zoom Sportz</h1> -->
+                            </div>
+    
+                        </a>
+                        <div class="news">
+                            <a href="/"><i class="fas fa-newspaper"></i>News</a> 
+                        </div>
+                    </div>
+                    
+                    <div class="date-time">
+                        <span class="timezone">Time Zone</span>
+                        <span class="time-stamp">Current time</span>
+                    </div>
+    
                 </div>
-
-                <ul class="nav_links">
+    
+            </div>
+        </nav>
+        <nav class="second-nav">
+            <div class="blog-nav-enclosure">
+                <ul class="nav_links second-nav-items">
+                    <li class="nav_link"> <a href="/">Home</a> </li>
                     <li class="nav_link"> <a href="/surebets">Surebets</a> </li>
                     <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
                     <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
-                    <li class="nav_link"> <a href="/highlights">Highlights</a> </li>
-                    <li class="nav_link"> <a href="/tables" class="<%= live %> ">Tables</a> </li>
+                    <li class="nav_link"> <a href="/highlights" >Highlights</a> </li>
+                    <li class="nav_link <%= live %>"> <a href="/tables">Tables</a> </li>
                     <li class="nav_link"> <a href="/league">League</a> </li>
-
-
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
                     <li class="nav_link"> <a href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
@@ -103,11 +117,10 @@
                     <% } %>
                     <% } %>
                 </ul>
-
             </div>
+        </nav>
 
-        </div>
-    </nav>
+    </div>
 
     <div class="side-drawer" data-simplebar>
         <i class="fas fa-times"></i>

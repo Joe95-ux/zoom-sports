@@ -69,42 +69,56 @@
         src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=593644877942199&autoLogAppEvents=1"
         nonce="55i7sfzH"></script>
 
-    <nav class="navigation">
-        <div class="blog-nav-enclosure">
-            <div class="logo-and-links">
-                <div class="logo">
-                    <div class="burger blog-burger">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                    </div>
-                    <a href="/">
-                        <div class="logo-wrapper">
-                            <img src="/zs-logo.png" alt="Zoom Sportz">
-                            <!-- <h1>Zoom Sportz</h1> -->
+        <div class="nav-wraps">
+            <nav class="navigation">
+                <div class="blog-nav-enclosure">
+                    <div class="logo-and-links">
+                        <div class="logo">
+                            <div class="burger blog-burger">
+                                <div class="line1"></div>
+                                <div class="line2"></div>
+                                <div class="line3"></div>
+                            </div>
+                            <a href="/">
+                                <div class="logo-wrapper">
+                                    <img src="/zs-logo.png" alt="Zoom Sportz">
+                                    <!-- <h1>Zoom Sportz</h1> -->
+                                </div>
+        
+                            </a>
+                            <div class="news">
+                                <a href="/"><i class="fas fa-newspaper"></i>News</a> 
+                            </div>
                         </div>
-
-                    </a>
+                        
+                        <div class="date-time">
+                            <span class="timezone">Time Zone</span>
+                            <span class="time-stamp">Current time</span>
+                        </div>
+        
+                    </div>
+        
                 </div>
-                
-                <ul class="nav_links">
-                    <li class="nav_link"> <a href="/surebets">Surebets</a> </li>
-                    <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
-                    <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
-                    <li class="nav_link"> <a href="/highlights">Highlights</a> </li>
-                    <li class="nav_link"> <a href="/tables">Tables</a> </li>
-                    <li class="nav_link"> <a href="/league">League</a> </li>
-
-                    <% if(user){%>
-                    <% if(user.privilege === "admin"){%>
-                    <li class="nav_link"> <a href="/users/admin/dashboard/<%= user._id %>" class="active-link">Dashboard</a> </li>
-                    <% }else{%>
-                    <li class="nav_link"> <a href="/users/dashboard/<%= user._id %>" class="active-link">Dashboard</a> </li>
-                    <% } %>
-                    <% } %>
-                </ul>
-
-            </div>
-
+            </nav>
+            <nav class="second-nav">
+                <div class="blog-nav-enclosure">
+                    <ul class="nav_links second-nav-items">
+                        <li class="nav_link"> <a href="/">Home</a> </li>
+                        <li class="nav_link"> <a href="/surebets">Surebets</a> </li>
+                        <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
+                        <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
+                        <li class="nav_link"> <a href="/highlights" >Highlights</a> </li>
+                        <li class="nav_link <%= active %>"> <a href="/tables">Tables</a> </li>
+                        <li class="nav_link"> <a href="/league">League</a> </li>
+                        <% if(user){%>
+                        <% if(user.privilege === "admin"){%>
+                        <li class="nav_link"> <a href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% }else{%>
+                        <li class="nav_link"> <a href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+            </nav>
+    
         </div>
-    </nav>

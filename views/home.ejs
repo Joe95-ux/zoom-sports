@@ -62,26 +62,41 @@
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=593644877942199&autoLogAppEvents=1"
         nonce="55i7sfzH"></script>
-    <nav class="navigation">
-        <div class="blog-nav-enclosure">
-            <div class="logo-and-links">
-                <div class="logo">
-                    <div class="burger blog-burger">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                    </div>
-                    <a href="/">
-                        <div class="logo-wrapper">
-                            <img src="/zs-logo.png" alt="Zoom Sportz">
-                            <!-- <h1>Zoom Sportz</h1> -->
+    <div class="nav-wraps">
+        <nav class="navigation">
+            <div class="blog-nav-enclosure">
+                <div class="logo-and-links">
+                    <div class="logo">
+                        <div class="burger blog-burger">
+                            <div class="line1"></div>
+                            <div class="line2"></div>
+                            <div class="line3"></div>
                         </div>
-
-                    </a>
+                        <a href="/">
+                            <div class="logo-wrapper">
+                                <img src="/zs-logo.png" alt="Zoom Sportz">
+                                <!-- <h1>Zoom Sportz</h1> -->
+                            </div>
+    
+                        </a>
+                        <div class="news">
+                            <a href="/"><i class="fas fa-newspaper"></i>News</a> 
+                        </div>
+                    </div>
+                    
+                    <div class="date-time">
+                        <span class="timezone">Time Zone</span>
+                        <span class="time-stamp">Current time</span>
+                    </div>
+    
                 </div>
-                
-                <ul class="nav_links">
-                    <li class="nav_link"> <a href="/" class="<%= active %> ">Home</a> </li>
+    
+            </div>
+        </nav>
+        <nav class="second-nav">
+            <div class="blog-nav-enclosure">
+                <ul class="nav_links second-nav-items">
+                    <li class="nav_link <%= active %>"> <a href="/">Home</a> </li>
                     <li class="nav_link"> <a href="/surebets">Surebets</a> </li>
                     <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
                     <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
@@ -96,11 +111,11 @@
                     <% } %>
                     <% } %>
                 </ul>
-
             </div>
+        </nav>
 
-        </div>
-    </nav>
+    </div>
+    
     <div class="side-drawer" data-simplebar>
         <i class="fas fa-times"></i>
         <div class="side-drawer-inner">
@@ -441,7 +456,7 @@
                             <a href="#" target="_blank" class="blog-social-link"><i
                                     class="fab fa-instagram"></i>Instagram</a>
                             <a href="mailto:info@zoom-sportz.com" target="_blank" class="blog-social-link"><i
-                                    class="fas fa-envelope"></i>G-mail</a>
+                                    class="fas fa-envelope"></i>E-mail</a>
                             <a href="#" target="_blank" class="blog-social-link"><i
                                     class="fab fa-youtube"></i>Youtube</a>
                         </div>
