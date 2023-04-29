@@ -55,6 +55,7 @@ const navSlide = () => {
   document.addEventListener("DOMContentLoaded", ()=>{
     let arrLength = currentLink.split("/").length;
     let param = currentLink.split("/")[arrLength-1];
+    let dashParam = currentLink.split("/")[arrLength-2];
     for(let nav of navbar_elts){
       let link = nav.firstElementChild.innerText;
       link = link.toLowerCase();
@@ -62,6 +63,10 @@ const navSlide = () => {
         nav.scrollIntoView();
       }
       if(param === "live-preview" && link === "livesores"){
+        nav.scrollIntoView();
+      }
+      if(dashParam === "dashboard" && link === "dashboard"){
+        nav.classList.add("active-link");
         nav.scrollIntoView();
       }
     }

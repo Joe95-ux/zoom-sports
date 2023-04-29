@@ -1807,7 +1807,7 @@ h5.cat-name {
 
 .compose-form-wrapper {
     align-items: center;
-    margin-bottom: 3rem;
+    padding: 3rem 0;
     width: 100%;
 
 }
@@ -2711,6 +2711,7 @@ tbody td a {
 .dashboard-title {
     line-height: 1.4;
     margin-bottom: 1rem;
+    margin-top: 3rem;
     display: flex;
     justify-content: space-between;
 }
