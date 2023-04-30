@@ -9,6 +9,7 @@ const timezoneContainer = document.querySelector(".timezone");
 const timeDisplay = document.querySelector(".time-stamp");
 const currentLink = window.location.href;
 const navbar_elts = [...document.querySelectorAll(".nav_link")];
+const news = document.querySelector(".news");
 
 // navigation bar
 const navSlide = () => {
@@ -56,6 +57,10 @@ const navSlide = () => {
     let arrLength = currentLink.split("/").length;
     let param = currentLink.split("/")[arrLength-1];
     let dashParam = currentLink.split("/")[arrLength-2];
+
+    if(currentLink.includes("stories") || currentLink.includes("category")){
+      news.classList.add("active-link");
+    }
     for(let nav of navbar_elts){
       let link = nav.firstElementChild.innerText;
       link = link.toLowerCase();
