@@ -67,7 +67,7 @@ const navSlide = () => {
       if(param === link){
         nav.scrollIntoView();
       }
-      if(param === "live-preview" && link === "livesores"){
+      if(param === "live-preview" && link === "livescores"){
         nav.scrollIntoView();
       }
       if(dashParam === "dashboard" && link === "dashboard"){
