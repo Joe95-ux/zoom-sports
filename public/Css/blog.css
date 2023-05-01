@@ -2751,9 +2751,9 @@ tbody td a {
     font-size: 1rem;
     display: flex;
     align-items: center;
-    background-color: #022e47;
+    background-color: #EEEEEE;
     border-radius: 5px;
-    color: var(--midGray);
+    color: var(--mainBlack);
 }
 
 .dashboard-search i {
@@ -2764,13 +2764,13 @@ tbody td a {
     background-color: transparent;
     border: none;
     outline: none;
-    color: var(--midGray);
+    color: var(--mainBlack);
     font-weight: 400;
     width: 100%;
 }
 
 .dashboard-search input::placeholder {
-    color: var(--midGray);
+    color: var(--mainBlack);
     font-size: 15px;
 }
 
