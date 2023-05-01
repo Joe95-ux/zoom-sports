@@ -8,9 +8,9 @@
     <meta name="theme-color" content="#f7f9fa">
     <title><%= title %> | Zoom Sportz</title>
     <meta name="description"
-        content="Football news, match highlights, results, fixtures, League tables, blogs, matches and comment on Cameroon soccer news, the Premier League, European and World football from Zoom-sportz, your number one destination for soccer news">
+        content="Match Center. Find matches playing today, stats, betting odds comparison and highest odds across 36 bookmakers ">
     <meta name="keywords"
-        content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, english soccer, spanish league">
+        content="match center, betting odds comparison, bookmaker odds">
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -29,6 +29,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&family=Baloo+Thambi+2:wght@500;600;700;800&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap"
         rel="stylesheet">
+    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
     <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
     <!-- <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
@@ -65,39 +66,7 @@
 </head>
 
 <body>
-
-    <!-- <nav class="navigation">
-        <div class="blog-nav-enclosure">
-            <div class="logo-and-links">
-                <div class="logo">
-                    <div class="burger blog-burger">
-                        <div class="line1"></div>
-                        <div class="line2"></div>
-                        <div class="line3"></div>
-                    </div>
-                    <a href="/">
-                        <div class="logo-wrapper">
-                            <img src="/zs-logo.png" alt="Zoom Sportz">
-                            
-                        </div>
-
-                    </a>
-                </div>
-                
-                <ul class="nav_links">
-                    <li class="nav_link"> <a href="/surebets">Surebets</a> </li>
-                    <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
-                    <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
-                    <li class="nav_link"> <a href="/highlights">Highlights</a> </li>
-                    <li class="nav_link"> <a href="/tables">Tables</a> </li>
-                    <li class="nav_link"> <a href="/league">League</a> </li>
-                </ul>
-
-            </div>
-
-        </div>
-    </nav> -->
-
+    
     <div class="nav-wraps">
         <nav class="navigation">
             <div class="blog-nav-enclosure">
@@ -113,20 +82,20 @@
                                 <img src="/zs-logo.png" alt="Zoom Sportz">
                                 <!-- <h1>Zoom Sportz</h1> -->
                             </div>
-
+    
                         </a>
                         <div class="news">
-                            <a href="/"><i class="fas fa-newspaper"></i>News</a>
+                            <a href="/"><i class="fas fa-newspaper"></i>News</a> 
                         </div>
                     </div>
-
+                    
                     <div class="date-time">
                         <span class="timezone">Time Zone</span>
                         <span class="time-stamp">Current time</span>
                     </div>
-
+    
                 </div>
-
+    
             </div>
         </nav>
         <nav class="second-nav">
@@ -137,7 +106,8 @@
                     <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
                     <li class="nav_link"> <a href="/dropping-odds">Dropping-odds</a> </li>
                     <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
-                    <li class="nav_link <%= live %>"> <a href="/highlights">Highlights</a> </li>
+                    <li class="nav_link <%= live %>"> <a href="/match-center">Match-center</a> </li>
+                    <li class="nav_link"> <a href="/highlights" >Highlights</a> </li>
                     <li class="nav_link "> <a href="/tables">Tables</a> </li>
                     <li class="nav_link"> <a href="/league">League</a> </li>
                     <% if(user){%>
@@ -152,6 +122,7 @@
         </nav>
 
     </div>
+
     <div class="side-drawer" data-simplebar>
         <i class="fas fa-times"></i>
         <div class="side-drawer-inner">
@@ -166,6 +137,7 @@
                         <li><a class="active-cat" href="/odds-comparison">Odds-comparison</a> </li>
                         <li><a class="active-cat" href="/dropping-odds">Dropping-odds</a> </li>
                         <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
+                        <li><a class="active-cat" href="/match-center">Match-center</a> </li>
                         <li><a class="active-cat" href="/highlights">Highlights</a></li>
                         <li><a class="active-cat" href="/tables">Tables</a></li>
                         <li><a class="active-cat" href="/league">League</a></li>
@@ -210,21 +182,56 @@
     <section id="header-container" class="blog-header">
         <div class="wrapper-enclosure-blog live-preview-wrapper">
             <div class="livescore-wrapper">
-                <iframe src="https://www.scorebat.com/embed/" frameborder="0" width="600" height="760" allowfullscreen
-                    allow='autoplay; fullscreen' style="width:100%;height:760px;overflow:hidden;display:block;"
-                    class="_scorebatEmbeddedPlayer_"></iframe>
-                <script>
-                    (function (d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id)) return;
-                        js = d.createElement(s);
-                        js.id = id;
-                        js.src = 'https://www.scorebat.com/embed/embed.js?v=arrv';
-                        fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'scorebat-jssdk'));
-                </script>
+
+				
+				<div id="oddspedia-widget-match-center-6612332">
+                    <script>
+                    window.oddspediaWidgetMatchCenter6612332 = {
+                        api_token: "d696e2a9197d54933594eea65687d51759e143b314864975dc99352bf812",
+                        match_id: "6612332",
+                        type: "match-center",
+                        domain: "zoom-sportz.com",
+                        selector: "oddspedia-widget-match-center-6612332",
+                        width: "0",
+                        theme: "0",
+                        odds_type: "1",
+                        language: "en",
+                        primary_color: "#283E5B",
+                        primary_color_opacity: "90",
+                        secondary_color: "#53647B",
+                        accent_color: "#00B1FF",
+                        font: "Roboto",
+                        logos: "true",
+                        image: "true",
+                        best_odds: "true",
+                        header: "true",
+                        odds: "true",
+                        featured_bookie: "0",
+                        limitVisibleOperators: "15"
+                    };
+                    </script>
+                    <script src="https://widgets.oddspedia.com/js/widget/init.js?widgetId=oddspediaWidgetMatchCenter6612332" async></script>
+                    </div>
+                    
+                    
 
             </div>
+
+
+            <div class="ads-container">
+                <script async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
+                    crossorigin="anonymous"></script>
+                <!-- banner ads -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7287147359584031"
+                    data-ad-slot="9234749507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+
+
 
         </div>
 

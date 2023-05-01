@@ -8,9 +8,9 @@
     <meta name="theme-color" content="#f7f9fa">
     <title><%= title %> | Zoom Sportz</title>
     <meta name="description"
-        content="Football news, league standings, football betting odds, league tables, results, fixtures, blogs, matches and comment on Cameroon soccer news, the Premier League, European and World football from Zoom-sportz, your number one destination for soccer news">
-    <meta name="keywords" content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, soccer news, soccer news transfer, soccer transfer news, soccer news Europe, Soccer news Cameroon, soccer news premier league, soccer live score, live score, soccer life goals, soccer news today, soccer news now, soccer news transfer, soccer news europe, soccer news latest, soccer news uk,
-        soccer news goal, football news, english soccer news, spanish league">
+        content="Dropping Odds ➨ Click to see Dropping Odds Today. Live Odds movement for Football & 38 Extra Sports Monitor Odds Changes with full Odds History!">
+    <meta name="keywords"
+        content="Laliga, English premiere leaque, bundesliga, sports, football, soccer, english soccer, spanish league">
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -33,7 +33,6 @@
     <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
     <!-- <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
-    <!-- <link rel="stylesheet" href="https://widgets.sportmonks.com/css/app.css"> -->
     <link rel="stylesheet" href="/Css/ckstyles.css">
     <link rel="stylesheet" href="/Css/editor.css">
     <link rel="stylesheet" href="/Css/embla.css">
@@ -67,11 +66,7 @@
 </head>
 
 <body>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=593644877942199&autoLogAppEvents=1"
-        nonce="55i7sfzH"></script>
-
+    
     <div class="nav-wraps">
         <nav class="navigation">
             <div class="blog-nav-enclosure">
@@ -87,20 +82,20 @@
                                 <img src="/zs-logo.png" alt="Zoom Sportz">
                                 <!-- <h1>Zoom Sportz</h1> -->
                             </div>
-
+    
                         </a>
                         <div class="news">
-                            <a href="/"><i class="fas fa-newspaper"></i>News</a>
+                            <a href="/"><i class="fas fa-newspaper"></i>News</a> 
                         </div>
                     </div>
-
+                    
                     <div class="date-time">
                         <span class="timezone">Time Zone</span>
                         <span class="time-stamp">Current time</span>
                     </div>
-
+    
                 </div>
-
+    
             </div>
         </nav>
         <nav class="second-nav">
@@ -109,10 +104,10 @@
                     <li class="nav_link"> <a href="/">Home</a> </li>
                     <li class="nav_link"> <a href="/surebets">Surebets</a> </li>
                     <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
-                    <li class="nav_link"> <a href="/dropping-odds">Dropping-odds</a> </li>
+                    <li class="nav_link <%= live %>"> <a href="/dropping-odds">Dropping-odds</a> </li>
                     <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
-                    <li class="nav_link"> <a href="/highlights">Highlights</a> </li>
-                    <li class="nav_link"> <a href="/tables">Tables</a> </li>
+                    <li class="nav_link"> <a href="/highlights" >Highlights</a> </li>
+                    <li class="nav_link "> <a href="/tables">Tables</a> </li>
                     <li class="nav_link"> <a href="/league">League</a> </li>
                     <% if(user){%>
                     <% if(user.privilege === "admin"){%>
@@ -126,3 +121,113 @@
         </nav>
 
     </div>
+
+    <div class="side-drawer" data-simplebar>
+        <i class="fas fa-times"></i>
+        <div class="side-drawer-inner">
+            <div class="main-category discover-movies">
+                <div class="category-title">
+                    <h2 class="discover">Menu</h2>
+                </div>
+                <div class="category-types">
+                    <ul class="categories">
+                        <li><a class="active-cat" href="/">Home</a></li>
+                        <li><a class="active-cat" href="/surebets">Surebets</a></li>
+                        <li><a class="active-cat" href="/odds-comparison">Odds-comparison</a> </li>
+                        <li><a class="active-cat" href="/dropping-odds">Dropping-odds</a> </li>
+                        <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
+                        <li><a class="active-cat" href="/highlights">Highlights</a></li>
+                        <li><a class="active-cat" href="/tables">Tables</a></li>
+                        <li><a class="active-cat" href="/league">League</a></li>
+                        <% if(user){%>
+                        <% if(user.privilege === "admin"){%>
+                        <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% }else{%>
+                        <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                        <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <div class="main-category discover-movies">
+                <div class="category-title">
+                    <h2 class="discover">Categories</h2>
+                </div>
+                <div class="category-types">
+                    <ul class="categories">
+                        <% if(sortedCats){%>
+                        <% for(let cat in sortedCats){%>
+                        <li><i class="fas fa-futbol"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                        </li>
+                        <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="side-drawer-logo">
+            <img src="/zs-logo.png" alt="Zoom Sportz">
+        </div>
+
+    </div>
+    <section class="side-drawer-backdrop"></section>
+
+    <section id="header-container" class="blog-header">
+        <div class="wrapper-enclosure-blog live-preview-wrapper">
+            <div class="livescore-wrapper">
+
+				<div id="oddspedia-widget-dropping-odds">
+                    <script>
+                    window.oddspediaWidget = {
+                        api_token: "d696e2a9197d54933594eea65687d51759e143b314864975dc99352bf812",
+                        type: "dropping-odds",
+                        domain: "zoom-sportz.com",
+                        selector: "oddspedia-widget-dropping-odds",
+                        width: "0",
+                        theme: "0",
+                        odds_type: "1",
+                        language: "en",
+                        primary_color: "#313C46",
+                        accent_color: "#F94343",
+                        font: "Roboto",
+                        limit: "5",
+                    };
+                    </script>
+                    <script src="https://widgets.oddspedia.com/js/widget/init.js" async></script>
+                    </div>
+                    
+
+            </div>
+
+
+            <div class="ads-container">
+                <script async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
+                    crossorigin="anonymous"></script>
+                <!-- banner ads -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7287147359584031"
+                    data-ad-slot="9234749507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+
+
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+    <%- include('partials/footer') %>

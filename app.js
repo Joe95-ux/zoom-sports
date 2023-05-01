@@ -551,6 +551,56 @@ app.get("/odds-comparison", async (req, res) => {
   }
 });
 
+app.get("/dropping-odds", async (req, res) => {
+  const title = "Dropping odds - Track betting odds movements and changes";
+  const live = "active-link";
+  const about = "";
+  const token = process.env.ODDSPEDIA_API_TOKEN;
+  let sortedCats;
+  try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+
+    res.render("droppingodds", { title, sortedCats, live, about, token });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.get("/match-center", async (req, res) => {
+  const title = "Match Center - Football matches, stats, betting odds comparison";
+  const live = "active-link";
+  const about = "";
+  const token = process.env.ODDSPEDIA_API_TOKEN;
+  let sortedCats;
+  try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+
+    res.render("matchCenter", { title, sortedCats, live, about, token });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 app.get("/league", async (req, res) => {
   const title = "League matches, standings, outrights and betting odds";
   const live = "active-link";
