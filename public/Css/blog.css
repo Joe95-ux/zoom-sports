@@ -2217,6 +2217,10 @@ h3.single-post-title {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.post-content strong{
+    font-weight: 600;
+}
+
 
 .post-content img {
     max-width: 100%;
