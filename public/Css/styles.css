@@ -20,6 +20,7 @@
     --sectionPadding: 3% 10%;
     --mainTransition: all 0.3s linear;
     --dropTransition: all 0.5s ease-in;
+    --darkBorderBottom: 1px solid rgba(0, 0, 0 , 0.1);
 }
 
 html {
@@ -528,6 +529,7 @@ a.active-link{
     background-color: #eee;
     color: var(--mainBlack);
     overflow: hidden ;
+    border-bottom: var(--darkBorderBottom);
 }
 
 
@@ -553,7 +555,7 @@ ul.second-nav-items .nav_link.active-link a{
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 3px;
+    height: 4px;
     width: 100%;
     background:var(--linkText);
     border-radius: 3px 3px 0 0;
