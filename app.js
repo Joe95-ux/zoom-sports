@@ -240,7 +240,24 @@ app.get("/category/:catName/:num", async (req, res) => {
 
 app.get("/compose", ensureAuth, async (req, res) => {
   const title = "compose";
-  res.render("compose", { title });
+  let sortedCats;
+  try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+    res.render("compose", { title, sortedCats });
+    
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.post("/compose", upload.single("photo"), ensureAuth, async (req, res) => {

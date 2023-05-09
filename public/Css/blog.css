@@ -113,7 +113,7 @@ div.blog-header-wrapper {
     margin-top: 2.1rem;
 }
 
-.ads-container {
+.ads-container{
     text-align: center;
     margin: 1.5rem 0 0;
     animation: skeleton-loading 1s linear infinite alternate;
