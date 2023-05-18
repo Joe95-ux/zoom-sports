@@ -471,7 +471,7 @@ app.get("/live-preview", async (req, res) => {
 });
 
 app.get("/highlights", async (req, res) => {
-  const title = "Soccer Match Highlights";
+  const title = "Latest Football-Soccer Match Highlights and Videos";
   const live = "active-link";
   const about = "";
   let sortedCats;
