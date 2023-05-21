@@ -176,39 +176,68 @@
     <section class="side-drawer-backdrop"></section>
 
     <section id="header-container" class="blog-header">
-        <div class="wrapper-enclosure-blog live-preview-wrapper bets-wrapper">
-            <div class="livescore-wrapper">
-                <div class="sure-bets-info margin-600">
-                    <h1>Sure Bets</h1>
-                    <p>Sure bets is the tool to guarantee winnings! Oddspedia processes odds from all bookmakers and
-                        applies mathematical formula where a profitable bet is secured no matter the outcome. Enjoy risk
-                        free betting with bookmakers accepting players from your country.</p>
+        <div class="wrapper-enclosure-blog live-preview-wrapper">
+            <div class="blog-body-wrapper">
+                <div id="long" class="blog-body-content">
+                    <div class="livescore-wrapper">
+                        <div class="sure-bets-info margin-600">
+                            <h1>Sure Bets</h1>
+                            <p>Sure bets is the tool to guarantee winnings! Oddspedia processes odds from all bookmakers and
+                                applies mathematical formula where a profitable bet is secured no matter the outcome. Enjoy risk
+                                free betting with bookmakers accepting players from your country.</p>
+                        </div>
+        
+        
+                        <div id="oddspedia-widget-sure-bets">
+                            <script>
+                                window.oddspediaWidget = {
+                                    api_token: "<%=token%>",
+                                    type: "sure-bets",
+                                    domain: "zoom-sportz.com",
+                                    selector: "oddspedia-widget-sure-bets",
+                                    width: "0",
+                                    theme: "0",
+                                    odds_type: "1",
+                                    language: "en",
+                                    primary_color: "#0F5D75",
+                                    accent_color: "#1AB7AC",
+                                    font: "Roboto",
+                                    limit: "5",
+                                };
+                            </script>
+                            <script src="https://widgets.oddspedia.com/js/widget/init.js" async></script>
+                        </div>
+        
+        
+                    </div>
+
                 </div>
+                <div id="short" class="blog-body-bio">
+                    <div class="ads-container">
+                        <script async
+                            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
+                            crossorigin="anonymous"></script>
+                        <!-- banner ads -->
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7287147359584031"
+                            data-ad-slot="9234749507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                    <div class="ads-container" style="margin-top:1.5rem;">
+                        <script async
+                            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
+                            crossorigin="anonymous"></script>
+                        <!-- banner ads -->
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7287147359584031"
+                            data-ad-slot="9234749507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
 
-
-                <div id="oddspedia-widget-sure-bets">
-                    <script>
-                        window.oddspediaWidget = {
-                            api_token: "<%=token%>",
-                            type: "sure-bets",
-                            domain: "zoom-sportz.com",
-                            selector: "oddspedia-widget-sure-bets",
-                            width: "0",
-                            theme: "0",
-                            odds_type: "1",
-                            language: "en",
-                            primary_color: "#0F5D75",
-                            accent_color: "#1AB7AC",
-                            font: "Roboto",
-                            limit: "5",
-                        };
-                    </script>
-                    <script src="https://widgets.oddspedia.com/js/widget/init.js" async></script>
                 </div>
-
-
             </div>
-
 
             <div class="ads-container">
                 <script async
