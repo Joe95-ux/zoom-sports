@@ -2986,7 +2986,6 @@ h1.genre-intro {
 
 /* movie-trailer */
 
-
 .movie-trailer,
 .welcome-banner-modal {
     display: flex;
@@ -3000,7 +2999,7 @@ h1.genre-intro {
     -webkit-transform: translate(-50%, -50%);
     transition: var(--mainTransition);
     -webkit-transition: var(--mainTransition);
-    background-color: rgba(82, 79, 79, 0.6);
+    background-color: rgba(82, 79, 79, 0.8);
     z-index: -1;
     opacity: 0;
 }
@@ -3018,22 +3017,16 @@ h1.genre-intro {
 
 .trailer-container,
 .welcome-banner {
-    transform: translateY(50px);
-    -webkit-transform: translateY(50px);
-    transition: transform 0.5s ease-in-out;
-    -webkit-transition: transform 0.5s ease-in-out;
+    transform: translateY(80px);
+    -webkit-transform: translateY(80px);
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
 }
 
 .trailer-video {
     height: 480px;
     width: 853px;
-    background-color: var(--mainWhite);
-}
-
-.trailer-container,
-.trailer-video,
-.trailer-video iframe {
-    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .movie-trailer .close-trailer {
@@ -3077,10 +3070,6 @@ h1.genre-intro {
 .active-trailer,
 .active-modal {
     opacity: 1;
-    z-index: 6;
-}
-
-.active-modal {
     z-index: 10000;
 }
 
@@ -4284,12 +4273,13 @@ h1.genre-intro {
     }
 }
 
-.video-gallery .play-icon {
+.play-icon {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid var(--mainWhite);
+    transform: translate(-50%, -35%);
+    border: none;
+    background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -4297,34 +4287,23 @@ h1.genre-intro {
     width: 3rem;
     padding: 10px 10px 10px 14px;
     border-radius: 50%;
-    transition: var(--mainTransition);
 }
 
-.play-icon:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-color: darkgrey;
-}
 
-.video-gallery .play-icon i {
+.play-icon  i {
     font-size: 1.5rem;
     color: var(--mainWhite);
     cursor: pointer;
 }
 
-@media(hover) {
-    .play-icon:hover .play {
-        font-size: 1.4rem;
-        color: darkgrey;
-    }
-}
 
 @media screen and (max-width:500px) {
-    .video-gallery .play-icon {
+    .play-icon {
         height: 2.5rem;
         width: 2.5rem;
     }
 
-    .video-gallery .play-icon i {
+    .play-icon i {
         font-size: 1.1rem;
     }
 

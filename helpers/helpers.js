@@ -31,6 +31,19 @@ module.exports = {
     }
     return recents;
   },
+  latestVideos: async function(){
+    const url = `https://www.scorebat.com/video-api/v3/feed/?token=${process.env.SCOREBAT_API_TOKEN}`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      const videos = await data.response;
+      return videos;
+    } catch (error) {
+      console.log(error)
+    }
+
+
+  },
   recentPosts: function(stories, storyId){
     storyId = storyId.toString()
     let newStories = stories.filter(story=>story._id.toString() !== storyId);

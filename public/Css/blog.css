@@ -23,7 +23,9 @@
     --dropTransition: all 0.5s ease-in;
     --mainBorderRaduis: 3px;
 }
-
+a{
+    text-decoration: none;
+}
 .wrapper-enclosure-blog {
     max-width: calc(1260px + 6rem);
     /* margin: 7.8rem auto 0; */
@@ -195,6 +197,9 @@ h2.thum-heading {
     border-image-source: linear-gradient(270deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, .2) 48%, hsla(0, 0%, 100%, 0));
     border-image-slice: 1;
     
+}
+.post{
+    position:relative;
 }
 
 
@@ -840,6 +845,17 @@ div.tv-news {
 .thumbnail:hover .image img {
     border-radius: 1px;
     transform: scale(1.1);
+}
+
+
+.thumbnail:focus .play-icon
+.thumbnail:hover .play-icon {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.thumbnail:focus .play,
+.thumbnail:hover .play {
+    font-size: 1.4rem;
+    color: darkgrey;
 }
 
 

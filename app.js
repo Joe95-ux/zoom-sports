@@ -31,7 +31,8 @@ const {
   editorsPicks,
   latestPosts,
   paginate,
-  otherCats
+  otherCats,
+  latestVideos
 } = require("./helpers/helpers");
 const User = require("./models/User");
 const Story = require("./models/Story");
@@ -314,8 +315,16 @@ app.get("/", async (req, res) => {
       englishpl = getByCat(stories, "English Premier League");
       spanishll = getByCat(stories, "Spanish Laliga");
     }
+    let videos = await latestVideos();
+    if(videos){
+      videos = videos.map(video => {
+        video.date = formatDate(video.date);
+        return video;
+      });
+    }
     res.render("home", {
       title,
+      videos,
       stories,
       sortedCats,
       picks,
@@ -380,8 +389,16 @@ app.get("/page=:num", async (req, res) => {
       englishpl = getByCat(stories, "English Premier League");
       spanishll = getByCat(stories, "Spanish Laliga");
     }
+    let videos = await latestVideos();
+    if(videos){
+      videos = videos.map(video => {
+        video.date = formatDate(video.date);
+        return video;
+      });
+    }
     res.render("home", {
       title,
+      videos,
       stories,
       sortedCats,
       picks,
