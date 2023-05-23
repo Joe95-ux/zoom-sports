@@ -4287,14 +4287,15 @@ h1.genre-intro {
     width: 3rem;
     padding: 10px 10px 10px 14px;
     border-radius: 50%;
-}
-
-
-.play-icon  i {
-    font-size: 1.5rem;
-    color: var(--mainWhite);
     cursor: pointer;
 }
+
+
+/* .play-icon  i {
+    font-size: 1.5rem;
+    color: var(--mainWhite);
+    
+} */
 
 
 @media screen and (max-width:500px) {
