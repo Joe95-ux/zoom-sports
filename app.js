@@ -561,7 +561,7 @@ app.get("/surebets", async (req, res) => {
 });
 
 app.get("/odds-comparison", async (req, res) => {
-  const title = "Free Football - Soccer odds comparison for premier league, champions league and more";
+  const title = "Free Sports betting odds comparison and Live Odds";
   const live = "active-link";
   const about = "";
   const token = process.env.ODDSPEDIA_API_TOKEN;
