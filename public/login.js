@@ -101,3 +101,74 @@ if (tables !== null && tableInput !== null) {
     });
   });
 }
+
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+
+
+const ul = document.querySelector(".tags-ul"),
+tagsInput = document.querySelector(".tags-ul input"),
+tagNumb = document.querySelector(".tag-details span");
+let submitPost = document.querySelector(".publish-btn");
+let maxTags = 4,
+tags = [];
+let sentTags = [];
+countTags();
+createTag();
+function countTags(){
+  tagsInput.focus();
+  tagNumb.innerText = maxTags - tags.length;
+}
+function createTag(){
+    ul.querySelectorAll("li").forEach(li => li.remove());
+    tags.slice().reverse().forEach(tag =>{
+        let liTag = `<li>${tag} <i class="fas fa-times" onclick="remove(this, '${tag}')"></i></li>`;
+        ul.insertAdjacentHTML("afterbegin", liTag);
+    });
+    countTags();
+}
+function remove(element, tag){
+    let index  = tags.indexOf(tag);
+    tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
+    element.parentElement.remove();
+    countTags();
+}
+function addTag(e){
+
+  if(e.key == "Enter"){
+      let tag = e.target.value.replace(/\s+/g, ' ');
+      if(tag.length > 1 && !tags.includes(tag)){
+          if(tags.length < 4){
+              tag.split(',').forEach(tag => {
+                  tags.push(tag);
+                  createTag();
+              });
+          }
+      }
+      e.target.value = "";
+  }
+}
+
+tagsInput.addEventListener("keyup", addTag);
+const removeBtn = document.querySelector(".tag-details button");
+removeBtn.addEventListener("click", () =>{
+    tags.length = 0;
+    ul.querySelectorAll("li").forEach(li => li.remove());
+    countTags();
+});
+
+if(submitPost !== null){
+  let tagString = '';
+  submitPost.addEventListener('click', ()=>{
+    tagString = tags.join(",");
+    tagsInput.value = tagString;
+    tagsInput.focus();
+
+  })
+}

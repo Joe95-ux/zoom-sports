@@ -130,9 +130,25 @@
                 <input type="text" id="image-title" name="photoTitle" value="<%=story.photoTitle%> ">
               </div>
             </div>
-            <div class="input-field">
-              <label for="title">Keywords</label>
-              <input type="text" id="keywords" name="keywords" placeholder="add keywords to boost seo" value="<%= story.keywords %>">
+            <div class="names">
+              <div class="firstname">
+                <label for="keywords">Keywords</label>
+                <input type="text" id="keywords" name="keywords" placeholder="add keywords to boost seo" value="<%= story.keywords %>">
+              </div>
+              <div class="lastname tags-wrapper">
+                <div class="tag-title">
+                  <img src="/tags.svg" alt="icon">
+                  <h3>Tags</h3>
+                </div>
+                <div class="content">
+                  <p>Press enter or add a comma after each tag</p>
+                  <ul class="tags-ul"><input type="text" spellcheck="false" placeholder="Leave empty if tags are the same" name="tags"></ul>
+                </div>
+                <div class="tag-details">
+                  <p><span>4</span> tags are remaining</p>
+                  <button>Remove All</button>
+                </div>
+              </div>
             </div>
             <div class="input-field">
               <label for="body">Body</label>

@@ -263,9 +263,15 @@ app.get("/compose", ensureAuth, async (req, res) => {
 
 app.post("/compose", upload.single("photo"), ensureAuth, async (req, res) => {
   let post;
+  let tags = [];
   try {
     req.body.user = req.user.id;
+    if(req.body.tags !== ""){
+      tags = [ ...req.body.tags.split(",")];
+
+    }
     post = req.body;
+    post.tags = tags;
     if (req.file) {
       post.photo = req.file.location;
     }

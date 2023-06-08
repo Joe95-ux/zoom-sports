@@ -87,6 +87,12 @@ router.put(
     try {
       let story = await Story.findById(req.params.id).populate("user").lean();
       let newStory = req.body;
+      let tags = [];
+      if(req.body.tags !== ""){
+        tags = [ ...req.body.tags.split(",")];
+  
+      }
+      newStory.tags = tags;
 
       if (!story) {
         return res.render("error/400");

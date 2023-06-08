@@ -228,8 +228,26 @@
                     </div>
                     <div class="post-content">
                         <%- story.body %>
-                    </div>
 
+                        <div class="movie-keywords">
+                            <div class="keyword-title">Tags:</div>
+                            <% if(story.tags){%> 
+                                <div class="keywords-wrapper">
+                                    <% story.tags.forEach(tag=>{%>
+                                        <a href="#" class="keyword-proper">
+                                            <%= tag %> 
+                                        </a>
+                                    <%}) %> 
+                                </div>
+                                <% }else{%>
+                                    <div class="keywords-wrapper">
+                                        <p>No keywords have been added yet</p>
+                                    </div>
+                                    
+                                <% } %>  
+                        </div>
+                    </div>
+                    
                     <% } %>
                     <h4 class="top-share"><i class="fas fa-share-alt"></i>Share</h4>
                     <div class="share-story">

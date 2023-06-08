@@ -204,7 +204,7 @@ router.get("/dashboard/:id", ensureAuth, async (req, res) => {
   let sortedCats;
   let created;
   let pageNum = 1;
-  let currentPage;
+  let currentPage = [];
   let pages;
   try {
     let allStories = await Story.find({})
@@ -258,7 +258,7 @@ router.get("/dashboard/:id/:page", ensureAuth, async (req, res) => {
   let sortedCats;
   let created;
   let pageNum = parseInt(req.params.page);
-  let currentPage;
+  let currentPage = [];
   let pages;
   try {
     let allStories = await Story.find({})
