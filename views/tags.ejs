@@ -1,0 +1,285 @@
+<%- include("partials/categoryheader") %>
+<div class="side-drawer" data-simplebar>
+    <i class="fas fa-times"></i>
+    <div class="side-drawer-inner">
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Menu</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <li><a class="active-cat" href="/">Home</a></li>
+                    <li><a class="active-cat" href="/surebets">Surebets</a></li>
+                    <li><a class="active-cat" href="/odds-comparison">Odds-comparison</a> </li>
+                    <li><a class="active-cat" href="/dropping-odds">Dropping-odds</a> </li>
+                    <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
+                    <li><a class="active-cat" href="/highlights">Highlights</a></li>
+                    <li><a class="active-cat" href="/tables">Tables</a></li>
+                    <li><a class="active-cat" href="/league">League</a></li>
+                    <% if(user){%>
+                    <% if(user.privilege === "admin"){%>
+                    <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                    <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+        
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Categories</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <% if(sortedCats){%>
+                    <% for(let cat in sortedCats){%>
+                    <li><i class="fas fa-futbol"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                    </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="side-drawer-logo">
+        <img src="/zs-logo.png" alt="Zoom Sportz">
+    </div>
+
+</div>
+<section class="side-drawer-backdrop"></section>
+
+<section id="header-container" class="blog-header">
+    <div class="wrapper-enclosure-blog">
+        <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
+            crossorigin="anonymous"></script>
+        <!-- banner ads -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7287147359584031"
+            data-ad-slot="9234749507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <div class="blog-nav">
+            <span><a href="/">Home</a></span>
+            <i class="fas fa-chevron-right"></i>
+            <span class="focus-nav"><%= tag %></span>
+        </div>
+        <div class="blog-body-wrapper">
+            <% if(stories?.length){%>
+                <div id="long" class="blog-body-content">
+                <div class="blog-body-popular">
+                    <h1 class="cat-title">Tag: <span><%= tag.split("-").join(" ").toUpperCase()%> </span></h1>
+                    <div class="latest-posts">
+                        <% stories.forEach(story =>{%>
+                        <div class="post">
+                            <a class="thumbnail" href="/stories/post/<%= story.slug %>">
+                                <span class="image">
+                                    <img src="<%= story.photo %>" alt="<%= story.title %>">
+                                </span>
+                                <h5 class="cat-name"><%= story.category %> </h5>
+                                <h3><%= story.title %> </h3>
+                                <h5 class="date"> <span>by <strong><%= story.author %> </strong></span>
+                                    <span><%= story.createdAt %>
+                                    </span> </h5>
+                            </a>
+                            <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
+                                    class="fas fa-angle-double-right"></i></a>
+                        </div>
+                        <%}) %>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <% if(pages>1){%>
+                    <div class="page-controls blog-page-controls">
+                        <% if(pageNum === 2){%>
+                        <a href="/tag/<%=tag%>" class="prev-page swiper-btn blog-control-btn" role="button"><i
+                                class="fas fa-arrow-left prev-indicator"></i> </a>
+                        <% }%>
+                        <% if(pageNum > 2){%>
+                        <a href="/tag/<%=tag%>/?page=<%= pageNum - 1 %>"
+                            class="prev-page swiper-btn blog-control-btn" role="button"><i
+                                class="fas fa-arrow-left prev-indicator"></i> </a>
+
+                        <% } %>
+                        <button class="page-count swiper-btn blog-control-btn"><%= pageNum %> / <%= pages %></button>
+                        <% if(pageNum < pages){%>
+                        <a href="/tag/<%=tag%>/?page=<%= pageNum + 1 %> "
+                            class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i
+                                class="fas fa-arrow-right next-indicator"></i></a>
+                        <% } %>
+                    </div>
+
+                    <% } %>
+                    <% if(latest.length){%>
+                    <div class="tv-shows">
+                        <a href="/" class="cat-title">Recent Posts<i class="fas fa-long-arrow-alt-right"></i></a>
+                        <div class="latest-posts tv-news">
+                            <%latest.forEach(story=>{%>
+                            <div class="post">
+                                <a class="thumbnail" href="/stories/post/<%= story.slug %>">
+                                    <span class="image">
+                                        <img src="<%= story.photo %>" alt="<%= story.title %>">
+                                    </span>
+                                    <h5 class="cat-name"><%= story.category %> </h5>
+                                    <h3><%= story.title %> </h3>
+                                    <h5><%= story.createdAt %></h5>
+
+                                </a>
+                                <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
+                                        class="fas fa-angle-double-right"></i></a>
+                            </div>
+
+                            <% }) %>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+
+            <% }else{%>
+            <p>There are no stories in this category yet</p>
+            <% } %>
+            <div id="short" class="blog-body-bio">
+                <h1 class="cat-title">About Us</h1>
+                <div class="writer-bio-wrapper">
+                    <img src="/banner.jpeg" alt="author-image">
+                    <div class="writer-bio-content">
+                        <h4>Get to Know us</h4>
+                        <p>Welcome to zoom-sportz.com. Here we will provide you only interesting content, which you
+                            will like very much. We're dedicated to providing you the latest football news and
+                            more...</p>
+                        <a class="read-more" href="/about-us">Read more <i class="fas fa-angle-double-right"></i></a>
+                    </div>
+
+                </div>
+                <div class="blog-social">
+                    <h1 class="cat-title">Keep in touch</h1>
+                    <div class="blog-social-inner">
+                        <a href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/" target="_blank"
+                            class="blog-social-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" target="_blank" class="blog-social-link"><i
+                                class="fab fa-instagram"></i>Instagram</a>
+                        <a href="mailto:info@zoom-sportz.com" target="_blank" class="blog-social-link"><i
+                                class="fas fa-envelope"></i>E-mail</a>
+                        <a href="#" target="_blank" class="blog-social-link"><i class="fab fa-youtube"></i>Youtube</a>
+                    </div>
+                </div>
+                
+                <div class="cats">
+                    <h1 class="cat-title">Categories</h1>
+                    <div class="post-cat-container">
+                        <ul>
+                            <% if(sortedCats){%>
+                            <% for(let cat in sortedCats){%>
+                            <li><a href="/category/<%=cat%>"><%= cat %> </a><span>(<%= sortedCats[cat] %>)</span></li>
+                            <% } %>
+                            <% } %>
+                        </ul>
+
+                    </div>
+                </div>
+                <div>
+                    <div class="facebook-page">
+                        <h1 class="cat-title">Facebook Feed</h1>
+                        <div class="fb-page" data-href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
+                            data-tabs="timeline" data-width="700px" data-height="550px" data-small-header="false"
+                            data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/ZOOM-sports-updates-108939795152046/"
+                                class="fb-xfbml-parse-ignore"><a
+                                    href="https://www.facebook.com/ZOOM-sports-updates-108939795152046/">ZOOM
+                                    sports updates</a></blockquote>
+                        </div>
+                    </div>
+                    <div class="instagram-page">
+                        <h1 class="cat-title">Sponsored</h1>
+                        <div class="sponsored-wrapper">
+                            <a
+                                href="https://www.digitalocean.com/?refcode=9487c6cecfd5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
+                                <div class="sponsored-banner">
+                                </div>
+                                <div class="sponsored-content">
+                                    <h2>Host on Digital Ocean </h2>
+                                    <p>
+                                        Get your apps to market faster with DigitalOcean's App Platform. Build, deploy,
+                                        and scale apps quickly using a simple, fully managed solution. Earn $200 in credit over 60 days once you Sign-up. We’ll handle the
+                                        infrastructure, app runtimes and dependencies, so that you can push code to
+                                        production in just a few clicks.
+                                    </p>
+                                    <button class="create-btn sponsor-btn">Get started</button>
+                                </div>
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ads-container" >
+                        <script async
+                            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
+                            crossorigin="anonymous"></script>
+                        <!-- banner ads -->
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7287147359584031"
+                            data-ad-slot="9234749507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="news-letter">
+            <div class="new-letter-wrapper">
+                <% if(messages.user){%>
+                <h1 class="thanks">
+                    Thank you for subscribing!
+                </h1>
+
+                <% }else{%>
+                <i class="fas fa-envelope"></i>
+                <h1>NewsLetter Sign-up</h1>
+                <p>Subscribe to our news letter for latest sports news. Let's stay updated!</p>
+                <form action="/" method="post" id="newsletter-form">
+                    <div class="news-letter-inner">
+                        <input type="text" placeholder="Enter Your Email Address" name="subscriber" id="email"
+                            autocomplete="off">
+                        <button type="submit" class="send-btn" id="submit">Subscribe Now</button>
+                    </div>
+                    <small class="nl">Error Message</small>
+
+                </form>
+
+                <% } %>
+            </div>
+        </div>
+        <div class="ads-container" style="margin:0 0 1.5rem">
+            <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7287147359584031"
+                crossorigin="anonymous"></script>
+            <!-- banner ads -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7287147359584031"
+                data-ad-slot="9234749507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+<%- include('partials/footer') %>

@@ -25,6 +25,8 @@ const {
 const {
   formatDate,
   dateWithTime,
+  sortByTag,
+  otherTags,
   sortCats,
   getCats,
   getByCat,
@@ -232,6 +234,55 @@ app.get("/category/:catName/:num", async (req, res) => {
       sortedCats,
       cat,
       category,
+      latest
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// sort stories by tags
+
+app.get("/tag/:tagname", async (req, res) => {
+  const title =  req.params.tagname + " News";
+  const tag = req.params.tagname;
+  let sortedCats;
+  let pages;
+  let pageNum = 1;
+  if(req.query.page >=1){
+    pageNum = parseInt(req.query.page);
+  }
+  let latest;
+  let currentPage;
+  try {
+    let allStories = await Story.find({ status: "Public" }).sort({ createdAt: "desc" }).lean().exec();
+    let stories = sortByTag(allStories, tag);
+    if (stories) {
+      stories = stories.map(story => {
+        story.createdAt = formatDate(story.createdAt);
+        return story;
+      });
+      const paginated = paginate(stories, 8);
+      currentPage = paginated[pageNum - 1];
+      pages = paginated.length;
+      let categories = getCats(allStories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+    allStories = allStories.map(story => {
+      story.createdAt = formatDate(story.createdAt);
+      return story;
+    });
+    latest = otherTags(allStories, tag);
+    res.render("tags", {
+      title,
+      stories: currentPage,
+      pages,
+      pageNum,
+      sortedCats,
+      cat:tag,
+      tag,
       latest
     });
   } catch (err) {

@@ -228,20 +228,20 @@
                     </div>
                     <div class="post-content">
                         <%- story.body %>
-
+                      
                         <div class="movie-keywords">
                             <div class="keyword-title">Tags:</div>
-                            <% if(story.tags){%> 
+                            <% if(story.tags.length > 0){%> 
                                 <div class="keywords-wrapper">
                                     <% story.tags.forEach(tag=>{%>
-                                        <a href="#" class="keyword-proper">
+                                        <a href="/tag/<%= tag.toLowerCase().split(" ").join("-")%>" class="keyword-proper">
                                             <%= tag %> 
                                         </a>
                                     <%}) %> 
                                 </div>
                                 <% }else{%>
                                     <div class="keywords-wrapper">
-                                        <p>No keywords have been added yet</p>
+                                        <p>No Tags have been added yet</p>
                                     </div>
                                     
                                 <% } %>  

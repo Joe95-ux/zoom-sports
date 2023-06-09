@@ -71,6 +71,27 @@ module.exports = {
     }
     return sorted;
   },
+  sortByTag: function(articles, tag){
+    let stringTag = tag.split("-").join(" ");
+    let stories = articles.map(story => {
+      story.tags = story.tags.map(tag=>tag.toLowerCase());
+      return story;
+    })
+    let sorted = stories.filter(story => story.tags.includes(stringTag));
+    return sorted; 
+  },
+  otherTags: function(articles, tag){
+    let stringTag = tag.split("-").join(" ");
+    let stories = articles.map(story => {
+      story.tags = story.tags.map(tag=>tag.toLowerCase());
+      return story;
+    })
+    let recents = stories.filter(story => !story.tags.includes(stringTag));
+    if(recents.length){
+      recents = recents.slice(0, 6);
+    }
+    return recents;
+  },
   editorsPicks: function(stories) {
     const picks = stories.reduce((pureStore, currentStory) => {
       let story = pureStore.find(
