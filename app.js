@@ -149,58 +149,11 @@ app.get("/category/:catName", async (req, res) => {
   let sortedCats;
   let pages;
   let pageNum = 1;
-  let latest;
-  let currentPage;
-  try {
-    let allStories = await Story.find({ status: "Public" }).sort({ createdAt: "desc" }).lean().exec();
-    let stories = await Story.find({ category: cat, status: "Public" })
-      .populate("user")
-      .sort({ createdAt: "desc" })
-      .lean()
-      .exec();
-    if (stories) {
-      stories = stories.map(story => {
-        story.createdAt = formatDate(story.createdAt);
-        return story;
-      });
-      const paginated = paginate(stories, 8);
-      currentPage = paginated[pageNum - 1];
-      pages = paginated.length;
-      let categories = getCats(allStories);
-      if (categories.length) {
-        sortedCats = sortCats(categories);
-      }
-    }
-    allStories = allStories.map(story => {
-      story.createdAt = formatDate(story.createdAt);
-      return story;
-    });
-    latest = otherCats(allStories, cat);
-    res.render("category", {
-      title,
-      stories: currentPage,
-      pages,
-      pageNum,
-      sortedCats,
-      cat,
-      category,
-      latest
-    });
-  } catch (err) {
-    console.log(err);
+  if(req.query.page >=1){
+    pageNum = parseInt(req.query.page);
   }
-});
-
-// next category page
-app.get("/category/:catName/:num", async (req, res) => {
-  const title = "Latest " + req.params.catName + " News, Fixtures and Results";
-  const cat = req.params.catName;
-  const category = encodeURI(cat);
-  let sortedCats;
   let latest;
-  let pages;
   let currentPage;
-  let pageNum = parseInt(req.params.num);
   try {
     let allStories = await Story.find({ status: "Public" }).sort({ createdAt: "desc" }).lean().exec();
     let stories = await Story.find({ category: cat, status: "Public" })
@@ -270,10 +223,6 @@ app.get("/tag/:tagname", async (req, res) => {
         sortedCats = sortCats(categories);
       }
     }
-    allStories = allStories.map(story => {
-      story.createdAt = formatDate(story.createdAt);
-      return story;
-    });
     latest = otherTags(allStories, tag);
     res.render("tags", {
       title,
@@ -342,6 +291,9 @@ app.get("/", async (req, res) => {
   let allStories;
   let pages;
   let pageNum = 1;
+  if(req.query.page >=1){
+    pageNum = parseInt(req.query.page);
+  }
   let currentPage;
   let englishpl;
   let spanishll;
@@ -401,77 +353,11 @@ app.get("/", async (req, res) => {
 
 // redirect to home
 
-app.get("/page=1", (req, res) => {
+app.get("/?page=1", (req, res) => {
   res.redirect("/");
 });
 
-// get next home page
-app.get("/page=:num", async (req, res) => {
-  const title = "Latest Football - Soccer news, match reports and fixtures";
-  const active = "active-link";
-  let sortedCats;
-  let picks;
-  let latest;
-  let allStories;
-  let pages;
-  let pageNum = parseInt(req.params.num);
-  let currentPage;
-  let englishpl;
-  let spanishll;
-  try {
-    let stories = await Story.find({ status: "Public" })
-      .populate("user")
-      .sort({ createdAt: "desc" })
-      .lean()
-      .exec();
-    if (stories) {
-      stories = stories.map(story => {
-        story.createdAt = formatDate(story.createdAt);
-        return story;
-      });
-      allStories = paginate(stories, 6);
-      currentPage = allStories[pageNum - 1];
-      pages = allStories.length;
 
-      let categories = getCats(stories);
-      if (categories.length) {
-        sortedCats = sortCats(categories);
-      }
-      picks = editorsPicks(stories);
-      if (picks.length) {
-        picks = picks.slice(0, 6);
-      }
-
-      latest = latestPosts(stories);
-      englishpl = getByCat(stories, "English Premier League");
-      spanishll = getByCat(stories, "Spanish Laliga");
-    }
-    let videos = await latestVideos();
-    if(videos){
-      videos = videos.map(video => {
-        video.date = formatDate(video.date);
-        return video;
-      });
-    }
-    res.render("home", {
-      title,
-      videos,
-      stories,
-      sortedCats,
-      picks,
-      latest,
-      allStories,
-      currentPage,
-      pages,
-      pageNum,
-      englishpl,
-      spanishll,
-      active
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
 
 app.get("/about-us", async (req, res) => {
   const title = "About Zoom Sportz - Football/Soccer news blog";

@@ -101,14 +101,14 @@
                                 class="fas fa-arrow-left prev-indicator"></i> </a>
                         <% }%>
                         <% if(pageNum > 2){%>
-                        <a href="/category/<%=category%>/<%= pageNum - 1 %>"
+                        <a href="/category/<%=category%>/?page=<%= pageNum - 1 %>"
                             class="prev-page swiper-btn blog-control-btn" role="button"><i
                                 class="fas fa-arrow-left prev-indicator"></i> </a>
 
                         <% } %>
                         <button class="page-count swiper-btn blog-control-btn"><%= pageNum %> / <%= pages %></button>
                         <% if(pageNum < pages){%>
-                        <a href="/category/<%=category%>/<%= pageNum + 1 %> "
+                        <a href="/category/<%=category%>/?page=<%= pageNum + 1 %> "
                             class="next-page swiper-btn blog-control-btn" role="button" value="next-page"><i
                                 class="fas fa-arrow-right next-indicator"></i></a>
                         <% } %>

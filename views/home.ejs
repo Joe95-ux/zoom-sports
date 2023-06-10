@@ -416,14 +416,14 @@
                         <% if(pages>1){%>
                         <div class="page-controls blog-page-controls">
                             <% if(pageNum > 1){%>
-                            <a href="/page=<%= pageNum-1 %>" class="prev-page swiper-btn blog-control-btn"
+                            <a href="/?page=<%= pageNum-1 %>" class="prev-page swiper-btn blog-control-btn"
                                 role="button"><i class="fas fa-arrow-left prev-indicator"></i> </a>
 
                             <% } %>
                             <button class="page-count swiper-btn blog-control-btn"><%= pageNum %> /
                                 <%= pages %></button>
                             <% if(pageNum < pages){%>
-                            <a href="/page=<%= pageNum + 1 %> " class="next-page swiper-btn blog-control-btn"
+                            <a href="/?page=<%= pageNum + 1 %>" class="next-page swiper-btn blog-control-btn"
                                 role="button" value="next-page"><i class="fas fa-arrow-right next-indicator"></i></a>
                             <% } %>
                         </div>

@@ -122,8 +122,10 @@ let sentTags = [];
 countTags();
 createTag();
 function countTags(){
-  tagsInput.focus();
-  tagNumb.innerText = maxTags - tags.length;
+  if(tagsInput !== null && tagNumb !==null){
+    tagsInput.focus();
+    tagNumb.innerText = maxTags - tags.length;
+  }
 }
 function createTag(){
     ul.querySelectorAll("li").forEach(li => li.remove());
@@ -141,7 +143,7 @@ function remove(element, tag){
 }
 function addTag(e){
 
-  if(e.key == "Enter"){
+  if(e.keyCode===13){
       let tag = e.target.value.replace(/\s+/g, ' ');
       if(tag.length > 1 && !tags.includes(tag)){
           if(tags.length < 4){
