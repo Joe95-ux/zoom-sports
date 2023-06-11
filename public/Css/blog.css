@@ -3684,6 +3684,7 @@ a.create-btn.edit-profile-btn {
     flex: 1;
     padding: 5px;
     border: none;
+    max-width: 100%;
     outline: none;
     font-size: 16px;
 }

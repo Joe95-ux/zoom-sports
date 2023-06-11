@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const ejs = require("ejs");
 const fetch = require("node-fetch");
-const compression = require('compression');
+const compression = require("compression");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
@@ -19,9 +19,7 @@ const connectDB = require("./config/db");
 const { S3Client, AbortMultipartUploadCommand } = require("@aws-sdk/client-s3");
 const multerS3 = require("multer-s3");
 const { subcribeHandler } = require("./utils/mailchimp");
-const {
-  ensureAuth
-} = require("./middleware/auth");
+const { ensureAuth } = require("./middleware/auth");
 const {
   formatDate,
   dateWithTime,
@@ -45,16 +43,18 @@ const ckeditorRouter = require("./routes/ckeditorurl");
 
 const app = express();
 
-app.use(compression({
-  level: 6,
-  threshold: 5 * 1000,
-  filter: (req, res)=>{
-    if(req.headers['x-no-compression']){
-      return false
+app.use(
+  compression({
+    level: 6,
+    threshold: 5 * 1000,
+    filter: (req, res) => {
+      if (req.headers["x-no-compression"]) {
+        return false;
+      }
+      return compression.filter(req, res);
     }
-    return compression.filter(req, res)
-  }
-}));
+  })
+);
 
 // Method override
 app.use(methodOverride("_method"));
@@ -149,13 +149,16 @@ app.get("/category/:catName", async (req, res) => {
   let sortedCats;
   let pages;
   let pageNum = 1;
-  if(req.query.page >=1){
+  if (req.query.page >= 1) {
     pageNum = parseInt(req.query.page);
   }
   let latest;
   let currentPage;
   try {
-    let allStories = await Story.find({ status: "Public" }).sort({ createdAt: "desc" }).lean().exec();
+    let allStories = await Story.find({ status: "Public" })
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
     let stories = await Story.find({ category: cat, status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
@@ -197,18 +200,21 @@ app.get("/category/:catName", async (req, res) => {
 // sort stories by tags
 
 app.get("/tag/:tagname", async (req, res) => {
-  const title =  req.params.tagname + " News";
+  const title = req.params.tagname + " News";
   const tag = req.params.tagname;
   let sortedCats;
   let pages;
   let pageNum = 1;
-  if(req.query.page >=1){
+  if (req.query.page >= 1) {
     pageNum = parseInt(req.query.page);
   }
   let latest;
   let currentPage;
   try {
-    let allStories = await Story.find({ status: "Public" }).sort({ createdAt: "desc" }).lean().exec();
+    let allStories = await Story.find({ status: "Public" })
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
     let stories = sortByTag(allStories, tag);
     if (stories) {
       stories = stories.map(story => {
@@ -230,7 +236,7 @@ app.get("/tag/:tagname", async (req, res) => {
       pages,
       pageNum,
       sortedCats,
-      cat:tag,
+      cat: tag,
       tag,
       latest
     });
@@ -255,7 +261,6 @@ app.get("/compose", ensureAuth, async (req, res) => {
       }
     }
     res.render("compose", { title, sortedCats });
-    
   } catch (error) {
     console.log(error);
   }
@@ -266,9 +271,8 @@ app.post("/compose", upload.single("photo"), ensureAuth, async (req, res) => {
   let tags = [];
   try {
     req.body.user = req.user.id;
-    if(req.body.tags !== ""){
-      tags = [ ...req.body.tags.split(",")];
-
+    if (req.body.tags !== "") {
+      tags = [...req.body.tags.split(",")];
     }
     post = req.body;
     post.tags = tags;
@@ -291,7 +295,7 @@ app.get("/", async (req, res) => {
   let allStories;
   let pages;
   let pageNum = 1;
-  if(req.query.page >=1){
+  if (req.query.page >= 1) {
     pageNum = parseInt(req.query.page);
   }
   let currentPage;
@@ -325,7 +329,7 @@ app.get("/", async (req, res) => {
       spanishll = getByCat(stories, "Spanish Laliga");
     }
     let videos = await latestVideos();
-    if(videos){
+    if (videos) {
       videos = videos.map(video => {
         video.date = formatDate(video.date);
         return video;
@@ -356,8 +360,6 @@ app.get("/", async (req, res) => {
 app.get("/?page=1", (req, res) => {
   res.redirect("/");
 });
-
-
 
 app.get("/about-us", async (req, res) => {
   const title = "About Zoom Sportz - Football/Soccer news blog";
@@ -406,7 +408,8 @@ app.get("/privacy", async (req, res) => {
 });
 
 app.get("/live-preview", async (req, res) => {
-  const title = "Livescores for English Premier League, Champions League, Bundesliga, Laliga and more";
+  const title =
+    "Livescores for English Premier League, Champions League, Bundesliga, Laliga and more";
   const live = "active-link";
   const about = "";
   const token = process.env.ODDSPEDIA_API_TOKEN;
@@ -479,10 +482,11 @@ app.get("/tables", async (req, res) => {
 });
 
 app.get("/surebets", async (req, res) => {
-  const title = "Surebets today | Free Arbitrage betting finder and calculator ";
+  const title =
+    "Surebets today | Free Arbitrage betting finder and calculator ";
   const live = "active-link";
   const about = "";
-  const token = process.env.ODDSPEDIA_API_TOKEN
+  const token = process.env.ODDSPEDIA_API_TOKEN;
   let sortedCats;
   try {
     let stories = await Story.find({ status: "Public" })
@@ -554,7 +558,8 @@ app.get("/dropping-odds", async (req, res) => {
 });
 
 app.get("/match-center", async (req, res) => {
-  const title = "Match Center - Football matches, stats, betting odds comparison";
+  const title =
+    "Match Center - Football matches, stats, betting odds comparison";
   const live = "active-link";
   const about = "";
   const token = process.env.ODDSPEDIA_API_TOKEN;
@@ -603,9 +608,6 @@ app.get("/league", async (req, res) => {
   }
 });
 
-
-
-
 app.use("/stories", storyRouter);
 app.use("/users", userRouter);
 app.use("/editor", ckeditorRouter);
@@ -618,6 +620,6 @@ app.listen(port, function() {
   console.log("Server has started sucessfully");
 });
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   res.status(404).sendFile(__dirname + "/public/404.html");
-})
+});

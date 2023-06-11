@@ -128,7 +128,9 @@ function countTags(){
   }
 }
 function createTag(){
-    ul.querySelectorAll("li").forEach(li => li.remove());
+    if(ul !== null){
+      ul.querySelectorAll("li").forEach(li => li.remove());
+    }
     tags.slice().reverse().forEach(tag =>{
         let liTag = `<li>${tag} <i class="fas fa-times" onclick="remove(this, '${tag}')"></i></li>`;
         ul.insertAdjacentHTML("afterbegin", liTag);
@@ -142,7 +144,6 @@ function remove(element, tag){
     countTags();
 }
 function addTag(e){
-
   if(e.keyCode===13){
       let tag = e.target.value.replace(/\s+/g, ' ');
       if(tag.length > 1 && !tags.includes(tag)){
@@ -157,7 +158,9 @@ function addTag(e){
   }
 }
 
-tagsInput.addEventListener("keyup", addTag);
+if(tagsInput !== null){
+  tagsInput.addEventListener("keyup", addTag);
+}
 const removeBtn = document.querySelector(".tag-details button");
 removeBtn.addEventListener("click", () =>{
     tags.length = 0;
