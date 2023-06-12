@@ -162,11 +162,14 @@ if(tagsInput !== null){
   tagsInput.addEventListener("keyup", addTag);
 }
 const removeBtn = document.querySelector(".tag-details button");
-removeBtn.addEventListener("click", () =>{
+if(removeBtn !== null){
+  removeBtn.addEventListener("click", () =>{
     tags.length = 0;
     ul.querySelectorAll("li").forEach(li => li.remove());
     countTags();
 });
+
+}
 
 if(submitPost !== null){
   let tagString = '';
