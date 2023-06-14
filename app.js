@@ -324,7 +324,7 @@ app.get("/", async (req, res) => {
       if (picks.length) {
         picks = picks.slice(0, 6);
       }
-      latest = latestPosts(stories);
+      latest = getByCat(stories, "Elite one championship Cameroon");
       englishpl = getByCat(stories, "English Premier League");
       spanishll = getByCat(stories, "Spanish Laliga");
     }
