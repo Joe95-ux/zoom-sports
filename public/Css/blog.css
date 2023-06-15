@@ -3689,9 +3689,21 @@ a.create-btn.edit-profile-btn {
     font-size: 16px;
 }
 
-.tags-wrapper .tag-details {
+.tags-wrapper .tag-details, .tags-btns {
     display: flex;
+    flex-wrap: wrap;
+}
+.tags-wrapper .tag-details{
     justify-content: space-between;
+}
+
+@media screen and (max-width:457px){
+    .tag-details{
+        margin-top: -5px;
+    }
+    .tag-details p{
+        margin-bottom: 4px;
+    }
 }
 
 .tags-wrapper .tag-details button {
@@ -3700,10 +3712,14 @@ a.create-btn.edit-profile-btn {
     color: #fff;
     font-size: 14px;
     cursor: pointer;
-    padding: 9px 15px;
+    padding: 6px 12px;
     border-radius: 5px;
     background: #5372F0;
     transition: background 0.3s ease;
+}
+
+.tags-btns .submit-tag{
+    margin-right: 4px;
 }
 
 .tags-wrapper .tag-details button:hover {
@@ -3754,4 +3770,12 @@ a.create-btn.edit-profile-btn {
 
 .keywords-wrapper a:not(:first-child){
     margin-left: 5px;
+}
+
+.alert{
+    margin-top: -10px;
+    color: red;
+    font-size: 14px;
+    font-weight: normal;
+    display: none;
 }

@@ -72,7 +72,6 @@ if (tables !== null && tableInput !== null) {
           return;
         } else {
           table.classList.add("active-league-table");
-          
         }
       } else {
         if (table.classList.contains("active-league-table")) {
@@ -103,80 +102,112 @@ if (tables !== null && tableInput !== null) {
 }
 
 $(document).ready(function() {
-  $(window).keydown(function(event){
-    if(event.keyCode == 13) {
+  $(window).keydown(function(event) {
+    if (event.keyCode == 13) {
       event.preventDefault();
       return false;
     }
   });
 });
 
-
 const ul = document.querySelector(".tags-ul"),
-tagsInput = document.querySelector(".tags-ul input"),
-tagNumb = document.querySelector(".tag-details span");
+  tagsInput = document.querySelector(".tags-ul input"),
+  tagNumb = document.querySelector(".tag-details span");
 let submitPost = document.querySelector(".publish-btn");
-let maxTags = 4,
-tags = [];
-let sentTags = [];
+let alert = document.querySelector(".alert");
+const submitTag = document.querySelector(".submit-tag");
+let maxTags = 5,
+  tags = [];
 countTags();
 createTag();
-function countTags(){
-  if(tagsInput !== null && tagNumb !==null){
+function countTags() {
+  if (tagsInput !== null && tagNumb !== null) {
     tagsInput.focus();
     tagNumb.innerText = maxTags - tags.length;
   }
 }
-function createTag(){
-    if(ul !== null){
-      ul.querySelectorAll("li").forEach(li => li.remove());
-    }
-    tags.slice().reverse().forEach(tag =>{
-        let liTag = `<li>${tag} <i class="fas fa-times" onclick="remove(this, '${tag}')"></i></li>`;
-        ul.insertAdjacentHTML("afterbegin", liTag);
-    });
-    countTags();
+function createTag() {
+  if (ul !== null) {
+    ul.querySelectorAll("li").forEach(li => li.remove());
+  }
+  tags.slice().reverse().forEach(tag => {
+    let liTag = `<li>${tag} <i class="fas fa-times" onclick="remove(this, '${tag}')"></i></li>`;
+    ul.insertAdjacentHTML("afterbegin", liTag);
+  });
+  countTags();
 }
-function remove(element, tag){
-    let index  = tags.indexOf(tag);
-    tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
-    element.parentElement.remove();
-    countTags();
+function remove(element, tag) {
+  let index = tags.indexOf(tag);
+  tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
+  element.parentElement.remove();
+  countTags();
+  if(tags.length < 5){
+    alert.style.display = "none";
+  }
 }
-function addTag(e){
-  if(e.keyCode===13){
-      let tag = e.target.value.replace(/\s+/g, ' ');
-      if(tag.length > 1 && !tags.includes(tag)){
-          if(tags.length < 4){
-              tag.split(',').forEach(tag => {
-                  tags.push(tag);
-                  createTag();
-              });
+function addTag(e) {
+  if (e.keyCode === 13) {
+    let tag = e.target.value.replace(/\s+/g, " ");
+    if (tag.length > 1 && !tags.includes(tag)) {
+      if (tags.length < 5) {
+        tag.split(",").forEach(tag => {
+          if(tags.length < 5){
+            tags.push(tag);
+            createTag();
+          }else{
+            alert.style.display = "block";
           }
+        });
+      }else{
+        alert.style.display = "block";
       }
-      e.target.value = "";
+    }
+    e.target.value = "";
   }
 }
 
-if(tagsInput !== null){
+function triggerAdd(){
+  let tag = tagsInput.value.replace(/\s+/g, " ");
+    if (tag.length > 1 && !tags.includes(tag)) {
+      if (tags.length < 5) {
+        tag.split(",").forEach(tag => {
+          if(tags.length < 5){
+            tags.push(tag);
+            createTag();
+          }else{
+            alert.style.display = "block";
+          }
+        });
+      }else{
+        alert.style.display = "block";
+      }
+    }
+    tagsInput.value = "";
+}
+
+if (tagsInput !== null) {
   tagsInput.addEventListener("keyup", addTag);
 }
-const removeBtn = document.querySelector(".tag-details button");
-if(removeBtn !== null){
-  removeBtn.addEventListener("click", () =>{
+if (submitTag !== null) {
+  submitTag.addEventListener("click", triggerAdd);
+}
+const removeBtn = document.querySelector(".remove-tag");
+if (removeBtn !== null) {
+  removeBtn.addEventListener("click", () => {
     tags.length = 0;
     ul.querySelectorAll("li").forEach(li => li.remove());
     countTags();
-});
-
+    if(tags.length < 5){
+      alert.style.display = "none";
+    }
+  });
 }
 
-if(submitPost !== null){
-  let tagString = '';
-  submitPost.addEventListener('click', ()=>{
+if (submitPost !== null) {
+  let tagString = "";
+  submitPost.addEventListener("click", () => {
     tagString = tags.join(",");
     tagsInput.value = tagString;
     tagsInput.focus();
-
-  })
+  });
 }
