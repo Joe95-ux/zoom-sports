@@ -65,8 +65,8 @@ module.exports = {
     const posts = stories.slice(0, 10);
     return posts;
   },
-  getByCat: async  function(stories, cat){
-    let sorted = await stories.filter(story=>story.category === cat);
+  getByCat: function(stories, cat){
+    let sorted = stories.filter(story=>story.category === cat);
     if(sorted.length){
       sorted = sorted.slice(0, 8);
     }
