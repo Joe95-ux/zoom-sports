@@ -198,11 +198,14 @@
                 </div>
                 <div class="content">
                   <p>Press enter or add a comma after each tag</p>
-                  <ul class="tags-ul"><input type="text" spellcheck="false" placeholder="Enter your tags" name="tags"></ul>
-                  <small class="alert">You have exceeded the max limit of 5 tags!</small>
+                  <ul class="tags-ul">
+                    <input class="tags-input" type="text" spellcheck="false" placeholder="Enter your tags" name="tags">
+                    <input class="tags-value" type="hidden" id="tagsId" name="tags" value="" >
+                  </ul>
+                  <small class="alert">You have exceeded the max limit of 8 tags!</small>
                 </div>
                 <div class="tag-details">
-                  <p><span>5</span> tags are remaining</p>
+                  <p><span>8</span> tags are remaining</p>
                   <div class="tag-btns">
                     <button type="button" class="submit-tag">Add Tag</button>
                     <button type="button" class="remove-tag">Remove All</button>

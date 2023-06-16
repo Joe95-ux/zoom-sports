@@ -111,12 +111,13 @@ $(document).ready(function() {
 });
 
 const ul = document.querySelector(".tags-ul"),
-  tagsInput = document.querySelector(".tags-ul input"),
+  tagsInput = document.querySelector(".tags-input"),
+  tagsValue = document.querySelector(".tags-value"),
   tagNumb = document.querySelector(".tag-details span");
 let submitPost = document.querySelector(".publish-btn");
 let alert = document.querySelector(".alert");
 const submitTag = document.querySelector(".submit-tag");
-let maxTags = 5,
+let maxTags = 8,
   tags = [];
 countTags();
 createTag();
@@ -141,7 +142,7 @@ function remove(element, tag) {
   tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
   element.parentElement.remove();
   countTags();
-  if(tags.length < 5){
+  if(tags.length < 8){
     alert.style.display = "none";
   }
 }
@@ -149,9 +150,9 @@ function addTag(e) {
   if (e.keyCode === 13) {
     let tag = e.target.value.replace(/\s+/g, " ");
     if (tag.length > 1 && !tags.includes(tag)) {
-      if (tags.length < 5) {
+      if (tags.length < 8) {
         tag.split(",").forEach(tag => {
-          if(tags.length < 5){
+          if(tags.length < 8){
             tags.push(tag);
             createTag();
           }else{
@@ -169,9 +170,9 @@ function addTag(e) {
 function triggerAdd(){
   let tag = tagsInput.value.replace(/\s+/g, " ");
     if (tag.length > 1 && !tags.includes(tag)) {
-      if (tags.length < 5) {
+      if (tags.length < 8) {
         tag.split(",").forEach(tag => {
-          if(tags.length < 5){
+          if(tags.length < 8){
             tags.push(tag);
             createTag();
           }else{
@@ -197,7 +198,7 @@ if (removeBtn !== null) {
     tags.length = 0;
     ul.querySelectorAll("li").forEach(li => li.remove());
     countTags();
-    if(tags.length < 5){
+    if(tags.length < 8){
       alert.style.display = "none";
     }
   });
@@ -207,7 +208,7 @@ if (submitPost !== null) {
   let tagString = "";
   submitPost.addEventListener("click", () => {
     tagString = tags.join(",");
-    tagsInput.value = tagString;
-    tagsInput.focus();
+    tagsValue.value = tagString;
+    console.log(tagsValue);
   });
 }

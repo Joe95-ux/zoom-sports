@@ -15,6 +15,7 @@ module.exports = {
   },
   sortCats: function(catArr) {
     let allCats = {};
+   
     for (let cat of catArr) {
       if (!allCats[cat]) {
         allCats[cat] = 1;
@@ -64,8 +65,8 @@ module.exports = {
     const posts = stories.slice(0, 10);
     return posts;
   },
-  getByCat: function(stories, cat){
-    let sorted = stories.filter(story=>story.category === cat);
+  getByCat: async  function(stories, cat){
+    let sorted = await stories.filter(story=>story.category === cat);
     if(sorted.length){
       sorted = sorted.slice(0, 8);
     }
