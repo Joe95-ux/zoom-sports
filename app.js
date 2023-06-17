@@ -330,7 +330,7 @@ app.get("/", async (req, res) => {
     }
     let videos = await latestVideos();
     if (videos) {
-      videos = videos.map(video => {
+      videos = await videos.map(video => {
         video.date = formatDate(video.date);
         return video;
       });
@@ -373,7 +373,7 @@ app.get("/about-us", async (req, res) => {
       .lean()
       .exec();
     if (stories) {
-      let categories = await getCats(stories);
+      let categories = getCats(stories);
       if (categories.length) {
         sortedCats = sortCats(categories);
       }
@@ -395,7 +395,7 @@ app.get("/privacy", async (req, res) => {
       .lean()
       .exec();
     if (stories) {
-      let categories = await getCats(stories);
+      let categories =  getCats(stories);
       if (categories.length) {
         sortedCats = sortCats(categories);
       }
@@ -445,7 +445,7 @@ app.get("/highlights", async (req, res) => {
       .lean()
       .exec();
     if (stories) {
-      let categories = await getCats(stories);
+      let categories = getCats(stories);
       if (categories.length) {
         sortedCats = sortCats(categories);
       }
