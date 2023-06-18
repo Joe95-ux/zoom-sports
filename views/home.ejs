@@ -25,7 +25,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&family=Baloo+Thambi+2:wght@500;600;700;800&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,300&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Roboto+Slab:wght@400;500&family=Roboto:wght@300;400;500;700;900&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&family=Baloo+Thambi+2:wght@500;600;700;800&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/907d5275a6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css" />
@@ -77,20 +78,20 @@
                                 <img src="/zs-logo.png" alt="Zoom Sportz">
                                 <!-- <h1>Zoom Sportz</h1> -->
                             </div>
-    
+
                         </a>
                         <div class="news">
-                            <a href="/"><i class="fas fa-newspaper"></i>News</a> 
+                            <a href="/"><i class="fas fa-newspaper"></i>News</a>
                         </div>
                     </div>
-                    
+
                     <div class="date-time">
                         <span class="timezone">Time Zone</span>
                         <span class="time-stamp">Current time</span>
                     </div>
-    
+
                 </div>
-    
+
             </div>
         </nav>
         <nav class="second-nav">
@@ -101,7 +102,7 @@
                     <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
                     <li class="nav_link"> <a href="/dropping-odds">Dropping-odds</a> </li>
                     <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
-                    <li class="nav_link"> <a href="/highlights" >Highlights</a> </li>
+                    <li class="nav_link"> <a href="/highlights">Highlights</a> </li>
                     <li class="nav_link"> <a href="/tables">Tables</a> </li>
                     <li class="nav_link"> <a href="/league">League</a> </li>
                     <% if(user){%>
@@ -116,7 +117,7 @@
         </nav>
 
     </div>
-    
+
     <div class="side-drawer" data-simplebar>
         <i class="fas fa-times"></i>
         <div class="side-drawer-inner">
@@ -145,7 +146,7 @@
                 </div>
 
             </div>
-            
+
             <div class="main-category discover-movies">
                 <div class="category-title">
                     <h2 class="discover">Categories</h2>
@@ -192,7 +193,7 @@
             <% } %>
             <% } %>
 
-            
+
             <div class="new-header-wrapper blog-header-wrapper thumb-header-wrapper">
                 <div class="blog-header-left">
                     <div class="embla autoplay__embla blog-header-embla" id="main-carousel">
@@ -221,7 +222,7 @@
                                 <% } %>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="blog-header-right thumb-wrapper" style="overflow: hidden;">
@@ -255,94 +256,111 @@
             <div class="movie-trailer">
                 <div class="trailer-container">
                     <div class="trailer-video">
-                        
+
                     </div>
                     <img class="close-trailer" src="/cancel.svg" alt="close">
                 </div>
-            </div>   
+            </div>
 
             <% if(videos.length){%>
-                <div class="older-posts">
-                    <a href="/highlights" class="cat-title">Latest Videos<i class="fas fa-long-arrow-alt-right"></i></a>
-                    <div class="older-posts-inner">
-                        <div class="embla old-posts-embla">
-                            <div class="embla__viewport embla--view">
-                                <div class="embla__container">
-                                    <% videos.forEach((video) =>{%>
-                                    <div class="embla__slide">
-                                        <div class="embla__slide__inner slider-inner-card featured-card">
-                                            <div class="post thumbnail">
-                                                <span class="image">
-                                                    <img src="<%= video.thumbnail%>" alt="<%= video.title %>">
-                                                </span>
-                                                <div class="play-icon" data-source="<%= video.videos[0].embed %>"><svg width="55" height="55" viewBox="0 0 1.1 1.1" xmlns="http://www.w3.org/2000/svg" fill="#ffff"><path d="M.26.138.206.166v.825l.054.029.619-.413V.55L.26.137zm.015.789V.23l.522.349-.522.348z"/></svg></div>
-                                                <h5 class="cat-name"><%= video.competition%></h5>
-                                                <h3><%= video.title%></h3>
-                                                <h5><%= video.date %></h5>
-                                            </div>
+            <div class="older-posts">
+                <a href="/highlights" class="cat-title">Latest Videos<i class="fas fa-long-arrow-alt-right"></i></a>
+                <div class="older-posts-inner">
+                    <div class="embla old-posts-embla">
+                        <div class="embla__viewport embla--view">
+                            <div class="embla__container">
+                                <% videos.forEach((video) =>{%>
+                                <div class="embla__slide">
+                                    <div class="embla__slide__inner slider-inner-card featured-card">
+                                        <div class="post thumbnail">
+                                            <span class="image">
+                                                <img src="<%= video.thumbnail%>" alt="<%= video.title %>">
+                                            </span>
+                                            <div class="play-icon" data-source="<%= video.videos[0].embed %>"><svg
+                                                    width="55" height="55" viewBox="0 0 1.1 1.1"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="#ffff">
+                                                    <path
+                                                        d="M.26.138.206.166v.825l.054.029.619-.413V.55L.26.137zm.015.789V.23l.522.349-.522.348z" />
+                                                    </svg></div>
+                                            <h5 class="cat-name"><%= video.competition%></h5>
+                                            <h3><%= video.title%></h3>
+                                            <h5><%= video.date %></h5>
                                         </div>
                                     </div>
-
-                                    <% }) %>
-
                                 </div>
 
-                            </div>
-                            <button class="embla__button embla__button--prev square__btn old-embla-btn"
-                                type="button">
-                                <svg class="embla__button__svg" viewBox="137.718 -1.001 366.563 643.999">
-                                    <path
-                                        d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z">
-                                    </path>
-                                </svg>
-                            </button>
-                            <button class="embla__button embla__button--next square__btn old-embla-btn"
-                                type="button">
-                                <svg class="embla__button__svg" viewBox="0 0 238.003 238.003">
-                                    <path
-                                        d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z">
-                                    </path>
-                                </svg>
-                            </button>
+                                <% }) %>
 
+                            </div>
 
                         </div>
+                        <button class="embla__button embla__button--prev square__btn old-embla-btn" type="button">
+                            <svg class="embla__button__svg" viewBox="137.718 -1.001 366.563 643.999">
+                                <path
+                                    d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z">
+                                </path>
+                            </svg>
+                        </button>
+                        <button class="embla__button embla__button--next square__btn old-embla-btn" type="button">
+                            <svg class="embla__button__svg" viewBox="0 0 238.003 238.003">
+                                <path
+                                    d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z">
+                                </path>
+                            </svg>
+                        </button>
+
+
                     </div>
                 </div>
+            </div>
 
-                <% } %>
+            <% } %>
 
             <div class="blog-body-wrapper">
                 <div id="long" class="blog-body-content">
                     <div class="blog-body-popular">
-                        <a href="/category/English Premier League" class="cat-title wc-trademark-wrapper">
-                           English Premier League <i class="fas fa-long-arrow-alt-right"></i></a>
-                        <div class="latest-posts latest-stories">
-                            <% if(englishpl){%>
-                            <%englishpl.forEach(story=>{  %>
+                        <div class="tv-shows latest-stories" style="margin-top: 0; padding-top: 0;">
+                            <h1 class="cat-title">Latest News</h1>
+                            <div class="latest-posts tv-news">
+                                <% if(currentPage){%>
+                                <% currentPage.forEach(story=>{%>
+                                <div class="post">
+                                    <a class="thumbnail" href="/stories/post/<%= story.slug %>">
+                                        <span class="image"><img src="<%= story.photo %>"
+                                                alt="<%= story.title %>"></span>
+                                        <h5 class="cat-name"><%= story.category %> </h5>
+                                        <h3><%= story.title %> </h3>
+                                        <h5><%= story.createdAt %></h5>
+                                    </a>
+                                    <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
+                                            class="fas fa-angle-double-right"></i></a>
+                                </div>
 
-                            <div class="post">
-                                <a class="thumbnail" href="/stories/post/<%= story.slug %>">
-                                    <span class="image">
-                                        <img src="<%= story.photo %>" alt="<%= story.title %>">
-                                    </span>
-                                    <h5 class="cat-name"><%= story.category %> </h5>
-                                    <h3><%= story.title %> </h3>
-                                    <h5 class="date"> <span>by <strong><%= story.author %> </strong></span>
-                                        <span><%= story.createdAt %>
-                                        </span> </h5>
-                                </a>
-                                <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
-                                        class="fas fa-angle-double-right"></i></a>
+                                <%}) %>
+                                <% } %>
                             </div>
-
-                            <% }) %>
-
-                            <%} %>
                         </div>
+                        <% if(pages>1){%>
+                        <div class="page-controls blog-page-controls">
+                            <% if(pageNum > 1){%>
+                            <a href="/?page=<%= pageNum-1 %>" class="prev-page swiper-btn blog-control-btn"
+                                role="button"><i class="fas fa-arrow-left prev-indicator"></i> </a>
+
+                            <% } %>
+                            <button class="page-count swiper-btn blog-control-btn"><%= pageNum %> /
+                                <%= pages %></button>
+                            <% if(pageNum < pages){%>
+                            <a href="/?page=<%= pageNum + 1 %>" class="next-page swiper-btn blog-control-btn"
+                                role="button" value="next-page"><i class="fas fa-arrow-right next-indicator"></i></a>
+                            <% } %>
+                        </div>
+
+                        <% } %>
+
+
                         <% if(latest.length){%>
-                        <div class="older-posts">
-                
+                        <div class="older-posts" style="margin-bottom: 25px; border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 25px;">
+
                             <a href="/category/Elite one championship Cameroon" class="cat-title wc-trademark-wrapper">
                                 Elite One Championship Cameroon <i class="fas fa-long-arrow-alt-right"></i></a>
                             <div class="older-posts-inner">
@@ -393,48 +411,36 @@
                         </div>
 
                         <% } %>
+                        <a href="/category/English Premier League" class="cat-title wc-trademark-wrapper">
+                            English Premier League <i class="fas fa-long-arrow-alt-right"></i></a>
+                        <div class="latest-posts latest-stories">
+                            <% if(englishpl){%>
+                            <%englishpl.forEach(story=>{  %>
 
-                        <div class="tv-shows">
-                            <h1 class="cat-title">All Stories</h1>
-                            <div class="latest-posts tv-news">
-                                <% if(currentPage){%>
-                                <% currentPage.forEach(story=>{%>
-                                <div class="post">
-                                    <a class="thumbnail" href="/stories/post/<%= story.slug %>">
-                                        <span class="image"><img src="<%= story.photo %>" alt="<%= story.title %>"></span>
-                                        <h5 class="cat-name"><%= story.category %> </h5>
-                                        <h3><%= story.title %> </h3>
-                                        <h5><%= story.createdAt %></h5>
-                                    </a>
-                                    <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
-                                            class="fas fa-angle-double-right"></i></a>
-                                </div>
-
-                                <%}) %>
-                                <% } %>
+                            <div class="post">
+                                <a class="thumbnail" href="/stories/post/<%= story.slug %>">
+                                    <span class="image">
+                                        <img src="<%= story.photo %>" alt="<%= story.title %>">
+                                    </span>
+                                    <h5 class="cat-name"><%= story.category %> </h5>
+                                    <h3><%= story.title %> </h3>
+                                    <h5 class="date"> <span>by <strong><%= story.author %> </strong></span>
+                                        <span><%= story.createdAt %>
+                                        </span> </h5>
+                                </a>
+                                <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
+                                        class="fas fa-angle-double-right"></i></a>
                             </div>
+
+                            <% }) %>
+
+                            <%} %>
                         </div>
-                        <% if(pages>1){%>
-                        <div class="page-controls blog-page-controls">
-                            <% if(pageNum > 1){%>
-                            <a href="/?page=<%= pageNum-1 %>" class="prev-page swiper-btn blog-control-btn"
-                                role="button"><i class="fas fa-arrow-left prev-indicator"></i> </a>
-
-                            <% } %>
-                            <button class="page-count swiper-btn blog-control-btn"><%= pageNum %> /
-                                <%= pages %></button>
-                            <% if(pageNum < pages){%>
-                            <a href="/?page=<%= pageNum + 1 %>" class="next-page swiper-btn blog-control-btn"
-                                role="button" value="next-page"><i class="fas fa-arrow-right next-indicator"></i></a>
-                            <% } %>
-                        </div>
-
-                        <% } %>
-
 
                         <% if(spanishll.length){%>
-                        <div class="older-posts">
-                            <a href="/category/Spanish Laliga" class="cat-title">Spanish Laliga<i class="fas fa-long-arrow-alt-right"></i></a>
+                        <div class="older-posts" style="padding-top: 0;">
+                            <a href="/category/Spanish Laliga" class="cat-title">Spanish Laliga<i
+                                    class="fas fa-long-arrow-alt-right"></i></a>
                             <div class="older-posts-inner">
                                 <div class="embla old-posts-embla">
                                     <div class="embla__viewport embla--view">
@@ -583,8 +589,10 @@
                                     <div class="sponsored-content">
                                         <h2>Host on Digital Ocean </h2>
                                         <p>
-                                            Get your apps to market faster with DigitalOcean's App Platform. Build, deploy,
-                                            and scale apps quickly using a simple, fully managed solution. Earn $200 in credit over 60 days once you Sign-up. We’ll handle the
+                                            Get your apps to market faster with DigitalOcean's App Platform. Build,
+                                            deploy,
+                                            and scale apps quickly using a simple, fully managed solution. Earn $200 in
+                                            credit over 60 days once you Sign-up. We’ll handle the
                                             infrastructure, app runtimes and dependencies, so that you can push code to
                                             production in just a few clicks.
                                         </p>
