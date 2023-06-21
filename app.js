@@ -19,7 +19,7 @@ const connectDB = require("./config/db");
 const { S3Client, AbortMultipartUploadCommand } = require("@aws-sdk/client-s3");
 const multerS3 = require("multer-s3");
 const { subcribeHandler } = require("./utils/mailchimp");
-const { ensureAuth } = require("./middleware/auth");
+const { ensureAuth} = require("./middleware/auth");
 const {
   formatDate,
   dateWithTime,
