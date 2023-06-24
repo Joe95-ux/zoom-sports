@@ -6,6 +6,14 @@ const wcMenu = document.querySelector(".wc-menu");
 const tableInput = document.getElementById("change-table");
 const tables = [...document.querySelectorAll(".tables")];
 const leagueOptions = [...document.querySelectorAll(".league-option")];
+const multiSearch = document.querySelector(".multi-search-modal");
+const searchTrigger = document.querySelector(".search-trigger");
+const smTrigger = document.querySelector(".sm-trigger");
+const multiSearchInput = document.querySelector(".multi-search");
+const cancelMultiSearch = document.querySelector(".multi-search-cancel");
+const multiSearchForm = document.querySelector(".multi-search-form");
+let searchHeading = document.querySelector(".thum-heading");
+let searchContentWrapper = document.querySelector(".search-contents");
 let locationPath = window.location.pathname;
 locationPath = locationPath.replace(/^\/+/g, "");
 let filter, tr, td, txtValue;
@@ -142,7 +150,7 @@ function remove(element, tag) {
   tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
   element.parentElement.remove();
   countTags();
-  if(tags.length < 8){
+  if (tags.length < 8) {
     alert.style.display = "none";
   }
 }
@@ -152,14 +160,14 @@ function addTag(e) {
     if (tag.length > 1 && !tags.includes(tag)) {
       if (tags.length < 8) {
         tag.split(",").forEach(tag => {
-          if(tags.length < 8){
+          if (tags.length < 8) {
             tags.push(tag);
             createTag();
-          }else{
+          } else {
             alert.style.display = "block";
           }
         });
-      }else{
+      } else {
         alert.style.display = "block";
       }
     }
@@ -167,23 +175,23 @@ function addTag(e) {
   }
 }
 
-function triggerAdd(){
+function triggerAdd() {
   let tag = tagsInput.value.replace(/\s+/g, " ");
-    if (tag.length > 1 && !tags.includes(tag)) {
-      if (tags.length < 8) {
-        tag.split(",").forEach(tag => {
-          if(tags.length < 8){
-            tags.push(tag);
-            createTag();
-          }else{
-            alert.style.display = "block";
-          }
-        });
-      }else{
-        alert.style.display = "block";
-      }
+  if (tag.length > 1 && !tags.includes(tag)) {
+    if (tags.length < 8) {
+      tag.split(",").forEach(tag => {
+        if (tags.length < 8) {
+          tags.push(tag);
+          createTag();
+        } else {
+          alert.style.display = "block";
+        }
+      });
+    } else {
+      alert.style.display = "block";
     }
-    tagsInput.value = "";
+  }
+  tagsInput.value = "";
 }
 
 if (tagsInput !== null) {
@@ -198,7 +206,7 @@ if (removeBtn !== null) {
     tags.length = 0;
     ul.querySelectorAll("li").forEach(li => li.remove());
     countTags();
-    if(tags.length < 8){
+    if (tags.length < 8) {
       alert.style.display = "none";
     }
   });
@@ -210,5 +218,98 @@ if (submitPost !== null) {
     tagString = tags.join(",");
     tagsValue.value = tagString;
     console.log(tagsValue);
+  });
+}
+
+// trigger search modal
+
+//multi search trigger
+if (searchTrigger !== null) {
+  searchTrigger.addEventListener("click", function() {
+    multiSearch.classList.add("active-multi-search");
+    multiSearchInput.value = "";
+    multiSearchInput.focus();
+  });
+  if (cancelMultiSearch !== null) {
+    cancelMultiSearch.addEventListener("click", function() {
+      multiSearch.classList.remove("active-multi-search");
+    });
+  }
+}
+
+if (smTrigger !== null) {
+  smTrigger.addEventListener("click", function() {
+    multiSearch.classList.add("active-multi-search");
+    multiSearchInput.value = "";
+    multiSearchInput.focus();
+  });
+}
+
+// search form
+if (multiSearchForm !== null) {
+  multiSearchForm.addEventListener("submit", e => {
+    e.preventDefault();
+  });
+}
+
+if (multiSearchInput !== null) {
+  let defaultContent = document.querySelector(".default-content");
+  multiSearchInput.addEventListener("keyup", e => {
+    let match = e.target.value.match(/^[a-zA-Z ]*/);
+    let match2 = e.target.value.match(/\s*/);
+    let searchInputText = e.target.value;
+    if ( e.key==='Backspace'){
+      if (e.target.value !== '' ){
+        e.target.value = '';
+        searchInputText = "";
+        searchHeading.innerHTML = 'Latest News';
+        defaultContent.style.display = "flex";
+        searchContentWrapper.style.display = "none";
+      }
+    }
+    if (match2[0] === searchInputText) {
+      searchContentWrapper.innerHTML = "";
+      return;
+    }
+    if (match[0] === searchInputText) {
+      searchHeading.innerHTML = `Search Results For ${searchInputText}`;
+      if(searchInputText.length > 0){
+        defaultContent.style.display = "none";
+        searchContentWrapper.style.display = "flex";
+
+      }
+      fetch("/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ payload: searchInputText})
+      })
+        .then(res => res.json())
+        .then(data => {
+          let payload = data.payload;
+          searchContentWrapper.innerHTML = "";
+          if (payload.length < 1) {
+            searchContentWrapper.innerHTML = `<p>Sorry! No Results where Found for ${e.target.value}.</p>`;
+            return;
+          }
+          payload.forEach((story, index) => {
+            searchContentWrapper.innerHTML += `
+            <div class="embla__slide search-item-inner thumbnail-wrap-search " style="margin-right:0 ;">
+            <button class="embla__slide__inner search-inner-thumb" type="button">
+                <a href="/stories/post/${story.slug}"><img class="search-photo" src="${story.photo}" /></a>
+            </button>
+            <div class="search-post-heading post">
+                <a href="/stories/post/${story.slug}">
+                   <h5>${story.category} </h5>
+                   <h3>${story.title} </h3>
+                </a>
+            </div>
+            </div>
+            `;
+          });
+        });
+        return;
+    }
+    searchContentWrapper.innerHTML = "";
+
   });
 }

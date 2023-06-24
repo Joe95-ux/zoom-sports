@@ -1,5 +1,61 @@
 <%- include("partials/header") %>
 <section id="header-container" class="blog-header">
+  <div class="side-drawer" data-simplebar>
+    <i class="fas fa-times"></i>
+    <div class="side-drawer-inner">
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Menu</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <li><a class="active-cat" href="/">Home</a></li>
+                    <li><a class="active-cat" href="/surebets">Surebets</a></li>
+                    <li><a class="active-cat" href="/odds-comparison">Odds-comparison</a> </li>
+                    <li><a class="active-cat" href="/dropping-odds">Dropping-odds</a> </li>
+                    <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
+                    <li><a class="active-cat" href="/highlights">Highlights</a></li>
+                    <li><a class="active-cat" href="/tables">Tables</a></li>
+                    <li><a class="active-cat" href="/league">League</a></li>
+                    <% if(user){%>
+                    <% if(user.privilege === "admin"){%>
+                    <li><a class="active-cat" href="/users/admin/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% }else{%>
+                    <li> <a class="active-cat" href="/users/dashboard/<%= user._id %>">Dashboard</a> </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div class="main-category discover-movies">
+            <div class="category-title">
+                <h2 class="discover">Categories</h2>
+            </div>
+            <div class="category-types">
+                <ul class="categories">
+                    <% if(sortedCats){%>
+                    <% for(let cat in sortedCats){%>
+                    <li><i class="fas fa-futbol"></i><a class="active-cat" href="/category/<%=cat%>"><%= cat %></a>
+                    </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="side-drawer-logo">
+        <img src="/zs-logo.png" alt="Zoom Sportz">
+    </div>
+
+</div>
+<section class="side-drawer-backdrop"></section>
+<%- include('partials/multisearch') %>
+<section id="header-container" class="blog-header">
 
   <div class="wrapper-enclosure-blog">
     <div class="compose-form-wrapper">

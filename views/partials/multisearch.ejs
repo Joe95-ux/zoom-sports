@@ -1,0 +1,43 @@
+<div class="multi-search-modal" >
+    <div class="multi-search-modal-inner wrapper-enclosure-blog">
+        <div class="multi-search-wrapper" >
+            <form action="/search" method="GET" class="multi-search-form">
+                <div class="multi-search-field">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="multi-search" placeholder="Search Zoom-sportz for a post..." name="payload" autofocus>
+                    <input type="submit" value="search" hidden>
+                </div>
+            </form>
+            <div class="multi-search-cancel"><i class="fas fa-times"></i></div>
+            
+        </div>
+        <div class="search-content">
+            <h2 class="thum-heading">Latest News</h2>
+            <div class="embla__container search-content-wrapper default-content">
+                <% if(posts){%>
+                    <% posts.forEach(story=>{%>
+                    <div class="embla__slide search-item-inner thumbnail-wrap-search " style="margin-right:0 ;">
+                        <button class="embla__slide__inner search-inner-thumb" type="button">
+                            <a href="/stories/post/<%=story.slug%>"><img class="search-photo" src="<%= story.photo %>" /></a>
+                        </button>
+                        <div class="search-post-heading post">
+                            <a href="/stories/post/<%=story.slug%>">
+                               <h5><%= story.category%> </h5>
+                               <h3><%= story.title %> </h3>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <%}) %>
+                    <% } %>
+
+            </div>
+            <div class="embla__container search-content-wrapper search-contents" >
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

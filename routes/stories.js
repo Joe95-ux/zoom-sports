@@ -53,7 +53,21 @@ const upload = multer({
 
 router.get("/edit/:id", ensureAuth, async (req, res) => {
   const title = "edit post";
+  let sortedCats;
+  let posts;
   try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    posts = stories.slice(0,8);
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
     const story = await Story.findOne({
       _id: req.params.id
     })
@@ -65,7 +79,7 @@ router.get("/edit/:id", ensureAuth, async (req, res) => {
     }
 
     if (story?.user?._id.equals(req.user._id) || req.user.privilege === "admin") {
-      res.render("editpost", { title, story });
+      res.render("editpost", { title, posts, sortedCats, story });
     } else {
       res
         .status(401)
@@ -162,12 +176,14 @@ router.get("/post/:slug", async (req, res) => {
   const userEmail = req.flash("user");
   let sortedCats;
   let recent;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     let story = await Story.findOne({ slug: req.params.slug })
       .populate("user")
       .lean()
@@ -190,7 +206,7 @@ router.get("/post/:slug", async (req, res) => {
           sortedCats = sortCats(categories);
         }
       }
-      res.render("post", { title, userEmail, story, sortedCats, recent, related });
+      res.render("post", { title, posts, userEmail, story, sortedCats, recent, related });
     }
   } catch (err) {
     console.error(err);

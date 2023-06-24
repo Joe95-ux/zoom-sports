@@ -206,11 +206,13 @@ router.get("/dashboard/:id", ensureAuth, async (req, res) => {
   let pageNum = 1;
   let currentPage = [];
   let pages;
+  let posts;
   try {
     let allStories = await Story.find({})
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = allStories.slice(0, 8);
     let stories = await Story.find({ user: req.params.id })
       .populate("user")
       .sort({ createdAt: "desc" })
@@ -237,6 +239,7 @@ router.get("/dashboard/:id", ensureAuth, async (req, res) => {
     }
     res.render("dashboard", {
       title,
+      posts,
       stories,
       currentPage,
       name: req.user.name,
@@ -260,11 +263,18 @@ router.get("/dashboard/:id/:page", ensureAuth, async (req, res) => {
   let pageNum = parseInt(req.params.page);
   let currentPage = [];
   let pages;
+  let posts;
   try {
     let allStories = await Story.find({})
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    let publicStories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    posts = publicStories.slice(0, 8);
     let stories = await Story.find({ user: req.params.id })
       .populate("user")
       .sort({ createdAt: "desc" })
@@ -291,6 +301,7 @@ router.get("/dashboard/:id/:page", ensureAuth, async (req, res) => {
     }
     res.render("dashboard", {
       title,
+      posts,
       stories,
       currentPage,
       name: req.user.name,
@@ -319,12 +330,20 @@ router.get(
     let pageNum = 1;
     let currentPage;
     let pages;
+    let posts;
     try {
       let stories = await Story.find({})
         .populate("user")
         .sort({ createdAt: "desc" })
         .lean()
         .exec();
+
+      let allStories = await Story.find({ status: "Public" })
+        .populate("user")
+        .sort({ createdAt: "desc" })
+        .lean()
+        .exec();
+      posts = allStories.slice(0, 8);
 
       let users = await User.find({}).lean();
       let user = await User.findOne({ _id: req.params.id });
@@ -364,6 +383,7 @@ router.get(
       }
       res.render("dashboard", {
         title,
+        posts,
         stories,
         currentPage,
         name: req.user.name,
@@ -393,12 +413,20 @@ router.get(
     let pageNum = parseInt(req.params.page);
     let currentPage;
     let pages;
+    let posts;
     try {
       let stories = await Story.find({})
         .populate("user")
         .sort({ createdAt: "desc" })
         .lean()
         .exec();
+
+      let allStories = await Story.find({ status: "Public" })
+        .populate("user")
+        .sort({ createdAt: "desc" })
+        .lean()
+        .exec();
+      posts = allStories.slice(0, 8);
 
       let users = await User.find({}).lean();
       let user = await User.findOne({ _id: req.params.id });
@@ -438,6 +466,7 @@ router.get(
       }
       res.render("dashboard", {
         title,
+        posts,
         stories,
         currentPage,
         name: req.user.name,
@@ -524,6 +553,7 @@ router.get("/profiles/:id", async (req, res) => {
   let trending;
   let writers;
   let users;
+  let posts;
   try {
     let user = await User.findById(req.params.id);
 
@@ -535,6 +565,7 @@ router.get("/profiles/:id", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = allStories.slice(0, 8);
     let stories = await Story.find({ user: req.params.id, status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
@@ -574,6 +605,7 @@ router.get("/profiles/:id", async (req, res) => {
     users = writers.filter(writer => writer.posts_count > 0);
     res.render("singleuser", {
       title,
+      posts,
       first,
       writer: user,
       rest,

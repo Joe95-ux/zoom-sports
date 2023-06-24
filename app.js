@@ -19,7 +19,7 @@ const connectDB = require("./config/db");
 const { S3Client, AbortMultipartUploadCommand } = require("@aws-sdk/client-s3");
 const multerS3 = require("multer-s3");
 const { subcribeHandler } = require("./utils/mailchimp");
-const { ensureAuth} = require("./middleware/auth");
+const { ensureAuth } = require("./middleware/auth");
 const {
   formatDate,
   dateWithTime,
@@ -96,6 +96,13 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET");
+
+  next();
+});
+
 app.set("view engine", "ejs");
 
 mailchimp.setConfig({
@@ -147,6 +154,7 @@ app.get("/category/:catName", async (req, res) => {
   const cat = req.params.catName;
   const category = encodeURI(cat);
   let sortedCats;
+  let posts;
   let pages;
   let pageNum = 1;
   if (req.query.page >= 1) {
@@ -159,6 +167,7 @@ app.get("/category/:catName", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = allStories.slice(0,8);
     let stories = await Story.find({ category: cat, status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
@@ -184,6 +193,7 @@ app.get("/category/:catName", async (req, res) => {
     latest = otherCats(allStories, cat);
     res.render("category", {
       title,
+      posts,
       stories: currentPage,
       pages,
       pageNum,
@@ -203,6 +213,7 @@ app.get("/tag/:tagname", async (req, res) => {
   const title = req.params.tagname + " News";
   const tag = req.params.tagname;
   let sortedCats;
+  let posts;
   let pages;
   let pageNum = 1;
   if (req.query.page >= 1) {
@@ -215,6 +226,7 @@ app.get("/tag/:tagname", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = allStories.slice(0,8);
     let stories = sortByTag(allStories, tag);
     if (stories) {
       stories = stories.map(story => {
@@ -232,6 +244,7 @@ app.get("/tag/:tagname", async (req, res) => {
     latest = otherTags(allStories, tag);
     res.render("tags", {
       title,
+      posts,
       stories: currentPage,
       pages,
       pageNum,
@@ -248,19 +261,21 @@ app.get("/tag/:tagname", async (req, res) => {
 app.get("/compose", ensureAuth, async (req, res) => {
   const title = "compose";
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
         sortedCats = sortCats(categories);
       }
     }
-    res.render("compose", { title, sortedCats });
+    res.render("compose", { title, posts, sortedCats });
   } catch (error) {
     console.log(error);
   }
@@ -294,6 +309,7 @@ app.get("/", async (req, res) => {
   let latest;
   let allStories;
   let pages;
+  let posts;
   let pageNum = 1;
   if (req.query.page >= 1) {
     pageNum = parseInt(req.query.page);
@@ -307,6 +323,7 @@ app.get("/", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       stories = stories.map(story => {
         story.createdAt = formatDate(story.createdAt);
@@ -337,6 +354,7 @@ app.get("/", async (req, res) => {
     }
     res.render("home", {
       title,
+      posts,
       videos,
       stories,
       sortedCats,
@@ -355,6 +373,25 @@ app.get("/", async (req, res) => {
   }
 });
 
+//search news
+app.post("/search", async (req, res) => {
+  try {
+    let payload = req.body.payload.trim();
+    let search = await Story.find({
+      title: { $regex: new RegExp("^" + payload + ".*", "i") }
+    })
+      .limit(10)
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+
+    
+    res.send({ payload: search });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // redirect to home
 
 app.get("/?page=1", (req, res) => {
@@ -366,12 +403,14 @@ app.get("/about-us", async (req, res) => {
   const about = "active-link";
   const live = "";
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -379,7 +418,7 @@ app.get("/about-us", async (req, res) => {
       }
     }
 
-    res.render("about", { title, sortedCats, about, live });
+    res.render("about", { title, posts, sortedCats, about, live });
   } catch (e) {
     console.log(e);
   }
@@ -388,20 +427,22 @@ app.get("/about-us", async (req, res) => {
 app.get("/privacy", async (req, res) => {
   const title = "Privacy Policy for Zoom Sportz | Football - Soccer news";
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
-      let categories =  getCats(stories);
+      let categories = getCats(stories);
       if (categories.length) {
         sortedCats = sortCats(categories);
       }
     }
 
-    res.render("privacy", { title, sortedCats });
+    res.render("privacy", { title, posts, sortedCats });
   } catch (e) {
     console.log(e);
   }
@@ -414,12 +455,14 @@ app.get("/live-preview", async (req, res) => {
   const about = "";
   const token = process.env.ODDSPEDIA_API_TOKEN;
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -427,7 +470,7 @@ app.get("/live-preview", async (req, res) => {
       }
     }
 
-    res.render("livepreview", { title, sortedCats, live, about, token });
+    res.render("livepreview", { title, posts, sortedCats, live, about, token });
   } catch (e) {
     console.log(e);
   }
@@ -438,12 +481,14 @@ app.get("/highlights", async (req, res) => {
   const live = "active-link";
   const about = "";
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -451,7 +496,7 @@ app.get("/highlights", async (req, res) => {
       }
     }
 
-    res.render("highlights", { title, sortedCats, live, about });
+    res.render("highlights", { title, posts, sortedCats, live, about });
   } catch (e) {
     console.log(e);
   }
@@ -462,12 +507,14 @@ app.get("/tables", async (req, res) => {
   const live = "active-link";
   const about = "";
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -475,7 +522,7 @@ app.get("/tables", async (req, res) => {
       }
     }
 
-    res.render("tables", { title, sortedCats, live, about });
+    res.render("tables", { title, posts, sortedCats, live, about });
   } catch (e) {
     console.log(e);
   }
@@ -488,12 +535,14 @@ app.get("/surebets", async (req, res) => {
   const about = "";
   const token = process.env.ODDSPEDIA_API_TOKEN;
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -501,7 +550,7 @@ app.get("/surebets", async (req, res) => {
       }
     }
 
-    res.render("surebets", { title, sortedCats, live, about, token });
+    res.render("surebets", { title, posts, sortedCats, live, about, token });
   } catch (e) {
     console.log(e);
   }
@@ -513,12 +562,14 @@ app.get("/odds-comparison", async (req, res) => {
   const about = "";
   const token = process.env.ODDSPEDIA_API_TOKEN;
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -526,7 +577,7 @@ app.get("/odds-comparison", async (req, res) => {
       }
     }
 
-    res.render("odds", { title, sortedCats, live, about, token });
+    res.render("odds", { title, posts, sortedCats, live, about, token });
   } catch (e) {
     console.log(e);
   }
@@ -538,12 +589,14 @@ app.get("/dropping-odds", async (req, res) => {
   const about = "";
   const token = process.env.ODDSPEDIA_API_TOKEN;
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -551,7 +604,7 @@ app.get("/dropping-odds", async (req, res) => {
       }
     }
 
-    res.render("droppingodds", { title, sortedCats, live, about, token });
+    res.render("droppingodds", { title, posts, sortedCats, live, about, token });
   } catch (e) {
     console.log(e);
   }
@@ -564,12 +617,14 @@ app.get("/match-center", async (req, res) => {
   const about = "";
   const token = process.env.ODDSPEDIA_API_TOKEN;
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -577,7 +632,7 @@ app.get("/match-center", async (req, res) => {
       }
     }
 
-    res.render("matchCenter", { title, sortedCats, live, about, token });
+    res.render("matchCenter", { title, posts, sortedCats, live, about, token });
   } catch (e) {
     console.log(e);
   }
@@ -589,12 +644,14 @@ app.get("/league", async (req, res) => {
   const about = "";
   const token = process.env.ODDSPEDIA_API_TOKEN;
   let sortedCats;
+  let posts;
   try {
     let stories = await Story.find({ status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
+    posts = stories.slice(0,8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -602,7 +659,7 @@ app.get("/league", async (req, res) => {
       }
     }
 
-    res.render("league", { title, sortedCats, live, about, token });
+    res.render("league", { title, posts, sortedCats, live, about, token });
   } catch (e) {
     console.log(e);
   }
