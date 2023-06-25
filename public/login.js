@@ -295,10 +295,10 @@ if (multiSearchInput !== null) {
             searchContentWrapper.innerHTML += `
             <div class="embla__slide search-item-inner thumbnail-wrap-search " style="margin-right:0 ;">
             <button class="embla__slide__inner search-inner-thumb" type="button">
-                <a href="/stories/post/${story.slug}"><img class="search-photo" src="${story.photo}" /></a>
+                <a href="/${story.slug}"><img class="search-photo" src="${story.photo}" /></a>
             </button>
             <div class="search-post-heading post">
-                <a href="/stories/post/${story.slug}">
+                <a href="/${story.slug}">
                    <h5>${story.category} </h5>
                    <h3>${story.title} </h3>
                 </a>

@@ -329,7 +329,7 @@
                                         <% related.forEach((story) =>{%>
                                         <div class="embla__slide">
                                             <div class="embla__slide__inner slider-inner-card featured-card">
-                                                <a class="thumbnail" href="/stories/post/<%= story.slug%>">
+                                                <a class="thumbnail" href="/<%= story.slug%>">
                                                     <div class="post">
                                                         <span class="image">
                                                             <img src="<%= story.photo%>" alt="<%= story.title %>">
@@ -461,7 +461,7 @@
                             <h1 class="cat-title">Recent Posts</h1>
                             <div class="ig-cards recent-posts-cards">
                                 <% recent.forEach(story=>{%>
-                                <a href="/stories/post/<%= story.slug %>">
+                                <a href="/<%= story.slug %>">
                                     <div class="post">
                                         <img src="<%= story.photo %> " alt="">
                                         <h3> <%= story.title %></h3>

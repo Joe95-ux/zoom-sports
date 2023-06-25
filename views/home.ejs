@@ -213,7 +213,7 @@
                                 <% picks.forEach(story=>{%>
                                 <div class="embla__slide autoplay__slide"
                                     style="background: linear-gradient(180deg,transparent 60%,#000), url(<%=story.photo%>); background-size:cover; background-color: #022e47; background-repeat: no-repeat;">
-                                    <a href="/stories/post/<%= story.slug%>">
+                                    <a href="/<%= story.slug%>">
                                         <div class="embla__slide__inner">
                                             <div class="post-title blog-header-post-title">
                                                 <h5><%=story.category%></h5>
@@ -335,14 +335,14 @@
                                 <% if(currentPage){%>
                                 <% currentPage.forEach(story=>{%>
                                 <div class="post">
-                                    <a class="thumbnail" href="/stories/post/<%= story.slug %>">
+                                    <a class="thumbnail" href="/<%= story.slug %>">
                                         <span class="image"><img src="<%= story.photo %>"
                                                 alt="<%= story.title %>"></span>
                                         <h5 class="cat-name"><%= story.category %> </h5>
                                         <h3><%= story.title %> </h3>
                                         <h5><%= story.createdAt %></h5>
                                     </a>
-                                    <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
+                                    <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                             class="fas fa-angle-double-right"></i></a>
                                 </div>
 
@@ -380,7 +380,7 @@
                                             <% latest.forEach((story) =>{%>
                                             <div class="embla__slide">
                                                 <div class="embla__slide__inner slider-inner-card featured-card">
-                                                    <a class="thumbnail" href="/stories/post/<%= story.slug%>">
+                                                    <a class="thumbnail" href="/<%= story.slug%>">
                                                         <div class="post">
                                                             <span class="image">
                                                                 <img src="<%= story.photo%>" alt="<%= story.title %>">
@@ -428,7 +428,7 @@
                             <%englishpl.forEach(story=>{  %>
 
                             <div class="post">
-                                <a class="thumbnail" href="/stories/post/<%= story.slug %>">
+                                <a class="thumbnail" href="/<%= story.slug %>">
                                     <span class="image">
                                         <img src="<%= story.photo %>" alt="<%= story.title %>">
                                     </span>
@@ -438,7 +438,7 @@
                                         <span><%= story.createdAt %>
                                         </span> </h5>
                                 </a>
-                                <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
+                                <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                         class="fas fa-angle-double-right"></i></a>
                             </div>
 
@@ -458,7 +458,7 @@
                                             <% spanishll.forEach((story) =>{%>
                                             <div class="embla__slide">
                                                 <div class="embla__slide__inner slider-inner-card featured-card">
-                                                    <a class="thumbnail" href="/stories/post/<%= story.slug%>">
+                                                    <a class="thumbnail" href="/<%= story.slug%>">
                                                         <div class="post">
                                                             <span class="image">
                                                                 <img src="<%= story.photo%>" alt="<%= story.title %>">

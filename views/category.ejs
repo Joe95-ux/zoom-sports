@@ -78,7 +78,7 @@
                     <div class="latest-posts">
                         <% stories.forEach(story =>{%>
                         <div class="post">
-                            <a class="thumbnail" href="/stories/post/<%= story.slug %>">
+                            <a class="thumbnail" href="/<%= story.slug %>">
                                 <span class="image">
                                     <img src="<%= story.photo %>" alt="<%= story.title %>">
                                 </span>
@@ -88,7 +88,7 @@
                                     <span><%= story.createdAt %>
                                     </span> </h5>
                             </a>
-                            <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
+                            <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                     class="fas fa-angle-double-right"></i></a>
                         </div>
                         <%}) %>
@@ -122,7 +122,7 @@
                         <div class="latest-posts tv-news">
                             <%latest.forEach(story=>{%>
                             <div class="post">
-                                <a class="thumbnail" href="/stories/post/<%= story.slug %>">
+                                <a class="thumbnail" href="/<%= story.slug %>">
                                     <span class="image">
                                         <img src="<%= story.photo %>" alt="<%= story.title %>">
                                     </span>
@@ -131,7 +131,7 @@
                                     <h5><%= story.createdAt %></h5>
 
                                 </a>
-                                <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
+                                <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                         class="fas fa-angle-double-right"></i></a>
                             </div>
 

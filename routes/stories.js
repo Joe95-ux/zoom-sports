@@ -169,49 +169,5 @@ router.delete("/post/:id", ensureAuth, async (req, res) => {
   }
 });
 
-// Get single post
-router.get("/post/:slug", async (req, res) => {
-  let title;
-  let related;
-  const userEmail = req.flash("user");
-  let sortedCats;
-  let recent;
-  let posts;
-  try {
-    let stories = await Story.find({ status: "Public" })
-      .populate("user")
-      .sort({ createdAt: "desc" })
-      .lean()
-      .exec();
-    posts = stories.slice(0,8);
-    let story = await Story.findOne({ slug: req.params.slug })
-      .populate("user")
-      .lean()
-      .exec();
-
-    if (!story || story.status == "Draft") {
-      return res.render("error/400");
-    } else {
-      story.createdAt = formatDate(story.createdAt);
-      title = story.title;
-      if (stories.length) {
-        stories = stories.map(story => {
-          story.createdAt = formatDate(story.createdAt);
-          return story;
-        });
-        recent = recentPosts(stories, story._id);
-        related = relatedPosts(stories, story.category, story._id);
-        let categories = getCats(stories);
-        if (categories.length) {
-          sortedCats = sortCats(categories);
-        }
-      }
-      res.render("post", { title, posts, userEmail, story, sortedCats, recent, related });
-    }
-  } catch (err) {
-    console.error(err);
-    res.render("error/500");
-  }
-});
 
 module.exports = router;

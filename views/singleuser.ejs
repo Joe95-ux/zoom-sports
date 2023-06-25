@@ -137,9 +137,9 @@
                     <div class="center-articles-first">
                         <% if(first.length){%>
                         <%first.forEach(story=>{  %>
-                        <a href="/stories/post/<%= story.slug %>"><img src="<%= story.photo %>" alt="post image"></a>
+                        <a href="/<%= story.slug %>"><img src="<%= story.photo %>" alt="post image"></a>
                         <div class="post">
-                            <a href="/stories/post/<%= story.slug %>">
+                            <a href="/<%= story.slug %>">
                                 <h5 class="cat-name"><%= story.category %> </h5>
                                 <h3><%= story.title %> </h3>
                                 <div class="post-desc clamp-dashboard"> <%- story.body %> </div>
@@ -147,7 +147,7 @@
                                     <span><%= story.createdAt %>
                                     </span> </h5>
                             </a>
-                            <a class="read-more" href="/stories/post/<%= story.slug %> ">Read more <i
+                            <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                     class="fas fa-angle-double-right"></i></a>
                         </div>
 
@@ -166,7 +166,7 @@
                                 <img src="<%= story.photo %>" alt="post image">
                                 <div class="rest-content">
                                     <h5 class="cat-name"><%= story.category %> </h5>
-                                    <a  href="/stories/post/<%= story.slug %>">
+                                    <a  href="/<%= story.slug %>">
                                         <span class="clickable"></span>
                                     </a>
                                     <h3><%= story.title %> </h3>
@@ -195,7 +195,7 @@
                         <div class="rest-post-inner">
                             <div class="rest-content">
                                 <h5 class="cat-name"><%= story.category %> </h5>
-                                <a  href="/stories/post/<%= story.slug %>">
+                                <a  href="/<%= story.slug %>">
                                     <span class="clickable"></span>
                                 </a>
                                 <h3><%= story.title %> </h3>
