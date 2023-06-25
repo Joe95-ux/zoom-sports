@@ -1211,6 +1211,7 @@ ul.second-nav-items .nav_link.active-link a{
     background-color: #fff;
     font-size: 1.3rem;
     display: block;
+    z-index: 2;
 }
 
 .new-header-right a {

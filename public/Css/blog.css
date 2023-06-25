@@ -182,7 +182,7 @@ div.thumb-wrapper::before {
 
 }
 
-h2.thum-heading {
+h2.thum-heading, h2.multi-search-heading {
     color: var(--mainWhite);
     background-image: linear-gradient(180deg, #093366, #0c2b4f);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -239,6 +239,11 @@ h2.thum-heading {
     h2.thum-heading {
         display: none;
     }
+    h2.multi-search-heading{
+        font-size: 17px;
+        font-weight: 500;
+    }
+
 
     div.blog-header-right {
         max-height: 300px;
@@ -2237,6 +2242,9 @@ textarea {
     font-weight: 400;
     width: 100%; 
 }
+.header-search input::placeholder {
+    color: rgba(209,209,240,0.8);
+}
 
 .compose-form .publish-btn:hover,
 .create-btn:hover {
@@ -3889,7 +3897,7 @@ a.create-btn.edit-profile-btn {
 }
 
 .search-content{
-    padding: 1.5rem;
+    padding: 0 1.5rem 1.5rem;
     margin-top: 10px;
     width: 100%;
     border-radius: 5px;
@@ -3988,7 +3996,7 @@ input.multi-search:focus{
     font-weight: 400;
 }
 input.multi-search::placeholder{
-    color: var(--darkGrey);
+    color: rgba(209,209,240,0.8);
     font-size: 20px;
     font-weight: 300;
 }

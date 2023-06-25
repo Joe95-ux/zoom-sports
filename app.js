@@ -167,7 +167,7 @@ app.get("/category/:catName", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = allStories.slice(0,8);
+    posts = allStories.slice(0, 8);
     let stories = await Story.find({ category: cat, status: "Public" })
       .populate("user")
       .sort({ createdAt: "desc" })
@@ -226,7 +226,7 @@ app.get("/tag/:tagname", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = allStories.slice(0,8);
+    posts = allStories.slice(0, 8);
     let stories = sortByTag(allStories, tag);
     if (stories) {
       stories = stories.map(story => {
@@ -268,7 +268,7 @@ app.get("/compose", ensureAuth, async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -323,7 +323,7 @@ app.get("/", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       stories = stories.map(story => {
         story.createdAt = formatDate(story.createdAt);
@@ -384,8 +384,6 @@ app.post("/search", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-
-    
     res.send({ payload: search });
   } catch (error) {
     console.log(error);
@@ -410,7 +408,7 @@ app.get("/about-us", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -434,7 +432,7 @@ app.get("/privacy", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -462,7 +460,7 @@ app.get("/live-preview", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -488,7 +486,7 @@ app.get("/highlights", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -514,7 +512,7 @@ app.get("/tables", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -542,7 +540,7 @@ app.get("/surebets", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -569,7 +567,7 @@ app.get("/odds-comparison", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -596,7 +594,7 @@ app.get("/dropping-odds", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -604,7 +602,14 @@ app.get("/dropping-odds", async (req, res) => {
       }
     }
 
-    res.render("droppingodds", { title, posts, sortedCats, live, about, token });
+    res.render("droppingodds", {
+      title,
+      posts,
+      sortedCats,
+      live,
+      about,
+      token
+    });
   } catch (e) {
     console.log(e);
   }
@@ -624,7 +629,7 @@ app.get("/match-center", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
@@ -651,7 +656,7 @@ app.get("/league", async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean()
       .exec();
-    posts = stories.slice(0,8);
+    posts = stories.slice(0, 8);
     if (stories) {
       let categories = getCats(stories);
       if (categories.length) {
