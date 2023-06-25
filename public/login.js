@@ -15,6 +15,7 @@ const multiSearchForm = document.querySelector(".multi-search-form");
 let searchHeading = document.getElementById("thumb-heading");
 let searchContentWrapper = document.querySelector(".search-contents");
 let locationPath = window.location.pathname;
+let documentBody = document.getElementsByTagName("body")[0];
 locationPath = locationPath.replace(/^\/+/g, "");
 let filter, tr, td, txtValue;
 
@@ -258,11 +259,11 @@ if (multiSearchInput !== null) {
     let match = e.target.value.match(/^[a-zA-Z ]*/);
     let match2 = e.target.value.match(/\s*/);
     let searchInputText = e.target.value;
-    if ( e.key==='Backspace'){
-      if (e.target.value !== '' ){
-        e.target.value = '';
+    if (e.key === "Backspace") {
+      if (e.target.value !== "") {
+        e.target.value = "";
         searchInputText = "";
-        searchHeading.innerHTML = 'Latest News';
+        searchHeading.innerHTML = "Latest News";
         defaultContent.style.display = "flex";
         searchContentWrapper.style.display = "none";
       }
@@ -273,22 +274,22 @@ if (multiSearchInput !== null) {
     }
     if (match[0] === searchInputText) {
       searchHeading.innerHTML = `Search Results For ${searchInputText}`;
-      if(searchInputText.length > 0){
+      if (searchInputText.length > 0) {
         defaultContent.style.display = "none";
         searchContentWrapper.style.display = "flex";
-
       }
       fetch("/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ payload: searchInputText})
+        body: JSON.stringify({ payload: searchInputText })
       })
         .then(res => res.json())
         .then(data => {
           let payload = data.payload;
           searchContentWrapper.innerHTML = "";
           if (payload.length < 1) {
-            searchContentWrapper.innerHTML = `<p>Sorry! No Results where Found for ${e.target.value}.</p>`;
+            searchContentWrapper.innerHTML = `<p>Sorry! No Results where Found for ${e
+              .target.value}.</p>`;
             return;
           }
           payload.forEach((story, index) => {
@@ -307,9 +308,15 @@ if (multiSearchInput !== null) {
             `;
           });
         });
-        return;
+      return;
     }
     searchContentWrapper.innerHTML = "";
+  });
+  multiSearchInput.addEventListener("focusin", function() {
+    documentBody.style.overflow = "hidden";
+  });
 
+  multiSearchInput.addEventListener("focusout", function() {
+    documentBody.style.overflow = "auto";
   });
 }
