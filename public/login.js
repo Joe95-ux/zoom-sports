@@ -15,7 +15,6 @@ const multiSearchForm = document.querySelector(".multi-search-form");
 let searchHeading = document.getElementById("thumb-heading");
 let searchContentWrapper = document.querySelector(".search-contents");
 let locationPath = window.location.pathname;
-let documentBody = document.getElementsByTagName("body")[0];
 locationPath = locationPath.replace(/^\/+/g, "");
 let filter, tr, td, txtValue;
 
@@ -311,12 +310,5 @@ if (multiSearchInput !== null) {
       return;
     }
     searchContentWrapper.innerHTML = "";
-  });
-  multiSearchInput.addEventListener("focusin", function() {
-    documentBody.style.overflow = "hidden";
-  });
-
-  multiSearchInput.addEventListener("focusout", function() {
-    documentBody.style.overflow = "auto";
   });
 }
