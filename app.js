@@ -379,8 +379,9 @@ app.get("/", async (req, res) => {
 app.post("/search", async (req, res) => {
   try {
     let payload = req.body.payload.trim();
+    // title: { $regex: new RegExp("^" + payload + ".*", "i") }
     let search = await Story.find({
-      title: { $regex: new RegExp("^" + payload + ".*", "i") }
+      "$or": [{"title": {"$regex": payload, "$options": "i"}}, {"category": {"$regex": payload, "$options": "i"}}]
     })
       .limit(10)
       .sort({ createdAt: "desc" })
