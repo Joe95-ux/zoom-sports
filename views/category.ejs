@@ -90,6 +90,9 @@
                             </a>
                             <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                     class="fas fa-angle-double-right"></i></a>
+                                    <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                        <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
+                                        <% } %>
                         </div>
                         <%}) %>
                         <div></div>
@@ -133,6 +136,9 @@
                                 </a>
                                 <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                         class="fas fa-angle-double-right"></i></a>
+                                        <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                            <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
+                                            <% } %>
                             </div>
 
                             <% }) %>

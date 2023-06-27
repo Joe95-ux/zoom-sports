@@ -207,15 +207,31 @@ h2.thum-heading, h2.multi-search-heading {
     position: relative;
 }
 
+.edit-float-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    font-size: 11px;
+    color: #C4DDFF;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    outline: none;
+    z-index: 3;
+}
+.edit-float-btn i{
+    margin-right: 4px;
+}
+
 
 .post.thumbnail-post-heading h3, .post.search-post-heading h3 {
     color: var(--mainGrey);
     letter-spacing: 0.5px;
 }
 
-.post.thumbnail-post-heading h5 .post.search-post-heading h5 {
-    color: hsla(0, 0%, 100%, .5);
-    font-weight: 600;
+.post.thumbnail-post-heading h5, .post.search-post-heading h5 {
+    color: #C4DDFF;
+    font-weight: 500;
     text-transform: uppercase;
     font-size: 14px;
 }

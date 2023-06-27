@@ -342,8 +342,10 @@
                                         <h3><%= story.title %> </h3>
                                         <h5><%= story.createdAt %></h5>
                                     </a>
-                                    <a class="read-more" href="/<%= story.slug %> ">Read more <i
-                                            class="fas fa-angle-double-right"></i></a>
+                                    <a class="read-more" href="/<%= story.slug %> ">Read more <i class="fas fa-angle-double-right"></i></a>
+                                    <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                        <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
+                                        <% } %>
                                 </div>
 
                                 <%}) %>
@@ -388,6 +390,9 @@
                                                             <h5 class="cat-name"><%= story.category%></h5>
                                                             <h3><%= story.title%></h3>
                                                             <h5><%= story.createdAt %></h5>
+                                                            <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                                                <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
+                                                                <% } %>
                                                         </div>
                                                     </a>
                                                 </div>
@@ -440,6 +445,9 @@
                                 </a>
                                 <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                         class="fas fa-angle-double-right"></i></a>
+                                        <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                            <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
+                                            <% } %>
                             </div>
 
                             <% }) %>
@@ -466,6 +474,9 @@
                                                             <h5 class="cat-name"><%= story.category%></h5>
                                                             <h3><%= story.title%></h3>
                                                             <h5><%= story.createdAt %></h5>
+                                                            <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                                                <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
+                                                                <% } %>
                                                         </div>
                                                     </a>
                                                 </div>

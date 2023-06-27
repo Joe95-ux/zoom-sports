@@ -337,6 +337,9 @@
                                                         <h5 class="cat-name"><%= story.category%></h5>
                                                         <h3><%= story.title%></h3>
                                                         <h5><%=story.createdAt%></h5>
+                                                        <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                                            <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
+                                                            <% } %>
                                                     </div>
                                                 </a>
                                             </div>
@@ -459,7 +462,7 @@
                         <% if(recent.length){%>
                         <div class="instagram-page">
                             <h1 class="cat-title">Recent Posts</h1>
-                            <div class="ig-cards recent-posts-cards">
+                            <div class="ig-cards recent-posts-cards" style="position: relative;">
                                 <% recent.forEach(story=>{%>
                                 <a href="/<%= story.slug %>">
                                     <div class="post">
