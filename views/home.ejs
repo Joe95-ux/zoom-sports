@@ -212,7 +212,7 @@
                                 <% if(picks){%>
                                 <% picks.forEach(story=>{%>
                                 <div class="embla__slide autoplay__slide"
-                                    style="background: linear-gradient(180deg,transparent 60%,#000), url(<%=story.photo%>); background-size:cover; background-color: #022e47; background-repeat: no-repeat;">
+                                    style="background: linear-gradient(180deg,transparent 60%,#000), url(<%=story.photo%>); background-size:cover; background-color: #022e47; background-repeat: no-repeat; position: relative;">
                                     <a href="/<%= story.slug%>">
                                         <div class="embla__slide__inner">
                                             <div class="post-title blog-header-post-title">
@@ -224,6 +224,9 @@
                                             </div>
                                         </div>
                                     </a>
+                                    <% if (story.user._id.equals(user?._id) || user?.privilege === "admin") {%>
+                                        <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
+                                        <% } %>
 
                                 </div>
 
@@ -343,7 +346,7 @@
                                         <h5><%= story.createdAt %></h5>
                                     </a>
                                     <a class="read-more" href="/<%= story.slug %> ">Read more <i class="fas fa-angle-double-right"></i></a>
-                                    <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                    <% if (story.user._id.equals(user?._id) || user?.privilege === "admin") {%>
                                         <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
                                         <% } %>
                                 </div>
@@ -371,58 +374,30 @@
 
 
                         <% if(latest.length){%>
-                        <div class="older-posts" style="margin-bottom: 25px; border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 25px;">
+                        <div class="tv-shows latest-stories" style="margin-bottom: 25px; border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 25px;">
 
                             <a href="/category/Elite one championship Cameroon" class="cat-title wc-trademark-wrapper">
-                                Elite One Championship Cameroon <i class="fas fa-long-arrow-alt-right"></i></a>
-                            <div class="older-posts-inner">
-                                <div class="embla old-posts-embla">
-                                    <div class="embla__viewport embla--view">
-                                        <div class="embla__container">
-                                            <% latest.forEach((story) =>{%>
-                                            <div class="embla__slide">
-                                                <div class="embla__slide__inner slider-inner-card featured-card">
-                                                    <a class="thumbnail" href="/<%= story.slug%>">
-                                                        <div class="post">
-                                                            <span class="image">
-                                                                <img src="<%= story.photo%>" alt="<%= story.title %>">
-                                                            </span>
-                                                            <h5 class="cat-name"><%= story.category%></h5>
-                                                            <h3><%= story.title%></h3>
-                                                            <h5><%= story.createdAt %></h5>
-                                                            <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
-                                                                <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
-                                                                <% } %>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                            <% }) %>
-
-                                        </div>
-
+                                Elite One Championship <i class="fas fa-long-arrow-alt-right"></i></a>
+                                <div class="latest-posts tv-news">
+                                    <% if(latest){%>
+                                    <% latest.forEach(story=>{%>
+                                    <div class="post">
+                                        <a class="thumbnail" href="/<%= story.slug %>">
+                                            <span class="image"><img src="<%= story.photo %>"
+                                                    alt="<%= story.title %>"></span>
+                                            <h5 class="cat-name"><%= story.category %> </h5>
+                                            <h3><%= story.title %> </h3>
+                                            <h5><%= story.createdAt %></h5>
+                                        </a>
+                                        <a class="read-more" href="/<%= story.slug %> ">Read more <i class="fas fa-angle-double-right"></i></a>
+                                        <% if (story.user._id.equals(user?._id) || user?.privilege === "admin") {%>
+                                            <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
+                                            <% } %>
                                     </div>
-                                    <button class="embla__button embla__button--prev square__btn old-embla-btn"
-                                        type="button">
-                                        <svg class="embla__button__svg" viewBox="137.718 -1.001 366.563 643.999">
-                                            <path
-                                                d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z">
-                                            </path>
-                                        </svg>
-                                    </button>
-                                    <button class="embla__button embla__button--next square__btn old-embla-btn"
-                                        type="button">
-                                        <svg class="embla__button__svg" viewBox="0 0 238.003 238.003">
-                                            <path
-                                                d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z">
-                                            </path>
-                                        </svg>
-                                    </button>
-
-
+    
+                                    <%}) %>
+                                    <% } %>
                                 </div>
-                            </div>
                         </div>
 
                         <% } %>
@@ -445,7 +420,7 @@
                                 </a>
                                 <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                         class="fas fa-angle-double-right"></i></a>
-                                        <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                        <% if (story.user._id.equals(user?._id) || user?.privilege === "admin") {%>
                                             <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
                                             <% } %>
                             </div>
@@ -474,7 +449,7 @@
                                                             <h5 class="cat-name"><%= story.category%></h5>
                                                             <h3><%= story.title%></h3>
                                                             <h5><%= story.createdAt %></h5>
-                                                            <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                                            <% if (story.user._id.equals(user?._id) || user?.privilege === "admin") {%>
                                                                 <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
                                                                 <% } %>
                                                         </div>
@@ -512,7 +487,7 @@
                         <% } %>
                     </div>
                 </div>
-                <div id="short" class="blog-body-bio">
+                <div id="short" class="blog-body-bio to-stick">
                     <h1 class="cat-title">About Us</h1>
                     <div class="writer-bio-wrapper">
                         <img src="/banner.jpeg" alt="Latest English Premier League News">

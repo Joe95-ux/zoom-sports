@@ -161,13 +161,13 @@ getTimeZone();
 // sticky layout
 function stickLayout() {
   if (short != null || long != null) {
-    let shortHeight = short.clientHeight + 497;
-    let longHeight = long.clientHeight;
-    if (longHeight > shortHeight) {
-      short.classList.add("to-stick");
-    } else {
-      long.classList.add("to-stick");
-    }
+    // let shortHeight = short.clientHeight + 497;
+    // let longHeight = long.clientHeight;
+    // if (longHeight > shortHeight) {
+    //   short.classList.add("to-stick");
+    // } else {
+    //   long.classList.add("to-stick");
+    // }
   }
 }
 stickLayout();

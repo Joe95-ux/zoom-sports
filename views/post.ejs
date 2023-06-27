@@ -337,7 +337,7 @@
                                                         <h5 class="cat-name"><%= story.category%></h5>
                                                         <h3><%= story.title%></h3>
                                                         <h5><%=story.createdAt%></h5>
-                                                        <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                                        <% if (story.user._id.equals(user?._id) || user?.privilege === "admin") {%>
                                                             <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
                                                             <% } %>
                                                     </div>
@@ -405,7 +405,7 @@
                     </div>
 
                 </div>
-                <div id="short" class="blog-body-bio">
+                <div id="short" class="blog-body-bio to-stick">
                     <h1 class="cat-title">About Us</h1>
                     <div class="writer-bio-wrapper">
                         <img src="/banner.jpeg" alt="author-image">

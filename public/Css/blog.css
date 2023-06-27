@@ -214,8 +214,8 @@ h2.thum-heading, h2.multi-search-heading {
     padding: 5px;
     font-size: 11px;
     color: #C4DDFF;
+    border: 1px solid rgba(209, 209, 240, 0.5);
     background-color: rgba(0, 0, 0, 0.4);
-    border: none;
     outline: none;
     z-index: 3;
 }
@@ -1303,7 +1303,7 @@ div.tv-news {
 .to-stick-profile {
     position: sticky;
     position: -webkit-sticky;
-    top: 3rem;
+    top: 5.5rem;
 }
 
 .to-stick-profile {

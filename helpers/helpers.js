@@ -68,7 +68,7 @@ module.exports = {
   getByCat: function(stories, cat){
     let sorted = stories.filter(story=>story.category === cat);
     if(sorted.length){
-      sorted = sorted.slice(0, 8);
+      sorted = sorted.slice(0, 6);
     }
     return sorted;
   },

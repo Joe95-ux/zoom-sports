@@ -72,7 +72,7 @@
         </div>
         <div class="blog-body-wrapper">
             <% if(stories?.length){%>
-                <div id="long" class="blog-body-content">
+                <div id="long" class="blog-body-content to-stick">
                 <div class="blog-body-popular">
                     <h1 class="cat-title">Category : <span><%= cat %> </span></h1>
                     <div class="latest-posts">
@@ -90,7 +90,7 @@
                             </a>
                             <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                     class="fas fa-angle-double-right"></i></a>
-                                    <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                    <% if (story.user._id.equals(user?._id) || user?.privilege === "admin") {%>
                                         <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
                                         <% } %>
                         </div>
@@ -136,7 +136,7 @@
                                 </a>
                                 <a class="read-more" href="/<%= story.slug %> ">Read more <i
                                         class="fas fa-angle-double-right"></i></a>
-                                        <% if (story.user._id === user?._id || user?.privilege === "admin") {%>
+                                        <% if (story.user._id.equals(user?._id) || user?.privilege === "admin") {%>
                                             <a href="/stories/edit/<%= story._id%>" class="edit-float-btn" name="edit post"><i class="fas fa-pencil-alt"></i>edit post</a>
                                             <% } %>
                             </div>
@@ -151,7 +151,7 @@
             <% }else{%>
             <p>There are no stories in this category yet</p>
             <% } %>
-            <div id="short" class="blog-body-bio">
+            <div id="short" class="blog-body-bio ">
                 <h1 class="cat-title">About Us</h1>
                 <div class="writer-bio-wrapper">
                     <img src="/banner.jpeg" alt="author-image">
