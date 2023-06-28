@@ -646,6 +646,35 @@ app.get("/match-center", async (req, res) => {
   }
 });
 
+app.get("/single-game-best-odds", async (req, res) => {
+  const title =
+    "Single Game Best Odds - Zoom-sportz";
+  const live = "active-link";
+  const about = "";
+  const token = process.env.ODDSPEDIA_API_TOKEN;
+  let sortedCats;
+  let posts;
+  try {
+    let stories = await Story.find({ status: "Public" })
+      .populate("user")
+      .sort({ createdAt: "desc" })
+      .lean()
+      .exec();
+    posts = stories.slice(0, 8);
+    if (stories) {
+      let categories = getCats(stories);
+      if (categories.length) {
+        sortedCats = sortCats(categories);
+      }
+    }
+
+    res.render("bestodds", { title, posts, sortedCats, live, about, token });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+
 app.get("/league", async (req, res) => {
   const title = "League matches, standings, outrights and betting odds";
   const live = "active-link";
