@@ -1942,21 +1942,28 @@ h5.cat-name {
 
 }
 
-@media screen and (max-width:380px) {
+@media screen and (max-width:414px) {
     .compose-form-inner {
-        padding: 1.15rem;
+        padding: 0;
+        background-color: inherit;
+        border-radius: 0;
     }
 
     .compose-form-header h1 {
-        font-size: 1.2rem;
+        font-size: 20px;
     }
 
     .compose-form-header p {
-        font-size: 15px;
+        font-size: 16px;
+        text-align: left;
+    }
+    .compose-form-wrapper{
+        padding: 0;
     }
 
     .compose-form-wrapper.compose-form-container {
-        margin-top: -1.5rem;
+        margin-top: -1rem;
+        padding: 2rem 0;
     }
 }
 
