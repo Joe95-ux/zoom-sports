@@ -53,191 +53,189 @@
     </div>
 
 </div>
+
 <section class="side-drawer-backdrop"></section>
 <%- include('partials/multisearch') %>
-<section id="header-container" class="blog-header">
-
-  <div class="wrapper-enclosure-blog">
-    <div class="compose-form-wrapper">
-      <div class="compose-form-inner">
-        <div class="compose-form-header">
-          <h1>
-            Edit blog post
-          </h1>
-          <p>To write a complete blog post, please fill out the fields below. To save a post as draft, set its
-            status to <strong>Draft</strong>. But if you feel that the post is complete, then set its status
-            to <strong>public</strong> </p>
-        </div>
-        <div class="compose-form-wrapper">
-          <% if(story){%>
-          <form  method="POST" action="/stories/post/<%=story._id%>?_method=PUT" class="compose-form" enctype="multipart/form-data">
-            <div class="names">
-              <div class="firstname">
-                <label for="fist-name">Author's Name</label>
-                <input type="text" id="fName" name="author" value="<%=story.author%> ">
-              </div>
-              <div class="lastname">
-                <label for="last-name">Email Address</label>
-                <input type="email" id="lName" name="email" value="<%=story.email%> ">
-              </div>
-            </div>
-            <div class="input-field">
-              <label for="title">Title</label>
-              <input type="text" id="title" name="title" value="<%=story.title%> ">
-            </div>
-            <div class="names">
-              <div class="firstname">
-                <label for="phone">Category</label>
-                <div class="select-box">
-                  <div class="options-container">
-                    <div class="option">
-                      <input type="radio" class="radio" id="action" name="movies"/>
-                      <label for="movies">Elite one championship Cameroon</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="shows" name="shows" />
-                      <label for="shows">English Premier League</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="transfers" name="transfers" />
-                      <label for="transfers">Transfer News</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="pop-culture" name="popculture" />
-                      <label for="pop culture">Spanish Laliga</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="marvel-universe" name="marvel" />
-                      <label for="marvel">Italy Serie A</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="dc" name="dc" />
-                      <label for="dc">French League I</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="streaming" name="streaming" />
-                      <label for="streaming">Bundesliga</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="box-office" name="boxOffice"/>
-                      <label for="box-office">UEFA Champions League</label>
-                    </div>
-                    
-                    <div class="option">
-                      <input type="radio" class="radio" id="comedy" name="comedy" />
-                      <label for="comedy">Europa League</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="nations-league" name="nations-league" />
-                      <label for="nations-league">UEFA Nations League</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="casting" name="casting" />
-                      <label for="casting">Europa Conference League</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="caf" name="caf" />
-                      <label for="caf">CAF</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="fecafoot" name="fecafoot"/>
-                      <label for="fecafoot">FECAFOOT</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="fifa" name="fifa" />
-                      <label for="fifa">FIFA World Cup</label>
-                    </div>
-                  </div>
-
-                  <div class="selected">
-                    <input type="text" name="category" id="category" value="<%=story.category%> ">
-                  </div>
-                </div>
-              </div>
-              <div class="lastname">
-                <label for="state">Status</label>
-                <div class="select-box">
-                  <div class="options-container">
-                    <div class="option">
-                      <input type="radio" class="radio" id="draft" name="draft" />
-                      <label for="draft">Draft</label>
-                    </div>
-                    <div class="option">
-                      <input type="radio" class="radio" id="public" name="public" />
-                      <label for="public">Public</label>
-                    </div>
-                  </div>
-
-                  <div class="selected">
-                    <input type="text" name="status" id="status" value="<%=story.status%> ">
-                  </div>
-                </div>
-
-
-              </div>
-            </div>
-            <div class="input-field">
-              <label for="description">Description</label>
-              <input type="text" id="desc" name="description" placeholder="please add first paragraph of story here" value="<%= story.description %> ">
-            </div>
-            <div class="names">
-              <div class="firstname">
-                <label for="image">Image</label>
-                <input type="file" id="image" name="photo">
-              </div>
-              <div class="lastname">
-                <label for="state">Image's Title</label>
-                <input type="text" id="image-title" name="photoTitle" value="<%=story.photoTitle%> ">
-              </div>
-            </div>
-            <div class="names">
-              <div class="firstname">
-                <label for="keywords">Keywords</label>
-                <input type="text" id="keywords" name="keywords" placeholder="add keywords to boost seo" value="<%= story.keywords %>">
-              </div>
-              <div class="lastname tags-wrapper">
-                <div class="tag-title">
-                  <img src="/tags.svg" alt="icon">
-                  <h3>Tags</h3>
-                </div>
-                <div class="content">
-                  <p>Press enter or add a comma after each tag</p>
-                  <ul class="tags-ul">
-                    <input class="tags-input" type="text" spellcheck="false" placeholder="Leave empty if tags are same" value="<%= story.tags %>">
-                    <input class="tags-value" type="hidden" id="tagsId" name="tags" value="" >
-                  </ul>
-                  <small class="alert">You have exceeded the max limit of 8 tags!</small>
-                </div>
-                <div class="tag-details">
-                  <p><span>8</span> tags are remaining</p>
-                  <div class="tag-btns">
-                    <button type="button" class="submit-tag">Add Tag</button>
-                    <button type="button" class="remove-tag">Remove All</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="input-field">
-              <label for="body">Body</label>
-              <textarea class="ck-content" name="body" id="editor"><%= story.body %> </textarea>
-            </div>
-            <div class="action-btns">
-              <button type="submit" class="publish-btn">Publish</button>
-              <a href="/" role="button" class="publish-btn">Cancel</a>
-            </div>
-          </form>
-          <% } %>
-
-
-
-        </div>
+<div class="wrapper-enclosure-blog">
+  <div class="compose-form-wrapper compose-form-container">
+    <div class="compose-form-inner">
+      <div class="compose-form-header">
+        <h1>
+          Edit blog post
+        </h1>
+        <p>To write a complete blog post, please fill out the fields below. To save a post as draft, set its
+          status to <strong>Draft</strong>. But if you feel that the post is complete, then set its status
+          to <strong>public</strong> </p>
       </div>
+      <div class="compose-form-wrapper">
+        <% if(story){%>
+        <form  method="POST" action="/stories/post/<%=story._id%>?_method=PUT" class="compose-form" enctype="multipart/form-data">
+          <div class="names">
+            <div class="firstname">
+              <label for="fist-name">Author's Name</label>
+              <input type="text" id="fName" name="author" value="<%=story.author%> ">
+            </div>
+            <div class="lastname">
+              <label for="last-name">Email Address</label>
+              <input type="email" id="lName" name="email" value="<%=story.email%> ">
+            </div>
+          </div>
+          <div class="input-field">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" value="<%=story.title%> ">
+          </div>
+          <div class="names">
+            <div class="firstname">
+              <label for="phone">Category</label>
+              <div class="select-box">
+                <div class="options-container">
+                  <div class="option">
+                    <input type="radio" class="radio" id="action" name="movies"/>
+                    <label for="movies">Elite one championship Cameroon</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="shows" name="shows" />
+                    <label for="shows">English Premier League</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="transfers" name="transfers" />
+                    <label for="transfers">Transfer News</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="pop-culture" name="popculture" />
+                    <label for="pop culture">Spanish Laliga</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="marvel-universe" name="marvel" />
+                    <label for="marvel">Italy Serie A</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="dc" name="dc" />
+                    <label for="dc">French League I</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="streaming" name="streaming" />
+                    <label for="streaming">Bundesliga</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="box-office" name="boxOffice"/>
+                    <label for="box-office">UEFA Champions League</label>
+                  </div>
+                  
+                  <div class="option">
+                    <input type="radio" class="radio" id="comedy" name="comedy" />
+                    <label for="comedy">Europa League</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="nations-league" name="nations-league" />
+                    <label for="nations-league">UEFA Nations League</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="casting" name="casting" />
+                    <label for="casting">Europa Conference League</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="caf" name="caf" />
+                    <label for="caf">CAF</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="fecafoot" name="fecafoot"/>
+                    <label for="fecafoot">FECAFOOT</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="fifa" name="fifa" />
+                    <label for="fifa">FIFA World Cup</label>
+                  </div>
+                </div>
 
+                <div class="selected">
+                  <input type="text" name="category" id="category" value="<%=story.category%> ">
+                </div>
+              </div>
+            </div>
+            <div class="lastname">
+              <label for="state">Status</label>
+              <div class="select-box">
+                <div class="options-container">
+                  <div class="option">
+                    <input type="radio" class="radio" id="draft" name="draft" />
+                    <label for="draft">Draft</label>
+                  </div>
+                  <div class="option">
+                    <input type="radio" class="radio" id="public" name="public" />
+                    <label for="public">Public</label>
+                  </div>
+                </div>
+
+                <div class="selected">
+                  <input type="text" name="status" id="status" value="<%=story.status%> ">
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="input-field">
+            <label for="description">Description</label>
+            <input type="text" id="desc" name="description" placeholder="please add first paragraph of story here" value="<%= story.description %> ">
+          </div>
+          <div class="names">
+            <div class="firstname">
+              <label for="image">Image</label>
+              <input type="file" id="image" name="photo">
+            </div>
+            <div class="lastname">
+              <label for="state">Image's Title</label>
+              <input type="text" id="image-title" name="photoTitle" value="<%=story.photoTitle%> ">
+            </div>
+          </div>
+          <div class="names">
+            <div class="firstname">
+              <label for="keywords">Keywords</label>
+              <input type="text" id="keywords" name="keywords" placeholder="add keywords to boost seo" value="<%= story.keywords %>">
+            </div>
+            <div class="lastname tags-wrapper">
+              <div class="tag-title">
+                <img src="/tags.svg" alt="icon">
+                <h3>Tags</h3>
+              </div>
+              <div class="content">
+                <p>Press enter or add a comma after each tag</p>
+                <ul class="tags-ul">
+                  <input class="tags-input" type="text" spellcheck="false" placeholder="Leave empty if tags are same" value="<%= story.tags %>">
+                  <input class="tags-value" type="hidden" id="tagsId" name="tags" value="" >
+                </ul>
+                <small class="alert">You have exceeded the max limit of 8 tags!</small>
+              </div>
+              <div class="tag-details">
+                <p><span>8</span> tags are remaining</p>
+                <div class="tag-btns">
+                  <button type="button" class="submit-tag">Add Tag</button>
+                  <button type="button" class="remove-tag">Remove All</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="input-field">
+            <label for="body">Body</label>
+            <textarea class="ck-content" name="body" id="editor"><%= story.body %> </textarea>
+          </div>
+          <div class="action-btns">
+            <button type="submit" class="publish-btn">Publish</button>
+            <a href="/" role="button" class="publish-btn">Cancel</a>
+          </div>
+        </form>
+        <% } %>
+
+
+
+      </div>
     </div>
+
   </div>
-
-
+</div>
 </section>
+
 
 
 
