@@ -261,8 +261,18 @@ button {
     /* justify-content: space-between; */
     align-items: center;
     color: var(--mainWhite);
-    overflow-x: scroll;
     /* margin: 0 auto; */
+}
+
+@media screen and (max-width:850px){
+    .nav_links {
+        overflow-x: scroll;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+    }
+    .nav_links::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
 }
 
 
