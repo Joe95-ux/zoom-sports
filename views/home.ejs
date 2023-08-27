@@ -109,7 +109,7 @@
                     <li class="nav_link"> <a href="/surebets">Surebets</a> </li>
                     <li class="nav_link"> <a href="/odds-comparison">Odds-comparison</a> </li>
                     <li class="nav_link"> <a href="/dropping-odds">Dropping-odds</a> </li>
-                    <li class="nav_link"> <a href="/live-preview">Livescores</a> </li>
+                    <li class="nav_link"> <a href="/livescores">Livescores</a> </li>
                     <li class="nav_link"> <a href="/highlights">Highlights</a> </li>
                     <li class="nav_link"> <a href="/tables">Tables</a> </li>
                     <li class="nav_link"> <a href="/league">League</a> </li>
@@ -139,7 +139,7 @@
                         <li><a class="active-cat" href="/surebets">Surebets</a></li>
                         <li><a class="active-cat" href="/odds-comparison">Odds-comparison</a> </li>
                         <li><a class="active-cat" href="/dropping-odds">Dropping-odds</a> </li>
-                        <li><a class="active-cat" href="/live-preview">Livescores</a> </li>
+                        <li><a class="active-cat" href="/livescores">Livescores</a> </li>
                         <li><a class="active-cat" href="/highlights">Highlights</a></li>
                         <li><a class="active-cat" href="/tables">Tables</a></li>
                         <li><a class="active-cat" href="/league">League</a></li>
@@ -373,14 +373,13 @@
                         <% } %>
 
 
-                        <% if(latest.length){%>
+                        <% if(englishpl.length){%>
                         <div class="tv-shows latest-stories" style="margin-bottom: 25px; border-top: 1px solid rgba(0, 0, 0, 0.1); padding-top: 25px;">
-
-                            <a href="/category/Elite one championship Cameroon" class="cat-title wc-trademark-wrapper">
-                                Elite One Championship <i class="fas fa-long-arrow-alt-right"></i></a>
+                                <a href="/category/English Premier League" class="cat-title wc-trademark-wrapper">
+                                    English Premier League <i class="fas fa-long-arrow-alt-right"></i></a>
                                 <div class="latest-posts tv-news">
-                                    <% if(latest){%>
-                                    <% latest.forEach(story=>{%>
+                                    <% if(englishpl){%>
+                                    <% englishpl.forEach(story=>{%>
                                     <div class="post">
                                         <a class="thumbnail" href="/<%= story.slug %>">
                                             <span class="image"><img src="<%= story.photo %>"
@@ -401,11 +400,11 @@
                         </div>
 
                         <% } %>
-                        <a href="/category/English Premier League" class="cat-title wc-trademark-wrapper">
-                            English Premier League <i class="fas fa-long-arrow-alt-right"></i></a>
+                        <a href="/category/Spanish Laliga" class="cat-title">Spanish Laliga<i
+                            class="fas fa-long-arrow-alt-right"></i></a>
                         <div class="latest-posts latest-stories">
-                            <% if(englishpl){%>
-                            <%englishpl.forEach(story=>{  %>
+                            <% if(spanishll){%>
+                            <%spanishll.forEach(story=>{  %>
 
                             <div class="post">
                                 <a class="thumbnail" href="/<%= story.slug %>">
@@ -430,15 +429,15 @@
                             <%} %>
                         </div>
 
-                        <% if(spanishll.length){%>
+                        <% if(latest.length){%>
                         <div class="older-posts" style="padding-top: 0;">
-                            <a href="/category/Spanish Laliga" class="cat-title">Spanish Laliga<i
-                                    class="fas fa-long-arrow-alt-right"></i></a>
+                            <a href="/category/Elite one championship Cameroon" class="cat-title wc-trademark-wrapper">
+                                Elite One Championship <i class="fas fa-long-arrow-alt-right"></i></a>
                             <div class="older-posts-inner">
                                 <div class="embla old-posts-embla">
                                     <div class="embla__viewport embla--view">
                                         <div class="embla__container">
-                                            <% spanishll.forEach((story) =>{%>
+                                            <% latest.forEach((story) =>{%>
                                             <div class="embla__slide">
                                                 <div class="embla__slide__inner slider-inner-card featured-card">
                                                     <a class="thumbnail" href="/<%= story.slug%>">
