@@ -449,9 +449,9 @@ app.get("/privacy", async (req, res) => {
   }
 });
 
-app.get("/live-preview", async (req, res) => {
+app.get("/livescores", async (req, res) => {
   const title =
-    "Livescores for English Premier League, Champions League, Bundesliga, Laliga and more";
+    "Zoom-sportz Livescores: Real-Time Football and Soccer Livescores Today";
   const live = "active-link";
   const about = "";
   const token = process.env.ODDSPEDIA_API_TOKEN;
