@@ -252,6 +252,7 @@ if (multiSearchForm !== null) {
   });
 }
 
+
 if (multiSearchInput !== null) {
   let defaultContent = document.querySelector(".default-content");
   multiSearchInput.addEventListener("keyup", e => {
